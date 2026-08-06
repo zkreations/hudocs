@@ -2,3 +2,5 @@ public/
 exampleSite/public/
 .hugo_build.lock
 resources/
+jsconfig.json
+exampleSite/jsconfig.json
