@@ -6,8 +6,17 @@ baseURL = 'http://localhost:1313/'
 
 enableRobotsTXT = true
 enableInlineShortcodes = true
+enableGitInfo = true
 disableKinds = ["taxonomy", "term", "RSS"]
 summaryLength = 20
+
+[languages]
+  [languages.en]
+    label = "English"
+    weight = 1
+  [languages.es]
+    label = "Español"
+    weight = 2
 
 [markup]
   [markup.highlight]
