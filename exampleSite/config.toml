@@ -1,0 +1,46 @@
+title = 'Hudocs'
+theme = 'hudocs'
+baseURL = 'https://example.com/'
+
+copyright = "Created by [zkreations](https://www.zkreations.com)"
+enableRobotsTXT = true
+enableGitInfo = false
+
+enableInlineShortcodes = true
+disableKinds = ["taxonomy","term","RSS"]
+
+languageCode = 'es'
+defaultContentLanguage = 'es'
+
+summaryLength = 20
+
+[languages]
+  [languages.es]
+    languageName = "Español"
+    weight = 1
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+
+# Shortcodes HTML
+[markup]
+  [markup.highlight]
+    noClasses = false
+
+  [markup.goldmark.renderer]
+    unsafe = true
+
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[params]
+  description = "Documenta tus proyectos con Hugo"
+  github_repo_edit = "https://github.com/zkreations/docs/blob/master/demo/content"
+  date_format = "January 2, 2006"
+  versions = [ "1.0" ]
+  badge_url = "https://www.zkreations.com"
+  main_icon = "book-open"
+  pagination = true
+  # main_logo = "tu-logo.svg"

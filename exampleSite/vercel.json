@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.145.0"
+    }
+  },
+  "buildCommand": "hugo --gc --minify",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' https://cdn.jsdelivr.net https://fonts.bunny.net; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-nUftcM31JjgTW8RErFLHr33+RZ1mb2OlIlDldRFfhbk=';"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "sameorigin"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(self), microphone=(), camera=()"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
+}
