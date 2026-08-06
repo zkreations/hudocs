@@ -29,7 +29,7 @@ summaryLength = 20
 
 [params]
   # (Optional) Site description
-  # description = "Documenta tus proyectos con Hugo"
+  # description = "A Hugo theme for documentation sites"
 
   # (Optional) List of versions to show in the version switcher
   # versions = ["1.0"]
