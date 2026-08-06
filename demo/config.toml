@@ -1,5 +1,5 @@
-title = 'Docs'
-theme = 'docs'
+title = 'Hudocs'
+theme = 'hudocs'
 baseURL = 'https://example.com/'
 
 copyright = "Created by [zkreations](https://www.zkreations.com)"
