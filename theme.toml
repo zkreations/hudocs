@@ -8,7 +8,7 @@ description = "A Hugo theme for documentation sites"
 homepage = "https://github.com/zkreations/docs/"
 tags = ["documentation", "docs", "multilingual"]
 features = []
-min_version = "0.138.0"
+min_version = "0.164.0"
 
 [author]
   name = "Abel Daniel Moreira Moreno"
