@@ -9,14 +9,14 @@
 
 {{- with .Description -}}
   <meta name='description' content='{{ . }}'/>
-  <meta name='og:description' content='{{ .  }}'/>
+  <meta property='og:description' content='{{ .  }}'/>
 {{- else -}}
   {{- with .Summary | plainify -}}
   <meta name='description' content='{{ . }}'/>
-  <meta name='og:description' content='{{ . }}'/>
+  <meta property='og:description' content='{{ . }}'/>
   {{- else -}}
   <meta name='description' content='{{ .Site.Params.description }}'>
-  <meta name='og:description' content='{{ .Site.Params.description }}'/>
+  <meta property='og:description' content='{{ .Site.Params.description }}'/>
   {{- end -}}
 {{- end -}}
 
