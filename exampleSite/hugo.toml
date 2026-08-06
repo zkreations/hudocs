@@ -1,0 +1,47 @@
+# hugo server --themesDir ../..
+
+title = 'Hudocs'
+theme = 'hudocs'
+baseURL = 'http://localhost:1313/'
+
+enableRobotsTXT = true
+enableInlineShortcodes = true
+disableKinds = ["taxonomy", "term", "RSS"]
+summaryLength = 20
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[params]
+  # (Optional) Site description
+  # description = "Documenta tus proyectos con Hugo"
+
+  # (Optional) List of versions to show in the version switcher
+  # versions = ["1.0"]
+
+  # (Optional) Icon name from Meteor Icons for the logo
+  # main_icon = "book-open"
+
+  # (Optional) Path to a logo image, replaces icon + title
+  # main_logo = "logo.svg"
+
+  # (Optional) URL to the GitHub repo content folder, enables edit button
+  # github_repo_edit = "https://github.com/user/repo/blob/master/exampleSite/content"
+
+  # (Optional) URL that badge labels link to
+  # badge_url = "https://example.com"
+
+  # (Optional, default false) Enables prev/next pagination between pages
+  # pagination = true
+
+  # (Optional, default "2006-01-02") Date format for last modified footer
+  # date_format = "January 2, 2006"
+
+  # (Optional) Copyright text, supports markdown
+  # copyright = "Copyright {{ now.Year }} [Your Name](https://example.com)"
