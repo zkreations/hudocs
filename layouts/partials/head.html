@@ -7,7 +7,7 @@
 <link rel="icon" href='{{ "favicon.svg" | relURL }}' type="image/svg+xml"/>
 
 {{- range .Translations }}
-<link rel="alternate" hreflang="{{ default .Site.LanguageCode .Language.Lang }}" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="{{ default .Site.Language.Locale .Language.Lang }}" href="{{ .Permalink }}">
 {{- end -}}
 
 {{- $script := resources.Get "js/dark.js" | resources.Minify -}}
