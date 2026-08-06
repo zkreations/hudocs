@@ -12,7 +12,13 @@
             <li><a href="{{ . }}">{{ . }}</a></li>
           {{ end }}
         {{ else }}
-          <li><a href="#no-item">{{ i18n "no_items" }}</a></li>
+          {{ with .Site.Sections }}
+            {{ range . }}
+              <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
+            {{ end }}
+          {{ else }}
+            <li><a href="#no-item">{{ i18n "no_items" }}</a></li>
+          {{ end }}
         {{ end }}
       </ul>
     </div>

@@ -71,16 +71,20 @@
       </div>
     </div>
 
-    {{- with site.Params.versions -}}
-      <div class="dropdown" id="docs-versions">
-        <div class="list fw-500">
-          {{ range . }}
+    <div class="dropdown" id="docs-versions">
+      <div class="list fw-500">
+        {{ if site.Params.versions }}
+          {{ range site.Params.versions }}
             <a class="list-link" href="{{ . | relLangURL }}">{{ . }}</a>
           {{ end }}
-          <a class="list-link" href='{{ "/" | relLangURL }}'>{{ i18n "versions" }}</a>
-        </div>
+        {{ else }}
+          {{ range .Site.Sections }}
+            <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+          {{ end }}
+        {{ end }}
+        <a class="list-link" href='{{ "/" | relLangURL }}'>{{ i18n "versions" }}</a>
       </div>
-    {{- end -}}
+    </div>
     
     {{- if hugo.IsMultilingual -}}
       <div class="dropdown" id="docs-language">
