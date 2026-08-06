@@ -46,8 +46,8 @@ summaryLength = 20
   # (Optional) URL that badge labels link to
   # badge_url = "https://example.com"
 
-  # (Optional, default false) Enables prev/next pagination between pages
-  # pagination = true
+  # (Optional, default true) Enables prev/next pagination between pages
+  # pagination = false
 
   # (Optional, default "2006-01-02") Date format for last modified footer
   # date_format = "January 2, 2006"
