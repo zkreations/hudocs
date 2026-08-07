@@ -7,19 +7,15 @@ De momento, la documentación soporta dos idiomas: español e inglés. Para camb
 
 ## Usar
 
-Para habilitar las traducciones, debes agregar en tu archivo de configuraciones los idiomas usados, ademas tienes que especificar el idioma por defecto y el idioma de la documentación.
+Para habilitar las traducciones, debes agregar en tu archivo de configuraciones los idiomas usados.
 
 ```toml
-languageCode = 'es'
-defaultContentLanguage = 'es'
-
 [languages]
-  [languages.es]
-    languageName = "Español"
-    weight = 1
-
   [languages.en]
-    languageName = "English"
+    label = "English"
+    weight = 1
+  [languages.es]
+    label = "Español"
     weight = 2
 ```
 

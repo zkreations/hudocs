@@ -7,19 +7,15 @@ Currently, the documentation supports two languages: Spanish and English. To cha
 
 ## Usage
 
-To enable translations, you need to add the languages used in your configuration file. You also need to specify the default language and the language of the documentation.
+To enable translations, you need to add the languages used in your configuration file.
 
 ```toml
-languageCode = 'es'
-defaultContentLanguage = 'es'
-
 [languages]
-  [languages.es]
-    languageName = "Español"
-    weight = 1
-
   [languages.en]
-    languageName = "English"
+    label = "English"
+    weight = 1
+  [languages.es]
+    label = "Español"
     weight = 2
 ```
 
