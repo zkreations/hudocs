@@ -3,7 +3,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport">
 
 <title>{{ partial "title" . }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}</title>
-<meta name="description" content="{{ .Page.Params.description | default .Site.Params.description }}"/>
+<meta name="description" content="{{ .Page.Params.description | default site.Params.description }}"/>
 <link rel="icon" href='{{ "favicon.svg" | relURL }}' type="image/svg+xml"/>
 
 {{- range .Translations }}

@@ -4,12 +4,12 @@
   {{- $date := .GitInfo.AuthorDate  -}}
 {{- end }}
 
-{{- $lastmod := $date.Format (.Site.Params.date_format | default "2006-01-02") -}}
+{{- $lastmod := $date.Format (site.Params.date_format | default "2006-01-02") -}}
 
 <footer class="footer">
   <div class="footer-wrapper">
     <div class="footer-item">{{ i18n "edited" }}: {{ $lastmod }}</div>
-    {{- with .Site.Params.copyright }}
+    {{- with site.Params.copyright }}
       <div class="footer-item">{{ . | markdownify }}</div>
     {{- end }}
   </div>

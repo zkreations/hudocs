@@ -15,8 +15,8 @@
   <meta name='description' content='{{ . }}'/>
   <meta property='og:description' content='{{ . }}'/>
   {{- else -}}
-  <meta name='description' content='{{ .Site.Params.description }}'>
-  <meta property='og:description' content='{{ .Site.Params.description }}'/>
+  <meta name='description' content='{{ site.Params.description }}'>
+  <meta property='og:description' content='{{ site.Params.description }}'/>
   {{- end -}}
 {{- end -}}
 

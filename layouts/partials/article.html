@@ -2,16 +2,16 @@
   <h1 class="article-title fw-500">
     {{- partial "title" .Page -}}
     {{- with .Page.Params.badge -}}
-      {{- if $.Site.Params.badge_url -}}
-        <a href="{{ $.Site.Params.badge_url }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ . }}</a>
+      {{- if site.Params.badge_url -}}
+        <a href="{{ site.Params.badge_url }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ . }}</a>
       {{- else -}}
         <span class="badge badge-big">{{ . }}</span>
       {{- end -}}
     {{ end }}
   </h1>
-  {{- if .Site.Params.github_repo_edit -}}
+  {{- if site.Params.github_repo_edit -}}
     {{- with .Page.File }}
-      <a class="article-edit flex-none i-md" href="{{ $.Site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" data-tts="down-right" aria-label="{{ i18n "edit_on_github" }}">
+      <a class="article-edit flex-none i-md" href="{{ site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" data-tts="down-right" aria-label="{{ i18n "edit_on_github" }}">
         {{ partial "svg" (dict "icon" "pencil") }}
       </a>
     {{- end }}
@@ -20,6 +20,6 @@
 <div class="article-body markdown">
   {{- .Content -}}
 </div>
-{{- if .Site.Params.pagination | default true -}}
+{{- if site.Params.pagination | default true -}}
   {{- partial "pagination" . -}}
 {{- end -}}
