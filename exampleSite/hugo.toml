@@ -34,8 +34,8 @@ summaryLength = 20
   # (Optional) List of versions to show in the version switcher
   # versions = ["1.0"]
 
-  # (Optional) Icon name from Meteor Icons for the logo
-  # main_icon = "book-open"
+  # (Optional, default "book-open") Icon name from Meteor Icons for the logo
+  # main_icon = false
 
   # (Optional) Path to a logo image, replaces icon + title
   # main_logo = "logo.svg"
@@ -53,4 +53,4 @@ summaryLength = 20
   # date_format = "January 2, 2006"
 
   # (Optional) Copyright text, supports markdown
-  # copyright = "Copyright {{ now.Year }} [Your Name](https://example.com)"
+  copyright = "Copyright {{Year}} [zkreations](https://www.zkreations.com)"

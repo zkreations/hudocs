@@ -1,3 +1,5 @@
+{{- $copyright := replace site.Params.copyright "{{Year}}" (now.Year | string) -}}
+
 {{- $date := .Lastmod -}}
 
 {{- if .GitInfo }}
@@ -9,7 +11,7 @@
 <footer class="footer">
   <div class="footer-wrapper">
     <div class="footer-item">{{ i18n "edited" }}: {{ $lastmod }}</div>
-    {{- with site.Params.copyright }}
+    {{- with $copyright }}
       <div class="footer-item">{{ . | markdownify }}</div>
     {{- end }}
   </div>
