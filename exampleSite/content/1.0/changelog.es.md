@@ -6,7 +6,7 @@ weight: 3
 
 Esta página es un ejemplo de cómo podría estructurarse el registro de cambios de un proyecto. Las versiones y cambios mostrados a continuación son ficticios y se incluyen únicamente con fines demostrativos.
 
-## 2.0.0
+## 1.0.0
 
 **Añadido**
 

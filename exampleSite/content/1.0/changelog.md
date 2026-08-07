@@ -6,7 +6,7 @@ weight: 3
 
 This page is an example of how a changelog could be structured for a project. The versions and changes listed below are fictional and are provided for demonstration purposes only.
 
-## 2.0.0
+## 1.0.0
 
 **Added**
 

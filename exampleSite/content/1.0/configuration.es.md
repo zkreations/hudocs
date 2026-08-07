@@ -4,7 +4,7 @@ icon: gear
 weight: 2
 ---
 
-Esta página es un ejemplo de cómo podrían documentarse las opciones de configuración de una versión hipotética 2.0. Los ajustes mostrados son únicamente ilustrativos.
+Esta página es un ejemplo de cómo podrían documentarse las opciones de configuración de una versión hipotética 1.0. Los ajustes mostrados son únicamente ilustrativos.
 
 ## Configuración básica
 

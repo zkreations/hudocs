@@ -4,7 +4,7 @@ icon: gear
 weight: 2
 ---
 
-This page is an example of how configuration options could be documented for a hypothetical version 2.0. The settings shown here are for demonstration purposes only.
+This page is an example of how configuration options could be documented for a hypothetical version 1.0. The settings shown here are for demonstration purposes only.
 
 ## Basic configuration
 
