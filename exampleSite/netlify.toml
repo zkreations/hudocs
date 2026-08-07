@@ -9,7 +9,7 @@
   for = "/*"
   [headers.values]
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self' https://cdn.jsdelivr.net https://fonts.bunny.net; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-nUftcM31JjgTW8RErFLHr33+RZ1mb2OlIlDldRFfhbk=';"
+    Content-Security-Policy = "default-src 'self'; frame-ancestors 'self'; form-action 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self';"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "sameorigin"
     X-XSS-Protection = "1; mode=block"
