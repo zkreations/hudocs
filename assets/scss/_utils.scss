@@ -9,9 +9,9 @@
   font-weight: 300;
 }
 
-@include utility(font-style, normal italic)
+@include utility(font-style, normal italic);
 
-@include utility(text-transform, capitalize uppercase lowercase)
+@include utility(text-transform, capitalize uppercase lowercase);
 
 .fs {
   @include utility(font-size, $font-size-values, true)
