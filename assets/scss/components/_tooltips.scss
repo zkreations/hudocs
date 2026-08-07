@@ -44,7 +44,7 @@
 
 [data-tts]::before {
   font-size: var(--tts-font-size, 14px);
-  font-family: var(--tts-font-family, Roboto, sans-serif);
+  font-family: inherit;
   color: var(--tts-color, #fff);
   padding: var(--tts-padding, 0.5em 0.75em);
   border-radius: var(--tts-border-radius, 0.25em);

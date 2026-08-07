@@ -1,9 +1,7 @@
-<link rel="preconnect" href="https://fonts.bunny.net" crossorigin/>
-
-<link as='style' href='https://fonts.bunny.net/css?display=swap&family=roboto:300,300i,400,400i,500,700' rel='preload'/>
-<link href='https://fonts.bunny.net/css?display=swap&family=roboto:300,300i,400,400i,500,700' rel='stylesheet'/>
-
-{{ $styles := resources.Get "scss/main.scss" }}
-{{ $secureCss := $styles | css.Sass | resources.Minify | resources.Fingerprint }}
+{{- $fonts := "fonts/inter.css" | relURL }}
+{{- $styles := resources.Get "scss/main.scss" -}}
+{{- $secureCss := $styles | css.Sass | resources.Minify | resources.Fingerprint -}}
 
 <link rel="stylesheet" href="{{ $secureCss.RelPermalink }}" integrity="{{ $secureCss.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $fonts }}">
+
