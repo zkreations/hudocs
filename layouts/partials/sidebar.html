@@ -32,7 +32,7 @@
     <label for="menu-{{ md5 .Page }}" class="menu-label">
   {{ end }}
   
-  <a href="{{ .Page.Permalink }}" class="menu-link fs-6{{ if (eq .CurrentPage .Page) }} is-active{{ end }}{{ with .Page.Params.icon }} has-icon{{ end }}">
+  <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="menu-link fs-6{{ if (eq .CurrentPage .Page) }} is-active{{ end }}{{ with .Page.Params.icon }} has-icon{{ end }}">
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
     {{- partial "title" .Page -}}
 

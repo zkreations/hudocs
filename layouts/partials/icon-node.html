@@ -1,0 +1,12 @@
+{{ $node := . }}
+{{ $attrs := "" }}
+{{ range $k, $v := $node.attrs }}
+  {{ $attrs = printf `%s %s="%v"` $attrs $k $v }}
+{{ end }}
+{{ if $node.children }}
+  {{ printf "<%s%s>" $node.tag $attrs | safeHTML }}
+  {{ range $node.children }}{{ partial "icon-node.html" . }}{{ end }}
+  {{ printf "</%s>" $node.tag | safeHTML }}
+{{ else }}
+  {{ printf "<%s%s/>" $node.tag $attrs | safeHTML }}
+{{ end }}

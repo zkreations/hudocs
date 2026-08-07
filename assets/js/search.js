@@ -8,14 +8,12 @@ const input = document.getElementById('search-input')
 const results = document.getElementById('search-results')
 const currentVersion = document.getElementById('current-version')
 
-// eslint-disable-next-line no-undef
 const index = FlexSearch.Index({
   tokenize: 'forward',
   cache: true
 })
 
-// Object to store documents and sections
-const documents = {}
+const documents = []
 
 function getCurrentVersion () {
   if (currentVersion) {
@@ -25,11 +23,7 @@ function getCurrentVersion () {
   const path = window.location.pathname.split('/')
   const version = path[1]
 
-  if (version && version.length > 0) {
-    return version
-  }
-
-  return null
+  return version || null
 }
 
 // Main function to initialize the search
@@ -38,15 +32,12 @@ async function initSearch () {
   input.required = true
 
   try {
-    // Load data from the JSON file
     const response = await fetch(dataJSON)
-    const pages = await response.json()
+    const data = await response.json()
 
-    documents.pages = pages.documents
-    documents.sections = pages.sections
+    documents.push(...data.documents)
 
-    // Add documents to the index
-    indexDocuments(documents.pages)
+    indexDocuments(documents)
   } catch (error) {
     console.error('Error loading data:', error)
   }
@@ -55,8 +46,7 @@ async function initSearch () {
   search()
 }
 
-// Function to add documents to the search index
-// @param pages: Array of documents
+// Add documents to the search index
 function indexDocuments (pages) {
   pages.forEach(page => {
     index.add(page.id, `${page.title} ${page.summary}`)
@@ -65,7 +55,6 @@ function indexDocuments (pages) {
 
 // Function to search and display the results
 async function search () {
-  // Clear previous results
   results.innerHTML = ''
 
   if (!input.value) return
@@ -74,40 +63,38 @@ async function search () {
     const hits = await index.searchAsync(input.value, 100)
 
     const currentVersion = getCurrentVersion()
+
     const filteredHits = hits.filter(hitId => {
-      const page = documents.pages.find(doc => doc.id === hitId)
-      return page && page.parent.startsWith(`/${currentVersion}/`)
+      const page = documents.find(doc => doc.id === hitId)
+
+      return page && page.url.startsWith(`/${currentVersion}/`)
     })
 
     const groupedHits = groupResultsByParent(filteredHits)
 
-    // Display grouped results
     displayGroupedResults(groupedHits)
   } catch (error) {
     console.error('Error in search:', error)
   }
 }
 
-// Function to group results by "parent"
-// @param hits: Array of document IDs
-// @returns Object with grouped results
+// Group results by parent section
 function groupResultsByParent (hits) {
   return hits.reduce((groups, hitId) => {
-    const page = documents.pages.find(doc => doc.id === hitId)
-    if (page) {
-      const parent = page.parent
-      const section = documents.sections[parent] || {}
-      const group = groups[parent] || {
-        title: section.title || 'Untitled',
-        icon: section.icon || '',
-        iconContent: section.icon_content || '',
-        pages: []
-      }
+    const page = documents.find(doc => doc.id === hitId)
 
-      // Add page to the corresponding group
-      group.pages.push(page)
-      groups[parent] = group
+    if (!page) return groups
+
+    const parent = page.parent
+
+    const group = groups[parent] || {
+      ...getParentData(parent),
+      pages: []
     }
+
+    group.pages.push(page)
+    groups[parent] = group
+
     return groups
   }, {})
 }
@@ -116,8 +103,7 @@ function groupResultsByParent (hits) {
 // @param groupedHits: Object with grouped results
 function displayGroupedResults (groupedHits) {
   Object.values(groupedHits).forEach(group => {
-    const groupElement = createGroupElement(group)
-    results.appendChild(groupElement)
+    results.appendChild(createGroupElement(group))
   })
 }
 
@@ -128,19 +114,18 @@ function createGroupElement (group) {
   const groupElement = stringToHTML(`
     <div class="search-group">
       <div class="search-group-title capitalize fs-6 fw-500 has-icon">
-        <svg class="i i-${group.icon} flex-none" viewBox="0 0 24 24">
-          ${group.iconContent}
-        </svg>
+        ${group.icon}
         <h3>${group.title}</h3>
       </div>
+
       <ul class="search-group-list"></ul>
     </div>
   `)
 
   const groupList = groupElement.querySelector('.search-group-list')
+
   group.pages.forEach(page => {
-    const pageElement = createPageElement(page)
-    groupList.appendChild(pageElement)
+    groupList.appendChild(createPageElement(page))
   })
 
   return groupElement
@@ -151,21 +136,24 @@ function createGroupElement (group) {
 // @returns HTML element
 function createPageElement (page) {
   const summary = truncate(page.summary, 100)
+
   return stringToHTML(`
     <li class="search-item">
       <a class="search-link" href="${page.url}">
-        <div class="search-title fs-6 fw-500">${page.title}</div>
-        ${summary ? `<p class="search-summary">${summary}</p>` : ''}
+        <div class="search-title fs-6 fw-500">
+          ${page.title}
+        </div>
+
+        ${summary ? summary : ''}
       </a>
     </li>
   `)
 }
 
-// Function to truncate text to a specified length
-// @param str: String to truncate
-// @param length: Maximum length
 function truncate (str, length) {
-  return str.length > length ? `${str.slice(0, length)}...` : str
+  return str.length > length
+    ? `${str.slice(0, length)}...`
+    : str
 }
 
 // Function to convert a string to an HTML node
@@ -174,18 +162,42 @@ function truncate (str, length) {
 function stringToHTML (str) {
   const parser = new DOMParser()
   const doc = parser.parseFromString(str, 'text/html')
+
   return doc.body.firstChild
 }
 
 // Function to initialize search events when the input is focused or when typing
 function initSearchEvents () {
   input.addEventListener('focus', initSearch)
-  input.addEventListener('keyup', (event) => {
-    if (event.key.length === 1 || event.key === 'Backspace' || event.key === 'Delete') {
+
+  input.addEventListener('keyup', event => {
+    if (
+      event.key.length === 1 ||
+      event.key === 'Backspace' ||
+      event.key === 'Delete'
+    ) {
       search()
     }
   })
 }
 
-// Initialize the search events
+// Function to get the parent data (title and icon) for a given parent name
+// @param parentName: Name of the parent section
+// @returns Object with title and icon
+function getParentData (parentName) {
+  const element = document.querySelector(`[data-name="${parentName}"]`)
+
+  if (!element) {
+    return {
+      title: parentName,
+      icon: ''
+    }
+  }
+
+  return {
+    title: element.textContent.trim(),
+    icon: element.querySelector(':scope > svg')?.outerHTML || ''
+  }
+}
+
 initSearchEvents()

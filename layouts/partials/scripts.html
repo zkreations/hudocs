@@ -1,10 +1,9 @@
 {{- $options := dict "targetPath" "js/bundle.js" -}}
 {{- $jsBundle := resources.Get "js/main.js" | js.Build $options | resources.Minify | fingerprint -}}
+{{- $flexSearch := resources.GetRemote "https://cdn.jsdelivr.net/npm/flexsearch@0.8/dist/flexsearch.bundle.min.js" | resources.Minify | fingerprint -}}
+{{- $searchJSFile := printf "js/%s.search.js" .Language.Lang -}}
+{{- $searchJS := resources.Get "js/search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | fingerprint -}}
 
+<script src="{{ $flexSearch.RelPermalink }}" integrity="{{ $flexSearch.Data.Integrity }}" defer></script>
 <script src="{{ $jsBundle.RelPermalink }}" integrity="{{ $jsBundle.Data.Integrity }}" defer></script>
-
-{{- $searchJSFile := printf "js/%s.search.js" .Language.Lang }}
-{{- $searchJS := resources.Get "js/search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | fingerprint }}
-
-<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.43/dist/flexsearch.bundle.min.js" integrity="sha256-qwvxtWrGNa1QKppsDdoEZ3VPw8aW23uBdaZp+K8aGEg=" crossorigin="anonymous" defer></script>
 <script src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}" defer></script>

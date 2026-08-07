@@ -69,3 +69,6 @@ other = "Previous page"
 
 [pagination_next]
 other = "Next page"
+
+[no_summary]
+other = "No summary available"

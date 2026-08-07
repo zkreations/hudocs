@@ -69,3 +69,6 @@ other = "Página anterior"
 
 [pagination_next]
 other = "Página siguiente"
+
+[no_summary]
+other = "No hay resumen disponible"

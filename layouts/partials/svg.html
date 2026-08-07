@@ -1,11 +1,31 @@
+{{ $name := .icon }}
+{{ if $name }}
+  {{ $class := .class }}
+  {{ $size := .size | default "24" }}
+  {{ $color := .color | default "currentColor" }}
+  {{ $strokeWidth := .strokeWidth | default "2" }}
 
-{{ with .icon }}
-  {{ $iconName := . }}
-  {{ $iconPath := printf "icons/%s.svg" . }}
-  {{ with resources.Get $iconPath }}
-    {{ $content := .Content | replaceRE "^<svg[^>]*>" "" | replaceRE "</svg>$" "" }}
-    <svg class="i i-{{ $iconName }}{{ with $.class }} {{ . }}{{ end }}" viewBox="0 0 24 24">
-      {{ $content | safeHTML }}
-    </svg>
+  {{ $url := "https://unpkg.com/meteor-icons@latest/exports/icons.json" }}
+  {{ with resources.GetRemote $url }}
+    {{ $icons := . | transform.Unmarshal }}
+    {{ $icon := index $icons $name }}
+    {{ if $icon }}
+      <svg
+        class="i i-{{ $name }}{{ with $class }} {{ . }}{{ end }}"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="{{ $color }}"
+        stroke-width="{{ $strokeWidth }}"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="{{ $size }}"
+        height="{{ $size }}"
+      >
+        {{ range $icon.nodes }}
+          {{ partial "icon-node.html" . }}
+        {{ end }}
+      </svg>
+    {{ end }}
   {{ end }}
 {{ end }}

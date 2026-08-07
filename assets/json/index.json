@@ -1,39 +1,27 @@
 {{- $.Scratch.Add "index" slice -}}
-{{- $.Scratch.Add "sections" (dict) -}}
-{{- $section := $.Site.GetPage .Section }}
-{{- $regex := "^(/[^/]+/[^/]+/)(.*)$" -}}
 {{- $langPrefix := "^/[a-z]{2}/" -}}
+{{- $regex := "^(/[^/]+/)([^/]+)/.*$" -}}
 
 {{- range $index, $page := .Site.Pages -}}
   {{- if .File -}}
-    {{- $cleanPath := replaceRE $langPrefix "/" $page.RelPermalink -}}
-    {{- $parentSection := (replaceRE $regex "$1" $cleanPath) -}}
-    {{- $parentPage := $.Site.GetPage $parentSection -}}
-    {{- $parentIcon := $parentPage.Params.icon | default "bookmark" -}}
-    {{- $parentIconSVG := (resources.Get (printf "icons/%s.svg" $parentIcon)) | default "" -}}
-    {{- $parentIconSVGContent := $parentIconSVG.Content | replaceRE "^<svg[^>]*>" "" | replaceRE "</svg>$" "" -}}
-    {{- $parentTitle := $parentPage.Title -}}
 
-    {{- $sections := $.Scratch.Get "sections" -}}
-    {{- if not (index $sections $parentSection) -}}
-      {{- $.Scratch.SetInMap "sections" $parentSection (dict 
-        "title" $parentTitle 
-        "icon" $parentIcon 
-        "icon_content" ($parentIconSVGContent | safeHTML | chomp)
+    {{- $cleanPath := replaceRE $langPrefix "/" $page.RelPermalink -}}
+    {{- $parentSection := replaceRE $regex "$2" $cleanPath -}}
+    {{- $summary := truncate 120 $page.Plain | default (i18n "no_summary") -}}
+
+    {{- if or $page.Title (truncate 120 $page.Plain) -}}
+      {{- $.Scratch.Add "index" (dict
+        "id" $index
+        "url" $page.RelPermalink
+        "summary" $summary
+        "title" $page.Title
+        "parent" $parentSection
       ) -}}
     {{- end -}}
 
-    {{- $.Scratch.Add "index" (dict 
-      "id" $index 
-      "url" $page.RelPermalink 
-      "summary" (truncate 120 $page.Plain)
-      "title" $page.Title 
-      "parent" $parentSection 
-    ) -}}
   {{- end -}}
 {{- end -}}
 
 {
-  "documents": {{ .Scratch.Get "index" | jsonify }},
-  "sections": {{ .Scratch.Get "sections" | jsonify }}
+  "documents": {{ .Scratch.Get "index" | jsonify }}
 }
