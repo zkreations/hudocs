@@ -7,13 +7,13 @@
     </div>
     <div class="section-content">
       <ul class="section-list">
-        {{ if .Site.Params.versions }}
-          {{ range .Site.Params.versions }}
+        {{ if site.Params.versions }}
+          {{ range site.Params.versions }}
             <li><a href="{{ . }}">{{ . }}</a></li>
           {{ end }}
         {{ else }}
-          {{ with .Site.Sections }}
-            {{ range . }}
+          {{ with site.Sections }}
+            {{ range . | collections.Reverse }}
               <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
             {{ end }}
           {{ else }}
