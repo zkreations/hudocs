@@ -1,21 +1,21 @@
 ---
-title: Iconos
-description: Insignias para destacar elementos del menu y títulos
+title: Icons
+description: Icons to highlight menu items and titles
 ---
 
-Los iconos pertenecen al paquete [Meteor Icons](https://meteoricons.com/) y se pueden agregar a los títulos en los elementos que conforman el menu lateral. No son obligatorios, pero pueden ayudar a tus lectores a identificar más fácilmente el contenido de tu documentación.
+Icons are part of the [Meteor Icons](https://meteoricons.com/) package and can be added to titles in the elements that make up the sidebar menu. They are not mandatory, but can help your readers easily identify the content of your documentation.
 
-## Usar
+## Usage
 
-Para agregar un ícono, agrega el atributo `icon` con el nombre del icono que puedes obtener en [Meteor Icons](https://meteoricons.com/). Por ejemplo:
+To add an icon, simply add the `icon` attribute with the name of the icon that you can obtain from [Meteor Icons](https://meteoricons.com/). For example:
 
 ```markdown
 ---
-title: Mi página
+title: My Page
 icon: deviantart
 ---
 
-Contenido de la página
+Page content
 ```
 
-Todos los elementos del menu lateral pueden tener un ícono, incluyendo los elementos de niveles más profundos. Pero te recomiendo usarlos solo en el nivel más alto para no confundir a tus lectores.
+All elements of the sidebar menu can have an icon, including deeper level items. However, I recommend using them only at the top level to avoid confusion for your readers.

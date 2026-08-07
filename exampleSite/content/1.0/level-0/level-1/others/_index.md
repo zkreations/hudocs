@@ -1,5 +1,5 @@
 ---
-title: Nivel 2
+title: Level 2
 ---
 
-Estas en el nivel 2. Puedes anidar multiples niveles, No hay un límite real, sin embargo recomiendo proceder con cuidado, de todas formas, cualquier sugerencia para gestionar mejor esta característica, son bienvenidas.
+You are in Level 2. You can nest multiple levels. There is no real limit, but I recommend proceeding with caution. Any suggestions for better managing this feature are welcome.

@@ -1,11 +1,11 @@
 ---
-title: Avisos
-description: Destaca diferentes tipos de mensajes con estilos según el contexto.
+title: Hint
+description: Highlight different types of messages with styles based on the context.
 ---
 
-Destaca diferentes tipos de mensajes con estilos según el contexto.
+Highlight different types of messages with styles based on the context.
 
-## Sintaxis
+## Syntax
 
 ```go
 {{</* hint */>}}
@@ -13,62 +13,63 @@ Destaca diferentes tipos de mensajes con estilos según el contexto.
 {{</* /hint */>}}
 ```
 
-### Opciones
+### Options
 
-- **Get 0**: Estilo de alerta. Valores válidos:  `info`, `success`, `danger`, `warning` (opcional)
+- **Get 0**: Alert style. Valid values:  \`info\`, \`success\`, \`danger\`, \`warning\` (optional)
 
-## Ejemplo
+## Example
 
 ```go
 {{</* hint */>}}
-Mensaje con información normal, sin estilos
+Message with normal information, without styles
 {{</* /hint */>}}
 ```
 
 {{< hint >}}
-Mensaje con información normal, sin estilos
+Message with normal information, without styles
 {{< /hint >}}
 
 
 ```go
 {{</* hint "info" */>}}
-Mensaje con información estilo consejo o dato
+Message with advice or data-style information
 {{</* /hint */>}}
 ```
 
 {{< hint "info" >}}
-Mensaje con información estilo consejo o dato
+Message with advice or data-style information
 {{< /hint >}}
 
 
 ```go
 {{</* hint "success" */>}}
-Mensaje para indicar acciones buenas o bien realizadas
+Message to indicate good actions or accomplishments
 {{</* /hint */>}}
 ```
 
 {{< hint "success" >}}
-Mensaje para indicar acciones buenas o bien realizadas
+Message to indicate good actions or accomplishments
 {{< /hint >}}
 
 
 ```go
 {{</* hint "warning" */>}}
-Mensaje de advertencia o prestar atención
+Warning message or attention required
 {{</* /hint */>}}
 ```
 
 {{< hint "warning" >}}
-Mensaje de advertencia o prestar atención
+Warning message or attention required
 {{< /hint >}}
 
 
 ```go
 {{</* hint "danger" */>}}
-Mensaje de error o de acciones en las cuales se debe tener cuidado
+Error message or actions that require caution
 {{</* /hint */>}}
 ```
 
 {{< hint "danger" >}}
-Mensaje de error o de acciones en las cuales se debe tener cuidado
+Error message or actions that require caution
 {{< /hint >}}
+```

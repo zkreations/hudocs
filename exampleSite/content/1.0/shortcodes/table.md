@@ -1,11 +1,11 @@
 ---
-title: Tablas
-description: Tablas responsive con la sintaxis de markdown.
+title: Tables
+description: Responsive tables using markdown syntax.
 ---
 
-Por defecto, las tablas generadas con la sintaxis de markdown no son responsive, para solventar un poco este problema, encierra tus tablas con este shortcode.
+By default, tables generated with markdown syntax are not responsive. To partially solve this problem, enclose your tables with this shortcode.
 
-## Sintaxis
+## Syntax
 
 ```go
 {{</* table */>}}
@@ -13,11 +13,11 @@ Por defecto, las tablas generadas con la sintaxis de markdown no son responsive,
 {{</* /table */>}}
 ```
 
-### Opciones
+### Options
 
-- **Get 0**: Clases adicionales CSS. (opcional)
+- **Get 0**: Additional CSS classes. (optional)
 
-## Ejemplo
+## Example
 
 ```go
 {{</* table */>}}

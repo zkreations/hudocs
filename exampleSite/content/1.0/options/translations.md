@@ -1,13 +1,13 @@
 ---
-title: Traducciones
-description: Diferentes idiomas para tu documentación
+title: Translations
+description: Different languages for your documentation
 ---
 
-De momento, la documentación soporta dos idiomas: español e inglés. Para cambiar el idioma de tu documentación. Las traducciones ayudan a tus lectores a entender mejor tu documentación mas allá de su idioma nativo.
+Currently, the documentation supports two languages: Spanish and English. To change the language of your documentation, translations help your readers better understand your documentation beyond their native language.
 
-## Usar
+## Usage
 
-Para habilitar las traducciones, debes agregar en tu archivo de configuraciones los idiomas usados, ademas tienes que especificar el idioma por defecto y el idioma de la documentación.
+To enable translations, you need to add the languages used in your configuration file. You also need to specify the default language and the language of the documentation.
 
 ```toml
 languageCode = 'es'
@@ -23,9 +23,9 @@ defaultContentLanguage = 'es'
     weight = 2
 ```
 
-## Traducir
+## Translate
 
-Crea un archivo con el mismo nombre de la página que deseas traducir, pero con la extensión del idioma. Por ejemplo, si deseas traducir la página `index.md` al inglés, debes crear un archivo llamado `index.en.md`.
+Create a file with the same name as the page you want to translate, but with the language extension. For example, if you want to translate the `index.md` page into English, you should create a file named `index.en.md`.
 
 ```text
 content

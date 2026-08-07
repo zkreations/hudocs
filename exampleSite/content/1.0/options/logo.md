@@ -1,29 +1,29 @@
 ---
 title: Logo
-description: El logo de la documentación
+description: Documentation logo
 ---
 
-El logo puede estar conformado por texto, un icono del paquete [Meteor Icons](https://meteoricons.com/) más el texto o una imagen. Toma en cuenta que si usas una imagen, se recomienda usar el tamaño adecuado, o utilizar el formato SVG.
+The logo can be composed of text, an icon from the [Meteor Icons](https://meteoricons.com/) package along with text, or an image. Keep in mind that if you use an image, it is recommended to use the appropriate size or utilize the SVG format.
 
-## Parámetros
+## Parameters
 
-En este caso dispones de dos parámetros personalizados. Si deseas un icono junto al texto define `logo_icon` con el nombre del icono que puedes obtener en [Meteor Icons](https://meteoricons.com/). Si deseas una imagen define `logo_img`. Si no defines ninguno de los dos, se mostrará solo el texto.
+In this case, you have two custom parameters available. If you want an icon alongside the text, define `logo_icon` with the name of the icon you can obtain from [Meteor Icons](https://meteoricons.com/). If you want an image, define `logo_img`. If you don't define either of them, only the text will be displayed.
 
 {{< code >}}
 {{< tab "toml" >}}
 [params]
   main_icon = "book-open"
-  main_logo = "tu-logo.svg"
+  main_logo = "your-logo.svg"
 {{< /tab >}}
 {{< tab "yaml" >}}
 params:
   main_icon: "book-open"
-  main_logo: "tu-logo.svg"
+  main_logo: "your-logo.svg"
 {{< /tab >}}
 {{< tab "json" >}}
 "params": {
   "main_icon": "book-open",
-  "main_logo": "tu-logo.svg"
+  "main_logo": "your-logo.svg"
 }
 {{< /tab >}}
 {{< /code >}}

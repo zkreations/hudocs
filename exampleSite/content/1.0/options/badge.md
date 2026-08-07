@@ -1,27 +1,27 @@
 ---
 title: Badge
 badge: test
-description: Insignias para destacar elementos del menu y títulos
+description: Badges to highlight menu items and titles
 ---
 
-La insignia es un elemento que se puede agregar a los títulos de las páginas. También conforman parte del menu lateral, lo que te permite indicar a tus lectores que una página contiene algo especial.
+A badge is an element that can be added to page titles. They are also part of the sidebar menu, allowing you to indicate to your readers that a page contains something special.
 
-## Usar
+## Usage
 
-Para agregar una insignia agrega el atributo `badge` con el valor que desees a la cabecera de la página. Por ejemplo:
+To add a badge, simply add the `badge` attribute with your desired value to the page header. For example:
 
 ```markdown
 ---
-title: Mi página
+title: My Page
 badge: test
 ---
 
-Contenido de la página
+Page content
 ```
 
-## Parámetros
+## Parameters
 
-Adicionalmente, puedes agregar a tu archivo de configuraciones de goHugo, en el apartado de parámetros personalizados, el siguiente parámetro:
+Additionally, you can add the following parameter to your goHugo configuration file under the custom parameters section:
 
 {{< code >}}
 {{< tab "toml" >}}

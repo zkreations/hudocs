@@ -1,12 +1,11 @@
 ---
-title: Columnas
-description: Crea fácilmente columna de contenido, útil para agrupan en un mismo segmento
-  más información.
+title: Columns
+description: Create easily column of content, useful to group more information in the same segment.
 ---
 
-Crea fácilmente columna de contenido, útil para agrupan en un mismo segmento más información.
+Create easily column of content, useful to group more information in the same segment.
 
-## Sintaxis
+## Syntax
 
 ```go
 {{</* columns */>}}
@@ -18,32 +17,32 @@ Crea fácilmente columna de contenido, útil para agrupan en un mismo segmento m
 {{</* /columns */>}}
 ```
 
-### Opciones
+### Options
 
-- **Get 0**: Clases adicionales CSS. (opcional)
+- **Get 0**: Additional CSS classes. (optional)
 
-## Ejemplo
+## Example
 
 ```go
 {{</* columns */>}}
-### Medicina
-Como médicos jóvenes que trabajan...
+### Medicine
+As young doctors working in acute...
 <---->
-### Países
-Todo esto desde una isla de apenas...
+### Countries
+All this from an island of just...
 <---->
-### Historia
-El artista Christo, conocido por envolver edificios...
+### History
+The artist Christo, known for wrapping buildings...
 {{</* /columns */>}}
 ```
 
 {{< columns >}}
-### Medicina
-Como médicos jóvenes que trabajan en salas psiquiátricas para pacientes hospitalizados agudos, las enfermedades mentales graves son nuestra realidad diaria. 
+### Medicine
+As young doctors working in acute psychiatric wards, serious mental illnesses are our daily reality. 
 <---->
-### Países
-Todo esto desde una isla de apenas tres millones y medio de almas, más los otros cinco millones de puertorriqueños que viven en EE.UU.
+### Countries
+All this from an island of just three and a half million souls, plus the other five million Puerto Ricans living in the US.
 <---->
-### Historia
-El artista Christo, conocido por envolver edificios, incluido el Reichstag de Berlín, murió a los 84 años. 
+### History
+The artist Christo, known for wrapping buildings, including Berlin's Reichstag, has died aged 84.
 {{< /columns >}}

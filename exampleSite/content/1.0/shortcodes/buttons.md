@@ -1,30 +1,31 @@
 ---
-title: Botones
-description: Botones con enlaces. Si el botón contiene un enlace externo abrirá en una
-  nueva pestaña.
+title: Buttons
+description: Buttons with links. If the button contains an external link, it will open in a
+  new tab.
 ---
 
-Botones con enlaces. Si el botón contiene un enlace externo, se mostrará siempre en una nueva ventana, ademas se agrega el atributo rel con los valores noreferrer noopener y nofollow.
+Buttons with links. If the button contains an external link, it will open in a new tab. Also the rel attribute is added with the values noreferrer noopener and nofollow.
 
-## Sintaxis
 
-```go
-{{</* button name="Repositorio" type="primary" icon="github" */>}}
-```
-
-### Opciones
-
-- **href**: Url o ruta de destino. (obligatorio)
-- **name**: Nombre del botón. (obligatorio)
-- **type**: Tipo que define los colores. Valores válidos:  `primary` (opcional)
-- **icon**: El nombre de un icono de zkreations. (opcional)
-
-## Ejemplo
+## Syntax
 
 ```go
-{{</* button href="/1.0/starting" name="Inicio" type="primary" icon="book-open" */>}}
-{{</* button href="https://github.com" name="Repositorio" icon="github" */>}}
+{{</* button name="Repository" type="primary" icon="github" */>}}
 ```
 
-{{< button href="/1.0/starting" name="Inicio" type="primary" icon="book-open" >}}
-{{< button href="https://github.com" name="Repositorio" icon="github" >}}
+### Options
+
+- **href**: Url or destination route. (required)
+- **name**: Button name. (required)
+- **type**: Type that defines the colors. Valid values: `primary` (optional)
+- **icon**: The name of a zkreations icon. (optional)
+
+## Example
+
+```go
+{{</* button href="/1.0/starting" name="Home" type="primary" icon="book-open" */>}}
+{{</* button href="https://github.com" name="Repository" icon="github" */>}}
+```
+
+{{< button href="/1.0/starting" name="Home" type="primary" icon="book-open" >}}
+{{< button href="https://github.com" name="Repository" icon="github" >}}

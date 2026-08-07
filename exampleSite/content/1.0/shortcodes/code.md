@@ -1,12 +1,11 @@
 ---
-title: Código
-description: Crea bloques de código explicativos, mas poderosos que los bloques de código
-  normales.
+title: Code
+description: Create explanatory code blocks, more powerful than normal code blocks.
 ---
 
-Crea bloques de código explicativos, mas poderosos que los bloques de código normales.
+Create explanatory code blocks, more powerful than normal code blocks.
 
-## Sintaxis
+## Syntax
 
 ```go
 {{</* code */>}}
@@ -14,22 +13,21 @@ Crea bloques de código explicativos, mas poderosos que los bloques de código n
 {{</* /code */>}}
 ```
 
-### Opciones
+### Options
 
-- **id**: Identificador único. (opcional)
-- **class**: Clases adicionales CSS. (opcional)
-- **hl**: líneas de resaltado. (opcional)
-- **lang**: Tipo de lenguaje. Por defecto: `html`. (opcional)
-- **example**: Interpretar código de ejemplo, solo válido para html (obligatorio en todos los casos), css y javascript: `true`, `false`. Por defecto: `false` (opcional)
+- **id**: Unique identifier. (optional)
+- **class**: Additional CSS classes. (optional)
+- **hl**: Highlighted lines. (optional)
+- **lang**: Language type. By default: `html`. (optional)
+- **example**: Interpret example code, only valid for html (mandatory in all cases), css and javascript: `true`, `false`. By default: `false` (optional)
+
+### Tab options
+
+- **Get 0**: Language type. By default: `html`. (optional)
+- **Get 1**: File name. (optional)
 
 
-### Opciones de tabs
-
-- **Get 0**: Tipo de lenguaje. Por defecto: `html`. (opcional)
-- **Get 1**: Nombre del archivo. (opcional)
-
-
-## Ejemplo
+## Example
 
 ```go
 {{</* code */>}}
@@ -42,37 +40,37 @@ Crea bloques de código explicativos, mas poderosos que los bloques de código n
 {{< /code >}}
 
 
-## Código con ejemplo
+## Code with example
 
 ```go
 {{</* code example=true */>}}
-Un párrafo con una <strong>Negrita</strong> y una <em>Itálica</em>
+A paragraph with a <strong>Bold</strong> and an <em>Italic</em>
 {{</* /code */>}}
 ```
 
 {{< code example=true >}}
-Un párrafo con una <strong>Negrita</strong> y una <em>Itálica</em>
+A paragraph with a <strong>Bold</strong> and an <em>Italic</em>
 {{< /code >}}
 
 
-## Código explicado
+## Code explained
 
 ```go
 {{</* code lang="js" */>}}
 document.querySelector("body");
 <---->
-Este código esta seleccionando el cuerpo del documento.
+This code is selecting the body of the document.
 {{</* /code */>}}
 ```
 
 {{< code lang="js" >}}
 document.querySelector("body");
 <---->
-Este código esta seleccionando el cuerpo del documento.
+This code is selecting the body of the document.
 {{< /code >}}
 
 
-## Código con pestañas
+## Code with tabs
 
 ```go
 {{</* code */>}}

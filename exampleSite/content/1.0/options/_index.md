@@ -1,5 +1,5 @@
 ---
-title: Opciones
+title: Options
 icon: gear
 layout: redirect
 redirect: "/badge"
