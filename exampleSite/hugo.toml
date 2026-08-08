@@ -41,7 +41,7 @@ summaryLength = 20
   # main_logo = "logo.svg"
 
   # (Optional) URL to the GitHub repo content folder, enables edit button
-  # github_repo_edit = "https://github.com/user/repo/blob/master/exampleSite/content"
+  github_repo_edit = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
 
   # (Optional) URL that badge labels link to
   # badge_url = "https://example.com"
