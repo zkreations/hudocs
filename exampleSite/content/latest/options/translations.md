@@ -27,5 +27,5 @@ Create a file with the same name as the page you want to translate, but with the
 content
 └── 1.0
     └── index.md
-    └── index.en.md
+    └── index.es.md
 ```
