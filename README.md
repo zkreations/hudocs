@@ -30,7 +30,6 @@ I made this project to easily document my own projects, but I thought it would b
 - Git - [Install Git](https://git-scm.com/downloads)
 - Desire to document
 
-
 ## Install
 
 Go to the root of your Hugo project and run the following command:
@@ -77,7 +76,6 @@ If you like this project, consider rating me with a [star on github](https://git
 
 Start documenting!
 
-
 ## License
 
-**HuDocs** is licensed under the MIT License
+**Hudocs** is licensed under the MIT License
