@@ -21,10 +21,10 @@ Page links. If the link is external, it will open in a new window. It also inclu
 ## Example
 
 ```go
-{{</* pagelink title="Documentation Start" href="/1.0/starting" */>}}
+{{</* pagelink title="Documentation Start" href="/latest/starting" */>}}
 {{</* pagelink title="Search Page" name="Google" href="https://google.com" */>}}
 ```
 
-{{< pagelink title="Documentation Start" href="/1.0/starting" >}}
+{{< pagelink title="Documentation Start" href="/latest/starting" >}}
 
 {{< pagelink title="Search Page" name="Google" href="https://google.com" >}}

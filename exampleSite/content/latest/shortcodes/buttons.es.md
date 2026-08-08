@@ -22,9 +22,9 @@ Botones con enlaces. Si el botón contiene un enlace externo, se mostrará siemp
 ## Ejemplo
 
 ```go
-{{</* button href="/1.0/starting" name="Inicio" type="primary" icon="book-open" */>}}
+{{</* button href="/latest/starting" name="Inicio" type="primary" icon="book-open" */>}}
 {{</* button href="https://github.com" name="Repositorio" icon="github" */>}}
 ```
 
-{{< button href="/1.0/starting" name="Inicio" type="primary" icon="book-open" >}}
+{{< button href="/latest/starting" name="Inicio" type="primary" icon="book-open" >}}
 {{< button href="https://github.com" name="Repositorio" icon="github" >}}

@@ -22,10 +22,10 @@ Enlaces a paginas. Si el enlace es externo se abrirá en una nueva ventana, tamb
 ## Ejemplo
 
 ```go
-{{</* pagelink title="Inicio de documentación" href="/1.0/starting" */>}}
+{{</* pagelink title="Inicio de documentación" href="/latest/starting" */>}}
 {{</* pagelink title="Página de búsqueda" name="Google" href="https://google.com" */>}}
 ```
 
-{{< pagelink title="Inicio de documentación" href="/1.0/starting" >}}
+{{< pagelink title="Inicio de documentación" href="/latest/starting" >}}
 
 {{< pagelink title="Página de búsqueda" name="Google" href="https://google.com" >}}
