@@ -12,15 +12,15 @@ To activate the edit button, you need to add the following custom parameter to y
 {{< code >}}
 {{< tab "toml" >}}
 [params]
-  github_repo_edit = "https://github.com/zkreations/docs/blob/master/demo/content"
+  github_repo_edit = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
 {{< /tab >}}
 {{< tab "yaml" >}}
 params:
-  github_repo_edit: "https://github.com/zkreations/docs/blob/master/demo/content"
+  github_repo_edit: "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
 {{< /tab >}}
 {{< tab "json" >}}
 "params": {
-  "github_repo_edit": "https://github.com/zkreations/docs/blob/master/demo/content"
+  "github_repo_edit": "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
 }
 {{< /tab >}}
 {{< /code >}}
