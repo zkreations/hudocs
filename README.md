@@ -1,4 +1,4 @@
-![cover](https://raw.githubusercontent.com/zkreations/hudocs/main/images/screenshot.png)
+![cover](https://raw.githubusercontent.com/zkreations/hudocs/main/images/cover.png)
 
 <p align="center">
   <a href="https://github.com/zkreations/hudocs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-teal" alt="License"></a>
