@@ -60,8 +60,8 @@
   &.dark {
     --primary: #{$green-300};
 
-    --btn-primary: #{$green-800};
-    --btn-primary-hover: #{$green-700};
+    --btn-primary: #{rgba($green-500, .05)};
+    --btn-primary-hover: #{rgba($green-500, .2)};
 
     --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
     --shadow-md: 0px 3px 6px rgb(0 0 0 / 30%);
