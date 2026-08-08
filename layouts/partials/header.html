@@ -79,8 +79,10 @@
             <a class="list-link" href="{{ . | relLangURL }}">{{ . }}</a>
           {{ end }}
         {{ else }}
-          {{ range .Site.Sections }}
-            <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+          {{ with site.Sections }}
+            {{ range . | collections.Reverse }}
+              <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+            {{ end }}
           {{ end }}
         {{ end }}
         <a class="list-link" href='{{ "/" | relLangURL }}'>{{ i18n "versions" }}</a>
