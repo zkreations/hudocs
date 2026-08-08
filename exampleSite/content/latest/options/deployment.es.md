@@ -24,7 +24,7 @@ A continuación se muestra un ejemplo de configuración para Netlify y Vercel. S
 {{< code >}}
 {{< tab "toml" "netlify.toml" >}}
 [build]
-  command = "hugo"
+  command = "hugo --minify"
   publish = "public"
 
 [build.environment]
