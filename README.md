@@ -3,6 +3,7 @@
 <p align="center">
   <a href="https://github.com/zkreations/hudocs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-teal" alt="License"></a>
   <a href="https://github.com/zkreations/hudocs/releases"><img src="https://img.shields.io/github/v/release/zkreations/hudocs" alt="Last Release"></a>
+  <a href="https://app.netlify.com/projects/hudocs/deploys"><img src="https://api.netlify.com/api/v1/badges/4f5686e0-d6f8-4ff8-ba4e-901d19644dfe/deploy-status" alt="Netlify Status"></a>
 </p>
 
 <p align="center">
