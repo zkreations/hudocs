@@ -45,23 +45,23 @@
   --bg-inverse: #{$gray-900};
   --bg-darken: #{$gray-700};
 
-  --info: #{$blue-600};
-  --info-bg: #{$blue-100};
+  --info: #{$blue-700};
+  --info-bg: #{$blue-50};
 
-  --success: #{$green-600};
-  --success-bg: #{$green-100};
+  --success: #{$green-700};
+  --success-bg: #{$green-50};
 
-  --danger: #{$red-600};
-  --danger-bg: #{$red-100};
+  --warning: #{$yellow-700};
+  --warning-bg: #{$yellow-50};
 
-  --warning: #{$yellow-600};
-  --warning-bg: #{$yellow-100};
+  --danger: #{$red-700};
+  --danger-bg: #{$red-50};
 
   &.dark {
     --primary: #{$green-300};
 
-    --btn-primary: hsl(173 20% 20% / 1);
-    --btn-primary-hover: #{$green-100};
+    --btn-primary: #{$green-800};
+    --btn-primary-hover: #{$green-700};
 
     --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
     --shadow-md: 0px 3px 6px rgb(0 0 0 / 30%);
@@ -80,22 +80,22 @@
     --bg-tenue: #{rgba($gray-950, .5)};
 
     --bg-primary: #{$gray-800};
+    --bg-secondary: #{$gray-700};
     --bg-header: #{$gray-800};
 
     --bg-inverse: #{$gray-950};
     --bg-darken: #{$gray-800};
 
-    --info: #{$blue-100};
-    --info-bg: hsl(217 20% 20% / 1);
-  
-    --success: #{$green-100};
-    --success-bg: hsl(173 20% 20% / 1);
+    --info: #{$blue-200};
+    --info-bg: #{rgba($blue-500, .05)};
 
-    --danger: #{$red-100};
-    --danger-bg: hsl(357 20% 20% / 1);
-  
-    --warning: #{$yellow-100};
-    --warning-bg: hsl(43 20% 20% / 1);
+    --success: #{$green-200};
+    --success-bg: #{rgba($green-500, .05)};
 
+    --warning: #{$yellow-200};
+    --warning-bg: #{rgba($yellow-500, .05)};
+
+    --danger: #{$red-200};
+    --danger-bg: #{rgba($red-500, .05)};
   }
 }

@@ -30,12 +30,12 @@ $font-size-values: (
 
 $font-weight-values: 100 200 300 400 500 600 700 800 900 !default;
 
-$green:    #00bba7 !default;
-$blue:     #2b7fff !default;
-$red:      #fb2c36 !default;
+$green:    #0d9488 !default;
+$blue:     #4f46e5 !default;
+$red:      #e11d48 !default;
 $yellow:   #f0b100 !default;
 $white:    #ffffff !default;
-$black:    #0a0a0a !default;
+$black:    #09090b !default;
 
 $gray-50: #fafafa !default;
 $gray-100: #f4f4f5 !default;
@@ -49,7 +49,8 @@ $gray-800: #27272a !default;
 $gray-900: #18181b !default;
 $gray-950: #09090b !default;
 
-$green-100: tint-color($green, 90%) !default;
+$green-50: tint-color($green, 90%) !default;
+$green-100: tint-color($green, 80%) !default;
 $green-200: tint-color($green, 60%) !default;
 $green-300: tint-color($green, 40%) !default;
 $green-400: tint-color($green, 20%) !default;
@@ -57,19 +58,21 @@ $green-500: $green !default;
 $green-600: shade-color($green, 20%) !default;
 $green-700: shade-color($green, 40%) !default;
 $green-800: shade-color($green, 60%) !default;
-$green-900: shade-color($green, 90%) !default;
+$green-900: shade-color($green, 80%) !default;
 
+$blue-50: tint-color($blue, 90%) !default;
+$blue-100: tint-color($blue, 80%) !default;
 $blue-200: tint-color($blue, 60%) !default;
-$blue-100: tint-color($blue, 90%) !default;
 $blue-300: tint-color($blue, 40%) !default;
 $blue-400: tint-color($blue, 20%) !default;
 $blue-500: $blue !default;
 $blue-600: shade-color($blue, 20%) !default;
 $blue-700: shade-color($blue, 40%) !default;
 $blue-800: shade-color($blue, 60%) !default;
-$blue-900: shade-color($blue, 90%) !default;
+$blue-900: shade-color($blue, 80%) !default;
 
-$red-100: tint-color($red, 90%) !default;
+$red-50: tint-color($red, 90%) !default;
+$red-100: tint-color($red, 80%) !default;
 $red-200: tint-color($red, 60%) !default;
 $red-300: tint-color($red, 40%) !default;
 $red-400: tint-color($red, 20%) !default;
@@ -77,9 +80,10 @@ $red-500: $red !default;
 $red-600: shade-color($red, 20%) !default;
 $red-700: shade-color($red, 40%) !default;
 $red-800: shade-color($red, 60%) !default;
-$red-900: shade-color($red, 90%) !default;
+$red-900: shade-color($red, 80%) !default;
 
-$yellow-100: tint-color($yellow, 90%) !default;
+$yellow-50: tint-color($yellow, 90%) !default;
+$yellow-100: tint-color($yellow, 80%) !default;
 $yellow-200: tint-color($yellow, 60%) !default;
 $yellow-300: tint-color($yellow, 40%) !default;
 $yellow-400: tint-color($yellow, 20%) !default;
@@ -87,4 +91,4 @@ $yellow-500: $yellow !default;
 $yellow-600: shade-color($yellow, 20%) !default;
 $yellow-700: shade-color($yellow, 40%) !default;
 $yellow-800: shade-color($yellow, 60%) !default;
-$yellow-900: shade-color($yellow, 90%) !default;
+$yellow-900: shade-color($yellow, 80%) !default;
