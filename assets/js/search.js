@@ -6,198 +6,211 @@
 const dataJSON = '{{ $searchData.RelPermalink }}'
 const input = document.getElementById('search-input')
 const results = document.getElementById('search-results')
-const currentVersion = document.getElementById('current-version')
+const currentVersionEl = document.getElementById('current-version')
 
 const index = FlexSearch.Index({
   tokenize: 'forward',
   cache: true
 })
 
-const documents = []
+let docMap = new Map()
+let isReady = false
+let isLoading = false
+let debounceTimer = null
 
 function getCurrentVersion () {
-  if (currentVersion) {
-    return currentVersion.innerText.trim()
+  if (currentVersionEl) {
+    return currentVersionEl.innerText.trim()
   }
-
-  const path = window.location.pathname.split('/')
-  const version = path[1]
-
-  return version || null
+  const parts = window.location.pathname.split('/')
+  return parts[1] || null
 }
 
-// Main function to initialize the search
+function showEmptyState () {
+  const el = document.createElement('p')
+  el.className = 'search-empty fs-7'
+  el.textContent = 'No results found.'
+  results.appendChild(el)
+}
+
 async function initSearch () {
+  if (isReady || isLoading) return
+
+  isLoading = true
   input.removeEventListener('focus', initSearch)
   input.required = true
 
   try {
     const response = await fetch(dataJSON)
+
+    if (!response.ok) {
+      throw new Error(`Failed to load search data: ${response.status}`)
+    }
+
     const data = await response.json()
+    docMap = new Map(data.documents.map(doc => [doc.id, doc]))
 
-    documents.push(...data.documents)
+    docMap.forEach((doc, id) => {
+      index.add(id, `${doc.title} ${doc.summary}`)
+    })
 
-    indexDocuments(documents)
+    isReady = true
   } catch (error) {
-    console.error('Error loading data:', error)
+    console.error('Search init error:', error)
+  } finally {
+    isLoading = false
+    input.required = false
+    search().catch(console.error)
   }
-
-  input.required = false
-  search()
 }
 
-// Add documents to the search index
-function indexDocuments (pages) {
-  pages.forEach(page => {
-    index.add(page.id, `${page.title} ${page.summary}`)
-  })
-}
-
-// Function to search and display the results
 async function search () {
   results.innerHTML = ''
 
   if (!input.value) return
+  if (!isReady) return
 
   try {
     const hits = await index.searchAsync(input.value, 100)
+    const version = getCurrentVersion()
 
-    const currentVersion = getCurrentVersion()
+    const filteredHits = version
+      ? hits.filter(id => docMap.get(id)?.url.startsWith(`/${version}/`))
+      : hits
 
-    const filteredHits = hits.filter(hitId => {
-      const page = documents.find(doc => doc.id === hitId)
+    if (filteredHits.length === 0) {
+      showEmptyState()
+      return
+    }
 
-      return page && page.url.startsWith(`/${currentVersion}/`)
-    })
-
-    const groupedHits = groupResultsByParent(filteredHits)
-
-    displayGroupedResults(groupedHits)
+    const grouped = groupResultsByParent(filteredHits)
+    displayGroupedResults(grouped)
   } catch (error) {
-    console.error('Error in search:', error)
+    console.error('Search error:', error)
   }
 }
 
-// Group results by parent section
 function groupResultsByParent (hits) {
-  return hits.reduce((groups, hitId) => {
-    const page = documents.find(doc => doc.id === hitId)
+  const parentCache = new Map()
 
+  return hits.reduce((groups, id) => {
+    const page = docMap.get(id)
     if (!page) return groups
 
-    const parent = page.parent
+    const { parent } = page
 
-    const group = groups[parent] || {
-      ...getParentData(parent),
-      pages: []
+    if (!groups[parent]) {
+      if (!parentCache.has(parent)) {
+        parentCache.set(parent, getParentData(parent))
+      }
+      groups[parent] = { ...parentCache.get(parent), pages: [] }
     }
 
-    group.pages.push(page)
-    groups[parent] = group
-
+    groups[parent].pages.push(page)
     return groups
   }, {})
 }
 
-// Function to display the grouped results
-// @param groupedHits: Object with grouped results
-function displayGroupedResults (groupedHits) {
-  Object.values(groupedHits).forEach(group => {
-    results.appendChild(createGroupElement(group))
+function displayGroupedResults (grouped) {
+  const fragment = document.createDocumentFragment()
+
+  Object.values(grouped).forEach(group => {
+    fragment.appendChild(createGroupElement(group))
   })
+
+  results.appendChild(fragment)
 }
 
-// Function to create the HTML element for a group
-// @param group: Object with group data
-// @returns HTML element
 function createGroupElement (group) {
-  const groupElement = stringToHTML(`
-    <div class="search-group">
-      <div class="search-group-title capitalize fs-6 fw-500 has-icon">
-        ${group.icon}
-        <h3>${group.title}</h3>
-      </div>
+  const div = document.createElement('div')
+  div.className = 'search-group'
 
-      <ul class="search-group-list"></ul>
-    </div>
-  `)
+  const title = document.createElement('div')
+  title.className = 'search-group-title capitalize fs-6 fw-500 has-icon'
+  title.innerHTML = `${group.icon}<h3>${escapeHTML(group.title)}</h3>`
 
-  const groupList = groupElement.querySelector('.search-group-list')
+  const list = document.createElement('ul')
+  list.className = 'search-group-list'
 
   group.pages.forEach(page => {
-    groupList.appendChild(createPageElement(page))
+    list.appendChild(createPageElement(page))
   })
 
-  return groupElement
+  div.appendChild(title)
+  div.appendChild(list)
+  return div
 }
 
-// Function to create the HTML element for a page
-// @param page: Object with page data
-// @returns HTML element
 function createPageElement (page) {
   const summary = truncate(page.summary, 100)
 
-  return stringToHTML(`
-    <li class="search-item">
-      <a class="search-link" href="${page.url}">
-        <div class="search-title fs-6 fw-500">
-          ${page.title}
-        </div>
+  const li = document.createElement('li')
+  li.className = 'search-item'
 
-        ${summary ? summary : ''}
-      </a>
-    </li>
-  `)
+  const a = document.createElement('a')
+  a.className = 'search-link'
+  a.href = page.url
+
+  const titleDiv = document.createElement('div')
+  titleDiv.className = 'search-title fs-6 fw-500'
+  titleDiv.textContent = page.title
+
+  a.appendChild(titleDiv)
+
+  if (summary) {
+    const summaryDiv = document.createElement('div')
+    summaryDiv.className = 'search-summary'
+    summaryDiv.textContent = summary
+    a.appendChild(summaryDiv)
+  }
+
+  li.appendChild(a)
+  return li
 }
 
 function truncate (str, length) {
-  return str.length > length
-    ? `${str.slice(0, length)}...`
-    : str
+  return str && str.length > length ? `${str.slice(0, length)}...` : str
 }
 
-// Function to convert a string to an HTML node
-// @param str: String to convert
-// @returns HTML node
-function stringToHTML (str) {
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(str, 'text/html')
-
-  return doc.body.firstChild
+function escapeHTML (str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
 }
 
-// Function to initialize search events when the input is focused or when typing
+function getParentData (parentName) {
+  const el = document.querySelector(`[data-name="${parentName}"]`)
+
+  if (!el) return { title: parentName, icon: '' }
+
+  return {
+    title: el.textContent.trim(),
+    icon: el.querySelector(':scope > svg')?.outerHTML || ''
+  }
+}
+
 function initSearchEvents () {
   input.addEventListener('focus', initSearch)
 
   input.addEventListener('keyup', event => {
-    if (
+    const isRelevantKey =
       event.key.length === 1 ||
       event.key === 'Backspace' ||
       event.key === 'Delete'
-    ) {
-      search()
-    }
+
+    if (!isRelevantKey) return
+
+    clearTimeout(debounceTimer)
+    debounceTimer = setTimeout(() => {
+      if (!isReady) {
+        initSearch()
+      } else {
+        search().catch(console.error)
+      }
+    }, 200)
   })
-}
-
-// Function to get the parent data (title and icon) for a given parent name
-// @param parentName: Name of the parent section
-// @returns Object with title and icon
-function getParentData (parentName) {
-  const element = document.querySelector(`[data-name="${parentName}"]`)
-
-  if (!element) {
-    return {
-      title: parentName,
-      icon: ''
-    }
-  }
-
-  return {
-    title: element.textContent.trim(),
-    icon: element.querySelector(':scope > svg')?.outerHTML || ''
-  }
 }
 
 initSearchEvents()
