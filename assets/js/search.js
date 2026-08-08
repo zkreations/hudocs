@@ -90,6 +90,9 @@ async function search () {
   }
 }
 
+// Groups search results by their parent page
+// @param {Array} hits - Array of document IDs
+// @returns {Object} - Grouped results by parent
 function groupResultsByParent (hits) {
   const parentCache = new Map()
 
@@ -111,6 +114,9 @@ function groupResultsByParent (hits) {
   }, {})
 }
 
+// Displays grouped search results in the DOM
+// @param {Object} grouped - Grouped search results
+// @returns {void}
 function displayGroupedResults (grouped) {
   const fragment = document.createDocumentFragment()
 
@@ -121,6 +127,9 @@ function displayGroupedResults (grouped) {
   results.appendChild(fragment)
 }
 
+// Creates a DOM element for a search result group
+// @param {Object} group - Group data containing title, icon, and pages
+// @returns {HTMLElement} - The group DOM element
 function createGroupElement (group) {
   const div = document.createElement('div')
   div.className = 'search-group'
@@ -141,6 +150,9 @@ function createGroupElement (group) {
   return div
 }
 
+// Creates a DOM element for an individual search result page
+// @param {Object} page - Page data containing title, summary, and URL
+// @returns {HTMLElement} - The page DOM element
 function createPageElement (page) {
   const summary = truncate(page.summary, 100)
 
@@ -168,10 +180,17 @@ function createPageElement (page) {
   return li
 }
 
+// Truncates a string to a specified length and adds ellipsis if needed
+// @param {string} str - The string to truncate
+// @param {number} length - The maximum length of the string
+// @returns {string} - The truncated string
 function truncate (str, length) {
   return str && str.length > length ? `${str.slice(0, length)}...` : str
 }
 
+// Escapes HTML special characters in a string to prevent XSS
+// @param {string} str - The string to escape
+// @returns {string} - The escaped string
 function escapeHTML (str) {
   return str
     .replace(/&/g, '&amp;')
@@ -180,6 +199,9 @@ function escapeHTML (str) {
     .replace(/"/g, '&quot;')
 }
 
+// Retrieves parent data (title and icon) for a given parent name
+// @param {string} parentName - The name of the parent
+// @returns {Object} - An object containing the title and icon of the parent
 function getParentData (parentName) {
   const el = document.querySelector(`[data-name="${parentName}"]`)
 
