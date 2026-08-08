@@ -1,30 +1,32 @@
+{{- $title := partial "title" . -}}
+{{- $description := site.Params.description -}}
+
+{{- with .Description -}}
+  {{- $description = . -}}
+{{- else with .Summary -}}
+  {{- $description = . | plainify -}}
+{{- end -}}
 
 {{- if eq .Kind "404" -}}
   <meta name="robots" content="noindex, follow">
 {{- else -}}
-  <meta content='index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1' name='robots'/>
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 {{- end -}}
 
-<meta content='{{ partial "title" . }}' property='og:title'/>
+<meta name="description" content="{{ $description | htmlEscape }}">
+<meta name="robots" content="index, follow">
 
-{{- with .Description -}}
-  <meta name='description' content='{{ . }}'/>
-  <meta property='og:description' content='{{ .  }}'/>
-{{- else -}}
-  {{- with .Summary | plainify -}}
-  <meta name='description' content='{{ . }}'/>
-  <meta property='og:description' content='{{ . }}'/>
-  {{- else -}}
-  <meta name='description' content='{{ site.Params.description }}'>
-  <meta property='og:description' content='{{ site.Params.description }}'/>
-  {{- end -}}
-{{- end -}}
+<meta property="og:title" content="{{ $title | htmlEscape }}">
+<meta property="og:description" content="{{ $description | htmlEscape }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{{ site.Title | htmlEscape }}">
 
-{{- with .Permalink -}}
+{{- with .Permalink }}
   <link rel="canonical" href="{{ . }}">
-  <meta content='{{ . }}' property='og:url'/>
-  <meta content='{{ . }}' name='twitter:url'/>
-{{- end -}}
+  <meta property="og:url" content="{{ . }}">
+  <meta name="twitter:url" content="{{ . }}">
+{{- end }}
 
-<meta content='summary_large_image' name='twitter:card'/>
-
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title | htmlEscape }}">
+<meta name="twitter:description" content="{{ $description | htmlEscape }}">
