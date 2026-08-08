@@ -1,6 +1,15 @@
-# HuDocs
+![cover](https://raw.githubusercontent.com/zkreations/hudocs/main/images/screenshot.png)
 
-![Docs](https://raw.githubusercontent.com/zkreations/docs/main/images/screenshot.png)
+<p align="center">
+  <a href="https://github.com/zkreations/hudocs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-teal" alt="License"></a>
+  <a href="https://github.com/zkreations/hudocs/releases"><img src="https://img.shields.io/github/v/release/zkreations/hudocs" alt="Last Release"></a>
+</p>
+
+<p align="center">
+  <a href="https://hudocs.com/"><strong>View a live demo →</strong></a>
+</p>
+
+---
 
 I made this project to easily document my own projects, but I thought it would be great to share it, so you will save the time it took me to learn everything that finally resulted in this documentation. I hope you do a lot of work!
 
@@ -27,7 +36,7 @@ I made this project to easily document my own projects, but I thought it would b
 Go to the root of your Hugo project and run the following command:
 
 ```bash
-git submodule add https://github.com/zkreations/docs themes/docs
+git submodule add https://github.com/zkreations/hudocs themes/hudocs
 ```
 
 ## Recommended structure
@@ -40,15 +49,15 @@ content
     └── index.md
 ```
 
-If you want to start quickly, use the example I have left in the **demo** folder, which is the same one you are reading right now. Run the following command:
+If you want to start quickly, use the example I have left in the **exampleSite** folder, which is the same one you are reading right now. Run the following command:
 
 ```bash
-cp -R themes/docs/demo/content .
+cp -R themes/hudocs/exampleSite/content .
 ```
 
 ## Configure
 
-The theme contains some useful options that can help you further customize your documents. Copy the **demo/config.toml** file and replace the information with your data. Finally start the local server by running:
+The theme contains some useful options that can help you further customize your documents. Copy the **exampleSite/hugo.toml** file and replace the information with your data. Finally start the local server by running:
 
 ```bash
 hugo serve
@@ -64,11 +73,11 @@ Contributions are welcome, I will take time to review any request as long as you
 
 ## Final note
 
-If you like this project, consider rating me with a [star on github](https://github.com/zkreations/docs/stargazers), it costs nothing and means a lot to me. You can also [buy me a coffee](https://ko-fi.com/zkreations) so I can continue creating things like this.
+If you like this project, consider rating me with a [star on github](https://github.com/zkreations/hudocs/stargazers), it costs nothing and means a lot to me. You can also [buy me a coffee](https://ko-fi.com/zkreations) so I can continue creating things like this.
 
 Start documenting!
 
 
 ## License
 
-**Docs** is licensed under the MIT License
+**HuDocs** is licensed under the MIT License
