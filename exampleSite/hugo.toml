@@ -2,7 +2,7 @@
 
 title = 'Hudocs'
 theme = 'hudocs'
-baseURL = 'http://localhost:1313/'
+baseURL = '/'
 
 enableRobotsTXT = true
 enableInlineShortcodes = true
