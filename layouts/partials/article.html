@@ -1,13 +1,17 @@
 <header class="article-header flex items-center">
   <h1 class="article-title fw-600">
     {{- partial "title" .Page -}}
-    {{- with .Page.Params.badge -}}
-      {{- if site.Params.badge_url -}}
-        <a href="{{ site.Params.badge_url }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ . }}</a>
+    {{- if eq .Page.Params.badge true -}}
+      {{- $badgeText := default site.Params.badge_text .Page.Params.badge_text -}}
+      {{- $badgeText = default (i18n "new") $badgeText -}}
+      {{- $badgeURL := default site.Params.badge_url .Page.Params.badge_url -}}
+
+      {{- if $badgeURL -}}
+        <a href="{{ $badgeURL }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ $badgeText }}</a>
       {{- else -}}
-        <span class="badge badge-big">{{ . }}</span>
+        <span class="badge badge-big">{{ $badgeText }}</span>
       {{- end -}}
-    {{ end }}
+    {{- end -}}
   </h1>
   {{- if site.Params.github_repo_edit -}}
     {{- with .Page.File }}

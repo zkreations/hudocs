@@ -43,6 +43,9 @@ summaryLength = 20
   # (Optional) URL to the GitHub repo content folder, enables edit button
   # github_repo_edit = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
 
+  # (Optional)  Text to show in the badge, if badge is enabled
+  # badge_text = "Beta"
+
   # (Optional) URL that badge labels link to
   # badge_url = "https://example.com"
 

@@ -36,9 +36,12 @@
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
     {{- partial "title" .Page -}}
 
-    {{- with .Page.Params.badge -}}
-      <span class="badge">{{ . }}</span>
-    {{ end }}
+    {{- if eq .Page.Params.badge true -}}
+      {{- $badgeText := default site.Params.badge_text .Page.Params.badge_text -}}
+      {{- $badgeText = default (i18n "new") $badgeText -}}
+
+      <span class="badge">{{ $badgeText }}</span>
+    {{- end -}}
   </a>
 
   {{- with .Page.IsSection -}}

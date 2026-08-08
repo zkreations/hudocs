@@ -72,3 +72,6 @@ other = "Página siguiente"
 
 [no_summary]
 other = "No hay resumen disponible"
+
+[new]
+other = "Nuevo"

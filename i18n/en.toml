@@ -72,3 +72,6 @@ other = "Next page"
 
 [no_summary]
 other = "No summary available"
+
+[new]
+other = "New"
