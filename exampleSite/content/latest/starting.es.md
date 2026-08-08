@@ -1,6 +1,6 @@
 ---
 title: Empezando
-icon: whale
+icon: coffee
 weight: 1
 ---
 
