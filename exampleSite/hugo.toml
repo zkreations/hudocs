@@ -29,7 +29,7 @@ summaryLength = 20
 
 [params]
   # (Optional) Site description
-  # description = "A Hugo theme for documentation sites"
+  description = "A Hugo theme for documentation sites"
 
   # (Optional) List of versions to show in the version switcher
   # versions = ["1.0"]
@@ -41,7 +41,7 @@ summaryLength = 20
   # main_logo = "logo.svg"
 
   # (Optional) URL to the GitHub repo content folder, enables edit button
-  # github_repo_edit = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
+  github_repo_edit = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
 
   # (Optional)  Text to show in the badge, if badge is enabled
   # badge_text = "Beta"
@@ -53,7 +53,7 @@ summaryLength = 20
   # pagination = false
 
   # (Optional, default "2006-01-02") Date format for last modified footer
-  # date_format = "January 2, 2006"
+  date_format = "January 2, 2006"
 
   # (Optional) Copyright text, supports markdown
   # copyright = "Copyright {{Year}} [Your Name](https://example.com)"
