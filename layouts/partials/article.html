@@ -1,5 +1,5 @@
 <header class="article-header flex items-center">
-  <h1 class="article-title fw-600">
+  <h1 class="article-title">
     {{- partial "title" .Page -}}
     {{- if eq .Page.Params.badge true -}}
       {{- $badgeText := default site.Params.badge_text .Page.Params.badge_text -}}
