@@ -12,9 +12,9 @@
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
-    "!Content-Security-Policy" = ""
+    Content-Security-Policy = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"
 
 [[headers]]
   for = "/*/sitemap.xml"
   [headers.values]
-    "!Content-Security-Policy" = ""
+    Content-Security-Policy = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"
