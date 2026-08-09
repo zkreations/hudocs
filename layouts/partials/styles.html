@@ -1,7 +1,6 @@
-{{- $fonts := "fonts/inter.css" | relURL }}
 {{- $styles := resources.Get "scss/main.scss" -}}
 {{- $secureCss := $styles | css.Sass | resources.Minify | resources.Fingerprint -}}
 
+<link rel="preload" href="{{ "fonts/Inter-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ "fonts/Inter-Medium.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ $secureCss.RelPermalink }}" integrity="{{ $secureCss.Data.Integrity }}">
-<link rel="stylesheet" href="{{ $fonts }}">
-
