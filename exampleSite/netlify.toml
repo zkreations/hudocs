@@ -2,7 +2,7 @@
   for = "/*"
   [headers.values]
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; object-src 'none'; frame-ancestors 'self'; base-uri 'self';"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-nUftcM31JjgTW8RErFLHr33+RZ1mb2OlIlDldRFfhbk=' https://static.cloudflareinsights.com; img-src 'self' data:; object-src 'none'; frame-ancestors 'self'; base-uri 'self';"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "sameorigin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
