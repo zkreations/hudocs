@@ -12,9 +12,9 @@
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
-    Content-Security-Policy = ""
+    Content-Security-Policy = "default-src 'self'; style-src 'unsafe-inline';"
 
 [[headers]]
   for = "/*/sitemap.xml"
   [headers.values]
-    Content-Security-Policy = ""
+    Content-Security-Policy = "default-src 'self'; style-src 'unsafe-inline';"
