@@ -55,5 +55,5 @@ summaryLength = 20
   # (Optional, default "2006-01-02") Date format for last modified footer
   date_format = "January 2, 2006"
 
-  # (Optional) Copyright text, supports markdown
-  # copyright = "Copyright {{Year}} [Your Name](https://example.com)"
+  # (Optional) Copyright text, supports markdown (Can be used {{Year}} to insert the current year)
+  copyright = "Created by [@zkreations](https://zkreations.com)"
