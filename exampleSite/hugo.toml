@@ -2,7 +2,7 @@
 
 title = 'Hudocs'
 theme = 'hudocs'
-baseURL = '/'
+baseURL = 'https://hudocs.com/'
 
 enableRobotsTXT = true
 enableInlineShortcodes = true
