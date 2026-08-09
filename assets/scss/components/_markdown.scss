@@ -11,6 +11,7 @@
   a {
     &:not([class]) {
       color: var(--color-link);
+      text-decoration: underline;
     }
   }
 
