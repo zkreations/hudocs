@@ -16,7 +16,7 @@ Enlaces a paginas. Si el enlace es externo se abrirá en una nueva ventana, tamb
 
 - **href**: Ruta absoluta o explicita del enlace. Si la ruta pertenece a un enlace externo se agregara el atributo `rel` y `target` automáticamente. (obligatorio)
 - **title**: Titulo del enlace. Valor por defecto `undefined` (obligatorio)
-- **icon**: El nombre de un icono de zkreations. (opcional)
+- **icon**: El nombre de un icono de [Meteor Icons](https://meteoricons.com/). (opcional)
 - **name**: Nombre de la pagina de donde proviene el enlace. (opcional)
 
 ## Ejemplo

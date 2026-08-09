@@ -17,7 +17,7 @@ Botones con enlaces. Si el botón contiene un enlace externo, se mostrará siemp
 - **href**: Url o ruta de destino. (obligatorio)
 - **name**: Nombre del botón. (obligatorio)
 - **type**: Tipo que define los colores. Valores válidos:  `primary` (opcional)
-- **icon**: El nombre de un icono de zkreations. (opcional)
+- **icon**: El nombre de un icono de [Meteor Icons](https://meteoricons.com/). (opcional)
 
 ## Ejemplo
 

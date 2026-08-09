@@ -18,7 +18,7 @@ Buttons with links. If the button contains an external link, it will open in a n
 - **href**: Url or destination route. (required)
 - **name**: Button name. (required)
 - **type**: Type that defines the colors. Valid values: `primary` (optional)
-- **icon**: The name of a zkreations icon. (optional)
+- **icon**: The name of a [Meteor Icons](https://meteoricons.com/) icon. (optional)
 
 ## Example
 

@@ -15,7 +15,7 @@ Page links. If the link is external, it will open in a new window. It also inclu
 
 - **href**: Absolute or explicit path of the link. If the path belongs to an external link, the `rel` and `target` attributes will be added automatically. (required)
 - **title**: Title of the link. Default value: "undefined" (required)
-- **icon**: The name of a zkreations icon. (optional)
+- **icon**: The name of a [Meteor Icons](https://meteoricons.com/) icon. (optional)
 - **name**: Name of the page where the link comes from. (optional)
 
 ## Example
