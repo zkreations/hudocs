@@ -7,8 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  background-color: var(--bg-overlay);
 
-  &:not(.is-active), &:not(.is-active) + .overlay {
+  &:not(.is-active) {
     opacity: 0;
     pointer-events: none;
   }

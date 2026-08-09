@@ -273,10 +273,3 @@
 .preload * {
   transition: none !important;
 }
-
-.overlay {
-  position: fixed;
-  background: var(--bg-overlay);
-  inset: 0;
-  z-index: 110;
-}
