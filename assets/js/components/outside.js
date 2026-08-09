@@ -1,58 +1,41 @@
-const buttons = document.querySelectorAll('[data-outside]')
-
 const ACTIVE_CLASS = 'is-active'
 
 // Function to handle outside click events
 // @param button: Button element with data-outside attribute
 // @returns void
-function outsideClick(button) {
-  if (!button) return
-
+function initOutsideClick(button) {
   const target = document.getElementById(button.dataset.outside)
-
   if (!target) return
 
   const dialog = target.querySelector('[data-dialog]')
+  const closeButton = target.querySelector('[data-close]')
+  const hitArea = dialog ?? target
 
-  button.addEventListener('click', () => {
+  const activate = () => {
     button.classList.toggle(ACTIVE_CLASS)
     target.classList.toggle(ACTIVE_CLASS)
-  })
+  }
 
-  const clickOutside = (event) => {
-    if (event.target.closest('[data-outside]') === button) {
-      return
-    }
-
-    if (dialog?.contains(event.target)) {
-      return
-    }
-
+  const deactivate = () => {
     button.classList.remove(ACTIVE_CLASS)
     target.classList.remove(ACTIVE_CLASS)
   }
 
-  document.addEventListener('click', clickOutside)
-
-  const close = target.querySelector('[data-close]')
-
-  if (close) {
-    close.addEventListener('click', () => {
-      button.classList.remove(ACTIVE_CLASS)
-      target.classList.remove(ACTIVE_CLASS)
-    })
+  const onDocumentClick = ({ target: clicked }) => {
+    if (!button.contains(clicked) && !hitArea.contains(clicked)) {
+      deactivate()
+    }
   }
 
-  const keydown = (event) => {
-    if (event.key !== 'Escape') return
-
-    button.classList.remove(ACTIVE_CLASS)
-    target.classList.remove(ACTIVE_CLASS)
+  const onKeydown = ({ key }) => {
+    if (key === 'Escape') deactivate()
   }
 
-  document.addEventListener('keydown', keydown)
+  button.addEventListener('click', activate)
+  closeButton?.addEventListener('click', deactivate)
+  document.addEventListener('click', onDocumentClick)
+  document.addEventListener('keydown', onKeydown)
 }
 
-buttons.forEach((button) => {
-  outsideClick(button)
-})
+document.querySelectorAll('[data-outside]')
+  .forEach(initOutsideClick)
