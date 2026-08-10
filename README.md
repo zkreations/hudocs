@@ -28,7 +28,7 @@ I made this project to easily document my own projects, but I thought it would b
 
 ## Documentation
 
-For detailed information about installing, configuring, and customizing Hudocs, see the [official documentation](https://hudocs.com/latest/starting/).
+The complete Hudocs documentation, including installation, configuration, options, shortcodes, translations, and customization, is available at [hudocs.com](https://hudocs.com/latest/starting/).
 
 ## Requirements
 
