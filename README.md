@@ -26,6 +26,10 @@ I made this project to easily document my own projects, but I thought it would b
 - Advanced code blocks
 - High customization
 
+## Documentation
+
+For detailed information about installing, configuring, and customizing Hudocs, see the [official documentation](https://hudocs.com/latest/starting/).
+
 ## Requirements
 
 - Hugo 0.164.0 or higher (extended version)
