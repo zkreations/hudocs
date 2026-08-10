@@ -3,6 +3,7 @@ license = "MIT"
 licenselink = "https://github.com/zkreations/hudocs/blob/main/LICENSE"
 description = "A Hugo theme for documentation sites"
 homepage = "https://github.com/zkreations/hudocs"
+demosite = "https://hudocs.com"
 tags = ["documentation", "docs", "multilingual"]
 features = []
 
