@@ -1,8 +1,9 @@
-code, pre {
+code,
+pre {
   font-family: var(--font-monospace);
 }
 
-:not(pre) > code {
+:not(pre)>code {
   padding: .25em;
   white-space: nowrap;
   background-color: var(--bg-tenue);
@@ -37,17 +38,19 @@ code, pre {
       width: 5px;
       height: 5px;
       background-color: var(--bg-scrollbar);
+
       &-track {
         background-color: var(--bg-scrollbar-track);
         border-radius: 5px
       }
+
       &-thumb {
         background-color: var(--bg-scrollbar-thumb);
         border-radius: 10px;
       }
     }
 
-    @include breakpoint(s){
+    @include breakpoint(s) {
       padding: 1.5rem 0;
     }
   }
@@ -59,10 +62,10 @@ code, pre {
     width: 100%;
 
     // Fix for styles enabled
-    > span:not(.line) {
+    >span:not(.line) {
       padding: 0 1rem;
 
-      @include breakpoint(s){
+      @include breakpoint(s) {
         padding: 0 1.5rem;
       }
     }
@@ -72,9 +75,10 @@ code, pre {
     display: block;
     padding: 0 1rem;
 
-    @include breakpoint(s){
+    @include breakpoint(s) {
       padding: 0 1.5rem;
     }
+
     &.hl {
       background-color: var(--highlight-selection);
       box-shadow: 3px 0 0 var(--highlight-selection-border) inset;
@@ -83,30 +87,36 @@ code, pre {
 }
 
 .code {
-  > .highlight {
+  >.highlight {
     &:not(:first-child) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+
     &:not(:last-child) {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
+
   &-example {
     padding: 1.25rem 1.5rem;
     border: 1px solid var(--color-border-inset);
     border-bottom: 0 none;
     border-radius: 0.5rem 0.5rem 0 0;
-    + .codetabs {
+
+    +.codetabs {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
   }
+
   &-explained {
     padding: 1.25rem 1.5rem;
     background-color: var(--bg-inset);
+    overflow-x: auto;
     --space-block: 1rem;
+
     pre {
       padding: 1rem;
       background-color: var(--bg-tenue);
@@ -114,17 +124,18 @@ code, pre {
       white-space: pre-wrap;
     }
   }
+
   &-copy {
     position: absolute;
     right: -.5rem;
     top: -.5rem;
     border-radius: 50rem;
-    background-color: var(--bg,var(--bg-darken));
+    background-color: var(--bg, var(--bg-darken));
     color: #fff;
     padding: 0.5rem;
     transition: background-color .3s;
-    --tts-arrow-side: 12px;
     --svg-size: 18px;
+
     &:hover {
       --bg: var(--primary);
     }
@@ -151,14 +162,15 @@ code, pre {
   border-radius: .5rem;
 
   input {
-    &:not(:checked) + * + * {
+    &:not(:checked)+*+* {
       display: none;
     }
+
     &[type=radio] {
       display: contents;
     }
 
-    &:checked + label {
+    &:checked+label {
       background-color: var(--bg-inverse);
       color: #fff;
     }
@@ -167,10 +179,13 @@ code, pre {
   label {
     cursor: pointer;
     padding: .75rem 1rem;
-    @include breakpoint(s){
+
+    @include breakpoint(s) {
       padding: .75rem 1.5rem;
     }
+
     font-size: .875rem;
+
     &:first-of-type {
       border-top-left-radius: .5rem;
     }
@@ -187,47 +202,74 @@ code, pre {
 
 // Colors
 .chroma {
-  .nt, .nn {
+
+  .nt,
+  .nn {
     color: #ffd8a8;
   }
-  .na, .nc {
+
+  .na,
+  .nc {
     color: #ffa94d;
   }
-  .p, .o {
+
+  .p,
+  .o {
     color: #888;
   }
-  .c, .cm, .c1, .cp {
+
+  .c,
+  .cm,
+  .c1,
+  .cp {
     color: #5c6370;
     font-style: italic;
   }
-  .kd, .kr, .nd {
+
+  .kd,
+  .kr,
+  .nd {
     color: #dab1eb;
   }
-  .kd +.nx, .nv, .n {
+
+  .kd+.nx,
+  .nv,
+  .n {
     color: #ffb1b1;
   }
-  .kr +.nx {
+
+  .kr+.nx {
     color: #a3ffed;
   }
+
   .s2 {
     color: #c7e19e;
   }
-  .mi, .kt, .mh {
+
+  .mi,
+  .kt,
+  .mh {
     color: #a3f2ff;
   }
-  .nb, .nf {
+
+  .nb,
+  .nf {
     color: #b1c9ff;
   }
 }
 
 .brackets {
   font-family: var(--font-monospace);
-  &::before, &::after {
+
+  &::before,
+  &::after {
     color: var(--color-border);
   }
+
   &::before {
     content: "{";
   }
+
   &::after {
     content: "}";
   }

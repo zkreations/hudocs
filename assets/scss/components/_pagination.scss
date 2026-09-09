@@ -2,6 +2,7 @@
   margin-top: 2rem;
 
   &-list {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 10rem)"}, 1fr));
     gap: 1rem;
   }

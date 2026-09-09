@@ -3,20 +3,20 @@
 {{- $title := site.Title | title -}}
 
 <div class="container">
-  <div class="header-wrapper flex items-center relative">
-    <div class="header-left flex items-center">
+  <div class="header-wrapper">
+    <div class="header-left">
       {{- with .Section -}}
         <button class="header-toggle" data-outside="docs-sidebar" aria-label="toggle navigation">
           {{ partial "svg" (dict "icon" "bars") }}
         </button>
       {{- end -}}
-      <div class="header-logo flex items-center fw-500">
+      <div class="header-logo">
         <a class="has-icon i-md" href='{{ "/" | relLangURL }}'>
           {{- if $logo -}}
             <img class="header-logo-image" src="{{- $logo -}}" alt="{{- $title -}}">
           {{- else -}}
             {{- with $main_icon -}}
-              {{ partial "svg" (dict "icon" . "class" "flex-none header-logo-icon" ) }}
+              {{ partial "svg" (dict "icon" . "class" "header-logo-icon" ) }}
             {{- end -}}
             {{- $title -}}
           {{- end -}}
@@ -27,7 +27,7 @@
     {{- with .Section -}}
       <div class="header-middle">
         <button class="search-toggle has-icon" data-outside="search-box" aria-label='{{ i18n "search" }}'>
-          {{ partial "svg" (dict "icon" "search" "class" "flex-none") }}
+          {{ partial "svg" (dict "icon" "search") }}
           <span>{{- i18n "search_in_doc" -}}</span>
         </button>
       </div>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="dropdown" id="docs-mode">
-      <div class="list fw-500 theme-handle">
+      <div class="list theme-handle">
         <button class="list-link has-icon" data-theme="system">
           {{ partial "svg" (dict "icon" "desktop") }}
           {{ i18n "system" }}
@@ -73,7 +73,7 @@
     </div>
 
     <div class="dropdown" id="docs-versions">
-      <div class="list fw-500">
+      <div class="list">
         {{ if site.Params.versions }}
           {{ range site.Params.versions }}
             <a class="list-link" href="{{ . | relLangURL }}">{{ . }}</a>
@@ -91,9 +91,9 @@
     {{- if hugo.IsMultilingual -}}
       {{- with .Page.Rotate "language" -}}
         <div class="dropdown" id="docs-language">
-          <div class="list fw-500">
+          <div class="list">
             {{- range . -}}
-              <a class="list-link {{ if eq .Language $.Page.Language }}is-active events-none{{ end }}" href="{{ .Permalink }}">
+              <a class="list-link {{ if eq .Language $.Page.Language }}is-active{{ end }}" href="{{ .Permalink }}">
                 {{ .Language.Label }}
               </a>
             {{- end -}}

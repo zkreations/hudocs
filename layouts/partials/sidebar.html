@@ -1,5 +1,5 @@
 <div class="aside-tree scrollable">
-  <div class="aside-menu fw-500">
+  <div class="aside-menu">
     {{- with .Site.GetPage .Section -}}
       {{ template "tree-list" (dict "Section" . "CurrentPage" $) }}
     {{ end }}
@@ -32,7 +32,7 @@
     <label for="menu-{{ md5 .Page }}" class="menu-label">
   {{ end }}
   
-  <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="menu-link fs-6{{ if (eq .CurrentPage .Page) }} is-active{{ end }}{{ with .Page.Params.icon }} has-icon{{ end }}">
+  <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="menu-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}{{ with .Page.Params.icon }} has-icon{{ end }}">
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
     {{- partial "title" .Page -}}
 

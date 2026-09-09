@@ -1,4 +1,4 @@
-<header class="article-header flex items-center">
+<header class="article-header">
   <h1 class="article-title">
     {{- partial "title" .Page -}}
     {{- if eq .Page.Params.badge true -}}
@@ -15,7 +15,7 @@
   </h1>
   {{- if site.Params.github_repo_edit -}}
     {{- with .Page.File }}
-      <a class="article-edit flex-none i-md" href="{{ site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" data-tts="down-right" aria-label="{{ i18n "edit_on_github" }}">
+      <a class="article-edit i-md" href="{{ site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" title="{{ i18n "edit_on_github" }}" aria-label="{{ i18n "edit_on_github" }}">
         {{ partial "svg" (dict "icon" "pencil") }}
       </a>
     {{- end }}

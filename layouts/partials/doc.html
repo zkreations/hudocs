@@ -4,7 +4,7 @@
   </aside>
   <main class="main main-index">
     {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") -}}
-    <article class="article fs-6" data-i18n='{{ $i18n | jsonify }}'>
+    <article class="article" data-i18n='{{ $i18n | jsonify }}'>
       {{ partial "article" . }}
       {{ partial "footer" . }}
     </article>

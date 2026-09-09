@@ -135,7 +135,7 @@ function createGroupElement (group) {
   div.className = 'search-group'
 
   const title = document.createElement('div')
-  title.className = 'search-group-title capitalize fs-6 fw-500 has-icon'
+  title.className = 'search-group-title has-icon'
   title.innerHTML = `${group.icon}<h3>${escapeHTML(group.title)}</h3>`
 
   const list = document.createElement('ul')
@@ -164,7 +164,7 @@ function createPageElement (page) {
   a.href = page.url
 
   const titleDiv = document.createElement('div')
-  titleDiv.className = 'search-title fs-6 fw-500'
+  titleDiv.className = 'search-title'
   titleDiv.textContent = page.title
 
   a.appendChild(titleDiv)

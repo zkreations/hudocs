@@ -15,26 +15,26 @@
 
 {{- if or $prev $next -}}
 <nav class="pagination" aria-label='{{ i18n "pagination_label" }}'>
-  <ul class="pagination-list grid">
+  <ul class="pagination-list">
     {{ with $prev }}
     <li class="pagination-item pagination-prev">
-      <a class="pagelink items-center" href="{{ .RelPermalink }}">
+      <a class="pagelink" href="{{ .RelPermalink }}">
         <span class="pagelink-icon i-md">
           {{- partial "svg" (dict "icon" "arrow-left") -}}
         </span>
         <span class="pagelink-content">
-          <span class="pagelink-meta fs-7">{{ i18n "pagination_previous" }}</span>
-          <span class="pagelink-title fw-500">{{ .Title }}</span>
+          <span class="pagelink-meta">{{ i18n "pagination_previous" }}</span>
+          <span class="pagelink-title">{{ .Title }}</span>
         </span>
       </a>
     </li>
     {{ end }}
     {{ with $next }}
     <li class="pagination-item pagination-next">
-      <a class="pagelink items-center" href="{{ .RelPermalink }}">
+      <a class="pagelink" href="{{ .RelPermalink }}">
         <span class="pagelink-content">
-          <span class="pagelink-meta fs-7">{{ i18n "pagination_next" }}</span>
-          <span class="pagelink-title fw-500">{{ .Title }}</span>
+          <span class="pagelink-meta">{{ i18n "pagination_next" }}</span>
+          <span class="pagelink-title">{{ .Title }}</span>
         </span>
         <span class="pagelink-icon i-md">
           {{- partial "svg" (dict "icon" "arrow-right") -}}

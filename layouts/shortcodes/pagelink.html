@@ -8,9 +8,9 @@
     {{- partial "svg" (dict "icon" $icon) -}}
   </span>
   <span class="pagelink-content">
-    <span class="pagelink-title fw-500">{{ $title }}</span>
+    <span class="pagelink-title">{{ $title }}</span>
     {{- with $name -}}
-      <span class="pagelink-meta fs-7">{{ . }}</span>
+      <span class="pagelink-meta">{{ . }}</span>
     {{- end -}}
   </span>
 </a>

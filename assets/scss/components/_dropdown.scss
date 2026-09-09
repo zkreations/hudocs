@@ -1,7 +1,7 @@
 .dropdown {
   background-color: var(--bg-header);
   transform-origin: top right;
-  transform: translate3d(0,0,0) scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
   transition-property: opacity, transform;
   transition-timing-function: var(--timing);
   transition-duration: .3s;
@@ -13,24 +13,31 @@
   border-radius: .5rem;
   padding: 1rem;
   will-change: transform;
+
   &:not(.is-active) {
     pointer-events: none;
-    opacity:0;
-    transform: translate3d(0,-1rem,0) scale(.9);
+    opacity: 0;
+    transform: translate3d(0, -1rem, 0) scale(.9);
   }
 }
 
 .list {
   white-space: nowrap;
+  font-weight: 500;
+
   &-link {
     display: block;
+
     &.is-active {
       color: var(--color-link);
+      pointer-events: none;
     }
+
     &:hover {
       color: var(--color-link);
     }
-    & + * {
+
+    &+* {
       margin-top: .5rem;
     }
   }

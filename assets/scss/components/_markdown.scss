@@ -15,10 +15,11 @@
     }
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin-inline-start: 1.25rem;
 
-    > * + * {
+    >*+* {
       margin-top: 0.25rem;
     }
   }
@@ -31,7 +32,8 @@
     list-style: decimal outside;
   }
 
-  video, iframe {
+  video,
+  iframe {
     aspect-ratio: 16/9;
     width: 100%;
     height: auto;
@@ -46,7 +48,12 @@
     background-color: var(--bg-mark);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-bottom: var(--space-headings);
     font-weight: 500;
     color: var(--color, var(--color-title));
@@ -65,13 +72,21 @@
     --space-headings: 1.5rem;
   }
 
-  h3 { font-size: 1.25rem }
+  h3 {
+    font-size: 1.25rem
+  }
 
-  h4 { font-size: 1.125rem }
+  h4 {
+    font-size: 1.125rem
+  }
 
-  h5 { font-size: 1rem }
+  h5 {
+    font-size: 1rem
+  }
 
-  h6 { font-size: .875rem }
+  h6 {
+    font-size: .875rem
+  }
 
   blockquote:not([class]) {
     border-inline-start: 2px solid;
@@ -93,8 +108,8 @@
     }
   }
 
-  *:where(p,pre,table,blockquote,video,iframe,ol,ul,img,audio,figure,.space):not(:where(:last-child, figure :last-of-type,.not-space,.code-example)),
-  > *:not(:where(:last-child,.not-space, .code-example)) {
+  *:where(p, pre, table, blockquote, video, iframe, ol, ul, img, audio, figure, .space):not(:where(:last-child, figure :last-of-type, .not-space, .code-example)),
+  >*:not(:where(:last-child, .not-space, .code-example)) {
     margin-bottom: var(--space-block);
   }
 }
@@ -102,8 +117,12 @@
 .anchor {
   margin-left: .75rem;
   visibility: hidden;
-  @at-root *:hover > #{&}{
+
+  @at-root *:hover>#{&} {
     visibility: visible;
   }
 }
 
+.table-container {
+  overflow-x: auto;
+}

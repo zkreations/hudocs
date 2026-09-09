@@ -2,7 +2,7 @@
   display: grid;
   flex: 1 1 0%;
   width: 100%;
-  grid-template-areas:"main-doc";
+  grid-template-areas: "main-doc";
   grid-template-columns: 100%;
 
   @include breakpoint(l) {
@@ -16,6 +16,8 @@
 }
 
 .template {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -37,6 +39,9 @@
 
   &-logo {
     font-size: 1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
 
     @include breakpoint(m) {
       font-size: 1.125rem;
@@ -48,11 +53,15 @@
 
     &-icon {
       color: var(--color-border-inset);
+      flex: none;
     }
   }
 
   &-wrapper {
     height: var(--header-height);
+    display: flex;
+    align-items: center;
+    position: relative;
   }
 
   &-toggle {
@@ -65,6 +74,9 @@
   }
 
   &-left {
+    display: flex;
+    align-items: center;
+
     @include breakpoint(l) {
       width: var(--aside-width);
     }
@@ -199,6 +211,7 @@
 
   &-menu {
     padding-right: 1.5rem;
+    font-weight: 500;
   }
 
   @include breakpoint(l, max) {

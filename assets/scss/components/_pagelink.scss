@@ -1,6 +1,7 @@
 .pagelink {
   padding: 1rem;
   display: flex;
+  align-items: center;
   border-radius: .5rem;
   gap: .75rem;
   border: 1px solid var(--color-border);
@@ -32,5 +33,6 @@
   &-meta {
     color: var(--color-meta);
     transition: color .3s;
+    font-size: .875rem;
   }
 }

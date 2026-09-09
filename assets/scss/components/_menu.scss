@@ -41,6 +41,7 @@
 
   &-link {
     color: var(--link-color,inherit);
+    font-size: 1rem;
 
     &:hover {
       color: var(--primary)
