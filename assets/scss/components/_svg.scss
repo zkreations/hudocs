@@ -1,3 +1,9 @@
+.has-icon {
+  display: flex;
+  align-items: center;
+  column-gap: var(--btn-gap, .75rem);
+}
+
 .i {
   stroke-width: 2;
   stroke: currentColor;
