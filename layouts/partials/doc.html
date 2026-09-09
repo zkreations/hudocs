@@ -1,0 +1,15 @@
+﻿<div class="doc container" id="doc">
+  <aside class="aside" id="docs-sidebar">
+    {{ partial "sidebar" . }}
+  </aside>
+  <main class="main main-index">
+    {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") -}}
+    <article class="article fs-6" data-i18n='{{ $i18n | jsonify }}'>
+      {{ partial "article" . }}
+      {{ partial "footer" . }}
+    </article>
+    <aside class="toc">
+      {{ partial "toc" . }}
+    </aside>
+  </main>
+</div>

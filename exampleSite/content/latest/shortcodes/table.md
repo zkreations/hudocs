@@ -3,34 +3,20 @@ title: Tables
 description: Responsive tables using markdown syntax.
 ---
 
-By default, tables generated with markdown syntax are not responsive. To partially solve this problem, enclose your tables with this shortcode.
+By default in Hudocs 2.0, tables generated with standard markdown syntax are automatically responsive without needing any shortcode wrapper.
 
 ## Syntax
 
-```go
-{{</* table */>}}
-...table
-{{</* /table */>}}
+```markdown
+| Syntax | Description |
+| --- | ----------- |
+| Header | Title |
+| Paragraph | Text |
 ```
-
-### Options
-
-- **Get 0**: Additional CSS classes. (optional)
 
 ## Example
 
-```go
-{{</* table */>}}
 | Syntax | Description |
 | --- | ----------- |
 | Header | Title |
 | Paragraph | Text |
-{{</* /table */>}}
-```
-
-{{< table >}}
-| Syntax | Description |
-| --- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-{{< /table >}}
