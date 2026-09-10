@@ -1,0 +1,8 @@
+<div class="steps{{ with .Get "class" }} {{ . }}{{ else with .Get 0 }} {{ . }}{{ end }}">
+  {{- if hasPrefix (trim .Inner " \r\n\t") "<" -}}
+    {{- .Inner -}}
+  {{- else -}}
+    {{- .Inner | markdownify -}}
+  {{- end -}}
+</div>
+
