@@ -1,9 +1,3 @@
-.has-icon {
-  display: flex;
-  align-items: center;
-  column-gap: var(--btn-gap, .75rem);
-}
-
 .i {
   stroke-width: 2;
   stroke: currentColor;
@@ -16,15 +10,19 @@
   &-xs {
     --svg-size: 16px;
   }
+
   &-sm {
     --svg-size: 18px;
   }
+
   &-md {
     --svg-size: 24px;
   }
+
   &-lg {
     --svg-size: 30px;
   }
+
   &-xl {
     --svg-size: 40px;
   }

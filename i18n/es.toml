@@ -55,12 +55,6 @@ other = "Mostrar/Ocultar tabla de contenidos"
 [main_section_text]
 other = "Una lista de todos los documentos alojados para todas las versiones disponibles"
 
-[to_close]
-other = "para cerrar"
-
-[current_version]
-other = "Versión actual"
-
 [pagination_label]
 other = "Paginación"
 

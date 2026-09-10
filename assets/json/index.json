@@ -2,7 +2,7 @@
 
 {{- range $i, $page := .Site.Pages -}}
   {{- if and .File (or .Title (truncate 120 .Plain)) -}}
-    {{- $summary := truncate 120 .Plain | default (i18n "no_summary") -}}
+    {{- $summary := truncate 100 .Plain | default (i18n "no_summary") -}}
 
     {{- $parent := $page -}}
     {{- range seq 10 -}}

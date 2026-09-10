@@ -154,8 +154,6 @@ function createGroupElement (group) {
 // @param {Object} page - Page data containing title, summary, and URL
 // @returns {HTMLElement} - The page DOM element
 function createPageElement (page) {
-  const summary = truncate(page.summary, 100)
-
   const li = document.createElement('li')
   li.className = 'search-item'
 
@@ -169,23 +167,15 @@ function createPageElement (page) {
 
   a.appendChild(titleDiv)
 
-  if (summary) {
+  if (page.summary) {
     const summaryDiv = document.createElement('div')
-    summaryDiv.className = 'search-summary'
-    summaryDiv.textContent = summary
+    summaryDiv.className = 'search-summary truncate-multiline'
+    summaryDiv.textContent = page.summary
     a.appendChild(summaryDiv)
   }
 
   li.appendChild(a)
   return li
-}
-
-// Truncates a string to a specified length and adds ellipsis if needed
-// @param {string} str - The string to truncate
-// @param {number} length - The maximum length of the string
-// @returns {string} - The truncated string
-function truncate (str, length) {
-  return str && str.length > length ? `${str.slice(0, length)}...` : str
 }
 
 // Escapes HTML special characters in a string to prevent XSS

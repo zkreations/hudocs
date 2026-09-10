@@ -1,5 +1,5 @@
 <header class="article-header">
-  <h1 class="article-title">
+  <h1 class="article-title has-icon">
     {{- partial "title" .Page -}}
     {{- if eq .Page.Params.badge true -}}
       {{- $badgeText := default site.Params.badge_text .Page.Params.badge_text -}}
