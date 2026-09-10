@@ -15,7 +15,7 @@
   </h1>
   {{- if site.Params.github_repo_edit -}}
     {{- with .Page.File }}
-      <a class="article-edit i-md" href="{{ site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" title="{{ i18n "edit_on_github" }}" aria-label="{{ i18n "edit_on_github" }}">
+      <a class="article-edit" href="{{ site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" title="{{ i18n "edit_on_github" }}" aria-label="{{ i18n "edit_on_github" }}">
         {{ partial "svg" (dict "icon" "pencil") }}
       </a>
     {{- end }}
