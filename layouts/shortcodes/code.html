@@ -4,12 +4,11 @@
 {{- $hl := .Get "hl" | default "" -}}
 {{- $example := .Get "example" | default false -}}
 
-{{- $isBloggerTag := findRE `<b:\w{2,10}|<data:.*\/>|<Variable.*\/>` .Inner 1 -}}
 {{- $hasTabs := .Scratch.Get "tabs" -}}
 
 <div{{ with $id }} id="{{ . }}"{{ end }} class="code{{ with $class }} {{ . }}{{ end }}">
 
-  {{- if and ($example) (eq $lang "html") (not $isBloggerTag) -}}
+  {{- if and $example (eq $lang "html") -}}
     <div class="code-example">
       {{- if $hasTabs -}}
 
@@ -30,7 +29,7 @@
 
 
   {{- if $hasTabs -}}
-    {{ $uniqueId := (delimit (shuffle (split (md5 "foo") "" )) "") }}
+    {{ $uniqueId := printf "codetab-%d" .Ordinal }}
     <div class="codetabs">
       {{- range $index, $code := $hasTabs -}}
         <input id="tab-{{ $code.ID }}" type="radio" name="{{ $uniqueId }}"{{ if not $index }} checked="checked"{{ end }}>
