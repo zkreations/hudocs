@@ -1,27 +1,33 @@
-{{- $.Scratch.Add "index" slice -}}
-{{- $langPrefix := "^/[a-z]{2}/" -}}
-{{- $regex := "^(/[^/]+/)([^/]+)/.*$" -}}
+{{- $index := slice -}}
 
-{{- range $index, $page := .Site.Pages -}}
-  {{- if .File -}}
+{{- range $i, $page := .Site.Pages -}}
+  {{- if and .File (or .Title (truncate 120 .Plain)) -}}
+    {{- $summary := truncate 120 .Plain | default (i18n "no_summary") -}}
 
-    {{- $cleanPath := replaceRE $langPrefix "/" $page.RelPermalink -}}
-    {{- $parentSection := replaceRE $regex "$2" $cleanPath -}}
-    {{- $summary := truncate 120 $page.Plain | default (i18n "no_summary") -}}
-
-    {{- if or $page.Title (truncate 120 $page.Plain) -}}
-      {{- $.Scratch.Add "index" (dict
-        "id" $index
-        "url" $page.RelPermalink
-        "summary" $summary
-        "title" $page.Title
-        "parent" $parentSection
-      ) -}}
+    {{- $parent := $page -}}
+    {{- range seq 10 -}}
+      {{- if and $parent.Parent (not $parent.Parent.IsHome) (not $parent.Parent.Parent.IsHome) -}}
+        {{- $parent = $parent.Parent -}}
+      {{- end -}}
     {{- end -}}
 
+    {{- $parentSection := "" -}}
+    {{- with $parent.File -}}
+      {{- $parentSection = .ContentBaseName -}}
+    {{- else -}}
+      {{- $parentSection = $parent.Title -}}
+    {{- end -}}
+
+    {{- $index = $index | append (dict
+      "id" $i
+      "url" $page.RelPermalink
+      "summary" $summary
+      "title" $page.Title
+      "parent" $parentSection
+    ) -}}
   {{- end -}}
 {{- end -}}
 
 {
-  "documents": {{ .Scratch.Get "index" | jsonify }}
+  "documents": {{ $index | jsonify }}
 }
