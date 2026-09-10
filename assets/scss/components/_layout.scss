@@ -247,15 +247,6 @@
   }
 }
 
-.scrollable {
-  @include breakpoint(l) {
-    top: var(--header-height);
-    max-height: calc((100vh - var(--header-height)));
-    bottom: 0;
-    overflow-y: auto;
-  }
-}
-
 .footer {
   padding-top: 2rem;
   margin-top: 2rem;
@@ -275,17 +266,4 @@
       }
     }
   }
-}
-
-.group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.no-transitions *,
-.no-transitions *::before,
-.no-transitions *::after {
-  transition-duration: 0s !important;
-  animation-duration: 0s !important;
 }

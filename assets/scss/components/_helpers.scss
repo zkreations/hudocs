@@ -14,5 +14,22 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
   }
+}
+
+.scrollable {
+  @include breakpoint(l) {
+    top: var(--header-height);
+    max-height: calc((100vh - var(--header-height)));
+    bottom: 0;
+    overflow-y: auto;
+  }
+}
+
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
 }

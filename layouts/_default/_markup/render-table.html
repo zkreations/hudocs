@@ -1,4 +1,4 @@
-﻿<div class="table-container">
+﻿<div class="article-table">
   <table{{ range $k, $v := .Attributes }} {{ printf "%s=%q" $k $v | safeHTMLAttr }}{{ end }}>
     <thead>
       {{- range .THead }}

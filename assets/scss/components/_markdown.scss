@@ -113,16 +113,3 @@
     margin-bottom: var(--space-block);
   }
 }
-
-.anchor {
-  margin-left: .75rem;
-  visibility: hidden;
-
-  @at-root *:hover>#{&} {
-    visibility: visible;
-  }
-}
-
-.table-container {
-  overflow-x: auto;
-}

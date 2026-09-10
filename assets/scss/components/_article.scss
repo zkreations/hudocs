@@ -33,6 +33,19 @@
     flex: none;
   }
 
+  &-anchor {
+    margin-left: .75rem;
+    visibility: hidden;
+
+    @at-root *:hover>#{&} {
+      visibility: visible;
+    }
+  }
+
+  &-table {
+    overflow-x: auto;
+  }
+
   &-footer {
     border-top: 1px solid var(--color-border);
   }
