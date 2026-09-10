@@ -29,7 +29,7 @@
 
 {{ define "tree-link" }}
   {{- if .Page.IsSection -}}
-    <label for="menu-{{ md5 .Page }}" class="menu-label">
+    <label for="menu-{{ md5 .Page }}" class="menu-label has-icon">
   {{ end }}
   
   <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="menu-link has-icon{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
