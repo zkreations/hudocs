@@ -1,41 +1,63 @@
 const ACTIVE_CLASS = 'is-active'
 
-// Function to handle outside click events
-// @param button: Button element with data-outside attribute
-// @returns void
-function initOutsideClick(button) {
-  const target = document.getElementById(button.dataset.outside)
-  if (!target) return
-
-  const dialog = target.querySelector('[data-dialog]')
-  const closeButton = target.querySelector('[data-close]')
-  const hitArea = dialog ?? target
-
-  const activate = () => {
-    button.classList.toggle(ACTIVE_CLASS)
-    target.classList.toggle(ACTIVE_CLASS)
-  }
-
-  const deactivate = () => {
+function deactivateAll () {
+  document.querySelectorAll(`[data-outside].${ACTIVE_CLASS}`).forEach((button) => {
     button.classList.remove(ACTIVE_CLASS)
-    target.classList.remove(ACTIVE_CLASS)
-  }
-
-  const onDocumentClick = ({ target: clicked }) => {
-    if (!button.contains(clicked) && !hitArea.contains(clicked)) {
-      deactivate()
-    }
-  }
-
-  const onKeydown = ({ key }) => {
-    if (key === 'Escape') deactivate()
-  }
-
-  button.addEventListener('click', activate)
-  closeButton?.addEventListener('click', deactivate)
-  document.addEventListener('click', onDocumentClick)
-  document.addEventListener('keydown', onKeydown)
+    const target = document.getElementById(button.dataset.outside)
+    if (target) target.classList.remove(ACTIVE_CLASS)
+  })
 }
 
-document.querySelectorAll('[data-outside]')
-  .forEach(initOutsideClick)
+function initOutside () {
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-outside]')
+    const closeBtn = e.target.closest('[data-close]')
+
+    if (closeBtn) {
+      deactivateAll()
+      return
+    }
+
+    if (trigger) {
+      const target = document.getElementById(trigger.dataset.outside)
+      if (!target) return
+
+      const wasActive = target.classList.contains(ACTIVE_CLASS)
+      deactivateAll()
+
+      if (!wasActive) {
+        trigger.classList.add(ACTIVE_CLASS)
+        target.classList.add(ACTIVE_CLASS)
+        const input = target.querySelector('input')
+        if (input) input.focus()
+      }
+      return
+    }
+
+    const activeButtons = document.querySelectorAll(`[data-outside].${ACTIVE_CLASS}`)
+    if (!activeButtons.length) return
+
+    let clickedInside = false
+    activeButtons.forEach((button) => {
+      const target = document.getElementById(button.dataset.outside)
+      if (target) {
+        const hitArea = target.querySelector('[data-dialog]') || target
+        if (hitArea.contains(e.target) || button.contains(e.target)) {
+          clickedInside = true
+        }
+      }
+    })
+
+    if (!clickedInside) {
+      deactivateAll()
+    }
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      deactivateAll()
+    }
+  })
+}
+
+initOutside()
