@@ -2,7 +2,7 @@
 
   {{- $group := "tabs" -}}
 
-  {{- $id := delimit (shuffle (slice "a" "b" "c" "d" "e" "f")) "" -}}
+  {{- $id := printf "%d-%d" .Parent.Ordinal .Ordinal -}}
   {{- $lang := .Get 0 | default "html" -}}
   {{- $title := .Get 1 -}}
 
