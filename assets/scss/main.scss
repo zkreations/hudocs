@@ -1,27 +1,17 @@
-@import "tools/functions";
-@import "tools/mixins";
+@import "base/media";
+@import "base/tokens";
+@import "base/reset";
+@import "base/elements";
 
-@import "settings/variables";
-@import "settings/root";
+@import "layout/layout";
 
-@import "generic/fonts";
-@import "generic/normalize";
-@import "object/common";
-
-@import "components/layout";
-@import "components/alert";
-@import "components/badge";
-@import "components/button";
-@import "components/icons";
-@import "components/menu";
-@import "components/toc";
-@import "components/dropdown";
-@import "components/pagelink";
-@import "components/columns";
-@import "components/article";
-@import "components/markdown";
+@import "components/content";
 @import "components/code";
-@import "components/search";
+@import "components/navigation";
+@import "components/dialogs";
+@import "components/ui";
+
+@import "components/columns";
 @import "components/helpers";
 
 @import "custom";

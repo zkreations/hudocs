@@ -1,3 +1,7 @@
+//
+// Macro Layout (Template, Header, Aside, Main, Footer, Error)
+//
+
 .doc {
   display: grid;
   flex: 1 1 0%;
@@ -154,7 +158,6 @@
 }
 
 .section {
-
   &-content {
     font-size: 1.125rem;
     margin-top: 2rem;
@@ -273,3 +276,4 @@
     margin-top: 1.5rem;
   }
 }
+

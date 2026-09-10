@@ -1,18 +1,23 @@
-﻿// Breakpoint mixin for media queries
-// @param {String} $direction - min or max
-// @param {String} $key - Breakpoint key
-// @return {Mixin}
+//
+// Breakpoints & Media Query Mixin
+//
+
+$breakpoints: (
+  s: 576px,
+  m: 768px,
+  l: 992px,
+) !default;
+
 @mixin breakpoint($key, $direction: min) {
   $breakpoint: map-get($breakpoints, $key);
-  $media: if($direction =="max", ($breakpoint - 1), $breakpoint);
+  $media: if($direction == "max", ($breakpoint - 1), $breakpoint);
 
   @if not $breakpoint {
     @warn 'Breakpoint #{$key} not found in map.';
-  }
-
-  @else {
+  } @else {
     @media (#{$direction}-width: $media) {
       @content;
     }
   }
 }
+

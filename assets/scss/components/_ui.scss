@@ -1,0 +1,99 @@
+//
+// UI Elements: Alerts, Badges, Buttons, and Icons
+//
+
+// Alerts / Callouts
+.alert {
+  background-color: var(--alert-bg, var(--bg-primary));
+  color: var(--alert-color, var(--color-title));
+  border-left: 3px solid;
+  padding: 1.25rem;
+
+  a[href]:not([class]) {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  strong:not([class]) {
+    color: inherit;
+  }
+
+  &-info {
+    --alert-bg: var(--info-bg);
+    --alert-color: var(--info);
+  }
+
+  &-success {
+    --alert-bg: var(--success-bg);
+    --alert-color: var(--success);
+  }
+
+  &-danger {
+    --alert-bg: var(--danger-bg);
+    --alert-color: var(--danger);
+  }
+
+  &-warning {
+    --alert-bg: var(--warning-bg);
+    --alert-color: var(--warning);
+  }
+}
+
+// Badges
+.badge {
+  color: var(--primary);
+  background-color: var(--btn-primary);
+  font-size: .75rem;
+  border-radius: .5em;
+  padding: .5em;
+  vertical-align: middle;
+  line-height: 1;
+
+  &-big {
+    font-size: 1rem;
+  }
+}
+
+// Buttons
+.btn {
+  color: var(--btn-color, var(--color-text));
+  padding: .5rem .75rem;
+  background-color: var(--btn-bg, var(--bg-primary));
+  font-weight: 500;
+  border-radius: .5rem;
+  transition-property: color, background-color, box-shadow;
+  transition-duration: .3s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: .5rem;
+
+  &:hover {
+    --btn-bg: var(--bg-secondary);
+  }
+
+  &-primary {
+    --btn-color: var(--primary);
+    --btn-bg: var(--btn-primary);
+
+    &:hover {
+      --btn-bg: var(--btn-primary-hover);
+    }
+  }
+}
+
+// Icons
+.i {
+  stroke-width: 2;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  width: var(--svg-size, 20px);
+  height: var(--svg-size, 20px);
+
+  &-md {
+    --svg-size: 24px;
+  }
+}
+

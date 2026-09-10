@@ -1,3 +1,58 @@
+//
+// Content: Article & Markdown Styling
+//
+
+// Article Structure
+.article {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  grid-area: doc;
+  font-size: 1rem;
+
+  @include breakpoint(l) {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+
+    @include breakpoint(m) {
+      padding-bottom: 1.75rem;
+      margin-bottom: 1.75rem;
+    }
+  }
+
+  &-title {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 500;
+  }
+
+  &-edit {
+    padding-left: 1rem;
+    margin-left: auto;
+    flex: none;
+  }
+
+  &-anchor {
+    margin-left: .75rem;
+    visibility: hidden;
+
+    @at-root :is(h1, h2, h3, h4, h5, h6):hover > #{&} {
+      visibility: visible;
+    }
+  }
+
+  &-table {
+    overflow-x: auto;
+  }
+}
+
+// Markdown Content & Typography
 .markdown {
   color: var(--color-text);
   --space-block: 1.5rem;
@@ -62,7 +117,7 @@
   }
 
   h1 {
-    font-size: 1.75rem
+    font-size: 1.75rem;
   }
 
   h2 {
@@ -73,19 +128,19 @@
   }
 
   h3 {
-    font-size: 1.25rem
+    font-size: 1.25rem;
   }
 
   h4 {
-    font-size: 1.125rem
+    font-size: 1.125rem;
   }
 
   h5 {
-    font-size: 1rem
+    font-size: 1rem;
   }
 
   h6 {
-    font-size: .875rem
+    font-size: .875rem;
   }
 
   blockquote:not([class]) {
@@ -113,3 +168,4 @@
     margin-bottom: var(--space-block);
   }
 }
+
