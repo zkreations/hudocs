@@ -5,3 +5,4 @@ resources/
 jsconfig.json
 exampleSite/jsconfig.json
 .codegraph
+.agents
