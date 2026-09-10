@@ -1,17 +1,36 @@
+//
+// Main Stylesheet
+// Modern Layered Architecture
+//
+
 @import "base/media";
-@import "base/tokens";
-@import "base/reset";
-@import "base/elements";
 
-@import "layout/layout";
+@layer reset, base, layout, components, utilities;
 
-@import "components/content";
-@import "components/code";
-@import "components/navigation";
-@import "components/dialogs";
-@import "components/ui";
+@layer reset {
+  @import "base/reset";
+}
 
-@import "components/columns";
-@import "components/helpers";
+@layer base {
+  @import "base/tokens";
+  @import "base/elements";
+}
 
+@layer layout {
+  @import "layout/layout";
+}
+
+@layer components {
+  @import "components/content";
+  @import "components/code";
+  @import "components/navigation";
+  @import "components/dialogs";
+  @import "components/ui";
+}
+
+@layer utilities {
+  @import "utilities/utilities";
+}
+
+// Custom overrides (unlayered styles naturally override layered styles)
 @import "custom";
