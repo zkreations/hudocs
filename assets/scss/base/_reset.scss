@@ -7,6 +7,13 @@
   box-sizing: border-box;
 }
 
+// Remove default margin
+// https://joshwcomeau.com/css/custom-css-reset/
+
+* {
+  margin: 0;
+}
+
 html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
@@ -63,7 +70,7 @@ a {
   text-decoration: none;
 }
 
-// Lists (reseteadas para UI; listas de markdown se especifican en components/_content.scss)
+// Lists
 ol,
 ul,
 dl,
