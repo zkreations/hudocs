@@ -71,20 +71,17 @@
 
     &.is-active {
       --link-color: var(--color-title);
-      --menu-indicator: var(--color-title);
       font-weight: 500;
 
-    }
-
-  
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 2px;
-      height: 100%;
-      background-color: var(--menu-indicator, transparent);
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background-color: var(--color-title);
+      }
     }
   }
 }

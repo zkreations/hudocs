@@ -20,3 +20,25 @@
     transform: translate3d(0, -1rem, 0) scale(.9);
   }
 }
+
+.list {
+  white-space: nowrap;
+  font-weight: 500;
+
+  &-link {
+    display: block;
+
+    &.is-active {
+      color: var(--color-link);
+      pointer-events: none;
+    }
+
+    &:hover {
+      color: var(--color-link);
+    }
+
+    &+* {
+      margin-top: .5rem;
+    }
+  }
+}

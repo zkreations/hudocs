@@ -258,3 +258,18 @@
     }
   }
 }
+
+.error {
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  &-emoji {
+    font-size: 2rem;
+    opacity: .25;
+    margin-top: 1.5rem;
+  }
+}
