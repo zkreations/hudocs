@@ -13,7 +13,7 @@
   {{ $nextLevel := add $level 1 }}
   <ul class="menu-list{{ if $isSub }} submenu-list{{ end }} level-{{ $level }}">
     {{ range (where .Section.Pages "Params.hidden" "ne" true) }}
-      <li class="menu-item{{ if $isSub }} submenu-item{{ end }} level-{{ $level }}-item{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} is-parent{{end}}">
+      <li class="menu-item{{ if $isSub }} submenu-item{{ end }} level-{{ $level }}-item{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} is-current{{end}}">
         {{ if .IsSection }}
         
           {{- if .Page.IsSection -}}
