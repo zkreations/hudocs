@@ -1,12 +1,14 @@
 
 :root {
-  --color-selection: #{rgba($green-300, .2)};
-  --highlight-selection: #{rgba($green-300, .2)};
-  --highlight-selection-border: #{$green-300};
+  color-scheme: light;
+
+  --color-selection: color-mix(in srgb, var(--primary) 20%, transparent);
+  --highlight-selection: color-mix(in srgb, var(--primary) 20%, transparent);
+  --highlight-selection-border: var(--primary);
   --highlight-bg: #{$black};
 
   --bg-header: #{$white};
-  --bg-mark: #{$yellow-100};
+  --bg-mark: color-mix(in srgb, #{$yellow} 20%, white);
   --bg-overlay: rgb(123 131 135 / 50%);
   --header-height: 70px;
 
@@ -20,12 +22,12 @@
 
   --aside-width: 246px;
 
-  --primary: #{$green-500};
+  --primary: #{$green};
 
   --color-link: var(--primary);
 
-  --btn-primary: #{$green-100};
-  --btn-primary-hover: #{$green-200};
+  --btn-primary: color-mix(in srgb, var(--primary) 20%, white);
+  --btn-primary-hover: color-mix(in srgb, var(--primary) 40%, white);
 
   --color-title: #{$gray-800};
   --color-text: #{$gray-600};
@@ -37,7 +39,7 @@
   --bg-main:  #{$white};
   --bg-low: #{$gray-50};
   --bg-inset: #{$gray-100};
-  --bg-tenue: #{rgba($gray-200, .5)};
+  --bg-tenue: color-mix(in srgb, #{$gray-200} 50%, transparent);
 
   --bg-primary: #{$gray-100};
   --bg-secondary: #{$gray-200};
@@ -45,23 +47,30 @@
   --bg-inverse: #{$gray-900};
   --bg-darken: #{$gray-700};
 
-  --info: #{$blue-700};
-  --info-bg: #{$blue-50};
+  --info: color-mix(in srgb, #{$blue} 60%, black);
+  --info-bg: color-mix(in srgb, #{$blue} 10%, white);
 
-  --success: #{$green-700};
-  --success-bg: #{$green-50};
+  --success: color-mix(in srgb, #{$green} 60%, black);
+  --success-bg: color-mix(in srgb, #{$green} 10%, white);
 
-  --warning: #{$yellow-700};
-  --warning-bg: #{$yellow-50};
+  --warning: color-mix(in srgb, #{$yellow} 60%, black);
+  --warning-bg: color-mix(in srgb, #{$yellow} 10%, white);
 
-  --danger: #{$red-700};
-  --danger-bg: #{$red-50};
+  --danger: color-mix(in srgb, #{$red} 60%, black);
+  --danger-bg: color-mix(in srgb, #{$red} 10%, white);
+
+  &.light {
+    --theme-dark: none;
+  }
 
   &.dark {
-    --primary: #{$green-300};
+    color-scheme: dark;
+    --theme-light: none;
 
-    --btn-primary: #{rgba($green-500, .05)};
-    --btn-primary-hover: #{rgba($green-500, .2)};
+    --primary: color-mix(in srgb, #{$green} 60%, white);
+
+    --btn-primary: color-mix(in srgb, var(--primary) 10%, transparent);
+    --btn-primary-hover: color-mix(in srgb, var(--primary) 25%, transparent);
 
     --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
     --shadow-md: 0px 3px 6px rgb(0 0 0 / 30%);
@@ -77,7 +86,7 @@
     --bg-low: #{$gray-950};
     --bg-main: #{$gray-900};
     --bg-inset: #{$gray-800};
-    --bg-tenue: #{rgba($gray-950, .5)};
+    --bg-tenue: color-mix(in srgb, #{$gray-950} 50%, transparent);
 
     --bg-primary: #{$gray-800};
     --bg-secondary: #{$gray-700};
@@ -86,16 +95,16 @@
     --bg-inverse: #{$gray-950};
     --bg-darken: #{$gray-800};
 
-    --info: #{$blue-200};
-    --info-bg: #{rgba($blue-500, .05)};
+    --info: color-mix(in srgb, #{$blue} 40%, white);
+    --info-bg: color-mix(in srgb, #{$blue} 8%, transparent);
 
-    --success: #{$green-200};
-    --success-bg: #{rgba($green-500, .05)};
+    --success: color-mix(in srgb, #{$green} 40%, white);
+    --success-bg: color-mix(in srgb, #{$green} 8%, transparent);
 
-    --warning: #{$yellow-200};
-    --warning-bg: #{rgba($yellow-500, .05)};
+    --warning: color-mix(in srgb, #{$yellow} 40%, white);
+    --warning-bg: color-mix(in srgb, #{$yellow} 8%, transparent);
 
-    --danger: #{$red-200};
-    --danger-bg: #{rgba($red-500, .05)};
+    --danger: color-mix(in srgb, #{$red} 40%, white);
+    --danger-bg: color-mix(in srgb, #{$red} 8%, transparent);
   }
 }

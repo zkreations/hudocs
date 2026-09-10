@@ -28,27 +28,3 @@ $gray-700: #3f3f46 !default;
 $gray-800: #27272a !default;
 $gray-900: #18181b !default;
 $gray-950: #09090b !default;
-
-// Palette Shades (used in _root.scss)
-$green-50:  tint-color($green, 90%) !default;
-$green-100: tint-color($green, 80%) !default;
-$green-200: tint-color($green, 60%) !default;
-$green-300: tint-color($green, 40%) !default;
-$green-500: $green !default;
-$green-700: shade-color($green, 40%) !default;
-
-$blue-50:   tint-color($blue, 90%) !default;
-$blue-200:  tint-color($blue, 60%) !default;
-$blue-500:  $blue !default;
-$blue-700:  shade-color($blue, 40%) !default;
-
-$red-50:    tint-color($red, 90%) !default;
-$red-200:   tint-color($red, 60%) !default;
-$red-500:   $red !default;
-$red-700:   shade-color($red, 40%) !default;
-
-$yellow-50:  tint-color($yellow, 90%) !default;
-$yellow-100: tint-color($yellow, 80%) !default;
-$yellow-200: tint-color($yellow, 60%) !default;
-$yellow-500: $yellow !default;
-$yellow-700: shade-color($yellow, 40%) !default;

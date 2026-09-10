@@ -30,25 +30,8 @@ pre {
     color: #fff;
     padding: 1rem 0;
 
-    // Firefox
     scrollbar-color: var(--bg-scrollbar-thumb) var(--bg-scrollbar-track);
     scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-      background-color: var(--bg-scrollbar);
-
-      &-track {
-        background-color: var(--bg-scrollbar-track);
-        border-radius: 5px
-      }
-
-      &-thumb {
-        background-color: var(--bg-scrollbar-thumb);
-        border-radius: 10px;
-      }
-    }
 
     @include breakpoint(s) {
       padding: 1.5rem 0;
