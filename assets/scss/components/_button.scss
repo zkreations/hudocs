@@ -11,7 +11,7 @@
   align-items: center;
   column-gap: .5rem;
 
-  &:not(:where(div, p)):hover {
+  &:hover {
     --btn-bg: var(--bg-secondary);
   }
 
