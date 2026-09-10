@@ -1,64 +1,25 @@
 .menu {
-  $this: &;
-
   &-list {
     >*+* {
       margin-top: 1rem;
     }
-
-    #{$this}-list {
-      box-shadow: 2px 0 0 0 var(--color-border) inset;
-      margin: 1.5rem 0;
-      margin-left: .5rem;
-
-      >*+* {
-        margin-top: 0.75rem;
-      }
-
-      #{$this}-item {
-        padding-left: 1.5rem;
-
-        #{$this}-link {
-          &.is-active {
-            --link-color:
-              var(--color-title);
-            font-weight: 500;
-
-            &::before {
-              content: "";
-              width: 2px;
-              height: 100%;
-              background-color: var(--color-title);
-              position: absolute;
-              left: 0;
-              top: 0;
-            }
-          }
-        }
-      }
-    }
   }
 
   &-link {
-    color: var(--link-color,inherit);
+    color: var(--link-color, inherit);
     font-size: 1rem;
 
     &:hover {
-      color: var(--primary)
-    }
-
-    &+#{$this}-list {
-      color: var(--color-text);
-      font-weight: 400;
+      color: var(--primary);
     }
   }
 
   &-item {
     position: relative;
 
-    &.is-parent>#{$this}-link,
-    &.is-parent>label #{$this}-link {
-      --link-color: var(--primary)
+    &.is-parent>.menu-link,
+    &.is-parent>label .menu-link {
+      --link-color: var(--primary);
     }
 
     svg {
@@ -79,7 +40,7 @@
       transform: rotate(180deg);
     }
 
-    &:not(:checked)~#{$this}-list {
+    &:not(:checked)~.submenu-list {
       display: none;
     }
   }
@@ -88,5 +49,39 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+  }
+}
+
+.submenu {
+  &-list {
+    color: var(--color-text);
+    font-weight: 400;
+    box-shadow: 2px 0 0 0 var(--color-border) inset;
+    margin: 1.5rem 0 1.5rem .5rem;
+
+    >*+* {
+      margin-top: 0.75rem;
+    }
+  }
+
+  &-item {
+    padding-left: 1.5rem;
+  }
+
+  &-link {
+    &.is-active {
+      --link-color: var(--color-title);
+      font-weight: 500;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background-color: var(--color-title);
+      }
+    }
   }
 }

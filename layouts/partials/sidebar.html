@@ -1,26 +1,29 @@
 <div class="aside-tree scrollable">
   <div class="aside-menu">
     {{- with .Site.GetPage .Section -}}
-      {{ template "tree-list" (dict "Section" . "CurrentPage" $) }}
+      {{ template "tree-list" (dict "Section" . "CurrentPage" $ "Level" 0) }}
     {{ end }}
   </div>
 </div>
 
 {{ define "tree-list" }}
   {{ $currentNode := .CurrentPage }}
-  <ul class="menu-list">
+  {{ $level := default 0 .Level }}
+  {{ $isSub := gt $level 0 }}
+  {{ $nextLevel := add $level 1 }}
+  <ul class="menu-list{{ if $isSub }} submenu-list{{ end }} level-{{ $level }}">
     {{ range (where .Section.Pages "Params.hidden" "ne" true) }}
-      <li class="menu-item{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} is-parent{{end}}">
+      <li class="menu-item{{ if $isSub }} submenu-item{{ end }} level-{{ $level }}-item{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} is-parent{{end}}">
         {{ if .IsSection }}
         
           {{- if .Page.IsSection -}}
-            <input class="menu-toggle" type="checkbox" id="menu-{{ md5 .Page }}"{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} checked=""{{ end }}>
+            <input class="menu-toggle{{ if $isSub }} submenu-toggle{{ end }}" type="checkbox" id="menu-{{ md5 .Page }}"{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} checked=""{{ end }}>
           {{ end }}
 
-          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage ) }}
-          {{ template "tree-list" (dict "Section" . "CurrentPage" $.CurrentPage ) }}
+          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
+          {{ template "tree-list" (dict "Section" . "CurrentPage" $.CurrentPage "Level" $nextLevel ) }}
         {{ else if and .IsPage .Content }}
-          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage ) }}
+          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
         {{ end }}
       </li>
     {{ end }}
@@ -28,11 +31,13 @@
 {{ end }}
 
 {{ define "tree-link" }}
+  {{ $level := default 0 .Level }}
+  {{ $isSub := gt $level 0 }}
   {{- if .Page.IsSection -}}
-    <label for="menu-{{ md5 .Page }}" class="menu-label has-icon">
+    <label for="menu-{{ md5 .Page }}" class="menu-label has-icon{{ if $isSub }} submenu-label{{ end }}">
   {{ end }}
   
-  <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="menu-link has-icon{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
+  <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="menu-link has-icon{{ if $isSub }} submenu-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
     {{- partial "title" .Page -}}
 
@@ -45,7 +50,9 @@
   </a>
 
   {{- with .Page.IsSection -}}
-    {{ partial "svg" (dict "icon" "chevron-down" "class" "menu-arrow" ) }}
+    {{ $arrowClass := "menu-arrow" }}
+    {{- if $isSub }}{{ $arrowClass = "menu-arrow submenu-arrow" }}{{ end -}}
+    {{ partial "svg" (dict "icon" "chevron-down" "class" $arrowClass ) }}
   {{ end }}
 
   {{- if .Page.IsSection -}}
