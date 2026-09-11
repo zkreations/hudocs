@@ -7,7 +7,7 @@ Hudocs 2.0 admite tablas de Markdown mediante el render hook integrado de Hugo. 
 
 ## Sintaxis nativa de Markdown
 
- Escribe las tablas utilizando la sintaxis estándar de GitHub Flavored Markdown (GFM). La tabla se procesa automáticamente al generar el sitio:
+Escribe las tablas utilizando la sintaxis estándar de GitHub Flavored Markdown (GFM). La tabla se procesa automáticamente al generar el sitio:
 
 ```markdown
 | Columna 1 | Columna 2 | Columna 3 |
@@ -18,7 +18,7 @@ Hudocs 2.0 admite tablas de Markdown mediante el render hook integrado de Hugo. 
 
 ## Desplazamiento horizontal
 
-En Hudocs 2.0, cada tabla de Markdown se procesa mediante el render hook `render-table.html`, el cual agrega el contenedor `.article-table` que permite el desplazamiento horizontal en pantallas pequeñas:
+En Hudocs 2.0, cada tabla de Markdown se procesa mediante el render hook `render-table.html`, que agrega el contenedor `.article-table` para permitir el desplazamiento horizontal cuando la tabla supera el ancho disponible:
 
 ```html
 <div class="article-table">
@@ -47,3 +47,9 @@ El resultado es:
 | :-------- | :------: | ------: |
 | Alpha     | Beta     | 1,000   |
 | Gamma     | Delta    | 25,000  |
+
+## Eliminación del shortcode `table`
+
+En Hudocs 1.x, las tablas debían envolverse en el shortcode `table`. En Hudocs 2.0, el shortcode `table` fue eliminado.
+
+Si tu documentación contiene tablas, elimina las etiquetas de apertura y cierre del shortcode `table` y conserva la sintaxis estándar de Markdown.

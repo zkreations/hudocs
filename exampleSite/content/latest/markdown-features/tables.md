@@ -1,38 +1,24 @@
 ---
 title: Tables
-icon: table
 weight: 1
 ---
 
-Hudocs 2.0 provides native, fully responsive Markdown tables using Hugo's built-in table render hook. You can write clean, standard Markdown tables without wrapping them in custom shortcodes.
+Hudocs 2.0 supports Markdown tables through Hugo's built-in render hook. Tables use standard Markdown syntax and do not require custom shortcodes.
 
 ## Native Markdown Syntax
 
-Write your tables using standard GFM (GitHub Flavored Markdown) syntax:
+Write tables using the standard GitHub Flavored Markdown (GFM) syntax. The table is processed automatically when the site is built:
 
 ```markdown
-| Feature | Hudocs 1.x | Hudocs 2.0 |
-| :--- | :---: | :---: |
-| Responsive Tables | Required shortcode | Native Render Hook |
-| Tooltip System | Custom CSS | Native `title` |
-| Style Architecture | `_utils.scss` | CSS `@layer` |
-| Table of Contents | Scroll listeners | `IntersectionObserver` |
-| Code Tab IDs | Random shuffle | Deterministic |
+| Column 1 | Column 2 | Column 3 |
+| :------- | :------- | :------- |
+| Row 1    | Value A  | Value B  |
+| Row 2    | Value C  | Value D  |
 ```
 
-### Rendered Output
+## Horizontal Scrolling
 
-| Feature | Hudocs 1.x | Hudocs 2.0 |
-| :--- | :---: | :---: |
-| Responsive Tables | Required shortcode | Native Render Hook |
-| Tooltip System | Custom CSS | Native `title` |
-| Style Architecture | `_utils.scss` | CSS `@layer` |
-| Table of Contents | Scroll listeners | `IntersectionObserver` |
-| Code Tab IDs | Random shuffle | Deterministic |
-
-## Built-in Responsive Scroll Hook
-
-In Hudocs 2.0, every Markdown table is processed by `_default/_markup/render-table.html`:
+In Hudocs 2.0, each Markdown table is processed by the `render-table.html` render hook, which adds the `.article-table` container to allow horizontal scrolling when the table exceeds the available width:
 
 ```html
 <div class="article-table">
@@ -40,30 +26,30 @@ In Hudocs 2.0, every Markdown table is processed by `_default/_markup/render-tab
 </div>
 ```
 
-On narrow mobile displays, when tables contain multiple columns or detailed text, the `.article-table` container enables smooth horizontal scrolling without breaking the document layout or overflowing page boundaries.
+## Column Alignment
 
-## Alignment Support
+Align column content by using colons in the separator row:
 
-Align column content using colons in the separator row:
-
-- **Left-aligned**: `:---`
-- **Centered**: `:---:`
-- **Right-aligned**: `---:`
+* **Left-aligned:** `:---`
+* **Centered:** `:---:`
+* **Right-aligned:** `---:`
 
 ```markdown
-| Left Aligned | Centered | Right Aligned |
-| :--- | :---: | ---: |
-| Alpha | Beta | 1,000 |
-| Gamma | Delta | 25,000 |
+| Left  | Center | Right  |
+| :---- | :----: | -----: |
+| Alpha | Beta   | 1,000  |
+| Gamma | Delta  | 25,000 |
 ```
 
-| Left Aligned | Centered | Right Aligned |
-| :--- | :---: | ---: |
-| Alpha | Beta | 1,000 |
-| Gamma | Delta | 25,000 |
+The result is:
 
-## Notice: `table` Shortcode Removed in v2.0
+| Left  | Center | Right  |
+| :---- | :----: | -----: |
+| Alpha | Beta   | 1,000  |
+| Gamma | Delta  | 25,000 |
 
-{{< hint info >}}
-**Upgrade Notice**: In Hudocs 1.x, tables required wrapping in <code>&#123;&#123;&lt; table &gt;&#125;&#125;...&#123;&#123;&lt; /table &gt;&#125;&#125;</code>. In **Hudocs 2.0**, that shortcode has been **completely removed**. You can safely remove the wrapper tags from your Markdown files; Hugo and Hudocs format them natively.
-{{< /hint >}}
+## Removal of the `table` Shortcode
+
+In Hudocs 1.x, tables had to be wrapped in the `table` shortcode. In Hudocs 2.0, the `table` shortcode was removed.
+
+If your documentation contains tables, remove the opening and closing `table` shortcode tags and keep the standard Markdown syntax.
