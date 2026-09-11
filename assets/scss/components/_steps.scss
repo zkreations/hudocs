@@ -1,0 +1,57 @@
+//
+// Steps Component
+// Displays ordered lists as visual step-by-step guides with connectors
+//
+
+.steps {
+  position: relative;
+
+  >ol {
+    counter-reset: steps;
+    list-style: none;
+    margin-inline-start: 0.75rem;
+    padding: 0;
+
+    >li {
+      position: relative;
+      counter-increment: steps;
+      border-inline-start: 1px solid var(--color-border);
+      padding-inline-start: 1.75rem;
+      padding-bottom: 1.5rem;
+
+      &:last-child {
+        border-inline-start-color: transparent;
+        padding-bottom: 0;
+      }
+
+      &::before {
+        content: counter(steps);
+        position: absolute;
+        inset-inline-start: calc(-.875rem - .5px);
+        display: grid;
+        place-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        background-color: var(--bg-main);
+        color: var(--color-title);
+        border: 1px solid var(--color-border);
+        font-size: .875rem;
+        font-weight: 500;
+        z-index: 1;
+        outline: .5rem solid var(--bg-main);
+      }
+
+      > :is(h2, h3, h4, h5, h6):first-child {
+        border-top: 0;
+        padding-top: 0;
+        margin-top: 0;
+        min-height: 1.75rem;
+        line-height: 1.75rem;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
