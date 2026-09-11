@@ -35,10 +35,6 @@ Create explanatory code blocks, more powerful than normal code blocks.
 {{</* /code */>}}
 ```
 
-{{< code >}}
-...content
-{{< /code >}}
-
 
 ## Code with example
 
@@ -47,10 +43,6 @@ Create explanatory code blocks, more powerful than normal code blocks.
 A paragraph with a <strong>Bold</strong> and an <em>Italic</em>
 {{</* /code */>}}
 ```
-
-{{< code example=true >}}
-A paragraph with a <strong>Bold</strong> and an <em>Italic</em>
-{{< /code >}}
 
 
 ## Code explained
@@ -62,12 +54,6 @@ document.querySelector("body");
 This code is selecting the body of the document.
 {{</* /code */>}}
 ```
-
-{{< code lang="js" >}}
-document.querySelector("body");
-<---->
-This code is selecting the body of the document.
-{{< /code >}}
 
 
 ## Code with tabs
@@ -85,15 +71,3 @@ This code is selecting the body of the document.
 {{</* /tab */>}}
 {{</* /code */>}}
 ```
-
-{{< code >}}
-{{< tab "html" >}}
-...content
-{{< /tab >}}
-{{< tab "css" >}}
-...content
-{{< /tab >}}
-{{< tab "js" "main.js" >}}
-...content
-{{< /tab >}}
-{{< /code >}}

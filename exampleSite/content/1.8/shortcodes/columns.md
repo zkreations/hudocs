@@ -35,14 +35,3 @@ All this from an island of just...
 The artist Christo, known for wrapping buildings...
 {{</* /columns */>}}
 ```
-
-{{< columns >}}
-### Medicine
-As young doctors working in acute psychiatric wards, serious mental illnesses are our daily reality. 
-<---->
-### Countries
-All this from an island of just three and a half million souls, plus the other five million Puerto Ricans living in the US.
-<---->
-### History
-The artist Christo, known for wrapping buildings, including Berlin's Reichstag, has died aged 84.
-{{< /columns >}}

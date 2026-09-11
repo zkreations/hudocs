@@ -37,10 +37,6 @@ Crea bloques de código explicativos, mas poderosos que los bloques de código n
 {{</* /code */>}}
 ```
 
-{{< code >}}
-...content
-{{< /code >}}
-
 
 ## Código con ejemplo
 
@@ -49,10 +45,6 @@ Crea bloques de código explicativos, mas poderosos que los bloques de código n
 Un párrafo con una <strong>Negrita</strong> y una <em>Itálica</em>
 {{</* /code */>}}
 ```
-
-{{< code example=true >}}
-Un párrafo con una <strong>Negrita</strong> y una <em>Itálica</em>
-{{< /code >}}
 
 
 ## Código explicado
@@ -64,12 +56,6 @@ document.querySelector("body");
 Este código esta seleccionando el cuerpo del documento.
 {{</* /code */>}}
 ```
-
-{{< code lang="js" >}}
-document.querySelector("body");
-<---->
-Este código esta seleccionando el cuerpo del documento.
-{{< /code >}}
 
 
 ## Código con pestañas
@@ -87,15 +73,3 @@ Este código esta seleccionando el cuerpo del documento.
 {{</* /tab */>}}
 {{</* /code */>}}
 ```
-
-{{< code >}}
-{{< tab "html" >}}
-...content
-{{< /tab >}}
-{{< tab "css" >}}
-...content
-{{< /tab >}}
-{{< tab "js" "main.js" >}}
-...content
-{{< /tab >}}
-{{< /code >}}
