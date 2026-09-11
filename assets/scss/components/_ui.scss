@@ -37,6 +37,15 @@
     --alert-bg: var(--warning-bg);
     --alert-color: var(--warning);
   }
+
+  &-content {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 // Badges
@@ -92,8 +101,20 @@
   width: var(--svg-size, 20px);
   height: var(--svg-size, 20px);
 
+  &-sm {
+    --svg-size: 18px;
+  }
+
   &-md {
     --svg-size: 24px;
+  }
+
+  &-lg {
+    --svg-size: 32px;
+  }
+
+  &-xl {
+    --svg-size: 48px;
   }
 }
 
