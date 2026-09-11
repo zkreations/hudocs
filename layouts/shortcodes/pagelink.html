@@ -1,15 +1,47 @@
-{{- $href := .Get "href" | default "#undefined" -}}
-{{- $title := .Get "title" | default "undefined" -}}
-{{- $icon := .Get "icon" | default ( cond (hasPrefix $href "http") "arrow-up-right" "chain" ) -}}
-{{- $name := .Get "name" -}}
+{{- $href := "" -}}
+{{- $title := "" -}}
+{{- $desc := "" -}}
+{{- $icon := "" -}}
+{{- $rel := "" -}}
 
-<a class="pagelink" href="{{ $href | relLangURL}}"{{ if hasPrefix  $href  "http" }} target="_blank" rel="noreferrer nofollow noopener"{{ end }}>
-  <span class="pagelink-icon i-md">
+{{- if .IsNamedParams -}}
+  {{- $href = .Get "href" -}}
+  {{- $title = .Get "title" -}}
+  {{- $desc = .Get "description" | default (.Get "subtitle") -}}
+  {{- $icon = .Get "icon" -}}
+  {{- $rel = .Get "rel" -}}
+{{- else -}}
+  {{- $href = .Get 0 -}}
+  {{- $title = .Get 1 -}}
+  {{- $desc = .Get 2 -}}
+  {{- $icon = .Get 3 -}}
+  {{- $rel = .Get 4 -}}
+{{- end -}}
+
+{{- with $icon -}}
+  {{- $icon = trim . " " -}}
+{{- end -}}
+
+{{- if not $href -}}
+  {{- errorf "%s: missing 'href' parameter for 'pagelink' shortcode." .Position -}}
+{{- end -}}
+
+{{- if not $title -}}
+  {{- errorf "%s: missing 'title' parameter for 'pagelink' shortcode." .Position -}}
+{{- end -}}
+
+{{- $link := partial "resolve-link" (dict "href" $href "rel" $rel) -}}
+{{- if not $icon -}}
+  {{- $icon = cond $link.isExternal "arrow-up-right" "chain" -}}
+{{- end -}}
+
+<a class="pagelink has-icon" href="{{ $link.url }}"{{ with $link.target }} target="{{ . }}"{{ end }}{{ with $link.rel }} rel="{{ . }}"{{ end }}>
+  <span class="pagelink-icon i-md icon-adjust">
     {{- partial "svg" (dict "icon" $icon) -}}
   </span>
   <span class="pagelink-content">
     <span class="pagelink-title">{{ $title }}</span>
-    {{- with $name -}}
+    {{- with $desc -}}
       <span class="pagelink-meta">{{ . }}</span>
     {{- end -}}
   </span>
