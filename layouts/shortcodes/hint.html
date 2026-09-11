@@ -1,9 +1,24 @@
-{{- $type := .Get 0 -}}
+{{- $type := .Get "type" | default (.Get 0) -}}
+{{- $icon := .Get "icon" | default (.Get 1) -}}
+{{- with $icon -}}
+  {{- $icon = trim . " " -}}
+{{- end -}}
 
-<blockquote class="alert{{ with $type }} alert-{{ . }}{{ end }} p-1.25">
-  {{- if hasPrefix (trim .Inner " \r\n\t") "<" -}}
-    {{- .Inner -}}
+{{- $content := .Page.RenderString .Inner -}}
+{{- $role := "note" -}}
+{{- if or (eq $type "warning") (eq $type "danger") (eq $type "error") -}}
+  {{- $role = "alert" -}}
+{{- end -}}
+
+<aside class="alert{{ with $type }} alert-{{ . }}{{ end }}{{ with $icon }} has-icon{{ end }}" role="{{ $role }}">
+  {{- with $icon -}}
+    <span class="alert-icon i-md icon-adjust">
+      {{- partial "svg" (dict "icon" .) -}}
+    </span>
+    <div class="alert-content">
+      {{- $content -}}
+    </div>
   {{- else -}}
-    {{- .Inner | markdownify -}}
+    {{- $content -}}
   {{- end -}}
-</blockquote>
+</aside>
