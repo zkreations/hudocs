@@ -12,11 +12,9 @@ pre {
 }
 
 .highlight {
-
   --bg-scrollbar: transparent;
   --bg-scrollbar-track: rgb(0 0 0 / 25%);
   --bg-scrollbar-thumb: #485158;
-
   background: var(--bg-inverse);
   position: relative;
   border-radius: .5rem;
@@ -69,117 +67,62 @@ pre {
   }
 }
 
-.code {
-  >.highlight {
-    &:not(:first-child) {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
+.code-copy {
+  position: absolute;
+  right: -.5rem;
+  top: -.5rem;
+  border-radius: 50rem;
+  background-color: var(--bg, var(--bg-darken));
+  color: #fff;
+  padding: 0.5rem;
+  transition: background-color .3s;
+  --svg-size: 18px;
 
-    &:not(:last-child) {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  &-example {
-    padding: 1.25rem 1.5rem;
-    border: 1px solid var(--color-border);
-    border-bottom: 0 none;
-    border-radius: 0.5rem 0.5rem 0 0;
-
-    +.codetabs {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
-
-  &-explained {
-    padding: 1.25rem 1.5rem;
-    background-color: var(--bg-inset);
-    overflow-x: auto;
-    --space-block: 1rem;
-
-    pre {
-      padding: 1rem;
-      background-color: var(--bg-tenue);
-      overflow: auto;
-      white-space: pre-wrap;
-    }
-  }
-
-  &-copy {
-    position: absolute;
-    right: -.5rem;
-    top: -.5rem;
-    border-radius: 50rem;
-    background-color: var(--bg, var(--bg-darken));
-    color: #fff;
-    padding: 0.5rem;
-    transition: background-color .3s;
-    --svg-size: 18px;
-
-    &:hover {
-      --bg: var(--primary);
-    }
+  &:hover {
+    --bg: var(--primary);
   }
 }
 
+.annotated__note,
+.explain {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bg-inset);
+  border: 1px solid var(--color-border);
+  border-radius: .5rem;
+  margin-block: var(--space-block, 1.5rem);
+  --space-block: 1rem;
 
-.codetabs {
-
-  &:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  pre {
+    padding: 1rem;
+    background-color: var(--bg-tenue);
+    overflow: auto;
+    white-space: pre-wrap;
   }
 
-  &:not(:last-child) .highlight {
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.annotated {
+  margin-block: var(--space-block, 1.5rem);
+
+  > *:not(.annotated__note, .explain) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    margin-bottom: 0;
   }
 
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: var(--highlight-bg);
-  border-radius: .5rem;
-
-  input {
-    &:not(:checked)+*+* {
-      display: none;
-    }
-
-    &[type=radio] {
-      display: contents;
-    }
-
-    &:checked+label {
-      background-color: var(--bg-inverse);
-      color: #fff;
-    }
-  }
-
-  label {
-    cursor: pointer;
-    padding: .75rem 1rem;
-
-    @include breakpoint(s) {
-      padding: .75rem 1.5rem;
-    }
-
-    font-size: .875rem;
-
-    &:first-of-type {
-      border-top-left-radius: .5rem;
-    }
-  }
-
-  .highlight {
+  > :is(.annotated__note, .explain) {
+    border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    position: static;
-    order: 9999;
-    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
