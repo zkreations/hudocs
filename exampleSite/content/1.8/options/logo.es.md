@@ -9,21 +9,27 @@ El logo puede estar conformado por texto, un icono del paquete [Meteor Icons](ht
 
 En este caso dispones de dos parámetros personalizados. Si deseas un icono junto al texto define `logo_icon` con el nombre del icono que puedes obtener en [Meteor Icons](https://meteoricons.com/). Si deseas una imagen define `logo_img`. Si no defines ninguno de los dos, se mostrará solo el texto.
 
-{{< code >}}
-{{< tab "toml" >}}
+{{% tabs %}}
+{{% tab "TOML" %}}
+```toml
 [params]
   main_icon = "book-open"
   main_logo = "tu-logo.svg"
-{{< /tab >}}
-{{< tab "yaml" >}}
+```
+{{% /tab %}}
+{{% tab "YAML" %}}
+```yaml
 params:
   main_icon: "book-open"
   main_logo: "tu-logo.svg"
-{{< /tab >}}
-{{< tab "json" >}}
+```
+{{% /tab %}}
+{{% tab "JSON" %}}
+```json
 "params": {
   "main_icon": "book-open",
   "main_logo": "tu-logo.svg"
 }
-{{< /tab >}}
-{{< /code >}}
+```
+{{% /tab %}}
+{{% /tabs %}}

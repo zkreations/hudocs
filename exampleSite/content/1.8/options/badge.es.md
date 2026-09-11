@@ -54,24 +54,30 @@ Si `badge_url` no está definido en la página, se utilizará el valor definido 
 
 Los siguientes parámetros se pueden definir en el archivo de configuración de goHugo, dentro de la sección de parámetros personalizados:
 
-{{< code >}}
-{{< tab "toml" >}}
+{{% tabs %}}
+{{% tab "TOML" %}}
+```toml
 [params]
   badge_text = "New"
   badge_url = "https://www.zkreations.com"
-{{< /tab >}}
-{{< tab "yaml" >}}
+```
+{{% /tab %}}
+{{% tab "YAML" %}}
+```yaml
 params:
   badge_text: "New"
   badge_url: "https://www.zkreations.com"
-{{< /tab >}}
-{{< tab "json" >}}
+```
+{{% /tab %}}
+{{% tab "JSON" %}}
+```json
 "params": {
   "badge_text": "New",
   "badge_url": "https://www.zkreations.com"
 }
-{{< /tab >}}
-{{< /code >}}
+```
+{{% /tab %}}
+{{% /tabs %}}
 
 ### Prioridad de los parámetros
 

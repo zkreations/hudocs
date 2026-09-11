@@ -9,21 +9,27 @@ The logo can be composed of text, an icon from the [Meteor Icons](https://meteor
 
 In this case, you have two custom parameters available. If you want an icon alongside the text, define `logo_icon` with the name of the icon you can obtain from [Meteor Icons](https://meteoricons.com/). If you want an image, define `logo_img`. If you don't define either of them, only the text will be displayed.
 
-{{< code >}}
-{{< tab "toml" >}}
+{{% tabs %}}
+{{% tab "TOML" %}}
+```toml
 [params]
   main_icon = "book-open"
   main_logo = "your-logo.svg"
-{{< /tab >}}
-{{< tab "yaml" >}}
+```
+{{% /tab %}}
+{{% tab "YAML" %}}
+```yaml
 params:
   main_icon: "book-open"
   main_logo: "your-logo.svg"
-{{< /tab >}}
-{{< tab "json" >}}
+```
+{{% /tab %}}
+{{% tab "JSON" %}}
+```json
 "params": {
   "main_icon": "book-open",
   "main_logo": "your-logo.svg"
 }
-{{< /tab >}}
-{{< /code >}}
+```
+{{% /tab %}}
+{{% /tabs %}}

@@ -21,8 +21,9 @@ The configurations also include several optional HTTP headers that help improve 
 
 The following is an example configuration for Netlify and Vercel. While these files are not required, they can be useful for quickly configuring your project:
 
-{{< code >}}
-{{< tab "toml" "netlify.toml" >}}
+{{% tabs %}}
+{{% tab "netlify.toml" %}}
+```toml
 [build]
   command = "hugo --minify"
   publish = "public"
@@ -40,8 +41,10 @@ The following is an example configuration for Netlify and Vercel. While these fi
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "geolocation=(self), microphone=(), camera=()"
     Cache-Control = "public, max-age=31536000"
-{{< /tab >}}
-{{< tab "json" "vercel.json" >}}
+```
+{{% /tab %}}
+{{% tab "vercel.json" %}}
+```json
 {
   "version": 2,
   "build": {
@@ -86,8 +89,9 @@ The following is an example configuration for Netlify and Vercel. While these fi
     }
   ]
 }
-{{< /tab >}}
-{{< /code >}}
+```
+{{% /tab %}}
+{{% /tabs %}}
 
 ### Hugo version
 

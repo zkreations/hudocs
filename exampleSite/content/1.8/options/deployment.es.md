@@ -21,8 +21,9 @@ Las configuraciones también incluyen varios encabezados HTTP opcionales que ayu
 
 A continuación se muestra un ejemplo de configuración para Netlify y Vercel. Si bien no es necesario que uses estos archivos, puede ser útil para configurar tu proyecto rápidamente:
 
-{{< code >}}
-{{< tab "toml" "netlify.toml" >}}
+{{% tabs %}}
+{{% tab "netlify.toml" %}}
+```toml
 [build]
   command = "hugo --minify"
   publish = "public"
@@ -40,8 +41,10 @@ A continuación se muestra un ejemplo de configuración para Netlify y Vercel. S
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Permissions-Policy = "geolocation=(self), microphone=(), camera=()"
     Cache-Control = "public, max-age=31536000"
-{{< /tab >}}
-{{< tab "json" "vercel.json" >}}
+```
+{{% /tab %}}
+{{% tab "vercel.json" %}}
+```json
 {
   "version": 2,
   "build": {
@@ -86,8 +89,9 @@ A continuación se muestra un ejemplo de configuración para Netlify y Vercel. S
     }
   ]
 }
-{{< /tab >}}
-{{< /code >}}
+```
+{{% /tab %}}
+{{% /tabs %}}
 
 ### Versión de Hugo
 
