@@ -1,0 +1,110 @@
+//
+// Tabs Component
+// Standalone reusable tabs with automatic code block fusion
+//
+
+.tabs {
+  --tabs-radius: 0.5rem;
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-block: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--tabs-radius);
+  background-color: var(--bg-main);
+
+  .tab-toggle { display: none; }
+
+  .tab-label {
+    order: 0;
+    z-index: 1;
+    margin-bottom: -1px;
+    padding: 0.625rem 1.25rem;
+    border-bottom: 2px solid transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+
+    &:hover {
+      color: var(--color-title);
+    }
+  }
+
+  .tab-toggle:checked + .tab-label {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .tab-toggle:focus-visible + .tab-label {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+  }
+
+  .tab-content {
+    order: 9999;
+    display: none;
+    width: 100%;
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .tab-toggle:checked + .tab-label + .tab-content {
+    display: block;
+  }
+
+  //
+  // Code Block Fusion Mode
+  // Activates when the tab content is a code block, or via .tabs-code class
+  //
+  &:has(> .tab-content > .highlight:only-child) {
+    border: 0;
+    background-color: var(--highlight-bg);
+
+    .tab-label {
+      margin-bottom: 0;
+      border-bottom: 0;
+      background-color: var(--highlight-bg);
+
+      @include breakpoint(s) {
+        padding-inline: 1.5rem;
+      }
+
+      &:hover {
+        color: #fff;
+      }
+
+      &:first-of-type {
+        border-top-left-radius: var(--tabs-radius);
+      }
+    }
+
+    .tab-toggle:checked + .tab-label {
+      background-color: var(--bg-inverse);
+      color: #fff;
+    }
+
+    .tab-content {
+      padding: 0;
+      border-top: 0;
+
+      .highlight {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+}
