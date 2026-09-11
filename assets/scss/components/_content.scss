@@ -163,7 +163,7 @@
     }
   }
 
-  > *:not(:last-child, .code-example),
+  > *:not(:last-child, h1, h2, h3, h4, h5, h6, .code-example),
   :where(p, pre, table, blockquote, video, iframe, ol, ul, img, audio, figure):not(:last-child, figure :last-of-type, .code-example) {
     margin-bottom: var(--space-block);
   }
