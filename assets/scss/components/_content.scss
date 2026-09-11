@@ -49,6 +49,10 @@
 
   &-table {
     overflow-x: auto;
+
+    &-fixed {
+      table-layout: fixed;
+    }
   }
 }
 
@@ -150,16 +154,14 @@
 
   table {
     width: 100%;
-    table-layout: fixed;
 
     th {
-      font-weight: 700;
+      font-weight: 500;
     }
 
     tr>* {
-      padding: .5rem 1rem;
-      border: 1px solid var(--color-border-inset);
-      min-width: 60px;
+      padding: .5rem .75rem;
+      border: 1px solid var(--color-border);
     }
   }
 
