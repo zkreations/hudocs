@@ -1,7 +1,4 @@
-<div class="columns{{ with .Get 0 }} {{ . }}{{ end }}">
-  {{ range split .Inner "<---->" }}
-    <div class="column">
-      {{ . | markdownify }}
-    </div>
-  {{ end }}
+{{- $class := .Get "class" | default (.Get 0) -}}
+<div class="columns{{ with $class }} {{ . }}{{ end }}">
+  {{- .Inner -}}
 </div>
