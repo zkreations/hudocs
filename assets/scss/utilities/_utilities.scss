@@ -9,8 +9,17 @@
   gap: var(--space-block, 1.5rem);
   align-items: flex-start;
 
-  > * {
+  >* {
     flex: 1 1 0;
+    min-width: 0;
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 
   @include breakpoint(m, max) {
@@ -23,6 +32,13 @@
   display: flex;
   align-items: center;
   column-gap: var(--btn-gap, .75rem);
+}
+
+.icon-adjust {
+  position: relative;
+  top: 2px;
+  flex: none;
+  align-self: flex-start;
 }
 
 // Text Truncation
@@ -57,4 +73,3 @@
   transition-duration: 0s !important;
   animation-duration: 0s !important;
 }
-
