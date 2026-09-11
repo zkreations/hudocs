@@ -1,5 +1,9 @@
 {{- $type := .Get 0 -}}
 
-<blockquote  class="alert{{ with $type }} alert-{{ . }}{{ end }} p-1.25">
-  {{ .Inner | markdownify }}
+<blockquote class="alert{{ with $type }} alert-{{ . }}{{ end }} p-1.25">
+  {{- if hasPrefix (trim .Inner " \r\n\t") "<" -}}
+    {{- .Inner -}}
+  {{- else -}}
+    {{- .Inner | markdownify -}}
+  {{- end -}}
 </blockquote>
