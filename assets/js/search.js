@@ -58,11 +58,12 @@ async function initSearch () {
       throw new Error(`Failed to load search data: ${response.status}`)
     }
 
-    const data = await response.json()
-    docMap = new Map(data.documents.map(doc => [doc.id, doc]))
+    const rows = await response.json()
+    docMap = new Map()
 
-    docMap.forEach((doc, id) => {
-      index.add(id, `${doc.title} ${doc.content}`)
+    rows.forEach(([id, url, title, parent, summary, content]) => {
+      docMap.set(id, { url, title, parent, summary })
+      index.add(id, `${title} ${content}`)
     })
 
     isReady = true

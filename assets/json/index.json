@@ -1,5 +1,5 @@
-{{- $index := slice -}}
-
+{{- $comma := false -}}
+[
 {{- range $i, $page := where .Site.Pages "Section" .Section -}}
   {{- if and .File (ne $page.RelPermalink $.RelPermalink) (or .Title (truncate 120 .Plain)) -}}
     {{- $content := .Content | replaceRE "(?s)<pre[^>]*>.*?</pre>" "" | plainify | replaceRE "\\s{2,}" " " | strings.TrimSpace -}}
@@ -19,17 +19,9 @@
       {{- $parentSection = $parent.Title -}}
     {{- end -}}
 
-    {{- $index = $index | append (dict
-      "id" $i
-      "url" $page.RelPermalink
-      "summary" $summary
-      "title" $page.Title
-      "parent" $parentSection
-      "content" $content
-    ) -}}
+    {{- if $comma }},{{ end -}}
+    {{- (slice $i $page.RelPermalink $page.Title $parentSection $summary $content) | jsonify -}}
+    {{- $comma = true -}}
   {{- end -}}
 {{- end -}}
-
-{
-  "documents": {{ $index | jsonify }}
-}
+]
