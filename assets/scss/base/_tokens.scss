@@ -129,6 +129,8 @@ $gray-950: #09090b !default;
 
     --danger: color-mix(in srgb, #{$red} 40%, white);
     --danger-bg: color-mix(in srgb, #{$red} 8%, transparent);
+
+    --bg-mark: color-mix(in srgb, #{$yellow} 30%, transparent);
   }
 }
 
