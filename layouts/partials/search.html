@@ -1,14 +1,14 @@
-<div class="search" id="search-box">
+<div class="search" id="search-box" role="dialog" aria-modal="true" aria-label='{{- i18n "search" -}}'>
   <div class="search-content scrollable" data-dialog>
     <div class="search-form">
-      <label class="search-icon">{{ partial "svg" (dict "icon" "search") }}</label>
-      <input class="search-input" id="search-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder='{{- i18n "search_in_doc" -}}' maxlength="64"/>
+      <label class="search-icon" for="search-input">{{ partial "svg" (dict "icon" "search") }}</label>
+      <input class="search-input" id="search-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder='{{- i18n "search_in_doc" -}}' maxlength="64" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="listbox" aria-controls="search-results"/>
       <button data-close="" aria-label='{{ i18n "close" }}' class="search-close">
         {{ partial "svg" (dict "icon" "xmark") }}
       </button>
     </div>
     <div class="search-results">
-      <div class="search-list" id="search-results"></div>
+      <div class="search-list" id="search-results" role="listbox" aria-label='{{- i18n "search" -}}' aria-live="polite"></div>
     </div>
   </div>
 </div>
