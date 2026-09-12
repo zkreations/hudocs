@@ -10,26 +10,26 @@ Los shortcodes `annotated` y `explain` permiten combinar un elemento de contenid
 El shortcode `annotated` actúa como contenedor y `explain` añade la nota explicativa. El shortcode `explain` debe utilizarse directamente dentro de `annotated`.
 
 ````markdown
-{{%/* annotated */%}}
+{{</* annotated */>}}
 ```javascript
 console.log("Hola mundo");
 ```
-{{%/* explain */%}}
+{{</* explain */>}}
 Nota explicativa.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
 ### Resultado
 
-{{% annotated %}}
+{{< annotated >}}
 ```javascript
 console.log("Hola mundo");
 ```
-{{% explain %}}
+{{< explain >}}
 Nota explicativa.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Parámetros
 
@@ -50,135 +50,135 @@ Nota explicativa.
 Utiliza `annotated` para agrupar un bloque de código con su explicación:
 
 ````markdown
-{{%/* annotated */%}}
+{{</* annotated */>}}
 ```bash
 npm install @ejemplo/sdk
 ```
-{{%/* explain */%}}
+{{</* explain */>}}
 Este comando instala el paquete `@ejemplo/sdk` mediante npm.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
-{{% annotated %}}
+{{< annotated >}}
 ```bash
 npm install @ejemplo/sdk
 ```
-{{% explain %}}
+{{< explain >}}
 Este comando instala el paquete `@ejemplo/sdk` mediante npm.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Tabs
 
 Puedes combinar `annotated` con `tabs` para añadir una explicación común a varias pestañas:
 
 ```markdown
-{{%/* annotated */%}}
-{{%/* tabs */%}}
-{{%/* tab "Saludo" */%}}
+{{</* annotated */>}}
+{{</* tabs */>}}
+{{</* tab "Saludo" */>}}
 Hola, este es un ejemplo de explicación común a varias pestañas.
-{{%/* /tab */%}}
-{{%/* tab "Despedida" */%}}
+{{</* /tab */>}}
+{{</* tab "Despedida" */>}}
 Adiós, este es un ejemplo de explicación común a varias pestañas.
-{{%/* /tab */%}}
-{{%/* /tabs */%}}
-{{%/* explain */%}}
+{{</* /tab */>}}
+{{</* /tabs */>}}
+{{</* explain */>}}
 Este es un ejemplo de explicación común a varias pestañas.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ```
 
-{{% annotated %}}
-{{% tabs %}}
-{{% tab "Saludo" %}}
+{{< annotated >}}
+{{< tabs >}}
+{{< tab "Saludo" >}}
 Hola, este es un ejemplo de explicación común a varias pestañas.
-{{% /tab %}}
-{{% tab "Despedida" %}}
+{{< /tab >}}
+{{< tab "Despedida" >}}
 Adiós, este es un ejemplo de explicación común a varias pestañas.
-{{% /tab %}}
-{{% /tabs %}}
-{{% explain %}}
+{{< /tab >}}
+{{< /tabs >}}
+{{< explain >}}
 Este es un ejemplo de explicación común a varias pestañas.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Tabs de código
 
 También puedes combinar `annotated` con `tabs` y `tab` para añadir una explicación común a varias pestañas de código:
 
 ````markdown
-{{%/* annotated */%}}
-{{%/* tabs */%}}
-{{%/* tab "npm" */%}}
+{{</* annotated */>}}
+{{</* tabs */>}}
+{{</* tab "npm" */>}}
 ```bash
 npm install @ejemplo/sdk
 ```
-{{%/* /tab */%}}
-{{%/* tab "yarn" */%}}
+{{</* /tab */>}}
+{{</* tab "yarn" */>}}
 ```bash
 yarn add @ejemplo/sdk
 ```
-{{%/* /tab */%}}
-{{%/* /tabs */%}}
-{{%/* explain */%}}
+{{</* /tab */>}}
+{{</* /tabs */>}}
+{{</* explain */>}}
 Este paquete requiere Node.js 18 o superior.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
-{{% annotated %}}
-{{% tabs %}}
-{{% tab "npm" %}}
+{{< annotated >}}
+{{< tabs >}}
+{{< tab "npm" >}}
 ```bash
 npm install @ejemplo/sdk
 ```
-{{% /tab %}}
-{{% tab "yarn" %}}
+{{< /tab >}}
+{{< tab "yarn" >}}
 ```bash
 yarn add @ejemplo/sdk
 ```
-{{% /tab %}}
-{{% /tabs %}}
-{{% explain %}}
+{{< /tab >}}
+{{< /tabs >}}
+{{< explain >}}
 Este paquete requiere Node.js 18 o superior.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Tablas
 
 También puedes combinar una tabla con una nota explicativa:
 
 ```markdown
-{{%/* annotated */%}}
+{{</* annotated */>}}
 | Parámetro | Tipo | Por defecto |
 | :--- | :--- | :--- |
 | `timeout` | number | `3000` |
 | `retries` | number | `3` |
-{{%/* explain */%}}
+{{</* explain */>}}
 El valor de `timeout` se expresa en milisegundos.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ```
 
-{{% annotated %}}
+{{< annotated >}}
 | Parámetro | Tipo | Por defecto |
 | :--- | :--- | :--- |
 | `timeout` | number | `3000` |
 | `retries` | number | `3` |
-{{% explain %}}
+{{< explain >}}
 El valor de `timeout` se expresa en milisegundos.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Restricción de explain
 
 El shortcode `explain` debe estar contenido directamente dentro de `annotated`. Si se utiliza fuera de este contenedor, Hugo detiene la compilación e informa del error correspondiente.
 
 ```markdown
-{{%/* explain */%}}
+{{</* explain */>}}
 Esta nota no es válida.
-{{%/* /explain */%}}
+{{</* /explain */>}}
 ```
 
 El contenido de `explain` se procesa mediante `.Page.RenderString`, por lo que admite Markdown.

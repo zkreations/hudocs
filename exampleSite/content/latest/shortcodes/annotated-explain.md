@@ -10,26 +10,26 @@ The `annotated` and `explain` shortcodes let you pair a content element with an 
 The `annotated` shortcode acts as the container and `explain` adds the explanatory note. The `explain` shortcode must be used directly inside `annotated`.
 
 ````markdown
-{{%/* annotated */%}}
+{{</* annotated */>}}
 ```javascript
 console.log("Hello world");
 ```
-{{%/* explain */%}}
+{{</* explain */>}}
 Explanatory note.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
 ### Result
 
-{{% annotated %}}
+{{< annotated >}}
 ````javascript
 console.log("Hello world");
 ````
-{{% explain %}}
+{{< explain >}}
 Explanatory note.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Parameters
 
@@ -50,135 +50,135 @@ Explanatory note.
 Use `annotated` to pair a code block with its explanation:
 
 ````markdown
-{{%/* annotated */%}}
+{{</* annotated */>}}
 ```bash
 npm install @example/sdk
 ```
-{{%/* explain */%}}
+{{</* explain */>}}
 This command installs the `@example/sdk` package via npm.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
-{{% annotated %}}
+{{< annotated >}}
 ````bash
 npm install @example/sdk
 ````
-{{% explain %}}
+{{< explain >}}
 This command installs the `@example/sdk` package via npm.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Tabs
 
 You can combine `annotated` with `tabs` to attach a shared explanation to multiple tabs:
 
 ````markdown
-{{%/* annotated */%}}
-{{%/* tabs */%}}
-{{%/* tab "Greeting" */%}}
+{{</* annotated */>}}
+{{</* tabs */>}}
+{{</* tab "Greeting" */>}}
 Hello, this is an example of a shared explanation across multiple tabs.
-{{%/* /tab */%}}
-{{%/* tab "Farewell" */%}}
+{{</* /tab */>}}
+{{</* tab "Farewell" */>}}
 Goodbye, this is an example of a shared explanation across multiple tabs.
-{{%/* /tab */%}}
-{{%/* /tabs */%}}
-{{%/* explain */%}}
+{{</* /tab */>}}
+{{</* /tabs */>}}
+{{</* explain */>}}
 This is an example of a shared explanation across multiple tabs.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
-{{% annotated %}}
-{{% tabs %}}
-{{% tab "Greeting" %}}
+{{< annotated >}}
+{{< tabs >}}
+{{< tab "Greeting" >}}
 Hello, this is an example of a shared explanation across multiple tabs.
-{{% /tab %}}
-{{% tab "Farewell" %}}
+{{< /tab >}}
+{{< tab "Farewell" >}}
 Goodbye, this is an example of a shared explanation across multiple tabs.
-{{% /tab %}}
-{{% /tabs %}}
-{{% explain %}}
+{{< /tab >}}
+{{< /tabs >}}
+{{< explain >}}
 This is an example of a shared explanation across multiple tabs.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Code tabs
 
 You can also combine `annotated` with `tabs` and `tab` to attach a shared explanation to multiple code tabs:
 
 ````markdown
-{{%/* annotated */%}}
-{{%/* tabs */%}}
-{{%/* tab "npm" */%}}
+{{</* annotated */>}}
+{{</* tabs */>}}
+{{</* tab "npm" */>}}
 ```bash
 npm install @example/sdk
 ```
-{{%/* /tab */%}}
-{{%/* tab "yarn" */%}}
+{{</* /tab */>}}
+{{</* tab "yarn" */>}}
 ```bash
 yarn add @example/sdk
 ```
-{{%/* /tab */%}}
-{{%/* /tabs */%}}
-{{%/* explain */%}}
+{{</* /tab */>}}
+{{</* /tabs */>}}
+{{</* explain */>}}
 This package requires Node.js 18 or higher.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
-{{% annotated %}}
-{{% tabs %}}
-{{% tab "npm" %}}
+{{< annotated >}}
+{{< tabs >}}
+{{< tab "npm" >}}
 ````bash
 npm install @example/sdk
 ````
-{{% /tab %}}
-{{% tab "yarn" %}}
+{{< /tab >}}
+{{< tab "yarn" >}}
 ````bash
 yarn add @example/sdk
 ````
-{{% /tab %}}
-{{% /tabs %}}
-{{% explain %}}
+{{< /tab >}}
+{{< /tabs >}}
+{{< explain >}}
 This package requires Node.js 18 or higher.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## Tables
 
 You can also pair a table with an explanatory note:
 
 ````markdown
-{{%/* annotated */%}}
+{{</* annotated */>}}
 | Parameter | Type   | Default |
 | :-------- | :----- | :------ |
 | `timeout` | number | `3000`  |
 | `retries` | number | `3`     |
-{{%/* explain */%}}
+{{</* explain */>}}
 The `timeout` value is expressed in milliseconds.
-{{%/* /explain */%}}
-{{%/* /annotated */%}}
+{{</* /explain */>}}
+{{</* /annotated */>}}
 ````
 
-{{% annotated %}}
+{{< annotated >}}
 | Parameter | Type   | Default |
 | :-------- | :----- | :------ |
 | `timeout` | number | `3000`  |
 | `retries` | number | `3`     |
-{{% explain %}}
+{{< explain >}}
 The `timeout` value is expressed in milliseconds.
-{{% /explain %}}
-{{% /annotated %}}
+{{< /explain >}}
+{{< /annotated >}}
 
 ## explain restriction
 
 The `explain` shortcode must be placed directly inside `annotated`. If used outside this container, Hugo stops the build and reports the corresponding error.
 
 ````markdown
-{{%/* explain */%}}
+{{</* explain */>}}
 This note is not valid.
-{{%/* /explain */%}}
+{{</* /explain */>}}
 ````
 
 The content of `explain` is processed via `.Page.RenderString`, so it supports Markdown.
