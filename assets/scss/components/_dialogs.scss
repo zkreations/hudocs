@@ -142,8 +142,17 @@
     color: var(--color-text);
     transition: background-color .3s;
 
-    &:hover {
+    &:hover,
+    &.is-selected,
+    &:focus-visible {
       background-color: var(--bg-inset);
+    }
+
+    mark {
+      background-color: var(--bg-mark);
+      color: inherit;
+      border-radius: .125rem;
+      padding: 0 .15em;
     }
   }
 
@@ -155,6 +164,17 @@
 
   &-title {
     color: var(--color-title);
+  }
+
+  &-empty,
+  &-error {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--color-meta);
+  }
+
+  &-error {
+    color: var(--danger);
   }
 }
 
