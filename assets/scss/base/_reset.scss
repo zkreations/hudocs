@@ -20,6 +20,21 @@ html {
   tab-size: 4;
 }
 
+// 1. Heading and paragraph styles are inherited from the base text.
+// 2. Avoid text overflows
+// https://joshwcomeau.com/css/custom-css-reset/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  overflow-wrap: break-word;
+}
+
 html,
 body {
   height: 100%;
