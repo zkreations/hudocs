@@ -19,6 +19,10 @@ other = "Busqueda rápida"
 [search_in_doc]
 other = "Buscar en documentos"
 
+[search_error]
+other = "No se pudo cargar el índice de búsqueda"
+
+
 [edit_on_github]
 other = "Editar en Github"
 

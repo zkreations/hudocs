@@ -19,6 +19,10 @@ other = "Quick search"
 [search_in_doc]
 other = "Search in doc"
 
+[search_error]
+other = "Failed to load search index"
+
+
 [edit_on_github]
 other = "Edit on Github"
 
