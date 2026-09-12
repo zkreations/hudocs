@@ -11,7 +11,7 @@
       position: relative;
       counter-increment: steps;
       border-inline-start: 1px solid var(--outline);
-      padding-inline-start: 1.75rem;
+      padding-inline-start: calc(var(--space-block) + .75rem);
       padding-bottom: 1.5rem;
 
       &:last-child {
