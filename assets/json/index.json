@@ -1,8 +1,9 @@
 {{- $index := slice -}}
 
-{{- range $i, $page := .Site.Pages -}}
-  {{- if and .File (or .Title (truncate 120 .Plain)) -}}
-    {{- $summary := truncate 100 .Plain | default (i18n "no_summary") -}}
+{{- range $i, $page := where .Site.Pages "Section" .Section -}}
+  {{- if and .File (ne $page.RelPermalink $.RelPermalink) (or .Title (truncate 120 .Plain)) -}}
+    {{- $content := .Content | replaceRE "(?s)<pre[^>]*>.*?</pre>" "" | plainify | replaceRE "\\s{2,}" " " | strings.TrimSpace -}}
+    {{- $summary := truncate 100 $content | default (i18n "no_summary") -}}
 
     {{- $parent := $page -}}
     {{- range seq 10 -}}
@@ -24,6 +25,7 @@
       "summary" $summary
       "title" $page.Title
       "parent" $parentSection
+      "content" $content
     ) -}}
   {{- end -}}
 {{- end -}}

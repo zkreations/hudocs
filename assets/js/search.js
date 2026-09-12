@@ -1,9 +1,13 @@
 /*
-{{ $searchDataFile := printf "json/%s.index.json" .Language.Lang }}
-{{ $searchData := resources.Get "json/index.json" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
+{{- $indexes := dict -}}
+{{- range .Site.Sections -}}
+  {{- $file := printf "json/%s.%s.index.json" $.Language.Lang .Section -}}
+  {{- $data := resources.Get "json/index.json" | resources.ExecuteAsTemplate $file . | resources.Minify | resources.Fingerprint -}}
+  {{- $indexes = merge $indexes (dict .Section $data.RelPermalink) -}}
+{{- end -}}
 */
 
-const dataJSON = '{{ $searchData.RelPermalink }}'
+const searchIndexes = {{ $indexes | jsonify }}
 const input = document.getElementById('search-input')
 const results = document.getElementById('search-results')
 const currentVersionEl = document.getElementById('current-version')
@@ -22,26 +26,33 @@ function getCurrentVersion () {
   if (currentVersionEl) {
     return currentVersionEl.innerText.trim()
   }
-  const parts = window.location.pathname.split('/')
-  return parts[1] || null
+  const parts = window.location.pathname.split('/').filter(Boolean)
+  if (parts.length > 0) {
+    return parts[0] === '{{ .Language.Lang }}' ? parts[1] : parts[0]
+  }
+  return null
 }
 
 function showEmptyState () {
   const el = document.createElement('p')
   el.className = 'search-empty fs-7'
-  el.textContent = 'No results found.'
+  el.textContent = '{{ i18n "no_results" }}'
   results.appendChild(el)
 }
 
 async function initSearch () {
   if (isReady || isLoading) return
 
+  const version = getCurrentVersion()
+  const dataURL = searchIndexes[version]
+  if (!dataURL) return
+
   isLoading = true
   input.removeEventListener('focus', initSearch)
   input.required = true
 
   try {
-    const response = await fetch(dataJSON)
+    const response = await fetch(dataURL)
 
     if (!response.ok) {
       throw new Error(`Failed to load search data: ${response.status}`)
@@ -51,7 +62,7 @@ async function initSearch () {
     docMap = new Map(data.documents.map(doc => [doc.id, doc]))
 
     docMap.forEach((doc, id) => {
-      index.add(id, `${doc.title} ${doc.summary}`)
+      index.add(id, `${doc.title} ${doc.content}`)
     })
 
     isReady = true
@@ -72,27 +83,19 @@ async function search () {
 
   try {
     const hits = await index.searchAsync(input.value, 100)
-    const version = getCurrentVersion()
 
-    const filteredHits = version
-      ? hits.filter(id => docMap.get(id)?.url.startsWith(`/${version}/`))
-      : hits
-
-    if (filteredHits.length === 0) {
+    if (hits.length === 0) {
       showEmptyState()
       return
     }
 
-    const grouped = groupResultsByParent(filteredHits)
+    const grouped = groupResultsByParent(hits)
     displayGroupedResults(grouped)
   } catch (error) {
     console.error('Search error:', error)
   }
 }
 
-// Groups search results by their parent page
-// @param {Array} hits - Array of document IDs
-// @returns {Object} - Grouped results by parent
 function groupResultsByParent (hits) {
   const parentCache = new Map()
 
@@ -114,9 +117,6 @@ function groupResultsByParent (hits) {
   }, {})
 }
 
-// Displays grouped search results in the DOM
-// @param {Object} grouped - Grouped search results
-// @returns {void}
 function displayGroupedResults (grouped) {
   const fragment = document.createDocumentFragment()
 
@@ -127,9 +127,6 @@ function displayGroupedResults (grouped) {
   results.appendChild(fragment)
 }
 
-// Creates a DOM element for a search result group
-// @param {Object} group - Group data containing title, icon, and pages
-// @returns {HTMLElement} - The group DOM element
 function createGroupElement (group) {
   const div = document.createElement('div')
   div.className = 'search-group'
@@ -150,9 +147,6 @@ function createGroupElement (group) {
   return div
 }
 
-// Creates a DOM element for an individual search result page
-// @param {Object} page - Page data containing title, summary, and URL
-// @returns {HTMLElement} - The page DOM element
 function createPageElement (page) {
   const li = document.createElement('li')
   li.className = 'search-item'
@@ -178,9 +172,6 @@ function createPageElement (page) {
   return li
 }
 
-// Escapes HTML special characters in a string to prevent XSS
-// @param {string} str - The string to escape
-// @returns {string} - The escaped string
 function escapeHTML (str) {
   return str
     .replace(/&/g, '&amp;')
@@ -189,9 +180,6 @@ function escapeHTML (str) {
     .replace(/"/g, '&quot;')
 }
 
-// Retrieves parent data (title and icon) for a given parent name
-// @param {string} parentName - The name of the parent
-// @returns {Object} - An object containing the title and icon of the parent
 function getParentData (parentName) {
   const el = document.querySelector(`[data-name="${parentName}"]`)
 
