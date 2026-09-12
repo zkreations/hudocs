@@ -133,8 +133,8 @@ function createGroupElement (group) {
   div.className = 'search-group'
 
   const title = document.createElement('div')
-  title.className = 'search-group-title has-icon'
-  title.innerHTML = `${group.icon}<h3>${escapeHTML(group.title)}</h3>`
+  title.className = 'search-group-header has-icon'
+  title.innerHTML = `${group.icon}<h3 class="search-group-title">${escapeHTML(group.title)}</h3>`
 
   const list = document.createElement('ul')
   list.className = 'search-group-list'
