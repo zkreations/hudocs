@@ -1,8 +1,3 @@
-//
-// Design Tokens & CSS Custom Properties
-//
-
-// Base Colors
 $green:    #0f766e !default;
 $blue:     #4f46e5 !default;
 $red:      #e11d48 !default;
@@ -10,7 +5,6 @@ $yellow:   #f0b100 !default;
 $white:    #ffffff !default;
 $black:    #09090b !default;
 
-// Grays
 $gray-50:  #fafafa !default;
 $gray-100: #f4f4f5 !default;
 $gray-200: #e4e4e7 !default;
@@ -20,113 +14,110 @@ $gray-600: #52525b !default;
 $gray-700: #3f3f46 !default;
 $gray-800: #27272a !default;
 $gray-900: #18181b !default;
-$gray-950: #09090b !default;
 
 :root {
   color-scheme: light;
 
-  --color-selection: color-mix(in srgb, var(--primary) 20%, transparent);
-  --highlight-selection: color-mix(in srgb, var(--primary) 20%, transparent);
-  --highlight-selection-border: var(--primary);
-  --highlight-bg: #{$black};
-
-  --bg-header: #{$white};
-  --bg-mark: color-mix(in srgb, #{$yellow} 20%, white);
-  --bg-overlay: rgb(123 131 135 / 50%);
   --header-height: 70px;
+  --aside-width: 246px;
+  --timing: cubic-bezier(0.7, 0.006, 0.2, 1);
+  --font-primary: 'Inter', sans-serif;
+  --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
   --shadow-md: 0px 3px 6px rgb(0 0 0 / 10%);
   --shadow-lg: 0px 5px 10px rgb(0 0 0 / 20%);
 
-  --timing: cubic-bezier(0.7, 0.006, 0.2, 1);
-  --font-primary: 'Inter', sans-serif;
-  --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-  --aside-width: 246px;
-
   --primary: #{$green};
-
+  --primary-subtle: color-mix(in srgb, var(--primary) 20%, white);
+  --primary-subtle-hover: color-mix(in srgb, var(--primary) 40%, white);
+  --primary-selection: color-mix(in srgb, var(--primary) 20%, transparent);
   --color-link: var(--primary);
 
-  --btn-primary: color-mix(in srgb, var(--primary) 20%, white);
-  --btn-primary-hover: color-mix(in srgb, var(--primary) 40%, white);
+  --surface: #{$white};
+  --surface-elevated: #{$white};
+  --surface-sunken: #{$gray-50};
+  --surface-container: #{$gray-100};
+  --surface-container-hover: #{$gray-200};
+  --surface-tint: color-mix(in srgb, #{$gray-200} 50%, transparent);
+  --surface-mark: color-mix(in srgb, #{$yellow} 20%, white);
+  --scrim: rgb(123 131 135 / 50%);
 
-  --color-title: #{$gray-800};
-  --color-text: #{$gray-600};
-  --color-meta: #{$gray-400};
+  --surface-inverse: #{$gray-900};
+  --surface-inverse-variant: #{$black};
 
-  --color-border: #{$gray-300};
-  --color-inset: #{$gray-400};
+  --on-surface: #{$gray-800};
+  --on-surface-variant: #{$gray-600};
+  --on-surface-muted: #{$gray-400};
+  --on-surface-inverse: #{$white};
 
-  --bg-main: #{$white};
-  --bg-low: #{$gray-50};
-  --bg-inset: #{$gray-100};
-  --bg-tenue: color-mix(in srgb, #{$gray-200} 50%, transparent);
+  --outline: #{$gray-300};
 
-  --bg-primary: #{$gray-100};
-  --bg-secondary: #{$gray-200};
+  --icon-muted: #{$gray-400};
 
-  --bg-inverse: #{$gray-900};
-  --bg-darken: #{$gray-700};
+  --code-copy-bg: #{$gray-700};
+  --code-scrollbar-track: rgb(0 0 0 / 25%);
+  --code-scrollbar-thumb: #485158;
+
+  --syntax-tag: #ffd8a8;
+  --syntax-attr: #ffa94d;
+  --syntax-operator: #888888;
+  --syntax-comment: #5c6370;
+  --syntax-keyword: #dab1eb;
+  --syntax-variable: #ffb1b1;
+  --syntax-constant: #a3ffed;
+  --syntax-string: #c7e19e;
+  --syntax-number: #a3f2ff;
+  --syntax-function: #b1c9ff;
 
   --info: color-mix(in srgb, #{$blue} 60%, black);
-  --info-bg: color-mix(in srgb, #{$blue} 10%, white);
-
+  --info-container: color-mix(in srgb, #{$blue} 10%, white);
   --success: color-mix(in srgb, #{$green} 60%, black);
-  --success-bg: color-mix(in srgb, #{$green} 10%, white);
-
+  --success-container: color-mix(in srgb, #{$green} 10%, white);
   --warning: color-mix(in srgb, #{$yellow} 60%, black);
-  --warning-bg: color-mix(in srgb, #{$yellow} 10%, white);
-
-  --danger: color-mix(in srgb, #{$red} 60%, black);
-  --danger-bg: color-mix(in srgb, #{$red} 10%, white);
+  --warning-container: color-mix(in srgb, #{$yellow} 10%, white);
+  --error: color-mix(in srgb, #{$red} 60%, black);
+  --error-container: color-mix(in srgb, #{$red} 10%, white);
 
   &.dark {
     color-scheme: dark;
-    --theme-light: none;
-
-    --primary: color-mix(in srgb, #{$green} 60%, white);
-
-    --btn-primary: color-mix(in srgb, var(--primary) 10%, transparent);
-    --btn-primary-hover: color-mix(in srgb, var(--primary) 25%, transparent);
 
     --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
     --shadow-md: 0px 3px 6px rgb(0 0 0 / 30%);
     --shadow-lg: 0px 5px 10px rgb(0 0 0 / 40%);
 
-    --color-title: #{$white};
-    --color-text: #{$gray-300};
-    --color-meta: #{$gray-400};
+    --primary: color-mix(in srgb, #{$green} 60%, white);
+    --primary-subtle: color-mix(in srgb, var(--primary) 10%, transparent);
+    --primary-subtle-hover: color-mix(in srgb, var(--primary) 25%, transparent);
 
-    --color-border: #{$gray-700};
-    --color-inset: #{$gray-600};
+    --surface: #{$gray-900};
+    --surface-elevated: #{$gray-800};
+    --surface-sunken: #{$black};
+    --surface-container: #{$gray-800};
+    --surface-container-hover: #{$gray-700};
+    --surface-tint: color-mix(in srgb, #{$black} 50%, transparent);
+    --surface-mark: color-mix(in srgb, #{$yellow} 30%, transparent);
 
-    --bg-low: #{$gray-950};
-    --bg-main: #{$gray-900};
-    --bg-inset: #{$gray-800};
-    --bg-tenue: color-mix(in srgb, #{$gray-950} 50%, transparent);
+    --surface-inverse: #{$black};
+    --surface-inverse-variant: #{$gray-900};
 
-    --bg-primary: #{$gray-800};
-    --bg-secondary: #{$gray-700};
-    --bg-header: #{$gray-800};
+    --on-surface: #{$white};
+    --on-surface-variant: #{$gray-300};
+    --on-surface-muted: #{$gray-400};
 
-    --bg-inverse: #{$gray-950};
-    --bg-darken: #{$gray-800};
+    --outline: #{$gray-700};
+
+    --icon-muted: #{$gray-400};
+
+    --code-copy-bg: #{$gray-800};
 
     --info: color-mix(in srgb, #{$blue} 40%, white);
-    --info-bg: color-mix(in srgb, #{$blue} 8%, transparent);
-
+    --info-container: color-mix(in srgb, #{$blue} 8%, transparent);
     --success: color-mix(in srgb, #{$green} 40%, white);
-    --success-bg: color-mix(in srgb, #{$green} 8%, transparent);
-
+    --success-container: color-mix(in srgb, #{$green} 8%, transparent);
     --warning: color-mix(in srgb, #{$yellow} 40%, white);
-    --warning-bg: color-mix(in srgb, #{$yellow} 8%, transparent);
-
-    --danger: color-mix(in srgb, #{$red} 40%, white);
-    --danger-bg: color-mix(in srgb, #{$red} 8%, transparent);
-
-    --bg-mark: color-mix(in srgb, #{$yellow} 30%, transparent);
+    --warning-container: color-mix(in srgb, #{$yellow} 8%, transparent);
+    --error: color-mix(in srgb, #{$red} 40%, white);
+    --error-container: color-mix(in srgb, #{$red} 8%, transparent);
   }
 }
-

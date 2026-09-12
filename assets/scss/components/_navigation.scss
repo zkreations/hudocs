@@ -1,8 +1,3 @@
-//
-// Navigation: Sidebar Menu, Table of Contents (TOC), and Pagination Links
-//
-
-// Sidebar Tree Menu
 .menu {
   &-list {
     display: flex;
@@ -28,7 +23,7 @@
     }
 
     svg {
-      color: var(--color-inset);
+      color: var(--icon-muted);
       flex: none;
     }
   }
@@ -59,9 +54,9 @@
 
 .submenu {
   &-list {
-    color: var(--color-text);
+    color: var(--on-surface-variant);
     font-weight: 400;
-    box-shadow: 2px 0 0 0 var(--color-border) inset;
+    box-shadow: 2px 0 0 0 var(--outline) inset;
     margin-left: 0.625rem;
     margin-top: .75rem;
     gap: .5rem;
@@ -75,7 +70,7 @@
     font-size: .875rem;
 
     &.is-active {
-      --link-color: var(--color-title);
+      --link-color: var(--on-surface);
       font-weight: 500;
 
       &::before {
@@ -85,13 +80,12 @@
         top: 0;
         width: 2px;
         height: 100%;
-        background-color: var(--color-title);
+        background-color: var(--on-surface);
       }
     }
   }
 }
 
-// Table of Contents (TOC)
 .toc {
   grid-area: toc;
 
@@ -127,7 +121,7 @@
     padding-top: 2rem;
 
     @include breakpoint(l) {
-      box-shadow: 1px 0 0 0 var(--color-border) inset;
+      box-shadow: 1px 0 0 0 var(--outline) inset;
       padding-top: 3rem;
       position: sticky;
     }
@@ -182,19 +176,18 @@
   }
 }
 
-// Page Links & Pagination
 .pagelink {
   padding: 1rem;
   border-radius: .5rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--outline);
   transition: border-color .3s, color .3s;
   box-shadow: var(--shadow-sm);
   line-height: 1.5;
 
   &:hover {
-    --color-border: var(--primary);
-    --color-title: var(--primary);
-    --color-meta: var(--primary);
+    --outline: var(--primary);
+    --on-surface: var(--primary);
+    --on-surface-muted: var(--primary);
   }
 
   &-content {
@@ -202,14 +195,14 @@
   }
 
   &-title {
-    color: var(--color-title);
+    color: var(--on-surface);
     display: block;
     transition: color .3s;
     font-weight: 500;
   }
 
   &-meta {
-    color: var(--color-meta);
+    color: var(--on-surface-muted);
     transition: color .3s;
     font-size: .875rem;
   }
@@ -224,4 +217,3 @@
     gap: 1rem;
   }
 }
-

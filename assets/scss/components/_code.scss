@@ -6,7 +6,7 @@ pre {
 :not(pre)>code {
   padding: .2em .4em;
   white-space: nowrap;
-  background-color: var(--bg-tenue);
+  background-color: var(--surface-tint);
   border-radius: .4em;
   font-weight: 400;
   font-size: .875rem;
@@ -14,19 +14,18 @@ pre {
 
 .highlight {
   --bg-scrollbar: transparent;
-  --bg-scrollbar-track: rgb(0 0 0 / 25%);
-  --bg-scrollbar-thumb: #485158;
-  background: var(--bg-inverse);
+  --bg-scrollbar-track: var(--code-scrollbar-track);
+  --bg-scrollbar-thumb: var(--code-scrollbar-thumb);
+  background: var(--surface-inverse);
   position: relative;
   border-radius: .5rem;
   white-space: normal;
   line-height: 1.5;
 
   pre {
-    // Fix for styles enabled
     background-color: transparent !important;
     overflow-x: auto;
-    color: #fff;
+    color: var(--on-surface-inverse);
     padding: 1rem 0;
 
     scrollbar-color: var(--bg-scrollbar-thumb) var(--bg-scrollbar-track);
@@ -43,7 +42,6 @@ pre {
     font-size: .875rem;
     width: 100%;
 
-    // Fix for styles enabled
     >span:not(.line) {
       padding: 0 1rem;
 
@@ -62,8 +60,8 @@ pre {
     }
 
     &.hl {
-      background-color: var(--highlight-selection);
-      box-shadow: 3px 0 0 var(--highlight-selection-border) inset;
+      background-color: var(--primary-selection);
+      box-shadow: 3px 0 0 var(--primary) inset;
     }
   }
 }
@@ -73,8 +71,8 @@ pre {
   right: -.5rem;
   top: -.5rem;
   border-radius: 50rem;
-  background-color: var(--bg, var(--bg-darken));
-  color: #fff;
+  background-color: var(--bg, var(--code-copy-bg));
+  color: var(--on-surface-inverse);
   padding: 0.5rem;
   transition: background-color .3s;
   --svg-size: 18px;
@@ -87,13 +85,13 @@ pre {
 .annotated-note,
 .explain {
   padding: 1.25rem 1.5rem;
-  background-color: var(--bg-inset);
+  background-color: var(--surface-container);
   margin-block: var(--space-block, 1.5rem);
   --space-block: 1rem;
 
   pre {
     padding: 1rem;
-    background-color: var(--bg-tenue);
+    background-color: var(--surface-tint);
     overflow: auto;
     white-space: pre-wrap;
   }
@@ -122,61 +120,59 @@ pre {
   }
 }
 
-// Colors
 .chroma {
-
   .nt,
   .nn {
-    color: #ffd8a8;
+    color: var(--syntax-tag);
   }
 
   .na,
   .nc {
-    color: #ffa94d;
+    color: var(--syntax-attr);
   }
 
   .p,
   .o {
-    color: #888;
+    color: var(--syntax-operator);
   }
 
   .c,
   .cm,
   .c1,
   .cp {
-    color: #5c6370;
+    color: var(--syntax-comment);
     font-style: italic;
   }
 
   .kd,
   .kr,
   .nd {
-    color: #dab1eb;
+    color: var(--syntax-keyword);
   }
 
   .kd+.nx,
   .nv,
   .n {
-    color: #ffb1b1;
+    color: var(--syntax-variable);
   }
 
   .kr+.nx {
-    color: #a3ffed;
+    color: var(--syntax-constant);
   }
 
   .s2 {
-    color: #c7e19e;
+    color: var(--syntax-string);
   }
 
   .mi,
   .kt,
   .mh {
-    color: #a3f2ff;
+    color: var(--syntax-number);
   }
 
   .nb,
   .nf {
-    color: #b1c9ff;
+    color: var(--syntax-function);
   }
 }
 
@@ -185,7 +181,7 @@ pre {
 
   &::before,
   &::after {
-    color: var(--color-border);
+    color: var(--outline);
   }
 
   &::before {

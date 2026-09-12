@@ -1,7 +1,3 @@
-//
-// Base Elements & Typography
-//
-
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -42,8 +38,8 @@ body {
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--bg-main);
-  color: var(--color-title);
+  background-color: var(--surface);
+  color: var(--on-surface);
   line-height: 1.5;
   overflow-x: hidden;
   min-height: 100%;
@@ -53,7 +49,7 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-selection);
+  background-color: var(--primary-selection);
 }
 
 a {
@@ -65,8 +61,8 @@ input {
 }
 
 kbd {
-  color: #fff;
-  background-color: var(--bg-inverse);
+  color: var(--on-surface-inverse);
+  background-color: var(--surface-inverse);
   font-family: var(--font-monospace);
   padding: .5em .75em;
   white-space: nowrap;
@@ -75,3 +71,6 @@ kbd {
   vertical-align: middle;
 }
 
+mark {
+  background-color: var(--surface-mark);
+}

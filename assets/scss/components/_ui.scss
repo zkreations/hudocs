@@ -1,11 +1,6 @@
-//
-// UI Elements: Alerts, Badges, Buttons, and Icons
-//
-
-// Alerts / Callouts
 .alert {
-  background-color: var(--alert-bg, var(--bg-primary));
-  color: var(--alert-color, var(--color-title));
+  background-color: var(--alert-bg, var(--surface-container));
+  color: var(--alert-color, var(--on-surface));
   border-left: 3px solid;
   padding: 1.25rem;
 
@@ -19,22 +14,22 @@
   }
 
   &-info {
-    --alert-bg: var(--info-bg);
+    --alert-bg: var(--info-container);
     --alert-color: var(--info);
   }
 
   &-success {
-    --alert-bg: var(--success-bg);
+    --alert-bg: var(--success-container);
     --alert-color: var(--success);
   }
 
   &-danger {
-    --alert-bg: var(--danger-bg);
-    --alert-color: var(--danger);
+    --alert-bg: var(--error-container);
+    --alert-color: var(--error);
   }
 
   &-warning {
-    --alert-bg: var(--warning-bg);
+    --alert-bg: var(--warning-container);
     --alert-color: var(--warning);
   }
 
@@ -48,10 +43,9 @@
   }
 }
 
-// Badges
 .badge {
   color: var(--primary);
-  background-color: var(--btn-primary);
+  background-color: var(--primary-subtle);
   font-size: .75rem;
   border-radius: .5em;
   padding: .5em;
@@ -63,11 +57,10 @@
   }
 }
 
-// Buttons
 .btn {
-  color: var(--btn-color, var(--color-text));
+  color: var(--btn-color, var(--on-surface-variant));
   padding: .5rem .75rem;
-  background-color: var(--btn-bg, var(--bg-primary));
+  background-color: var(--btn-bg, var(--surface-container));
   font-weight: 500;
   border-radius: .5rem;
   transition-property: color, background-color, box-shadow;
@@ -78,20 +71,19 @@
   column-gap: .5rem;
 
   &:hover {
-    --btn-bg: var(--bg-secondary);
+    --btn-bg: var(--surface-container-hover);
   }
 
   &-primary {
     --btn-color: var(--primary);
-    --btn-bg: var(--btn-primary);
+    --btn-bg: var(--primary-subtle);
 
     &:hover {
-      --btn-bg: var(--btn-primary-hover);
+      --btn-bg: var(--primary-subtle-hover);
     }
   }
 }
 
-// Icons
 .i {
   stroke-width: 2;
   stroke: currentColor;
@@ -117,4 +109,3 @@
     --svg-size: 48px;
   }
 }
-

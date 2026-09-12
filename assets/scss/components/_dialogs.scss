@@ -1,10 +1,5 @@
-//
-// Dialogs: Dropdowns and Search Modal Overlay
-//
-
-// Dropdown Menus
 .dropdown {
-  background-color: var(--bg-header);
+  background-color: var(--surface-elevated);
   transform-origin: top right;
   transform: translate3d(0, 0, 0) scale(1);
   transition-property: opacity, transform;
@@ -48,7 +43,6 @@
   }
 }
 
-// Search Modal Dialog
 .search {
   --search-padding: 1.25rem;
   position: fixed;
@@ -58,7 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: var(--bg-overlay);
+  background-color: var(--scrim);
 
   &:not(.is-active) {
     opacity: 0;
@@ -83,7 +77,7 @@
     max-height: calc(100vh - 2rem);
     width: 100%;
     max-width: 900px;
-    background-color: var(--bg-main);
+    background-color: var(--surface);
     border-radius: .5rem;
     box-shadow: var(--shadow-lg);
     display: flex;
@@ -98,7 +92,7 @@
     display: flex;
     align-items: center;
     padding: var(--search-padding);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--outline);
     font-size: 1rem;
   }
 
@@ -124,7 +118,7 @@
     &-list {
       margin-left: 0.625rem;
       padding-left: 1rem;
-      border-left: 1px solid var(--color-border);
+      border-left: 1px solid var(--outline);
     }
   }
 
@@ -137,15 +131,15 @@
   &-link {
     padding: .75rem 1rem;
     display: block;
-    background-color: var(--bg-low);
+    background-color: var(--surface-sunken);
     border-radius: .5rem;
-    color: var(--color-text);
+    color: var(--on-surface-variant);
     transition: background-color .3s;
 
     &:hover,
     &.is-selected,
     &:focus-visible {
-      background-color: var(--bg-inset);
+      background-color: var(--surface-container);
     }
   }
 
@@ -156,18 +150,17 @@
   }
 
   &-title {
-    color: var(--color-title);
+    color: var(--on-surface);
   }
 
   &-empty,
   &-error {
     text-align: center;
     padding: 2rem 1rem;
-    color: var(--color-meta);
+    color: var(--on-surface-muted);
   }
 
   &-error {
-    color: var(--danger);
+    color: var(--error);
   }
 }
-

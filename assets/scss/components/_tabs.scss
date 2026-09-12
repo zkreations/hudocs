@@ -1,8 +1,3 @@
-//
-// Tabs Component
-// Standalone reusable tabs with automatic code block fusion
-//
-
 .tabs {
   --tabs-radius: 0.5rem;
 
@@ -10,9 +5,9 @@
   display: flex;
   flex-wrap: wrap;
   margin-block: 1.5rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--outline);
   border-radius: var(--tabs-radius);
-  background-color: var(--bg-main);
+  background-color: var(--surface);
 
   .tab-toggle { display: none; }
 
@@ -22,7 +17,7 @@
     margin-bottom: -1px;
     padding: 0.625rem 1.25rem;
     border-bottom: 2px solid transparent;
-    color: var(--color-text);
+    color: var(--on-surface-variant);
     cursor: pointer;
     user-select: none;
     font-size: 0.875rem;
@@ -32,7 +27,7 @@
       border-color 0.2s;
 
     &:hover {
-      color: var(--color-title);
+      color: var(--on-surface);
     }
   }
 
@@ -51,7 +46,7 @@
     display: none;
     width: 100%;
     padding: 1.5rem;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--outline);
 
     > :first-child {
       margin-top: 0;
@@ -66,25 +61,21 @@
     display: block;
   }
 
-  //
-  // Code Block Fusion Mode
-  // Activates when the tab content is a code block, or via .tabs-code class
-  //
   &:has(> .tab-content > .highlight:only-child) {
     border: 0;
-    background-color: var(--highlight-bg);
+    background-color: var(--surface-inverse-variant);
 
     .tab-label {
       margin-bottom: 0;
       border-bottom: 0;
-      background-color: var(--highlight-bg);
+      background-color: var(--surface-inverse-variant);
 
       @include breakpoint(s) {
         padding-inline: 1.5rem;
       }
 
       &:hover {
-        color: #fff;
+        color: var(--on-surface-inverse);
       }
 
       &:first-of-type {
@@ -93,8 +84,8 @@
     }
 
     .tab-toggle:checked + .tab-label {
-      background-color: var(--bg-inverse);
-      color: #fff;
+      background-color: var(--surface-inverse);
+      color: var(--on-surface-inverse);
     }
 
     .tab-content {

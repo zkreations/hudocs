@@ -1,8 +1,3 @@
-//
-// Content: Article & Markdown Styling
-//
-
-// Article Structure
 .article {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -17,7 +12,7 @@
   &-header {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--outline);
     padding-bottom: 1.25rem;
     margin-bottom: 1.25rem;
 
@@ -56,9 +51,8 @@
   }
 }
 
-// Markdown Content & Typography
 .markdown {
-  color: var(--color-text);
+  color: var(--on-surface-variant);
   --space-block: 1.5rem;
   --space-headings: .75rem;
 
@@ -99,7 +93,7 @@
   }
 
   strong {
-    color: var(--color-title);
+    color: var(--on-surface);
     font-weight: 500;
   }
 
@@ -111,7 +105,7 @@
   h6 {
     margin-bottom: var(--space-headings);
     font-weight: 500;
-    color: var(--color, var(--color-title));
+    color: var(--color, var(--on-surface));
     display: flex;
     align-items: center;
   }
@@ -121,7 +115,7 @@
   }
 
   h2 {
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--outline);
     padding-top: var(--space-block);
     font-size: clamp(1.25rem, 5vw, 1.5rem);
     --space-headings: 1.5rem;
@@ -157,7 +151,7 @@
 
     tr>* {
       padding: .5rem .75rem;
-      border: 1px solid var(--color-border);
+      border: 1px solid var(--outline);
     }
   }
 
@@ -166,4 +160,3 @@
     margin-bottom: var(--space-block);
   }
 }
-
