@@ -2,7 +2,7 @@
   {{- errorf "%s: The 'explain' shortcode must be called inside 'annotated'." .Position -}}
 {{- else -}}
   {{- $class := .Get "class" | default (.Get 0) -}}
-  <div class="annotated__note{{ with $class }} {{ . }}{{ end }}">
+  <div class="annotated-note{{ with $class }} {{ . }}{{ end }}">
     {{- .Page.RenderString .Inner -}}
   </div>
 {{- end -}}

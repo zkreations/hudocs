@@ -84,12 +84,10 @@ pre {
   }
 }
 
-.annotated__note,
+.annotated-note,
 .explain {
   padding: 1.25rem 1.5rem;
   background-color: var(--bg-inset);
-  border: 1px solid var(--color-border);
-  border-radius: .5rem;
   margin-block: var(--space-block, 1.5rem);
   --space-block: 1rem;
 
@@ -112,16 +110,13 @@ pre {
 .annotated {
   margin-block: var(--space-block, 1.5rem);
 
-  > *:not(.annotated__note, .explain) {
+  > *:not(.annotated-note, .explain) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     margin-bottom: 0;
   }
 
-  > :is(.annotated__note, .explain) {
-    border-top: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  > :is(.annotated-note, .explain) {
     margin-top: 0;
     margin-bottom: 0;
   }
