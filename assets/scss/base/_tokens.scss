@@ -82,10 +82,6 @@ $gray-950: #09090b !default;
   --danger: color-mix(in srgb, #{$red} 60%, black);
   --danger-bg: color-mix(in srgb, #{$red} 10%, white);
 
-  &.light {
-    --theme-dark: none;
-  }
-
   &.dark {
     color-scheme: dark;
     --theme-light: none;

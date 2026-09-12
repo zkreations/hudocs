@@ -119,13 +119,8 @@
   }
 
   &-theme {
-    .i-moon {
-      display: var(--theme-dark, block);
-    }
-
-    .i-sun {
-      display: var(--theme-light, block);
-    }
+    @at-root html:not(.dark) & .i-moon { display: none; }
+    @at-root html.dark & .i-sun { display: none; }
   }
 }
 
