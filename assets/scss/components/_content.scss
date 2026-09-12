@@ -7,6 +7,9 @@
   @include breakpoint(l) {
     padding-right: 3rem;
     padding-left: 3rem;
+    box-shadow:
+      -1px 0 0 0 var(--outline) inset,
+      1px 0 0 0 var(--outline) inset;
   }
 
   &-header {

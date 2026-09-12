@@ -123,10 +123,6 @@
 .main {
   grid-area: main-doc;
 
-  @include breakpoint(l) {
-    border-left: 1px solid var(--outline);
-  }
-
   &-section {
     margin-top: var(--header-height);
     padding-top: 2rem;

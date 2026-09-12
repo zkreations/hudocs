@@ -121,7 +121,6 @@
     padding-top: 2rem;
 
     @include breakpoint(l) {
-      box-shadow: 1px 0 0 0 var(--outline) inset;
       padding-top: 3rem;
       position: sticky;
     }
