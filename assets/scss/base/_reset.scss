@@ -133,6 +133,13 @@ button,
   }
 }
 
+textarea,
+input {
+  &:focus {
+    outline: none;
+  }
+}
+
 textarea {
   resize: vertical;
 }
