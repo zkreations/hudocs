@@ -3,20 +3,19 @@ title: Annotations
 weight: 2
 ---
 
-The `annotated` and `explain` shortcodes let you pair a content element with an explanatory note. You can use them with code blocks, tabs, or tables.
+The `annotated` shortcode lets you pair a content element with an explanatory note. You can use it with code blocks, tabs, or tables. Use `---` or `<!-- split -->` to separate the main content from the note.
 
 ## Basic usage
 
-The `annotated` shortcode acts as the container and `explain` adds the explanatory note. The `explain` shortcode must be used directly inside `annotated`.
+Write your content, add `---` as a separator, then write the explanatory note:
 
 ````markdown
 {{</* annotated */>}}
 ```javascript
 console.log("Hello world");
 ```
-{{</* explain */>}}
+---
 Explanatory note.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -26,24 +25,15 @@ Explanatory note.
 ````javascript
 console.log("Hello world");
 ````
-{{< explain >}}
+---
 Explanatory note.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Parameters
 
-### annotated
-
 | Parameter | Position | Type   | Required | Description                              |
 | :-------- | :------: | :----- | :------: | :--------------------------------------- |
 | `class`   |    `0`   | string |    No    | Additional CSS class for the container.  |
-
-### explain
-
-| Parameter | Position | Type   | Required | Description                          |
-| :-------- | :------: | :----- | :------: | :----------------------------------- |
-| `class`   |    `0`   | string |    No    | Additional CSS class for the note.   |
 
 ## Code blocks
 
@@ -54,9 +44,8 @@ Use `annotated` to pair a code block with its explanation:
 ```bash
 npm install @example/sdk
 ```
-{{</* explain */>}}
+---
 This command installs the `@example/sdk` package via npm.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -64,9 +53,8 @@ This command installs the `@example/sdk` package via npm.
 ````bash
 npm install @example/sdk
 ````
-{{< explain >}}
+---
 This command installs the `@example/sdk` package via npm.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Tabs
@@ -83,9 +71,8 @@ Hello, this is an example of a shared explanation across multiple tabs.
 Goodbye, this is an example of a shared explanation across multiple tabs.
 {{</* /tab */>}}
 {{</* /tabs */>}}
-{{</* explain */>}}
+---
 This is an example of a shared explanation across multiple tabs.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -98,9 +85,8 @@ Hello, this is an example of a shared explanation across multiple tabs.
 Goodbye, this is an example of a shared explanation across multiple tabs.
 {{< /tab >}}
 {{< /tabs >}}
-{{< explain >}}
+---
 This is an example of a shared explanation across multiple tabs.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Code tabs
@@ -121,9 +107,8 @@ yarn add @example/sdk
 ```
 {{</* /tab */>}}
 {{</* /tabs */>}}
-{{</* explain */>}}
+---
 This package requires Node.js 18 or higher.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -140,9 +125,8 @@ yarn add @example/sdk
 ````
 {{< /tab >}}
 {{< /tabs >}}
-{{< explain >}}
+---
 This package requires Node.js 18 or higher.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Tables
@@ -155,9 +139,8 @@ You can also pair a table with an explanatory note:
 | :-------- | :----- | :------ |
 | `timeout` | number | `3000`  |
 | `retries` | number | `3`     |
-{{</* explain */>}}
+---
 The `timeout` value is expressed in milliseconds.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -166,19 +149,22 @@ The `timeout` value is expressed in milliseconds.
 | :-------- | :----- | :------ |
 | `timeout` | number | `3000`  |
 | `retries` | number | `3`     |
-{{< explain >}}
+---
 The `timeout` value is expressed in milliseconds.
-{{< /explain >}}
 {{< /annotated >}}
 
-## explain restriction
+## Alternative separator
 
-The `explain` shortcode must be placed directly inside `annotated`. If used outside this container, Hugo stops the build and reports the corresponding error.
+You can use `<!-- split -->` instead of `---` if your content contains horizontal rules:
 
 ````markdown
-{{</* explain */>}}
-This note is not valid.
-{{</* /explain */>}}
+{{</* annotated */>}}
+```yaml
+key: value
+```
+<!-- split -->
+The `key` field accepts any string value.
+{{</* /annotated */>}}
 ````
 
-The content of `explain` is processed via `.Page.RenderString`, so it supports Markdown.
+The content below the separator is processed via `.Page.RenderString`, so it supports Markdown.

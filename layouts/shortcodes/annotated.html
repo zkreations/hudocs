@@ -1,5 +1,14 @@
 {{- $class := .Get "class" | default (.Get 0) -}}
+{{- $inner := replaceRE `(?m)^\s*---\s*$` "§SPLIT§" .Inner -}}
+{{- $inner = replaceRE `(?m)^\s*<!--\s*split\s*-->\s*$` "§SPLIT§" $inner -}}
+{{- $parts := split $inner "§SPLIT§" -}}
 <div class="annotated{{ with $class }} {{ . }}{{ end }}">
-  {{- .Page.RenderString .Inner -}}
+  {{- if ge (len $parts) 2 -}}
+    {{- $.Page.RenderString (index $parts 0 | strings.TrimSpace) -}}
+    <div class="annotated-note">
+      {{- $.Page.RenderString (index $parts 1 | strings.TrimSpace) -}}
+    </div>
+  {{- else -}}
+    {{- $.Page.RenderString .Inner -}}
+  {{- end -}}
 </div>
-

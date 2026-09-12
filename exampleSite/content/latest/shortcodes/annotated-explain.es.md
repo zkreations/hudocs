@@ -3,20 +3,19 @@ title: Anotaciones
 weight: 2
 ---
 
-Los shortcodes `annotated` y `explain` permiten combinar un elemento de contenido con una nota explicativa. Puedes utilizarlos con bloques de código, pestañas o tablas.
+El shortcode `annotated` permite combinar un elemento de contenido con una nota explicativa. Puedes utilizarlo con bloques de código, pestañas o tablas. Usa `---` o `<!-- split -->` para separar el contenido principal de la nota.
 
 ## Uso básico
 
-El shortcode `annotated` actúa como contenedor y `explain` añade la nota explicativa. El shortcode `explain` debe utilizarse directamente dentro de `annotated`.
+Escribe tu contenido, añade `---` como separador y luego la nota explicativa:
 
 ````markdown
 {{</* annotated */>}}
 ```javascript
 console.log("Hola mundo");
 ```
-{{</* explain */>}}
+---
 Nota explicativa.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -26,24 +25,15 @@ Nota explicativa.
 ```javascript
 console.log("Hola mundo");
 ```
-{{< explain >}}
+---
 Nota explicativa.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Parámetros
 
-### annotated
-
 | Parámetro | Posición | Tipo   | Requerido | Descripción                             |
 | :-------- | :------: | :----- | :-------: | :-------------------------------------- |
 | `class`   |    `0`   | string |     No    | Clase CSS adicional para el contenedor. |
-
-### explain
-
-| Parámetro | Posición | Tipo   | Requerido | Descripción                       |
-| :-------- | :------: | :----- | :-------: | :-------------------------------- |
-| `class`   |    `0`   | string |     No    | Clase CSS adicional para la nota. |
 
 ## Bloques de código
 
@@ -54,9 +44,8 @@ Utiliza `annotated` para agrupar un bloque de código con su explicación:
 ```bash
 npm install @ejemplo/sdk
 ```
-{{</* explain */>}}
+---
 Este comando instala el paquete `@ejemplo/sdk` mediante npm.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -64,16 +53,15 @@ Este comando instala el paquete `@ejemplo/sdk` mediante npm.
 ```bash
 npm install @ejemplo/sdk
 ```
-{{< explain >}}
+---
 Este comando instala el paquete `@ejemplo/sdk` mediante npm.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Tabs
 
 Puedes combinar `annotated` con `tabs` para añadir una explicación común a varias pestañas:
 
-```markdown
+````markdown
 {{</* annotated */>}}
 {{</* tabs */>}}
 {{</* tab "Saludo" */>}}
@@ -83,11 +71,10 @@ Hola, este es un ejemplo de explicación común a varias pestañas.
 Adiós, este es un ejemplo de explicación común a varias pestañas.
 {{</* /tab */>}}
 {{</* /tabs */>}}
-{{</* explain */>}}
+---
 Este es un ejemplo de explicación común a varias pestañas.
-{{</* /explain */>}}
 {{</* /annotated */>}}
-```
+````
 
 {{< annotated >}}
 {{< tabs >}}
@@ -98,9 +85,8 @@ Hola, este es un ejemplo de explicación común a varias pestañas.
 Adiós, este es un ejemplo de explicación común a varias pestañas.
 {{< /tab >}}
 {{< /tabs >}}
-{{< explain >}}
+---
 Este es un ejemplo de explicación común a varias pestañas.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Tabs de código
@@ -121,9 +107,8 @@ yarn add @ejemplo/sdk
 ```
 {{</* /tab */>}}
 {{</* /tabs */>}}
-{{</* explain */>}}
+---
 Este paquete requiere Node.js 18 o superior.
-{{</* /explain */>}}
 {{</* /annotated */>}}
 ````
 
@@ -140,45 +125,46 @@ yarn add @ejemplo/sdk
 ```
 {{< /tab >}}
 {{< /tabs >}}
-{{< explain >}}
+---
 Este paquete requiere Node.js 18 o superior.
-{{< /explain >}}
 {{< /annotated >}}
 
 ## Tablas
 
 También puedes combinar una tabla con una nota explicativa:
 
-```markdown
+````markdown
 {{</* annotated */>}}
 | Parámetro | Tipo | Por defecto |
 | :--- | :--- | :--- |
 | `timeout` | number | `3000` |
 | `retries` | number | `3` |
-{{</* explain */>}}
+---
 El valor de `timeout` se expresa en milisegundos.
-{{</* /explain */>}}
 {{</* /annotated */>}}
-```
+````
 
 {{< annotated >}}
 | Parámetro | Tipo | Por defecto |
 | :--- | :--- | :--- |
 | `timeout` | number | `3000` |
 | `retries` | number | `3` |
-{{< explain >}}
+---
 El valor de `timeout` se expresa en milisegundos.
-{{< /explain >}}
 {{< /annotated >}}
 
-## Restricción de explain
+## Separador alternativo
 
-El shortcode `explain` debe estar contenido directamente dentro de `annotated`. Si se utiliza fuera de este contenedor, Hugo detiene la compilación e informa del error correspondiente.
+Puedes usar `<!-- split -->` en lugar de `---` si tu contenido contiene reglas horizontales:
 
-```markdown
-{{</* explain */>}}
-Esta nota no es válida.
-{{</* /explain */>}}
+````markdown
+{{</* annotated */>}}
+```yaml
+key: value
 ```
+<!-- split -->
+El campo `key` acepta cualquier cadena de texto.
+{{</* /annotated */>}}
+````
 
-El contenido de `explain` se procesa mediante `.Page.RenderString`, por lo que admite Markdown.
+El contenido debajo del separador se procesa mediante `.Page.RenderString`, por lo que admite Markdown.

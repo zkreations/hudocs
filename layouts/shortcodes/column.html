@@ -1,8 +1,0 @@
-{{- if not (and .Parent (eq .Parent.Name "columns")) -}}
-  {{- errorf "%s: The 'column' shortcode must be called inside 'columns'." .Position -}}
-{{- else -}}
-  {{- $class := .Get "class" | default (.Get 0) -}}
-  <div class="column{{ with $class }} {{ . }}{{ end }}">
-    {{- .Page.RenderString .Inner -}}
-  </div>
-{{- end -}}
