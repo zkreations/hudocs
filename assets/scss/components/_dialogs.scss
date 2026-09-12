@@ -147,13 +147,6 @@
     &:focus-visible {
       background-color: var(--bg-inset);
     }
-
-    mark {
-      background-color: var(--bg-mark);
-      color: inherit;
-      border-radius: .125rem;
-      padding: 0 .15em;
-    }
   }
 
   &-list {
