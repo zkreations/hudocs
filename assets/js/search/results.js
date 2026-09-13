@@ -138,7 +138,7 @@ export function renderResults (resultsContainer, grouped, regex) {
 export function showEmptyState (resultsContainer, message) {
   resultsContainer.replaceChildren()
   const el = document.createElement('p')
-  el.className = 'search-empty fs-7'
+  el.className = 'search-empty'
   el.textContent = message
   resultsContainer.appendChild(el)
 }
@@ -146,7 +146,7 @@ export function showEmptyState (resultsContainer, message) {
 export function showErrorState (resultsContainer, message) {
   resultsContainer.replaceChildren()
   const el = document.createElement('p')
-  el.className = 'search-error fs-7'
+  el.className = 'search-error'
   el.setAttribute('role', 'alert')
   el.textContent = message
   resultsContainer.appendChild(el)
