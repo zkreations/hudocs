@@ -32,7 +32,7 @@
 
 .header {
   box-shadow: var(--shadow-md);
-  background-color: var(--surface-elevated);
+  background-color: var(--surface);
   border-bottom: 1px solid var(--outline);
   position: fixed;
   z-index: 50;
@@ -53,7 +53,7 @@
     }
 
     &-icon {
-      color: var(--icon-muted);
+      color: var(--on-surface-muted);
       flex: none;
     }
   }

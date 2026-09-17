@@ -1,5 +1,5 @@
 .dropdown {
-  background-color: var(--surface-elevated);
+  background-color: var(--surface);
   transform-origin: top right;
   transform: translate3d(0, 0, 0) scale(1);
   transition-property: opacity, transform;
@@ -29,12 +29,12 @@
     display: block;
 
     &.is-active {
-      color: var(--color-link);
+      color: var(--primary);
       pointer-events: none;
     }
 
     &:hover {
-      color: var(--color-link);
+      color: var(--primary);
     }
 
     &+* {
@@ -131,12 +131,11 @@
   &-link {
     padding: .75rem 1rem;
     display: block;
-    background-color: var(--surface-sunken);
+    background-color: var(--surface-container);
     border-radius: .5rem;
     color: var(--on-surface-variant);
     transition: background-color .3s;
 
-    &:hover,
     &.is-selected,
     &:focus-visible {
       background-color: var(--surface-container);
@@ -151,13 +150,12 @@
 
   &-title {
     color: var(--on-surface);
+    font-weight: 500;
   }
 
   &-empty,
   &-error {
     text-align: center;
-    padding: 2rem 1rem;
-    color: var(--on-surface-muted);
   }
 
   &-error {

@@ -19,6 +19,7 @@ $gray-900: #18181b !default;
   color-scheme: light;
 
   --header-height: 70px;
+  --scrollbar-size: 10px;
   --aside-width: 246px;
   --timing: cubic-bezier(0.7, 0.006, 0.2, 1);
   --font-primary: 'Inter', sans-serif;
@@ -32,19 +33,15 @@ $gray-900: #18181b !default;
   --primary-subtle: color-mix(in srgb, var(--primary) 20%, white);
   --primary-subtle-hover: color-mix(in srgb, var(--primary) 40%, white);
   --primary-selection: color-mix(in srgb, var(--primary) 20%, transparent);
-  --color-link: var(--primary);
 
   --surface: #{$white};
-  --surface-elevated: #{$white};
-  --surface-sunken: #{$gray-50};
   --surface-container: #{$gray-100};
   --surface-container-hover: #{$gray-200};
-  --surface-tint: color-mix(in srgb, #{$gray-200} 50%, transparent);
   --surface-mark: color-mix(in srgb, #{$yellow} 20%, white);
-  --scrim: rgb(123 131 135 / 50%);
 
+  --surface-inverse-low: #{$gray-700};
   --surface-inverse: #{$gray-900};
-  --surface-inverse-variant: #{$black};
+  --surface-inverse-high: #{$black};
 
   --on-surface: #{$gray-800};
   --on-surface-variant: #{$gray-600};
@@ -52,12 +49,12 @@ $gray-900: #18181b !default;
   --on-surface-inverse: #{$white};
 
   --outline: #{$gray-300};
+  --scrim: rgb(123 131 135 / 50%);
 
-  --icon-muted: #{$gray-400};
-
-  --code-copy-bg: #{$gray-700};
   --code-scrollbar-track: rgb(0 0 0 / 25%);
   --code-scrollbar-thumb: #485158;
+
+  --highlight-radius: .5rem;
 
   --syntax-tag: #ffd8a8;
   --syntax-attr: #ffa94d;
@@ -82,34 +79,20 @@ $gray-900: #18181b !default;
   &.dark {
     color-scheme: dark;
 
-    --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
-    --shadow-md: 0px 3px 6px rgb(0 0 0 / 30%);
-    --shadow-lg: 0px 5px 10px rgb(0 0 0 / 40%);
-
     --primary: color-mix(in srgb, #{$green} 60%, white);
     --primary-subtle: color-mix(in srgb, var(--primary) 10%, transparent);
     --primary-subtle-hover: color-mix(in srgb, var(--primary) 25%, transparent);
 
-    --surface: #{$gray-900};
-    --surface-elevated: #{$gray-800};
-    --surface-sunken: #{$black};
+    --surface: #{$gray-800};
     --surface-container: #{$gray-800};
     --surface-container-hover: #{$gray-700};
-    --surface-tint: color-mix(in srgb, #{$black} 50%, transparent);
     --surface-mark: color-mix(in srgb, #{$yellow} 30%, transparent);
-
-    --surface-inverse: #{$black};
-    --surface-inverse-variant: #{$gray-900};
 
     --on-surface: #{$white};
     --on-surface-variant: #{$gray-300};
     --on-surface-muted: #{$gray-400};
 
     --outline: #{$gray-700};
-
-    --icon-muted: #{$gray-400};
-
-    --code-copy-bg: #{$gray-800};
 
     --info: color-mix(in srgb, #{$blue} 40%, white);
     --info-container: color-mix(in srgb, #{$blue} 8%, transparent);

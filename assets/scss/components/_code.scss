@@ -6,7 +6,7 @@ pre {
 :not(pre)>code {
   padding: .2em .4em;
   white-space: nowrap;
-  background-color: var(--surface-tint);
+  background-color: var(--surface-container);
   border-radius: .4em;
   font-weight: 400;
   font-size: .875rem;
@@ -18,9 +18,21 @@ pre {
   --bg-scrollbar-thumb: var(--code-scrollbar-thumb);
   background: var(--surface-inverse);
   position: relative;
-  border-radius: .5rem;
+  border-radius: var(--highlight-radius);
   white-space: normal;
   line-height: 1.5;
+
+  &[filename]::before {
+    content: attr(filename);
+    display: block;
+    padding: .75rem;
+    font-size: .875rem;
+    line-height: 1;
+    background-color: var(--surface-inverse-high);
+    border-top-left-radius: var(--highlight-radius);
+    border-top-right-radius: var(--highlight-radius);
+    color: var(--on-surface-variant);
+  }
 
   pre {
     background-color: transparent !important;
@@ -28,7 +40,7 @@ pre {
     color: var(--on-surface-inverse);
     padding: 1rem 0;
 
-    scrollbar-color: var(--bg-scrollbar-thumb) var(--bg-scrollbar-track);
+    scrollbar-color: var(--code-scrollbar-thumb) var(--code-scrollbar-track);
     scrollbar-width: thin;
 
     @include breakpoint(s) {
@@ -64,14 +76,34 @@ pre {
       box-shadow: 3px 0 0 var(--primary) inset;
     }
   }
+
+  .ln {
+    padding-right: 1.5rem;
+    color: var(--on-surface-variant);
+  }
+
+  .lntd:first-child {
+    background-color: var(--surface-inverse-high);
+    border-top-left-radius: var(--highlight-radius);
+    border-bottom-left-radius: var(--highlight-radius);
+  }
+
+  .lnt {
+    color: var(--on-surface-variant);
+  }
+
+  .lnlinks {
+    color: var(--primary);
+  }
 }
+
 
 .code-copy {
   position: absolute;
   right: -.5rem;
   top: -.5rem;
   border-radius: 50rem;
-  background-color: var(--bg, var(--code-copy-bg));
+  background-color: var(--bg, var(--surface-inverse-low));
   color: var(--on-surface-inverse);
   padding: 0.5rem;
   transition: background-color .3s;
@@ -91,7 +123,7 @@ pre {
 
   pre {
     padding: 1rem;
-    background-color: var(--surface-tint);
+    background-color: var(--surface-container);
     overflow: auto;
     white-space: pre-wrap;
   }
@@ -108,7 +140,7 @@ pre {
 .annotated {
   margin-block: var(--space-block, 1.5rem);
 
-  > *:not(.annotated-note, .explain) {
+  >*:not(.annotated-note, .explain) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     margin-bottom: 0;
@@ -121,6 +153,7 @@ pre {
 }
 
 .chroma {
+
   .nt,
   .nn {
     color: var(--syntax-tag);

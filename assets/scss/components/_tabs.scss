@@ -63,12 +63,12 @@
 
   &:has(> .tab-content > .highlight:only-child) {
     border: 0;
-    background-color: var(--surface-inverse-variant);
+    background-color: var(--surface-inverse-high);
 
     .tab-label {
       margin-bottom: 0;
       border-bottom: 0;
-      background-color: var(--surface-inverse-variant);
+      background-color: var(--surface-inverse);
 
       @include breakpoint(s) {
         padding-inline: 1.5rem;

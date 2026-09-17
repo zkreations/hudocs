@@ -50,6 +50,9 @@
 }
 
 .scrollable {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+  
   @include breakpoint(l) {
     top: var(--header-height);
     max-height: calc((100vh - var(--header-height)));
