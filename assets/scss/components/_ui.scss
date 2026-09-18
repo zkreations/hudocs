@@ -1,7 +1,7 @@
 .alert {
   background-color: var(--alert-bg, var(--surface-container));
   color: var(--alert-color, var(--on-surface));
-  border-left: 3px solid;
+  border-inline-start: 3px solid;
   padding: 1.25rem;
 
   a[href]:not([class]) {
@@ -38,7 +38,7 @@
     min-width: 0;
 
     > *:last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 }

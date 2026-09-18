@@ -38,7 +38,7 @@
     }
 
     &+* {
-      margin-top: .5rem;
+      margin-block-start: .5rem;
     }
   }
 }
@@ -98,7 +98,7 @@
 
   &-icon {
     flex: none;
-    margin-right: 1rem;
+    margin-inline-end: 1rem;
   }
 
   &-results {
@@ -109,22 +109,22 @@
 
   &-group {
     &-header {
-      margin-bottom: 1rem;
+      margin-block-end: 1rem;
       text-transform: capitalize;
       font-size: 1rem;
       font-weight: 500;
     }
 
     &-list {
-      margin-left: 0.625rem;
-      padding-left: 1rem;
-      border-left: 1px solid var(--outline);
+      margin-inline-start: 0.625rem;
+      padding-inline-start: 1rem;
+      border-inline-start: 1px solid var(--outline);
     }
   }
 
   &-item {
     + * {
-      margin-top: .5rem;
+      margin-block-start: .5rem;
     }
   }
 

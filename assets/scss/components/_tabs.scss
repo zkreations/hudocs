@@ -14,9 +14,9 @@
   .tab-label {
     order: 0;
     z-index: 1;
-    margin-bottom: -1px;
+    margin-block-end: -1px;
+    border-block-end: 2px solid transparent;
     padding: 0.625rem 1.25rem;
-    border-bottom: 2px solid transparent;
     color: var(--on-surface-variant);
     cursor: pointer;
     user-select: none;
@@ -46,14 +46,14 @@
     display: none;
     width: 100%;
     padding: 1.5rem;
-    border-top: 1px solid var(--outline);
+    border-block-start: 1px solid var(--outline);
 
     > :first-child {
-      margin-top: 0;
+      margin-block-start: 0;
     }
 
     > :last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 
@@ -66,8 +66,8 @@
     background-color: var(--surface-inverse-high);
 
     .tab-label {
-      margin-bottom: 0;
-      border-bottom: 0;
+      margin-block-end: 0;
+      border-block-end: 0;
       background-color: var(--surface-inverse);
 
       @include breakpoint(s) {
@@ -90,7 +90,7 @@
 
     .tab-content {
       padding: 0;
-      border-top: 0;
+      border-block-start: 0;
 
       .highlight {
         border-top-left-radius: 0;

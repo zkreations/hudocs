@@ -78,7 +78,7 @@ pre {
   }
 
   .ln {
-    padding-right: 1.5rem;
+    padding-inline-start: 1.5rem;
     color: var(--syntax-muted);
   }
 
@@ -129,11 +129,11 @@ pre {
   }
 
   > :first-child {
-    margin-top: 0;
+    margin-block-start: 0;
   }
 
   > :last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -143,12 +143,11 @@ pre {
   >*:not(.annotated-note, .explain) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 
   > :is(.annotated-note, .explain) {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block: 0;
   }
 }
 

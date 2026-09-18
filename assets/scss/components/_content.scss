@@ -1,27 +1,25 @@
 .article {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-block: 2rem;
   grid-area: doc;
   font-size: 1rem;
 
   @include breakpoint(l) {
-    padding-right: 3rem;
-    padding-left: 3rem;
+    padding-inline: 3rem;
     box-shadow:
-      -1px 0 0 0 var(--outline) inset,
-      1px 0 0 0 var(--outline) inset;
+      1px 0 0 0 var(--outline) inset,
+      1px 0 0 0 var(--outline);
   }
 
   &-header {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--outline);
-    padding-bottom: 1.25rem;
-    margin-bottom: 1.25rem;
+    border-block-end: 1px solid var(--outline);
+    padding-block-end: 1.25rem;
+    margin-block-end: 1.25rem;
 
     @include breakpoint(m) {
-      padding-bottom: 1.75rem;
-      margin-bottom: 1.75rem;
+      padding-block-end: 1.75rem;
+      margin-block-end: 1.75rem;
     }
   }
 
@@ -31,13 +29,13 @@
   }
 
   &-edit {
-    padding-left: 1rem;
-    margin-left: auto;
+    padding-inline-start: 1rem;
+    margin-inline-start: auto;
     flex: none;
   }
 
   &-anchor {
-    margin-left: .75rem;
+    margin-inline-start: .75rem;
     visibility: hidden;
 
     @at-root :is(h1, h2, h3, h4, h5, h6):hover > #{&} {
@@ -76,7 +74,7 @@
     margin-inline-start: 1.25rem;
 
     >*+* {
-      margin-top: 0.25rem;
+      margin-block-start: 0.25rem;
     }
   }
 
@@ -106,7 +104,7 @@
   h4,
   h5,
   h6 {
-    margin-bottom: var(--space-headings);
+    margin-block-end: var(--space-headings);
     font-weight: 500;
     color: var(--color, var(--on-surface));
     display: flex;
@@ -118,8 +116,8 @@
   }
 
   h2 {
-    border-top: 1px solid var(--outline);
-    padding-top: var(--space-block);
+    border-block-start: 1px solid var(--outline);
+    padding-block-start: var(--space-block);
     font-size: clamp(1.25rem, 5vw, 1.5rem);
     --space-headings: 1.5rem;
   }
@@ -160,6 +158,6 @@
 
   > *:not(:last-child, h1, h2, h3, h4, h5, h6, .code-example),
   :where(p, pre, table, blockquote, video, iframe, ol, ul, img, audio, figure):not(:last-child, figure :last-of-type, .code-example) {
-    margin-bottom: var(--space-block);
+    margin-block-end: var(--space-block);
   }
 }
