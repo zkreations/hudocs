@@ -57,3 +57,8 @@ summaryLength = 20
 
   # (Optional) Copyright text, supports markdown (Can be used {{Year}} to insert the current year)
   copyright = "Created by [@zkreations](https://zkreations.com)"
+
+[params.code]
+  # (Optional, default "duotone-dark") Code theme: duotone-dark, duotone-dark-sky,
+  # duotone-dark-sea, duotone-dark-space, duotone-dark-earth, duotone-dark-forest
+  # theme = "duotone-dark"
