@@ -259,20 +259,3 @@ pre {
     color: var(--syntax-error);
   }
 }
-
-.brackets {
-  font-family: var(--font-monospace);
-
-  &::before,
-  &::after {
-    color: var(--outline);
-  }
-
-  &::before {
-    content: "{";
-  }
-
-  &::after {
-    content: "}";
-  }
-}
