@@ -17,8 +17,8 @@
   &-item {
     position: relative;
 
-    &.is-current > .menu-link,
-    &.is-current > label .menu-link {
+    &.is-current>.menu-link,
+    &.is-current>label .menu-link {
       --link-color: var(--primary);
     }
 
@@ -36,11 +36,11 @@
   &-toggle {
     display: none;
 
-    &:checked + label .menu-arrow {
+    &:checked+label .menu-arrow {
       transform: rotate(180deg);
     }
 
-    &:not(:checked) ~ .submenu-list {
+    &:not(:checked)~.submenu-list {
       display: none;
     }
   }
@@ -91,27 +91,16 @@
 
   &-title {
     margin-block-end: 1rem;
-    padding-inline-start: 1.5rem;
     font-size: 1rem;
     font-weight: 500;
+
+    @include breakpoint(l) {
+      padding-inline-start: 1.5rem;
+    }
   }
 
   @include breakpoint(l, max) {
-    &:not(.is-active) {
-      display: none;
-    }
-
     order: -1;
-  }
-
-  &-toggle {
-    @include breakpoint(l) {
-      display: none;
-    }
-
-    &.is-active {
-      color: var(--primary);
-    }
   }
 
   &-content {
@@ -129,7 +118,10 @@
     $selector: 'ul';
 
     @for $i from 0 through 4 {
-      #{$selector} { --level: #{$i}rem; }
+      #{$selector} {
+        --level: #{$i}rem;
+      }
+
       $selector: $selector + ' ul';
     }
 
@@ -149,14 +141,12 @@
         color: var(--primary);
       }
 
-      &.is-visible {
-        @include breakpoint(l) {
+      @include breakpoint(l) {
+        padding-inline-start: calc(1.5rem + var(--level));
+
+        &.is-visible {
           box-shadow: inset 2px 0 0 0 var(--on-surface);
         }
-      }
-
-      @include breakpoint(l) {
-        padding-inline-start: calc(1.5rem  + var(--level));
       }
     }
   }
