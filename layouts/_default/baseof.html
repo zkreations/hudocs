@@ -1,5 +1,5 @@
 <!doctype html>
-{{- $codeTheme := default "duotone-dark" .Site.Params.code.theme -}}
+{{- $codeTheme := default "duotone-dark" (or site.Params.code_theme (and site.Params.code site.Params.code.theme)) -}}
 {{- $codeThemes := slice "duotone-dark" "duotone-dark-sky" "duotone-dark-sea" "duotone-dark-space" "duotone-dark-earth" "duotone-dark-forest" -}}
 {{- if not (in $codeThemes $codeTheme) -}}
   {{- $codeTheme = "duotone-dark" -}}

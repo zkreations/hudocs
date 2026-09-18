@@ -171,8 +171,16 @@ date_format = "2006-01-02"
 
 ### copyright
 
-Define el texto de copyright mostrado por el tema. El valor admite Markdown. Puedes utilizar `{{Year}}` para insertar automáticamente el año actual.
+Define el texto de copyright que muestra el tema. El valor admite Markdown. Se puede utilizar `{{Year}}` para insertar automáticamente el año actual.
 
 ```toml
-copyright = "Creado por [@zkreations](https://zkreations.com)"
+copyright = "Created by [@zkreations](https://zkreations.com)"
+```
+
+### code_theme
+
+Configura el tema de color para los bloques de código con resaltado de sintaxis. Los temas disponibles son `duotone-dark`, `duotone-dark-sky`, `duotone-dark-sea`, `duotone-dark-space`, `duotone-dark-earth` y `duotone-dark-forest`. El valor predeterminado es `duotone-dark`.
+
+```toml
+code_theme = "duotone-dark"
 ```

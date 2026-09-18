@@ -97,8 +97,8 @@ markup:
 Hudocs incluye temas Duotone para los bloques de código. El tema se selecciona en el archivo `hugo.toml` del sitio y se aplica a todo el código resaltado generado por Hugo y Chroma.
 
 ```toml
-[params.code]
-  theme = "duotone-dark-sea"
+[params]
+  code_theme = "duotone-dark-sea"
 ```
 
 Los temas disponibles son `duotone-dark`, `duotone-dark-sky`, `duotone-dark-sea`, `duotone-dark-space`, `duotone-dark-earth` y `duotone-dark-forest`. El valor predeterminado es `duotone-dark`, que utiliza la paleta Sky. Un valor desconocido vuelve al tema predeterminado.

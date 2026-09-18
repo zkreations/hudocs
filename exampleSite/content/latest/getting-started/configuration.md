@@ -176,3 +176,11 @@ Defines the copyright text displayed by the theme. The value supports Markdown. 
 ```toml
 copyright = "Created by [@zkreations](https://zkreations.com)"
 ```
+
+### code_theme
+
+Configures the color theme for syntax-highlighted code blocks. The available themes are `duotone-dark`, `duotone-dark-sky`, `duotone-dark-sea`, `duotone-dark-space`, `duotone-dark-earth`, and `duotone-dark-forest`. The default value is `duotone-dark`.
+
+```toml
+code_theme = "duotone-dark"
+```
