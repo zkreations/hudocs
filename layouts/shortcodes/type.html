@@ -1,0 +1,34 @@
+{{- $raw := "" -}}
+{{- if .IsNamedParams -}}
+  {{- $raw = .Get "name" | default (.Get "type") | default "" -}}
+{{- else -}}
+  {{- $raw = .Get 0 | default "" -}}
+{{- end -}}
+{{- $raw = printf "%v" $raw -}}
+
+{{- $isValues := and (strings.HasPrefix $raw "{") (strings.HasSuffix $raw "}") -}}
+{{- $optional := and (not $isValues) (strings.HasSuffix $raw "?") -}}
+
+{{- $label := $raw -}}
+{{- if $isValues -}}
+  {{- $label = strings.TrimPrefix "{" $raw | strings.TrimSuffix "}" | strings.TrimSpace -}}
+{{- else if $optional -}}
+  {{- $label = strings.TrimSuffix "?" $raw | strings.TrimSpace -}}
+{{- end -}}
+
+{{- $typeMap := dict
+    "textual"    (slice "string" "char" "rune" "byte")
+    "numeric"    (slice "number" "int" "float" "uint")
+    "logical"    (slice "boolean" "bool")
+    "structural" (slice "object" "array" "function" "map" "set")
+-}}
+
+{{- $category := cond $isValues "values" "custom" -}}
+{{- if not $isValues -}}
+  {{- $norm := lower $label -}}
+  {{- range $cat, $types := $typeMap -}}
+    {{- if in $types $norm -}}{{- $category = $cat -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<code class="type type-{{ $category }}{{ if $optional }} type-optional{{ end }}">{{- $label -}}</code>

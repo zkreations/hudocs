@@ -259,3 +259,58 @@ pre {
     color: var(--syntax-error);
   }
 }
+
+.type:not(.type-values) {
+  background-color: var(--type-bg, var(--surface-container));
+  color: var(--type-color, var(--on-surface));
+}
+
+.type {
+  &-textual {
+    --type-color: var(--type-textual);
+    --type-bg: color-mix(in srgb, var(--type-textual) 12%, transparent);
+  }
+
+  &-numeric {
+    --type-color: var(--type-numeric);
+    --type-bg: color-mix(in srgb, var(--type-numeric) 12%, transparent);
+  }
+
+  &-logical {
+    --type-color: var(--type-logical);
+    --type-bg: color-mix(in srgb, var(--type-logical) 12%, transparent);
+  }
+
+  &-structural {
+    --type-color: var(--type-structural);
+    --type-bg: color-mix(in srgb, var(--type-structural) 12%, transparent);
+  }
+
+  &-custom {
+    --type-color: var(--type-custom);
+    --type-bg: color-mix(in srgb, var(--type-custom) 12%, transparent);
+  }
+
+  &-optional::after {
+    content: "?";
+    font-weight: 500;
+    opacity: .75;
+  }
+}
+
+.type {
+  &-values {
+    &::after,
+    &::before {
+      color: var(--outline);
+    }
+
+    &::before {
+      content: "{";
+    }
+
+    &::after {
+      content: "}";
+    }
+  }
+}

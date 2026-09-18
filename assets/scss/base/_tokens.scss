@@ -92,6 +92,12 @@ $gray-900: #18181b !default;
   --syntax-link: var(--syntax-duo-1);
   --syntax-error: hsl(0 90% 70%);
 
+  --type-textual: #0369a1;
+  --type-numeric: #b45309;
+  --type-logical: #0f766e;
+  --type-structural: #4338ca;
+  --type-custom: #7e22ce;
+
   --info: color-mix(in srgb, #{$blue} 60%, black);
   --info-container: color-mix(in srgb, #{$blue} 10%, white);
   --success: color-mix(in srgb, #{$green} 60%, black);
@@ -171,5 +177,11 @@ $gray-900: #18181b !default;
     --warning-container: color-mix(in srgb, #{$yellow} 8%, transparent);
     --error: color-mix(in srgb, #{$red} 40%, white);
     --error-container: color-mix(in srgb, #{$red} 8%, transparent);
+
+    --type-textual: #38bdf8;
+    --type-numeric: #fbbf24;
+    --type-logical: #2dd4bf;
+    --type-structural: #818cf8;
+    --type-custom: #c084fc;
   }
 }
