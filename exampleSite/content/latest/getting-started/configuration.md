@@ -153,6 +153,14 @@ Controls page navigation through "Previous" and "Next" links at the bottom of co
 pagination = true
 ```
 
+### expand_tree
+
+Expands all sections in the sidebar navigation tree. When set to `false`, only the active section is expanded automatically. The default value is `false`.
+
+```toml
+expand_tree = false
+```
+
 ### date_format
 
 Defines the format used to display the last updated date of pages. The format follows Go's date rules. The default value is `2006-01-02`.

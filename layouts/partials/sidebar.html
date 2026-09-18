@@ -17,7 +17,7 @@
         {{ if .IsSection }}
         
           {{- if .Page.IsSection -}}
-            <input class="menu-toggle{{ if $isSub }} submenu-toggle{{ end }}" type="checkbox" id="menu-{{ md5 .Page }}"{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} checked=""{{ end }}>
+            <input class="menu-toggle{{ if $isSub }} submenu-toggle{{ end }}" type="checkbox" id="menu-{{ md5 .Page }}"{{ if or site.Params.expand_tree (eq $currentNode .Page) (.IsAncestor $currentNode) }} checked=""{{ end }}>
           {{ end }}
 
           {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}

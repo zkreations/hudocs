@@ -153,6 +153,14 @@ Controla la navegación entre páginas mediante los enlaces "Anterior" y "Siguie
 pagination = true
 ```
 
+### expand_tree
+
+Expande todas las secciones en el árbol de navegación de la barra lateral. Si se establece en `false`, solo la sección activa se expande automáticamente. El valor predeterminado es `false`.
+
+```toml
+expand_tree = false
+```
+
 ### date_format
 
 Define el formato utilizado para mostrar la fecha de actualización de las páginas. El formato utiliza las reglas de fecha de Go. El valor predeterminado es `2006-01-02`.

@@ -52,6 +52,9 @@ summaryLength = 20
   # (Optional, default true) Enables prev/next pagination between pages
   # pagination = false
 
+  # (Optional, default false) Expands all sections in the sidebar navigation tree
+  # expand_tree = true
+
   # (Optional, default "2006-01-02") Date format for last modified footer
   date_format = "January 2, 2006"
 
