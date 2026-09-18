@@ -45,9 +45,9 @@ If you want to include more complex content in each step, such as headings, para
 
    Clone or add Hudocs as a submodule in your `themes/` folder:
 
-```bash
-   git clone https://github.com/zkreations/hudocs themes/hudocs
-```
+   ```bash
+      git clone https://github.com/zkreations/hudocs themes/hudocs
+   ```
 
 3. ### Configure and launch
 
@@ -66,9 +66,9 @@ If you want to include more complex content in each step, such as headings, para
 
    Clone or add Hudocs as a submodule in your `themes/` folder:
 
-````bash
+   ```bash
    git clone https://github.com/zkreations/hudocs themes/hudocs
-````
+   ```
 
 3. ### Configure and launch
 
