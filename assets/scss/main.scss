@@ -16,6 +16,7 @@
 }
 
 @layer components {
+  @import "components/tooltips";
   @import "components/content";
   @import "components/code";
   @import "components/navigation";

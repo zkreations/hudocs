@@ -18,8 +18,7 @@ function addCopyButtons () {
     if (!pre || !pre.parentNode.classList.contains('highlight')) return
 
     const button = document.createElement('button')
-    button.className = 'code-copy'
-    button.title = COPY_TEXT
+    button.className = 'code-copy tooltip tooltip-start'
     button.setAttribute('aria-label', COPY_TEXT)
     button.innerHTML = '<svg viewBox="0 0 24 24" class="i i-copy"><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path><rect width="13" height="13" x="9" y="9" rx="2"></rect></svg>'
     pre.parentNode.insertBefore(button, pre)
@@ -35,10 +34,8 @@ function addCopyButtons () {
 
     clipboard.writeText(code.textContent).then(() => {
       button.blur()
-      button.title = COPIED_TEXT
       button.setAttribute('aria-label', COPIED_TEXT)
       setTimeout(() => {
-        button.title = COPY_TEXT
         button.setAttribute('aria-label', COPY_TEXT)
       }, 2000)
     })
