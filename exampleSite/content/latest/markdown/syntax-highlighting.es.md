@@ -22,10 +22,10 @@ app.textContent = "Hello, world!";
 Puedes mostrar números junto a las líneas del código.
 
 ```html {linenos=true}
+<!-- Comments -->
 <main class="hero">
   <h1>Welcome to HuDocs</h1>
   <p>Build beautiful documentation with Hugo.</p>
-  <a href="/docs/">Read the documentation</a>
 </main>
 ```
 
@@ -37,21 +37,17 @@ También puedes mostrarlos dentro del propio bloque utilizando `inline`.
   gap: 1rem;
   max-width: 40rem;
 }
-
-.hero a {
-  text-decoration: none;
-}
 ```
 
 ## Resaltar líneas
 
 La opción `hl_lines` permite destacar líneas específicas del bloque.
 
-```javascript {hl_lines=[2]}
-const greeting = "Hello World";
-const name = "Daniel";
+```python {hl_lines=[2]}
+greeting = "Hello World"
+name = "Daniel"
 
-console.log(`${greeting}, ${name}`);
+print(f"{greeting}, {name}")
 ```
 
 También puedes resaltar un rango de líneas.
@@ -95,5 +91,18 @@ markup:
     lineNos: true
     lineNumbersInTable: true
 ```
+
+## Tema de código
+
+Hudocs incluye temas Duotone para los bloques de código. El tema se selecciona en el archivo `hugo.toml` del sitio y se aplica a todo el código resaltado generado por Hugo y Chroma.
+
+```toml
+[params.code]
+  theme = "duotone-dark-sea"
+```
+
+Los temas disponibles son `duotone-dark`, `duotone-dark-sky`, `duotone-dark-sea`, `duotone-dark-space`, `duotone-dark-earth` y `duotone-dark-forest`. El valor predeterminado es `duotone-dark`, que utiliza la paleta Sky. Un valor desconocido vuelve al tema predeterminado.
+
+El tema del código es independiente del modo claro u oscuro de la interfaz del sitio. Es una opción de configuración del sitio, no un selector para visitantes, y no modifica el motor de resaltado de Hugo ni las opciones de los bloques de código descritas anteriormente.
 
 Estas son solo algunas de las opciones disponibles para los bloques de código. Consulta la [documentación de Hugo sobre resaltado de sintaxis](https://gohugo.io/content-management/syntax-highlighting/) para conocer el resto.
