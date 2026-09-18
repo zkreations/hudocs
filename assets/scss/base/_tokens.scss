@@ -56,16 +56,41 @@ $gray-900: #18181b !default;
 
   --highlight-radius: .5rem;
 
-  --syntax-tag: #ffd8a8;
-  --syntax-attr: #ffa94d;
-  --syntax-operator: #888888;
-  --syntax-comment: #5c6370;
-  --syntax-keyword: #dab1eb;
-  --syntax-variable: #ffb1b1;
-  --syntax-constant: #a3ffed;
-  --syntax-string: #c7e19e;
-  --syntax-number: #a3f2ff;
-  --syntax-function: #b1c9ff;
+  --syntax-uno-1: hsl(260 99% 96%);
+  --syntax-uno-2: hsl(260 88% 84%);
+  --syntax-uno-3: hsl(260 66% 74%);
+  --syntax-uno-4: hsl(260 22% 48%);
+  --syntax-uno-5: hsl(260 11% 34%);
+  --syntax-duo-1: hsl(28 99% 78%);
+  --syntax-duo-2: hsl(28 44% 48%);
+  --syntax-duo-3: hsl(28 22% 38%);
+
+  --syntax-bg: var(--surface-inverse);
+  --syntax-bg-deep: var(--surface-inverse-high);
+
+  --syntax-fg: var(--syntax-uno-2);
+  --syntax-muted: var(--syntax-uno-4);
+  --syntax-comment: var(--syntax-uno-5);
+  --syntax-keyword: var(--syntax-duo-1);
+  --syntax-operator: var(--syntax-uno-5);
+  --syntax-punctuation: var(--syntax-uno-5);
+  --syntax-string: var(--syntax-duo-1);
+  --syntax-regex: var(--syntax-duo-1);
+  --syntax-number: var(--syntax-duo-1);
+  --syntax-constant: var(--syntax-duo-1);
+  --syntax-variable: var(--syntax-uno-1);
+  --syntax-function: var(--syntax-duo-1);
+  --syntax-builtin: var(--syntax-duo-1);
+  --syntax-type: var(--syntax-duo-2);
+  --syntax-class: var(--syntax-uno-1);
+  --syntax-tag: var(--syntax-uno-1);
+  --syntax-attribute: var(--syntax-duo-1);
+  --syntax-decorator: var(--syntax-duo-1);
+  --syntax-gutter: var(--syntax-bg-deep);
+  --syntax-selection: color-mix(in srgb, var(--syntax-duo-3) 45%, transparent);
+  --syntax-selection-border: var(--syntax-duo-1);
+  --syntax-link: var(--syntax-duo-1);
+  --syntax-error: hsl(0 90% 70%);
 
   --info: color-mix(in srgb, #{$blue} 60%, black);
   --info-container: color-mix(in srgb, #{$blue} 10%, white);
@@ -75,6 +100,50 @@ $gray-900: #18181b !default;
   --warning-container: color-mix(in srgb, #{$yellow} 10%, white);
   --error: color-mix(in srgb, #{$red} 60%, black);
   --error-container: color-mix(in srgb, #{$red} 10%, white);
+
+  &[data-code-theme="duotone-dark-sea"] {
+    --syntax-uno-1: hsl(212 99% 92%);
+    --syntax-uno-2: hsl(212 66% 72%);
+    --syntax-uno-3: hsl(212 44% 56%);
+    --syntax-uno-4: hsl(212 22% 44%);
+    --syntax-uno-5: hsl(212 11% 30%);
+    --syntax-duo-1: hsl(160 99% 60%);
+    --syntax-duo-2: hsl(160 55% 44%);
+    --syntax-duo-3: hsl(160 22% 33%);
+  }
+
+  &[data-code-theme="duotone-dark-space"] {
+    --syntax-uno-1: hsl(240 60% 84%);
+    --syntax-uno-2: hsl(240 40% 66%);
+    --syntax-uno-3: hsl(240 20% 54%);
+    --syntax-uno-4: hsl(240 15% 42%);
+    --syntax-uno-5: hsl(240 10% 32%);
+    --syntax-duo-1: hsl(20 99% 60%);
+    --syntax-duo-2: hsl(20 44% 48%);
+    --syntax-duo-3: hsl(20 22% 32%);
+  }
+
+  &[data-code-theme="duotone-dark-earth"] {
+    --syntax-uno-1: hsl(24 99% 88%);
+    --syntax-uno-2: hsl(24 32% 62%);
+    --syntax-uno-3: hsl(24 24% 48%);
+    --syntax-uno-4: hsl(24 16% 38%);
+    --syntax-uno-5: hsl(24 12% 30%);
+    --syntax-duo-1: hsl(42 99% 66%);
+    --syntax-duo-2: hsl(42 44% 48%);
+    --syntax-duo-3: hsl(42 24% 36%);
+  }
+
+  &[data-code-theme="duotone-dark-forest"] {
+    --syntax-uno-1: hsl(120 66% 92%);
+    --syntax-uno-2: hsl(120 12% 70%);
+    --syntax-uno-3: hsl(120 8% 56%);
+    --syntax-uno-4: hsl(120 6% 48%);
+    --syntax-uno-5: hsl(120 4% 36%);
+    --syntax-duo-1: hsl(70 90% 76%);
+    --syntax-duo-2: hsl(70 30% 50%);
+    --syntax-duo-3: hsl(70 20% 40%);
+  }
 
   &.dark {
     color-scheme: dark;

@@ -16,7 +16,7 @@ pre {
   --bg-scrollbar: transparent;
   --bg-scrollbar-track: var(--code-scrollbar-track);
   --bg-scrollbar-thumb: var(--code-scrollbar-thumb);
-  background: var(--surface-inverse);
+  background: var(--syntax-bg);
   position: relative;
   border-radius: var(--highlight-radius);
   white-space: normal;
@@ -28,16 +28,16 @@ pre {
     padding: .75rem;
     font-size: .875rem;
     line-height: 1;
-    background-color: var(--surface-inverse-high);
+    background-color: var(--syntax-gutter);
     border-top-left-radius: var(--highlight-radius);
     border-top-right-radius: var(--highlight-radius);
-    color: var(--on-surface-variant);
+    color: var(--syntax-muted);
   }
 
   pre {
     background-color: transparent !important;
     overflow-x: auto;
-    color: var(--on-surface-inverse);
+    color: var(--syntax-fg);
     padding: 1rem 0;
 
     scrollbar-color: var(--code-scrollbar-thumb) var(--code-scrollbar-track);
@@ -72,28 +72,28 @@ pre {
     }
 
     &.hl {
-      background-color: var(--primary-selection);
-      box-shadow: 3px 0 0 var(--primary) inset;
+      background-color: var(--syntax-selection);
+      box-shadow: 3px 0 0 var(--syntax-selection-border) inset;
     }
   }
 
   .ln {
     padding-right: 1.5rem;
-    color: var(--on-surface-variant);
+    color: var(--syntax-muted);
   }
 
   .lntd:first-child {
-    background-color: var(--surface-inverse-high);
+    background-color: var(--syntax-gutter);
     border-top-left-radius: var(--highlight-radius);
     border-bottom-left-radius: var(--highlight-radius);
   }
 
   .lnt {
-    color: var(--on-surface-variant);
+    color: var(--syntax-muted);
   }
 
   .lnlinks {
-    color: var(--primary);
+    color: var(--syntax-link);
   }
 }
 
@@ -153,59 +153,111 @@ pre {
 }
 
 .chroma {
+  color: var(--syntax-fg);
 
-  .nt,
-  .nn {
+  .nt {
     color: var(--syntax-tag);
   }
 
-  .na,
-  .nc {
-    color: var(--syntax-attr);
+  .na {
+    color: var(--syntax-attribute);
+  }
+
+  .nc,
+  .nn {
+    color: var(--syntax-class);
   }
 
   .p,
-  .o {
+  .w {
+    color: var(--syntax-punctuation);
+  }
+
+  .o,
+  .ow {
     color: var(--syntax-operator);
   }
 
   .c,
   .cm,
   .c1,
-  .cp {
+  .cp,
+  .cpf {
     color: var(--syntax-comment);
     font-style: italic;
   }
 
   .kd,
+  .k,
+  .kc,
+  .kn,
+  .kp,
   .kr,
-  .nd {
+  .kw {
     color: var(--syntax-keyword);
   }
 
-  .kd+.nx,
+  .kt {
+    color: var(--syntax-type);
+  }
+
+  .n,
   .nv,
-  .n {
+  .nx {
     color: var(--syntax-variable);
   }
 
-  .kr+.nx {
+  .l,
+  .ld,
+  .lg,
+  .li,
+  .ln,
+  .ls,
+  .no {
     color: var(--syntax-constant);
   }
 
-  .s2 {
+  .s,
+  .sa,
+  .sb,
+  .sc,
+  .sd,
+  .se,
+  .sh,
+  .si,
+  .s1,
+  .s2,
+  .ss,
+  .sx {
     color: var(--syntax-string);
   }
 
+  .sr {
+    color: var(--syntax-regex);
+  }
+
+  .m,
+  .mb,
+  .mf,
+  .mh,
   .mi,
-  .kt,
-  .mh {
+  .il,
+  .mo {
     color: var(--syntax-number);
   }
 
   .nb,
   .nf {
     color: var(--syntax-function);
+  }
+
+  .nd {
+    color: var(--syntax-decorator);
+  }
+
+  .ne,
+  .err {
+    color: var(--syntax-error);
   }
 }
 
