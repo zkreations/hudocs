@@ -1,6 +1,6 @@
 ---
 title: Guías
-icon: book-open
+icon: book
 layout: redirect
 redirect: "/navigation"
 weight: 2
