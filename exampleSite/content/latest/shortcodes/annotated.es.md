@@ -31,9 +31,9 @@ Nota explicativa.
 
 ## Parámetros
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                             |
-| :-------- | :------: | :----- | :-------: | :-------------------------------------- |
-| `class`   |    `0`   | string |     No    | Clase CSS adicional para el contenedor. |
+| Parámetro | Posición | Tipo                  | Requerido | Descripción                             |
+| :-------- | :------: | :-------------------- | :-------: | :-------------------------------------- |
+| `class`   |    `0`   | {{< type string >}}   |     No    | Clase CSS adicional para el contenedor. |
 
 ## Bloques de código
 
@@ -135,20 +135,20 @@ También puedes combinar una tabla con una nota explicativa:
 
 ````markdown
 {{</* annotated */>}}
-| Parámetro | Tipo | Por defecto |
-| :--- | :--- | :--- |
-| `timeout` | number | `3000` |
-| `retries` | number | `3` |
+| Parámetro | Tipo                   | Por defecto |
+| :--- | :--------------------- | :--- |
+| `timeout` | {{</* type number */>}} | `3000` |
+| `retries` | {{</* type number */>}} | `3` |
 ---
 El valor de `timeout` se expresa en milisegundos.
 {{</* /annotated */>}}
 ````
 
 {{< annotated >}}
-| Parámetro | Tipo | Por defecto |
-| :--- | :--- | :--- |
-| `timeout` | number | `3000` |
-| `retries` | number | `3` |
+| Parámetro | Tipo                | Por defecto |
+| :--- | :------------------ | :--- |
+| `timeout` | {{< type number >}} | `3000` |
+| `retries` | {{< type number >}} | `3` |
 ---
 El valor de `timeout` se expresa en milisegundos.
 {{< /annotated >}}

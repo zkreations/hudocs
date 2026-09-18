@@ -21,13 +21,13 @@ Use named parameters to define the destination, label, and button options:
 
 ## Parameters
 
-| Parameter | Position | Type   | Required | Description                                                        |
-| :-------- | :------: | :----- | :------: | :----------------------------------------------------------------- |
-| `href`    |    `0`   | string |   Yes    | Destination URL, internal or external.                             |
-| `name`    |    `1`   | string |   Yes    | Visible label. Also accepts `title` and `text` as aliases.         |
-| `icon`    |    `2`   | string |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.           |
-| `type`    |    `3`   | string |    No    | Visual variant, such as `primary`.                                 |
-| `rel`     |    `4`   | string |    No    | Custom value for the `rel` attribute.                              |
+| Parameter | Position | Type                | Required | Description                                                        |
+| :-------- | :------: | :------------------ | :------: | :----------------------------------------------------------------- |
+| `href`    |    `0`   | {{< type string >}} |   Yes    | Destination URL, internal or external.                             |
+| `name`    |    `1`   | {{< type string >}} |   Yes    | Visible label. Also accepts `title` and `text` as aliases.         |
+| `icon`    |    `2`   | {{< type string >}} |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.           |
+| `type`    |    `3`   | {{< type string >}} |    No    | Visual variant, such as `primary`.                                 |
+| `rel`     |    `4`   | {{< type string >}} |    No    | Custom value for the `rel` attribute.                              |
 
 ## Positional syntax
 

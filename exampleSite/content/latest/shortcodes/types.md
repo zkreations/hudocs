@@ -23,9 +23,9 @@ Provide the type as a positional parameter:
 
 ## Parameters
 
-| Parameter | Position | Type   | Required | Description                                      |
-| :-------- | :------: | :----- | :------: | :----------------------------------------------- |
-| `name`    |   `0`    | string |   Yes    | Type, expression, or value set to be displayed.  |
+| Parameter | Position | Type                | Required | Description                                      |
+| :-------- | :------: | :------------------ | :------: | :----------------------------------------------- |
+| `name`    |   `0`    | {{< type string >}} |   Yes    | Type, expression, or value set to be displayed.  |
 
 The parameter can also be provided as `type`:
 

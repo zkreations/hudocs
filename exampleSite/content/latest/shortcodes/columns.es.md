@@ -31,9 +31,9 @@ Además, se comunican mediante sonidos que pueden viajar largas distancias.
 
 ## Parámetros
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                             |
-| :-------- | :------: | :----- | :-------: | :-------------------------------------- |
-| `class`   |    `0`   | string |     No    | Clase CSS adicional para el contenedor. |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                             |
+| :-------- | :------: | :------------------ | :-------: | :-------------------------------------- |
+| `class`   |    `0`   | {{< type string >}} |     No    | Clase CSS adicional para el contenedor. |
 
 ## Múltiples columnas
 

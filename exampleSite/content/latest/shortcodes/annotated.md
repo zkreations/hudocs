@@ -31,9 +31,9 @@ Explanatory note.
 
 ## Parameters
 
-| Parameter | Position | Type   | Required | Description                              |
-| :-------- | :------: | :----- | :------: | :--------------------------------------- |
-| `class`   |    `0`   | string |    No    | Additional CSS class for the container.  |
+| Parameter | Position | Type                | Required | Description                              |
+| :-------- | :------: | :------------------ | :------: | :--------------------------------------- |
+| `class`   |    `0`   | {{< type string >}} |    No    | Additional CSS class for the container.  |
 
 ## Code blocks
 
@@ -135,20 +135,20 @@ You can also pair a table with an explanatory note:
 
 ````markdown
 {{</* annotated */>}}
-| Parameter | Type   | Default |
-| :-------- | :----- | :------ |
-| `timeout` | number | `3000`  |
-| `retries` | number | `3`     |
+| Parameter | Type                   | Default |
+| :-------- | :--------------------- | :------ |
+| `timeout` | {{</* type number */>}} | `3000`  |
+| `retries` | {{</* type number */>}} | `3`     |
 ---
 The `timeout` value is expressed in milliseconds.
 {{</* /annotated */>}}
 ````
 
 {{< annotated >}}
-| Parameter | Type   | Default |
-| :-------- | :----- | :------ |
-| `timeout` | number | `3000`  |
-| `retries` | number | `3`     |
+| Parameter | Type                | Default |
+| :-------- | :------------------ | :------ |
+| `timeout` | {{< type number >}} | `3000`  |
+| `retries` | {{< type number >}} | `3`     |
 ---
 The `timeout` value is expressed in milliseconds.
 {{< /annotated >}}

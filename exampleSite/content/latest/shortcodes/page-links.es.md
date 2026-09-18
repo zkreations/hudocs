@@ -22,13 +22,13 @@ Utiliza parámetros nombrados para definir el destino, el título, la descripci�
 
 ## Parámetros
 
-| Parámetro     | Posición | Tipo   | Requerido | Descripción                                                     |
-| :------------ | :------: | :----- | :-------: | :-------------------------------------------------------------- |
-| `href`        |    `0`   | string |     Sí    | Ruta de destino o URL externa.                                  |
-| `title`       |    `1`   | string |     Sí    | Título principal del enlace.                                    |
-| `description` |    `2`   | string |     No    | Texto descriptivo. También admite `subtitle` como alias.        |
-| `icon`        |    `3`   | string |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
-| `rel`         |    `4`   | string |     No    | Valor personalizado del atributo `rel`.                         |
+| Parámetro     | Posición | Tipo                | Requerido | Descripción                                                     |
+| :------------ | :------: | :------------------ | :-------: | :-------------------------------------------------------------- |
+| `href`        |    `0`   | {{< type string >}} |     Sí    | Ruta de destino o URL externa.                                  |
+| `title`       |    `1`   | {{< type string >}} |     Sí    | Título principal del enlace.                                    |
+| `description` |    `2`   | {{< type string >}} |     No    | Texto descriptivo. También admite `subtitle` como alias.        |
+| `icon`        |    `3`   | {{< type string >}} |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
+| `rel`         |    `4`   | {{< type string >}} |     No    | Valor personalizado del atributo `rel`.                         |
 
 ## Íconos predeterminados
 

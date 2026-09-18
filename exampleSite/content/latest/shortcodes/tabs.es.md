@@ -41,15 +41,15 @@ Bienvenido a la instalación en Windows
 
 ### tabs
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                              |
-| :-------- | :------: | :----- | :-------: | :--------------------------------------- |
-| `class`   |    `0`   | string |     No    | Clase CSS adicional para el contenedor.  |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                              |
+| :-------- | :------: | :------------------ | :-------: | :--------------------------------------- |
+| `class`   |    `0`   | {{< type string >}} |     No    | Clase CSS adicional para el contenedor.  |
 
 ### tab
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                                              |
-| :-------- | :------: | :----- | :-------: | :------------------------------------------------------- |
-| `title`   |    `0`   | string |     No    | Texto de la pestaña. Por defecto: `Tab 1`, `Tab 2`, etc. |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                                              |
+| :-------- | :------: | :------------------ | :-------: | :------------------------------------------------------- |
+| `title`   |    `0`   | {{< type string >}} |     No    | Texto de la pestaña. Por defecto: `Tab 1`, `Tab 2`, etc. |
 
 ## Bloques de código
 

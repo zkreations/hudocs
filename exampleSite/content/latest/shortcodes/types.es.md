@@ -23,9 +23,9 @@ Indica el tipo como parámetro posicional:
 
 ## Parámetros
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                                            |
-| :-------- | :------: | :----- | :-------: | :----------------------------------------------------- |
-| `name`    |    `0`   | string |     Sí    | Tipo, expresión o conjunto de valores que se mostrará. |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                                            |
+| :-------- | :------: | :------------------ | :-------: | :----------------------------------------------------- |
+| `name`    |    `0`   | {{< type string >}} |     Sí    | Tipo, expresión o conjunto de valores que se mostrará. |
 
 El parámetro también puede proporcionarse como `type`:
 

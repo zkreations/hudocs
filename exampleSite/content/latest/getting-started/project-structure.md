@@ -85,14 +85,14 @@ Hugo automatically links files belonging to the same page. Any multilingual cont
 
 ## Front Matter Reference
 
-| Field        | Type    | Description                                        |
-| :----------- | :------ | :------------------------------------------------- |
-| `title`      | string  | Page title.                                        |
-| `icon`       | string  | Icon from [Meteor Icons](https://meteoricons.com/). |
-| `weight`     | integer | Order in the menu.                                 |
-| `badge`      | boolean | Displays the badge.                                |
-| `badge_text` | string  | Badge text.                                        |
-| `badge_url`  | string  | Badge destination URL.                             |
-| `hidden`     | boolean | Hides the page from the menu.                      |
-| `layout`     | string  | Defines the layout, e.g. `redirect`.               |
-| `redirect`   | string  | Destination path for `layout: redirect`.           |
+| Field        | Type                 | Description                                        |
+| :----------- | :------------------- | :------------------------------------------------- |
+| `title`      | {{< type string >}}  | Page title.                                        |
+| `icon`       | {{< type string >}}  | Icon from [Meteor Icons](https://meteoricons.com/). |
+| `weight`     | {{< type int >}}     | Order in the menu.                                 |
+| `badge`      | {{< type boolean >}} | Displays the badge.                                |
+| `badge_text` | {{< type string >}}  | Badge text.                                        |
+| `badge_url`  | {{< type string >}}  | Badge destination URL.                             |
+| `hidden`     | {{< type boolean >}} | Hides the page from the menu.                      |
+| `layout`     | {{< type string >}}  | Defines the layout, e.g. `redirect`.               |
+| `redirect`   | {{< type string >}}  | Destination path for `layout: redirect`.           |

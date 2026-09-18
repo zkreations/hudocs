@@ -21,13 +21,13 @@ Utiliza parámetros nombrados para definir el destino, el texto y las opciones d
 
 ## Parámetros
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                                                     |
-| :-------- | :------: | :----- | :-------: | :-------------------------------------------------------------- |
-| `href`    |    `0`   | string |     Sí    | URL de destino, interna o externa.                              |
-| `name`    |    `1`   | string |     Sí    | Texto visible. También admite `title` y `text` como alias.      |
-| `icon`    |    `2`   | string |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
-| `type`    |    `3`   | string |     No    | Variante visual, como `primary`.                                |
-| `rel`     |    `4`   | string |     No    | Valor personalizado del atributo `rel`.                         |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                                                     |
+| :-------- | :------: | :------------------ | :-------: | :-------------------------------------------------------------- |
+| `href`    |    `0`   | {{< type string >}} |     Sí    | URL de destino, interna o externa.                              |
+| `name`    |    `1`   | {{< type string >}} |     Sí    | Texto visible. También admite `title` y `text` como alias.      |
+| `icon`    |    `2`   | {{< type string >}} |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
+| `type`    |    `3`   | {{< type string >}} |     No    | Variante visual, como `primary`.                                |
+| `rel`     |    `4`   | {{< type string >}} |     No    | Valor personalizado del atributo `rel`.                         |
 
 ## Sintaxis posicional
 

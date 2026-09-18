@@ -23,10 +23,10 @@ This is an **informational** hint.
 
 ## Parameters
 
-| Parameter | Position | Type   | Required | Description                                                          |
-| :-------- | :------: | :----- | :------: | :------------------------------------------------------------------- |
-| `type`    |    `0`   | string |    No    | Hint type. Used to generate the `alert-{type}` class.               |
-| `icon`    |    `1`   | string |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.             |
+| Parameter | Position | Type                | Required | Description                                                          |
+| :-------- | :------: | :------------------ | :------: | :------------------------------------------------------------------- |
+| `type`    |    `0`   | {{< type string >}} |    No    | Hint type. Used to generate the `alert-{type}` class.               |
+| `icon`    |    `1`   | {{< type string >}} |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.             |
 
 Both parameters can be specified as either named or positional parameters.
 

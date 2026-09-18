@@ -31,9 +31,9 @@ They also communicate through sounds that can travel great distances.
 
 ## Parameters
 
-| Parameter | Position | Type   | Required | Description                             |
-| :-------- | :------: | :----- | :------: | :-------------------------------------- |
-| `class`   |    `0`   | string |    No    | Additional CSS class for the container. |
+| Parameter | Position | Type                | Required | Description                             |
+| :-------- | :------: | :------------------ | :------: | :-------------------------------------- |
+| `class`   |    `0`   | {{< type string >}} |    No    | Additional CSS class for the container. |
 
 ## Multiple columns
 

@@ -22,13 +22,13 @@ Use named parameters to define the destination, title, description, and icon:
 
 ## Parameters
 
-| Parameter     | Position | Type   | Required | Description                                                      |
-| :------------ | :------: | :----- | :------: | :--------------------------------------------------------------- |
-| `href`        |    `0`   | string |   Yes    | Destination path or external URL.                                |
-| `title`       |    `1`   | string |   Yes    | Main title of the link.                                          |
-| `description` |    `2`   | string |    No    | Descriptive text. Also accepts `subtitle` as an alias.           |
-| `icon`        |    `3`   | string |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.         |
-| `rel`         |    `4`   | string |    No    | Custom value for the `rel` attribute.                            |
+| Parameter     | Position | Type                | Required | Description                                                      |
+| :------------ | :------: | :------------------ | :------: | :--------------------------------------------------------------- |
+| `href`        |    `0`   | {{< type string >}} |   Yes    | Destination path or external URL.                                |
+| `title`       |    `1`   | {{< type string >}} |   Yes    | Main title of the link.                                          |
+| `description` |    `2`   | {{< type string >}} |    No    | Descriptive text. Also accepts `subtitle` as an alias.           |
+| `icon`        |    `3`   | {{< type string >}} |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.         |
+| `rel`         |    `4`   | {{< type string >}} |    No    | Custom value for the `rel` attribute.                            |
 
 ## Default icons
 

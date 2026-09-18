@@ -27,9 +27,9 @@ Wrap an ordered Markdown list inside `steps`:
 
 ## Parameters
 
-| Parameter | Position | Type   | Required | Description                             |
-| :-------- | :------: | :----- | :------: | :-------------------------------------- |
-| `class`   |    `0`   | string |    No    | Additional CSS class for the container. |
+| Parameter | Position | Type                | Required | Description                             |
+| :-------- | :------: | :------------------ | :------: | :-------------------------------------- |
+| `class`   |    `0`   | {{< type string >}} |    No    | Additional CSS class for the container. |
 
 ## Complex lists
 

@@ -41,15 +41,15 @@ Welcome to the Windows installation
 
 ### tabs
 
-| Parameter | Position | Type   | Required | Description                              |
-| :-------- | :------: | :----- | :------: | :--------------------------------------- |
-| `class`   |    `0`   | string |    No    | Additional CSS class for the container.  |
+| Parameter | Position | Type                | Required | Description                              |
+| :-------- | :------: | :------------------ | :------: | :--------------------------------------- |
+| `class`   |    `0`   | {{< type string >}} |    No    | Additional CSS class for the container.  |
 
 ### tab
 
-| Parameter | Position | Type   | Required | Description                                                   |
-| :-------- | :------: | :----- | :------: | :------------------------------------------------------------ |
-| `title`   |    `0`   | string |    No    | Tab label. Defaults to `Tab 1`, `Tab 2`, etc.                 |
+| Parameter | Position | Type                | Required | Description                                                   |
+| :-------- | :------: | :------------------ | :------: | :------------------------------------------------------------ |
+| `title`   |    `0`   | {{< type string >}} |    No    | Tab label. Defaults to `Tab 1`, `Tab 2`, etc.                 |
 
 ## Code blocks
 

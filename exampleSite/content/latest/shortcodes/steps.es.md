@@ -28,9 +28,9 @@ Envuelve una lista ordenada de Markdown dentro de `steps`:
 
 ## Parámetros
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                             |
-| :-------- | :------: | :----- | :-------: | :-------------------------------------- |
-| `class`   |    `0`   | string |     No    | Clase CSS adicional para el contenedor. |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                             |
+| :-------- | :------: | :------------------ | :-------: | :-------------------------------------- |
+| `class`   |    `0`   | {{< type string >}} |     No    | Clase CSS adicional para el contenedor. |
 
 
 ## Listas complejas

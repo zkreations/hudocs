@@ -23,10 +23,10 @@ Este es un aviso de **información**.
 
 ## Parámetros
 
-| Parámetro | Posición | Tipo   | Requerido | Descripción                                                     |
-| :-------- | :------: | :----- | :-------: | :-------------------------------------------------------------- |
-| `type`    |    `0`   | string |     No    | Tipo de aviso. Se utiliza para generar la clase `alert-{type}`. |
-| `icon`    |    `1`   | string |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                                                     |
+| :-------- | :------: | :------------------ | :-------: | :-------------------------------------------------------------- |
+| `type`    |    `0`   | {{< type string >}} |     No    | Tipo de aviso. Se utiliza para generar la clase `alert-{type}`. |
+| `icon`    |    `1`   | {{< type string >}} |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
 
 Ambos parámetros pueden especificarse mediante parámetros nombrados o posicionales.
 
