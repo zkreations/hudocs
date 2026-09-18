@@ -46,9 +46,6 @@
       {{- end -}}
 
       {{- with .Section -}}
-        <a class="toc-toggle" href="#doc" aria-label='{{ i18n "table_of_contents_toogle" }}'>
-          {{ partial "svg" (dict "icon" "bars-sort") }}
-        </a>
         <button class="toggle-version" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
           {{ . }}
         </button>

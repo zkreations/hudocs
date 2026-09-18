@@ -29,7 +29,7 @@
   }
 
   &-arrow {
-    margin-left: auto;
+    margin-inline-start: auto;
     transition: transform .3s;
   }
 
@@ -57,13 +57,13 @@
     color: var(--on-surface-variant);
     font-weight: 400;
     box-shadow: 2px 0 0 0 var(--outline) inset;
-    margin-left: 0.625rem;
-    margin-top: .75rem;
+    margin-inline-start: 0.625rem;
+    margin-block-start: .75rem;
     gap: .5rem;
   }
 
   &-item {
-    padding-left: 1.5rem;
+    padding-inline-start: 1.5rem;
   }
 
   &-link {
@@ -90,13 +90,10 @@
   grid-area: toc;
 
   &-title {
-    margin-bottom: 1rem;
+    margin-block-end: 1rem;
+    padding-inline-start: 1.5rem;
     font-size: 1rem;
     font-weight: 500;
-
-    @include breakpoint(l) {
-      padding-left: 2rem;
-    }
   }
 
   @include breakpoint(l, max) {
@@ -118,59 +115,49 @@
   }
 
   &-content {
-    padding-top: 2rem;
+    padding-block-start: 2rem;
+    padding-inline-end: 1rem;
 
     @include breakpoint(l) {
-      padding-top: 3rem;
+      padding-block-start: 3rem;
       position: sticky;
     }
   }
 
   nav {
+    position: relative;
+    $selector: 'ul';
+
+    @for $i from 0 through 4 {
+      #{$selector} { --level: #{$i}rem; }
+      $selector: $selector + ' ul';
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-block-start: .5rem;
+    }
+
     a {
       display: block;
+      color: var(--on-surface-variant);
 
-      @include breakpoint(l) {
-        padding-left: 2rem;
-      }
-
-      &:hover {
+      &:hover,
+      &.is-visible {
         color: var(--primary);
       }
 
       &.is-visible {
         @include breakpoint(l) {
-          box-shadow: 2px 0 0 0 var(--primary) inset;
-        }
-        color: var(--primary);
-      }
-    }
-
-    ul ul {
-      margin-bottom: 1rem;
-      margin-top: 1rem;
-
-      a {
-        padding-left: var(--toc-space);
-
-        @include breakpoint(l) {
-          padding-left: calc(var(--toc-space) + 2rem);
+          box-shadow: inset 2px 0 0 0 var(--on-surface);
         }
       }
 
-      --toc-space: 1rem;
-
-      ul {
-        --toc-space: 2rem;
-
-        ul {
-          --toc-space: 3rem;
-        }
+      @include breakpoint(l) {
+        padding-inline-start: calc(1.5rem  + var(--level));
       }
-    }
-
-    li + li {
-      margin-top: .5rem;
     }
   }
 }
@@ -208,7 +195,7 @@
 }
 
 .pagination {
-  margin-top: 2rem;
+  margin-block-start: 2rem;
 
   &-list {
     display: grid;
