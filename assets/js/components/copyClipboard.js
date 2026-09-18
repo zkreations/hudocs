@@ -1,9 +1,7 @@
-const blocks = document.querySelectorAll('pre > code')
 const article = document.querySelector('article')
 
 function addCopyButtons () {
-  if (!article || blocks.length === 0) return
-  if (!navigator || !navigator.clipboard) return
+  if (!article || !navigator || !navigator.clipboard) return
 
   const i18nAttr = article.getAttribute('data-i18n')
   if (!i18nAttr) return
@@ -13,26 +11,37 @@ function addCopyButtons () {
   const COPIED_TEXT = i18n.copied
   const clipboard = navigator.clipboard
 
-  blocks.forEach((codeBlock) => {
-    const pre = codeBlock.parentNode
-    if (!pre || !pre.parentNode.classList.contains('highlight')) return
+  const containers = article.querySelectorAll('.highlight')
+  if (containers.length === 0) return
+
+  containers.forEach((container) => {
+    if (container.querySelector('.code-copy')) return
 
     const button = document.createElement('button')
     button.className = 'code-copy tooltip tooltip-start'
     button.setAttribute('aria-label', COPY_TEXT)
     button.innerHTML = '<svg viewBox="0 0 24 24" class="i i-copy"><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path><rect width="13" height="13" x="9" y="9" rx="2"></rect></svg>'
-    pre.parentNode.insertBefore(button, pre)
+    container.prepend(button)
   })
 
   article.addEventListener('click', (e) => {
     const button = e.target.closest('.code-copy')
     if (!button) return
 
-    const pre = button.nextElementSibling
-    const code = pre ? pre.querySelector('code') : null
+    const container = button.closest('.highlight')
+    if (!container) return
+
+    const code = container.querySelector('.lntable td:last-child code') || container.querySelector('pre > code')
     if (!code) return
 
-    clipboard.writeText(code.textContent).then(() => {
+    let text = code.textContent
+    if (code.querySelector('.ln')) {
+      const clone = code.cloneNode(true)
+      clone.querySelectorAll('.ln').forEach((ln) => ln.remove())
+      text = clone.textContent
+    }
+
+    clipboard.writeText(text).then(() => {
       button.blur()
       button.setAttribute('aria-label', COPIED_TEXT)
       setTimeout(() => {
