@@ -1,0 +1,57 @@
+{{- $docsSectionName := site.Params.docs.section | default "docs" -}}
+{{- $docsSection := site.GetPage $docsSectionName -}}
+{{- $isDoc := and (not (not $docsSection)) (eq .FirstSection.Section $docsSectionName) -}}
+{{- $isDocsRoot := and $isDoc (eq . $docsSection) -}}
+
+{{- $isSingleVersion := false -}}
+{{- $versions := slice -}}
+{{- $versionPages := slice -}}
+{{- $version := "" -}}
+{{- $versionPage := false -}}
+
+{{- if $docsSection -}}
+  {{- $subSections := $docsSection.Sections -}}
+  {{- if or (eq site.Params.docs.versions false) (and (not site.Params.docs.versions) (eq (len $subSections) 0)) -}}
+    {{- $isSingleVersion = true -}}
+    {{- $versionPages = slice $docsSection -}}
+    {{- if $isDoc -}}
+      {{- $versionPage = $docsSection -}}
+    {{- end -}}
+  {{- else -}}
+    {{- if site.Params.docs.versions -}}
+      {{- $versions = site.Params.docs.versions -}}
+    {{- else -}}
+      {{- range ($subSections | collections.Reverse) -}}
+        {{- $vName := path.Base .Path -}}
+        {{- if and (not $vName) .File -}}
+          {{- $vName = path.Base (path.Clean .File.Dir) -}}
+        {{- end -}}
+        {{- $versions = $versions | append $vName -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- range $v := $versions -}}
+      {{- $vPage := site.GetPage (printf "%s/%s" $docsSectionName $v) -}}
+      {{- if $vPage -}}
+        {{- $versionPages = $versionPages | append $vPage -}}
+        {{- if and $isDoc (or (eq $ $vPage) ($vPage.IsAncestor $)) -}}
+          {{- $version = $v -}}
+          {{- $versionPage = $vPage -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (dict
+  "isDoc" $isDoc
+  "isDocsRoot" $isDocsRoot
+  "isSingleVersion" $isSingleVersion
+  "docsSection" $docsSection
+  "section" $docsSectionName
+  "version" $version
+  "versionPage" $versionPage
+  "versions" $versions
+  "versionPages" $versionPages
+) -}}
+

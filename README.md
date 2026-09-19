@@ -28,7 +28,7 @@ I made this project to easily document my own projects, but I thought it would b
 
 ## Documentation
 
-The complete Hudocs documentation, including installation, configuration, options, shortcodes, translations, and customization, is available at [hudocs.com](https://hudocs.com/latest/starting/).
+The complete Hudocs documentation, including installation, configuration, options, shortcodes, translations, and customization, is available at [hudocs.com](https://hudocs.com/docs/latest/getting-started/installation/).
 
 ## Requirements
 
@@ -46,12 +46,13 @@ git submodule add https://github.com/zkreations/hudocs themes/hudocs
 
 ## Recommended structure
 
-I made this documentation thinking that you could generate multiple versions of the same project, that's why the recommended structure should first contain a version number, for example:
+Documentation lives under `content/docs/`, allowing versions to maintain isolated structures:
 
-```bash
+```text
 content
-└── 1.0
-    └── index.md
+└── docs
+    └── 1.0
+        └── _index.md
 ```
 
 If you want to start quickly, use the example I have left in the **exampleSite** folder, which is the same one you are reading right now. Run the following command:

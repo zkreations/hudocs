@@ -1,3 +1,14 @@
 {{ define "main" }}
-  {{ partial "doc" . }}
+  <main class="main-section">
+    <div class="container">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">{{ partial "title" .Page }}</h1>
+        </header>
+        <div class="article-body markdown">
+          {{ .Content }}
+        </div>
+      </article>
+    </div>
+  </main>
 {{ end }}

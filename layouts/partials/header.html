@@ -1,3 +1,4 @@
+{{- $docsContext := partial "docs-context" . -}}
 {{- $logo := site.Params.main_logo -}}
 {{- $main_icon := site.Params.main_icon | default "book-open" -}}
 {{- $title := site.Title | title -}}
@@ -5,7 +6,7 @@
 <div class="container">
   <div class="header-wrapper">
     <div class="header-left">
-      {{- with .Section -}}
+      {{- if and $docsContext.isDoc $docsContext.versionPage -}}
         <button class="header-toggle" data-outside="docs-sidebar" aria-label="toggle navigation">
           {{ partial "svg" (dict "icon" "bars") }}
         </button>
@@ -23,7 +24,18 @@
     </div>
 
     <div class="header-right">
-      {{- with .Section -}}
+      {{- with site.Menus.main -}}
+        <nav class="header-nav">
+          {{- range . -}}
+            {{- $resolved := partial "resolve-link" (dict "href" .URL) -}}
+            <a class="header-nav-link{{ if or (eq $.RelPermalink .URL) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ $resolved.url }}"{{ with $resolved.target }} target="{{ . }}"{{ end }}{{ with $resolved.rel }} rel="{{ . }}"{{ end }}>
+              {{- .Name -}}
+            </a>
+          {{- end -}}
+        </nav>
+      {{- end -}}
+
+      {{- if and $docsContext.isDoc $docsContext.versionPage -}}
         <button class="search-toggle has-icon" data-outside="search-box">
           {{ partial "svg" (dict "icon" "search") }}
           <span>{{- i18n "search_in_doc" -}}</span>
@@ -72,25 +84,19 @@
         {{- end -}}
       {{- end -}}
 
-      {{- with .Section -}}
+      {{- if and $docsContext.isDoc (not $docsContext.isSingleVersion) (gt (len $docsContext.versionPages) 0) -}}
         <div class="dropdown-wrapper">
           <button class="version-toggle btn btn-primary capitalize" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
-            {{ . }}
+            {{ with $docsContext.version }}{{ . }}{{ else }}{{ i18n "versions" }}{{ end }}
           </button>
           <div class="dropdown" id="docs-versions">
             <div class="list">
-              {{ if site.Params.versions }}
-                {{ range site.Params.versions }}
-                  <a class="list-link" href="{{ . | relLangURL }}">{{ . }}</a>
-                {{ end }}
-              {{ else }}
-                {{ with site.Sections }}
-                  {{ range . | collections.Reverse }}
-                    <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-              <a class="list-link" href='{{ "/" | relLangURL }}'>{{ i18n "versions" }}</a>
+              {{- range $docsContext.versionPages -}}
+                <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+              {{- end -}}
+              {{- with $docsContext.docsSection -}}
+                <a class="list-link" href="{{ .RelPermalink }}">{{ i18n "versions" }}</a>
+              {{- end -}}
             </div>
           </div>
         </div>

@@ -107,6 +107,26 @@
   &-item {
     padding-block: .5rem;
   }
+
+  &-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-inline-end: auto;
+
+    &-link {
+      color: var(--on-surface-variant);
+      font-size: .875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color .2s ease;
+
+      &:hover,
+      &.is-active {
+        color: var(--primary);
+      }
+    }
+  }
 }
 
 .toggle {

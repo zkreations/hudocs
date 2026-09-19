@@ -1,27 +1,28 @@
-{{ define "main"}}
+{{ define "main" }}
+{{- $docsContext := partial "docs-context" . -}}
 <main class="main-section">
   <div class="container">
-    <div class="section-info">
-      <h1 class="section-title">{{ i18n "versions" }}</h1>
-      <p class="section-description">{{ i18n "main_section_text" }}.</p>
-    </div>
-    <div class="section-content">
-      <ul class="section-list">
-        {{ if site.Params.versions }}
-          {{ range site.Params.versions }}
-            <li><a href="{{ . }}">{{ . }}</a></li>
-          {{ end }}
-        {{ else }}
-          {{ with site.Sections }}
-            {{ range . | collections.Reverse }}
+    {{- if .Content -}}
+      <div class="article-body markdown">
+        {{ .Content }}
+      </div>
+    {{- else -}}
+      <div class="section-info">
+        <h1 class="section-title">{{ with .Title }}{{ . }}{{ else }}{{ site.Title }}{{ end }}</h1>
+        <p class="section-description">{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}</p>
+      </div>
+      {{- with $docsContext.docsSection -}}
+        <div class="section-content">
+          <ul class="section-list">
+            {{- range $docsContext.versionPages -}}
               <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
-            {{ end }}
-          {{ else }}
-            <li><a href="#no-item">{{ i18n "no_items" }}</a></li>
-          {{ end }}
-        {{ end }}
-      </ul>
-    </div>
+            {{- else -}}
+              <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
+            {{- end -}}
+          </ul>
+        </div>
+      {{- end -}}
+    {{- end -}}
   </div>
 </main>
 {{ end }}

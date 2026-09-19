@@ -1,16 +1,28 @@
+{{- $docsContext := partial "docs-context" . -}}
 {{- $options := dict "targetPath" "js/bundle.js" -}}
 {{- $jsBundle := resources.Get "js/main.js" | js.Build $options | resources.Minify | fingerprint -}}
 {{- $flexSearch := resources.GetRemote "https://cdn.jsdelivr.net/npm/flexsearch@0.8/dist/flexsearch.bundle.min.js" | resources.Minify | fingerprint -}}
 {{- $searchJS := resources.Get "js/search.js" | js.Build (dict "targetPath" "js/search.js") | resources.Minify | fingerprint -}}
 
-{{- range .Site.Sections -}}
-  {{- $file := printf "json/%s.%s.index.json" $.Language.Lang .Section -}}
-  {{- $res := resources.Get "json/index.json" | resources.ExecuteAsTemplate $file . | resources.Minify | resources.Fingerprint -}}
+{{- if $docsContext.isSingleVersion -}}
+  {{- with $docsContext.versionPage -}}
+    {{- $file := printf "json/%s.%s.index.json" $.Language.Lang $docsContext.section -}}
+    {{- $res := resources.Get "json/index.json" | resources.ExecuteAsTemplate $file . | resources.Minify | resources.Fingerprint -}}
+  {{- end -}}
+{{- else -}}
+  {{- range $vPage := $docsContext.versionPages -}}
+    {{- $vName := path.Base $vPage.Path -}}
+    {{- if and (not $vName) $vPage.File -}}
+      {{- $vName = path.Base (path.Clean $vPage.File.Dir) -}}
+    {{- end -}}
+    {{- $file := printf "json/%s.%s.%s.index.json" $.Language.Lang $docsContext.section $vName -}}
+    {{- $res := resources.Get "json/index.json" | resources.ExecuteAsTemplate $file $vPage | resources.Minify | resources.Fingerprint -}}
+  {{- end -}}
 {{- end -}}
 
 <script src="{{ $jsBundle.RelPermalink }}" integrity="{{ $jsBundle.Data.Integrity }}" defer></script>
 
-{{- with .Section -}}
+{{- if and $docsContext.isDoc $docsContext.versionPage -}}
   <script src="{{ $flexSearch.RelPermalink }}" integrity="{{ $flexSearch.Data.Integrity }}" defer></script>
   <script src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}" defer></script>
 {{- end -}}

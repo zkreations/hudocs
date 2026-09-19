@@ -1,4 +1,6 @@
-{{- $pages := partial "flat-pages" (dict "Section" (.Site.GetPage .Section)) -}}
+{{- $docsContext := partial "docs-context" . -}}
+{{- $sectionPage := $docsContext.versionPage | default (.Site.GetPage .Section) -}}
+{{- $pages := partial "flat-pages" (dict "Section" $sectionPage) -}}
 {{- $prev := "" -}}
 {{- $next := "" -}}
 

@@ -1,6 +1,7 @@
+{{- $docsContext := partial "docs-context" . -}}
 <div class="aside-tree scrollable">
   <div class="aside-menu">
-    {{- with .Site.GetPage .Section -}}
+    {{- with $docsContext.versionPage -}}
       {{ template "tree-list" (dict "Section" . "CurrentPage" $ "Level" 0) }}
     {{ end }}
   </div>

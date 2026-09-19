@@ -1,22 +1,22 @@
 {{- $comma := false -}}
+{{- $root := . -}}
 [
-{{- range $i, $page := where .Site.Pages "Section" .Section -}}
-  {{- if and .File (ne $page.RelPermalink $.RelPermalink) (or .Title (truncate 120 .Plain)) -}}
+{{- range $i, $page := where .RegularPagesRecursive "Params.hidden" "ne" true -}}
+  {{- $isRedirect := or (isset .Params "redirect") (eq .Params.layout "redirect") -}}
+  {{- if and (not $isRedirect) .File (or .Title (truncate 120 .Plain)) -}}
     {{- $content := .Content | replaceRE "(?s)<pre[^>]*>.*?</pre>" "" | plainify | replaceRE "\\s{2,}" " " | strings.TrimSpace -}}
     {{- $summary := truncate 100 $content | default (i18n "no_summary") -}}
 
     {{- $parent := $page -}}
     {{- range seq 10 -}}
-      {{- if and $parent.Parent (not $parent.Parent.IsHome) (not $parent.Parent.Parent.IsHome) -}}
+      {{- if and $parent.Parent (ne $parent.Parent $root) (not $parent.Parent.IsHome) -}}
         {{- $parent = $parent.Parent -}}
       {{- end -}}
     {{- end -}}
 
     {{- $parentSection := "" -}}
-    {{- with $parent.File -}}
-      {{- $parentSection = .ContentBaseName -}}
-    {{- else -}}
-      {{- $parentSection = $parent.Title -}}
+    {{- if ne $parent $page -}}
+      {{- $parentSection = partial "title" $parent -}}
     {{- end -}}
 
     {{- if $comma }},{{ end -}}

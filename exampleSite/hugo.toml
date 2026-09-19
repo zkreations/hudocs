@@ -14,9 +14,27 @@ summaryLength = 20
   [languages.en]
     label = "English"
     weight = 1
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        name = "Documentation"
+        url = "/docs/"
+        weight = 1
+      [[languages.en.menu.main]]
+        name = "GitHub"
+        url = "https://github.com/zkreations/hudocs"
+        weight = 2
   [languages.es]
     label = "Español"
     weight = 2
+    [languages.es.menu]
+      [[languages.es.menu.main]]
+        name = "Documentación"
+        url = "/docs/"
+        weight = 1
+      [[languages.es.menu.main]]
+        name = "GitHub"
+        url = "https://github.com/zkreations/hudocs"
+        weight = 2
 
 [markup]
   [markup.highlight]
@@ -28,39 +46,12 @@ summaryLength = 20
     endLevel = 3
 
 [params]
-  # (Optional) Site description
   description = "A Hugo theme for documentation sites"
-
-  # (Optional) List of versions to show in the version switcher
-  # versions = ["1.0"]
-
-  # (Optional, default "book-open") Icon name from Meteor Icons for the logo
-  # main_icon = false
-
-  # (Optional) Path to a logo image, replaces icon + title
-  # main_logo = "logo.svg"
-
-  # (Optional) URL to the GitHub repo content folder, enables edit button
   github_repo_edit = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
-
-  # (Optional)  Text to show in the badge, if badge is enabled
-  # badge_text = "Beta"
-
-  # (Optional) URL that badge labels link to
-  # badge_url = "https://example.com"
-
-  # (Optional, default true) Enables prev/next pagination between pages
-  # pagination = false
-
-  # (Optional, default false) Expands all sections in the sidebar navigation tree
-  # expand_tree = true
-
-  # (Optional, default "2006-01-02") Date format for last modified footer
   date_format = "January 2, 2006"
-
-  # (Optional) Copyright text, supports markdown (Can be used {{Year}} to insert the current year)
   copyright = "Created by [@zkreations](https://zkreations.com)"
 
-  # (Optional, default "duotone-dark") Code theme: duotone-dark, duotone-dark-sky,
-  # duotone-dark-sea, duotone-dark-space, duotone-dark-earth, duotone-dark-forest
-  # code_theme = "duotone-dark"
+  [params.docs]
+    section = "docs"
+    default_version = "latest"
+    versions = ["latest", "1.8", "1.0"]
