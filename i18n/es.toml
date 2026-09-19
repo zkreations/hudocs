@@ -53,9 +53,6 @@ other = "Versiones"
 [languages]
 other = "Idiomas"
 
-[table_of_contents_toogle]
-other = "Mostrar/Ocultar tabla de contenidos"
-
 [main_section_text]
 other = "Una lista de todos los documentos alojados para todas las versiones disponibles"
 
