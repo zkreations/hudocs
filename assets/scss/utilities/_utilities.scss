@@ -26,6 +26,10 @@
   display: flex;
   align-items: center;
   column-gap: var(--btn-gap, .75rem);
+
+  svg {
+    flex: none;
+  }
 }
 
 .icon-adjust {
@@ -52,7 +56,7 @@
 .scrollable {
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   scrollbar-width: thin;
-  
+
   @include breakpoint(l) {
     top: var(--header-height);
     max-height: calc((100vh - var(--header-height)));
@@ -66,4 +70,16 @@
 .no-transitions *::after {
   transition-duration: 0s !important;
   animation-duration: 0s !important;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }

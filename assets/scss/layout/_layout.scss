@@ -63,7 +63,6 @@
 
   &-toggle {
     flex: none;
-    margin-inline-end: 1rem;
 
     @include breakpoint(l) {
       display: none;
@@ -73,6 +72,7 @@
   &-left {
     display: flex;
     align-items: center;
+    gap: .75rem;
 
     @include breakpoint(l) {
       width: var(--aside-width);
@@ -80,7 +80,6 @@
   }
 
   &-right {
-    align-items: center;
     display: flex;
     justify-content: flex-end;
     column-gap: .75rem;
@@ -103,6 +102,10 @@
     >* {
       flex: none;
     }
+  }
+
+  &-item {
+    padding-block: .5rem;
   }
 }
 

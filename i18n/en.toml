@@ -1,5 +1,8 @@
-[system]
-other = "System"
+[change_theme]
+other = "Change theme"
+
+[auto]
+other = "Auto"
 
 [light]
 other = "Light"

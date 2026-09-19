@@ -24,75 +24,77 @@
 
     <div class="header-right">
       {{- with .Section -}}
-        <button class="search-toggle has-icon" data-outside="search-box" aria-label='{{ i18n "search" }}'>
+        <button class="search-toggle has-icon" data-outside="search-box">
           {{ partial "svg" (dict "icon" "search") }}
           <span>{{- i18n "search_in_doc" -}}</span>
         </button>
       {{- end -}}
 
-      <button class="toggle-theme" data-outside="docs-mode" aria-label='{{ i18n "system" }}'>
-        {{ partial "svg" (dict "icon" "sun") }}
-        {{ partial "svg" (dict "icon" "moon") }}
-      </button>
+      <div class="dropdown-wrapper">
+        <button class="header-item toggle-theme tooltip" data-outside="docs-mode" aria-label='{{ i18n "change_theme" }}'>
+          {{ partial "svg" (dict "icon" "sun") }}
+          {{ partial "svg" (dict "icon" "moon") }}
+        </button>
+        <div class="dropdown" id="docs-mode">
+          <div class="list theme-handle">
+            <button class="list-link has-icon" data-theme="system">
+              {{ partial "svg" (dict "icon" "laptop") }}
+              {{ i18n "auto" }}
+            </button>
+            <button class="list-link has-icon" data-theme="light">
+              {{ partial "svg" (dict "icon" "sun") }}
+              {{ i18n "light" }}
+            </button>
+            <button class="list-link has-icon" data-theme="dark">
+              {{ partial "svg" (dict "icon" "moon") }}
+              {{ i18n "dark" }}
+            </button>
+          </div>
+        </div>
+      </div>
 
       {{- if hugo.IsMultilingual -}}
-        <button class="lang-toggle" data-outside="docs-language" aria-label='{{ i18n "languages" }}'>
-          {{ partial "svg" (dict "icon" "language") }}
-        </button>
+        {{- with .Page.Rotate "language" -}}
+          <div class="dropdown-wrapper">
+            <button class="header-item lang-toggle tooltip" data-outside="docs-language" aria-label='{{ i18n "languages" }}'>
+              {{ partial "svg" (dict "icon" "language") }}
+            </button>
+            <div class="dropdown" id="docs-language">
+              <div class="list">
+                {{- range . -}}
+                  <a class="list-link {{ if eq .Language $.Page.Language }}is-active{{ end }}" href="{{ .Permalink }}">
+                    {{ .Language.Label }}
+                  </a>
+                {{- end -}}
+              </div>
+            </div>
+          </div>
+        {{- end -}}
       {{- end -}}
 
       {{- with .Section -}}
-        <button class="toggle-version btn btn-primary" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
-          {{ . }}
-        </button>
-      {{- end -}}
-    </div>
-
-    <div class="dropdown" id="docs-mode">
-      <div class="list theme-handle">
-        <button class="list-link has-icon" data-theme="system">
-          {{ partial "svg" (dict "icon" "desktop") }}
-          {{ i18n "system" }}
-        </button>
-        <button class="list-link has-icon" data-theme="light">
-          {{ partial "svg" (dict "icon" "sun") }}
-          {{ i18n "light" }}
-        </button>
-        <button class="list-link has-icon" data-theme="dark">
-          {{ partial "svg" (dict "icon" "moon") }}
-          {{ i18n "dark" }}
-        </button>
-      </div>
-    </div>
-
-    <div class="dropdown" id="docs-versions">
-      <div class="list">
-        {{ if site.Params.versions }}
-          {{ range site.Params.versions }}
-            <a class="list-link" href="{{ . | relLangURL }}">{{ . }}</a>
-          {{ end }}
-        {{ else }}
-          {{ with site.Sections }}
-            {{ range . | collections.Reverse }}
-              <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
-            {{ end }}
-          {{ end }}
-        {{ end }}
-        <a class="list-link" href='{{ "/" | relLangURL }}'>{{ i18n "versions" }}</a>
-      </div>
-    </div>
-    {{- if hugo.IsMultilingual -}}
-      {{- with .Page.Rotate "language" -}}
-        <div class="dropdown" id="docs-language">
-          <div class="list">
-            {{- range . -}}
-              <a class="list-link {{ if eq .Language $.Page.Language }}is-active{{ end }}" href="{{ .Permalink }}">
-                {{ .Language.Label }}
-              </a>
-            {{- end -}}
+        <div class="dropdown-wrapper">
+          <button class="version-toggle btn btn-primary capitalize" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
+            {{ . }}
+          </button>
+          <div class="dropdown" id="docs-versions">
+            <div class="list">
+              {{ if site.Params.versions }}
+                {{ range site.Params.versions }}
+                  <a class="list-link" href="{{ . | relLangURL }}">{{ . }}</a>
+                {{ end }}
+              {{ else }}
+                {{ with site.Sections }}
+                  {{ range . | collections.Reverse }}
+                    <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              <a class="list-link" href='{{ "/" | relLangURL }}'>{{ i18n "versions" }}</a>
+            </div>
           </div>
         </div>
       {{- end -}}
-    {{- end -}}
+    </div>
   </div>
 </div>
