@@ -1,4 +1,5 @@
-{{- $copyright := replace site.Params.copyright "{{Year}}" (now.Year | string) -}}
+{{- $copyrightRaw := or site.Params.footer_copyright site.Params.copyright -}}
+{{- $copyright := replace $copyrightRaw "{{Year}}" (now.Year | string) -}}
 
 {{- $date := .Lastmod -}}
 
@@ -6,7 +7,8 @@
   {{- $date := .GitInfo.AuthorDate  -}}
 {{- end }}
 
-{{- $lastmod := $date.Format (site.Params.date_format | default "2006-01-02") -}}
+{{- $dateFormat := or site.Params.footer_date_format site.Params.date_format | default "2006-01-02" -}}
+{{- $lastmod := $date.Format $dateFormat -}}
 
 <footer class="footer">
   <div class="footer-wrapper">

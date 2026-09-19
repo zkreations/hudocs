@@ -1,4 +1,4 @@
-{{- $docsSectionName := site.Params.docs.section | default "docs" -}}
+{{- $docsSectionName := default "docs" (or site.Params.docs_section (and site.Params.docs site.Params.docs.section)) -}}
 {{- $docsSection := site.GetPage $docsSectionName -}}
 {{- $isDoc := and (not (not $docsSection)) (eq .FirstSection.Section $docsSectionName) -}}
 {{- $isDocsRoot := and $isDoc (eq . $docsSection) -}}
@@ -11,15 +11,19 @@
 
 {{- if $docsSection -}}
   {{- $subSections := $docsSection.Sections -}}
-  {{- if or (eq site.Params.docs.versions false) (and (not site.Params.docs.versions) (eq (len $subSections) 0)) -}}
+  {{- $docsVersions := site.Params.docs_versions -}}
+  {{- if and (eq $docsVersions nil) site.Params.docs -}}
+    {{- $docsVersions = site.Params.docs.versions -}}
+  {{- end -}}
+  {{- if or (eq $docsVersions false) (and (not $docsVersions) (eq (len $subSections) 0)) -}}
     {{- $isSingleVersion = true -}}
     {{- $versionPages = slice $docsSection -}}
     {{- if $isDoc -}}
       {{- $versionPage = $docsSection -}}
     {{- end -}}
   {{- else -}}
-    {{- if site.Params.docs.versions -}}
-      {{- $versions = site.Params.docs.versions -}}
+    {{- if $docsVersions -}}
+      {{- $versions = $docsVersions -}}
     {{- else -}}
       {{- range ($subSections | collections.Reverse) -}}
         {{- $vName := path.Base .Path -}}

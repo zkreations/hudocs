@@ -48,7 +48,7 @@ content/
     └── configuration.md
 ```
 
-Hudocs automatically detects single-version mode when no version subdirectories exist or when configured via `params.docs.versions = false`.
+Hudocs automatically detects single-version mode when no version subdirectories exist or when configured via `params.docs_versions = false`.
 
 ## Content Files
 

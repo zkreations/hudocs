@@ -42,13 +42,10 @@ Si no defines el parámetro `versions`, Hudocs obtiene automáticamente las vers
 
 ### Lista Explícita de Versiones
 
-Para definir qué versiones aparecen en el selector y establecer su orden, configura `[params.docs.versions]`:
+Para definir qué versiones aparecen en el selector y establecer su orden, configura `docs_versions`:
 
 ```toml
-[params.docs]
-  section = "docs"
-  default_version = "latest"
-  versions = ["latest", "1.8", "1.0"]
+docs_versions = ["latest", "1.8", "1.0"]
 ```
 
 ## Crear y Archivar Versiones

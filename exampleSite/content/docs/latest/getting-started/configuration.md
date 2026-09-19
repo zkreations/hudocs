@@ -95,99 +95,116 @@ Defines the heading levels included in the table of contents. With this configur
 
 ## Theme Parameters
 
-Hudocs-specific options are configured inside `[params]`.
+Hudocs-specific options are configured inside `[params]`. Options are organized by functional scope:
 
-### Documentation Configuration
+### Branding
 
-Options specific to documentation are configured under `[params.docs]`.
+#### brand_icon
 
-* `section`: root documentation section name (defaults to `"docs"`).
-* `default_version`: canonical active version (defaults to `"latest"`).
-* `versions`: explicit list and order of versions for the selector. If omitted, Hudocs automatically detects versions from `content/docs/`. Set to `false` for single-version mode.
+Name of an icon from the [Meteor Icons](https://meteoricons.com/) catalog displayed next to the site title in the header navbar. The default value is `"book-open"`.
 
 ```toml
-[params.docs]
-  section = "docs"
-  default_version = "latest"
-  versions = ["latest", "1.8", "1.0"]
+brand_icon = "book-open"
 ```
 
-### main_icon
+#### brand_logo
 
-Name of an icon from the [Meteor Icons](https://meteoricons.com/) catalog displayed next to the site title.
+Path to an image used as the logo. When defined, it replaces both the icon configured via `brand_icon` and the site title.
 
 ```toml
-main_icon = "book-open"
+brand_logo = "images/logo.svg"
 ```
 
-### main_logo
+### Documentation
 
-Path to an image used as the logo. When defined, it replaces both the icon configured via `main_icon` and the site title.
+#### docs_section
+
+Root documentation section name. The default value is `"docs"`.
 
 ```toml
-main_logo = "images/logo.svg"
+docs_section = "docs"
 ```
 
-### github_repo_edit
+#### docs_default_version
 
-Adds an edit link to the header of each article. The link uses the `pencil` icon and points to the corresponding directory in the GitHub repository.
+Canonical active documentation version. The default value is `"latest"`.
 
 ```toml
-github_repo_edit = "https://github.com/your-username/repository/tree/main/content"
+docs_default_version = "latest"
 ```
 
-### badge_text
+#### docs_versions
 
-Text displayed on badges enabled across pages. The default value is `New`.
+Explicit list and order of versions for the selector. If omitted, Hudocs automatically detects versions from `content/docs/`. Set to `false` for single-version mode.
 
 ```toml
-badge_text = "New"
+docs_versions = ["latest", "1.8", "1.0"]
 ```
 
-### badge_url
+#### docs_expand_tree
 
-Destination URL for the globally configured badge.
+Expands all sections in the documentation sidebar navigation tree. When set to `false`, only the active section is expanded automatically. The default value is `false`.
 
 ```toml
-badge_url = "https://example.com"
+docs_expand_tree = false
 ```
 
-### pagination
+#### docs_pagination
 
-Controls page navigation through "Previous" and "Next" links at the bottom of content. The default value is `true`.
+Controls documentation page navigation through "Previous" and "Next" links at the bottom of content. The default value is `true`.
 
 ```toml
-pagination = true
+docs_pagination = true
 ```
 
-### expand_tree
+#### docs_edit_url
 
-Expands all sections in the sidebar navigation tree. When set to `false`, only the active section is expanded automatically. The default value is `false`.
+Adds an edit link to the header of each documentation article. The link uses the `pencil` icon and points to the corresponding file in your Git repository.
 
 ```toml
-expand_tree = false
+docs_edit_url = "https://github.com/your-username/repository/tree/main/content"
 ```
 
-### date_format
+#### docs_badge_text
 
-Defines the format used to display the last updated date of pages. The format follows Go's date rules. The default value is `2006-01-02`.
+Default text displayed on documentation badges enabled across pages. The default value is `"New"`.
 
 ```toml
-date_format = "2006-01-02"
+docs_badge_text = "New"
 ```
 
-### copyright
+#### docs_badge_url
 
-Defines the copyright text displayed by the theme. The value supports Markdown. You can use `{{Year}}` to automatically insert the current year.
+Destination URL for globally configured documentation badges.
 
 ```toml
-copyright = "Created by [@zkreations](https://zkreations.com)"
+docs_badge_url = "https://example.com"
 ```
 
-### code_theme
+### Code Blocks
+
+#### code_theme
 
 Configures the color theme for syntax-highlighted code blocks. The available themes are `duotone-dark`, `duotone-dark-sky`, `duotone-dark-sea`, `duotone-dark-space`, `duotone-dark-earth`, and `duotone-dark-forest`. The default value is `duotone-dark`.
 
 ```toml
 code_theme = "duotone-dark"
+```
+
+### Footer
+
+#### footer_date_format
+
+Defines the format used to display the last updated date of pages in the footer. The format follows Go's date rules. The default value is `2006-01-02`.
+
+```toml
+footer_date_format = "2006-01-02"
+```
+
+#### footer_copyright
+
+Defines the copyright text displayed in the site footer. The value supports Markdown. You can use `{{Year}}` to automatically insert the current year.
+
+```toml
+footer_copyright = "Created by [@zkreations](https://zkreations.com)"
 ```

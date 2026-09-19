@@ -2,9 +2,9 @@
   <h1 class="article-title has-icon">
     {{- partial "title" .Page -}}
     {{- if eq .Page.Params.badge true -}}
-      {{- $badgeText := default site.Params.badge_text .Page.Params.badge_text -}}
+      {{- $badgeText := default (or site.Params.docs_badge_text site.Params.badge_text) .Page.Params.badge_text -}}
       {{- $badgeText = default (i18n "new") $badgeText -}}
-      {{- $badgeURL := default site.Params.badge_url .Page.Params.badge_url -}}
+      {{- $badgeURL := default (or site.Params.docs_badge_url site.Params.badge_url) .Page.Params.badge_url -}}
 
       {{- if $badgeURL -}}
         <a href="{{ $badgeURL }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ $badgeText }}</a>
@@ -13,9 +13,10 @@
       {{- end -}}
     {{- end -}}
   </h1>
-  {{- if site.Params.github_repo_edit -}}
+  {{- $editURL := or site.Params.docs_edit_url site.Params.github_repo_edit -}}
+  {{- if $editURL -}}
     {{- with .Page.File }}
-      <a class="article-edit tooltip tooltip-start" href="{{ site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" aria-label="{{ i18n "edit_on_github" }}">
+      <a class="article-edit tooltip tooltip-start" href="{{ $editURL }}/{{ .Path | replaceRE `\\` "/" }}" aria-label="{{ i18n "edit_on_github" }}">
         {{ partial "svg" (dict "icon" "pencil") }}
       </a>
     {{- end }}
@@ -24,6 +25,10 @@
 <div class="article-body markdown">
   {{- .Content -}}
 </div>
-{{- if site.Params.pagination | default true -}}
+{{- $pagination := site.Params.docs_pagination -}}
+{{- if eq $pagination nil -}}
+  {{- $pagination = site.Params.pagination -}}
+{{- end -}}
+{{- if ne $pagination false -}}
   {{- partial "pagination" . -}}
 {{- end -}}

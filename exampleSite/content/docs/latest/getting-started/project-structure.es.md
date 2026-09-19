@@ -48,7 +48,7 @@ content/
     └── configuration.md
 ```
 
-Hudocs detecta automáticamente el modo monoversión cuando no existen subcarpetas de versión o mediante `params.docs.versions = false`.
+Hudocs detecta automáticamente el modo monoversión cuando no existen subcarpetas de versión o mediante `params.docs_versions = false`.
 
 ## Archivos de Contenido
 

@@ -23,6 +23,7 @@ summaryLength = 20
         name = "GitHub"
         url = "https://github.com/zkreations/hudocs"
         weight = 2
+
   [languages.es]
     label = "Español"
     weight = 2
@@ -46,12 +47,51 @@ summaryLength = 20
     endLevel = 3
 
 [params]
+  # Site
+  # Global description used for metadata and the homepage.
   description = "A Hugo theme for documentation sites"
-  github_repo_edit = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
-  date_format = "January 2, 2006"
-  copyright = "Created by [@zkreations](https://zkreations.com)"
 
-  [params.docs]
-    section = "docs"
-    default_version = "latest"
-    versions = ["latest", "1.8", "1.0"]
+  # Branding
+  # Header icon from Meteor Icons. Default: "book-open"
+  # brand_icon = "book-open"
+
+  # Header logo. Replaces the icon and title.
+  # brand_logo = "logo.svg"
+
+  # Documentation
+  # Documentation section. Default: "docs"
+  # docs_section = "docs"
+
+  # Active documentation version. Default: "latest"
+  # docs_default_version = "latest"
+
+  # Version switcher. Auto-detected if omitted; set to false to disable.
+  # docs_versions = ["latest", "1.8", "1.0"]
+
+  # Expand all sections in the sidebar. Default: false
+  # docs_expand_tree = true
+
+  # Previous/next page navigation. Default: true
+  # docs_pagination = false
+
+  # Repository URL for the "Edit this page" button.
+  docs_edit_url = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
+
+  # Default badge text. Default: "New" (i18n)
+  # docs_badge_text = "Beta"
+
+  # Default badge URL.
+  # docs_badge_url = "https://example.com"
+
+  # Code blocks
+  # Code theme. Default: "duotone-dark"
+  # Available: duotone-dark, duotone-dark-sky, duotone-dark-sea,
+  #            duotone-dark-space, duotone-dark-earth, duotone-dark-forest
+  # code_theme = "duotone-dark"
+
+  # Footer
+  # Last modified date format. Default: "2006-01-02"
+  footer_date_format = "January 2, 2006"
+
+  # Copyright text. Supports Markdown and {{Year}}.
+  footer_copyright = "Created by [@zkreations](https://zkreations.com)"

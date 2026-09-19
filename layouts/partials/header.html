@@ -1,6 +1,6 @@
 {{- $docsContext := partial "docs-context" . -}}
-{{- $logo := site.Params.main_logo -}}
-{{- $main_icon := site.Params.main_icon | default "book-open" -}}
+{{- $logo := or site.Params.brand_logo site.Params.main_logo -}}
+{{- $main_icon := or site.Params.brand_icon site.Params.main_icon | default "book-open" -}}
 {{- $title := site.Title | title -}}
 
 <div class="container">
