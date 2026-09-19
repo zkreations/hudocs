@@ -21,7 +21,7 @@ summaryLength = 20
 
 [menus]
   [[menus.main]]
-    pageRef = "/docs"
+    pageRef = "/about"
     weight = 1
 
   [[menus.main]]
