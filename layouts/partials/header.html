@@ -10,30 +10,26 @@
           {{ partial "svg" (dict "icon" "bars") }}
         </button>
       {{- end -}}
-      <div class="header-logo">
-        <a class="has-icon i-md" href='{{ "/" | relLangURL }}'>
-          {{- if $logo -}}
-            <img class="header-logo-image" src="{{- $logo -}}" alt="{{- $title -}}">
-          {{- else -}}
-            {{- with $main_icon -}}
-              {{ partial "svg" (dict "icon" . "class" "header-logo-icon" ) }}
-            {{- end -}}
-            {{- $title -}}
+      <a class="header-logo has-icon i-md" href='{{ "/" | relLangURL }}'>
+        {{- if $logo -}}
+          <img class="header-logo-image" src="{{- $logo -}}" alt="{{- $title -}}">
+        {{- else -}}
+          {{- with $main_icon -}}
+            {{ partial "svg" (dict "icon" . "class" "header-logo-icon" ) }}
           {{- end -}}
-        </a>
-      </div>
+          {{- $title -}}
+        {{- end -}}
+      </a>
     </div>
 
-    {{- with .Section -}}
-      <div class="header-middle">
+    <div class="header-right">
+      {{- with .Section -}}
         <button class="search-toggle has-icon" data-outside="search-box" aria-label='{{ i18n "search" }}'>
           {{ partial "svg" (dict "icon" "search") }}
           <span>{{- i18n "search_in_doc" -}}</span>
         </button>
-      </div>
-    {{- end -}}
+      {{- end -}}
 
-    <div class="header-right">
       <button class="toggle-theme" data-outside="docs-mode" aria-label='{{ i18n "system" }}'>
         {{ partial "svg" (dict "icon" "sun") }}
         {{ partial "svg" (dict "icon" "moon") }}
@@ -46,7 +42,7 @@
       {{- end -}}
 
       {{- with .Section -}}
-        <button class="toggle-version" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
+        <button class="toggle-version btn btn-primary" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
           {{ . }}
         </button>
       {{- end -}}

@@ -29,7 +29,7 @@
 }
 
 .header {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   background-color: var(--surface);
   border-bottom: 1px solid var(--outline);
   position: fixed;
@@ -38,8 +38,6 @@
 
   &-logo {
     font-size: 1rem;
-    display: flex;
-    align-items: center;
     font-weight: 500;
 
     @include breakpoint(m) {
@@ -81,22 +79,23 @@
     }
   }
 
-  &-middle {
-    padding-inline-start: 1rem;
-
-    @include breakpoint(l) {
-      padding-inline-start: 3rem;
-      border-inline-start: 1px solid var(--outline);
-    }
-  }
-
   &-right {
     align-items: center;
     display: flex;
-    margin-inline-start: auto;
     column-gap: .75rem;
     position: relative;
+    padding-inline-start: 1rem;
 
+    @include breakpoint(l) {
+      flex: 1;
+      padding-inline-start: 3rem;
+      border-inline-start: 1px solid var(--outline);
+    }
+    
+    @include breakpoint(l, max) {
+      margin-inline-start: auto;
+    }
+    
     >* {
       flex: none;
     }
@@ -104,14 +103,6 @@
 }
 
 .toggle {
-  &-version {
-    border: 1px solid var(--outline);
-    padding: 0.125rem 0.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    color: var(--on-surface-variant);
-  }
-
   &-theme {
     @at-root html:not(.dark) & .i-moon { display: none; }
     @at-root html.dark & .i-sun { display: none; }
