@@ -14,28 +14,22 @@ summaryLength = 20
   [languages.en]
     label = "English"
     weight = 1
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        name = "Documentation"
-        url = "/docs/"
-        weight = 1
-      [[languages.en.menu.main]]
-        name = "GitHub"
-        url = "https://github.com/zkreations/hudocs"
-        weight = 2
 
   [languages.es]
     label = "Español"
     weight = 2
-    [languages.es.menu]
-      [[languages.es.menu.main]]
-        name = "Documentación"
-        url = "/docs/"
-        weight = 1
-      [[languages.es.menu.main]]
-        name = "GitHub"
-        url = "https://github.com/zkreations/hudocs"
-        weight = 2
+
+[menus]
+  [[menus.main]]
+    pageRef = "/docs"
+    weight = 1
+
+  [[menus.main]]
+    name = "GitHub"
+    url = "https://github.com/zkreations/hudocs"
+    weight = 2
+    [menus.main.params]
+      icon = "github"
 
 [markup]
   [markup.highlight]

@@ -100,3 +100,26 @@ hidden: true
 ```
 
 Este parámetro puede utilizarse para páginas de aterrizaje, utilidades o redirecciones que no deban aparecer en la navegación.
+
+## Menús globales y enlaces externos
+
+Además del árbol documental automático, Hudocs admite enlaces globales renderizados en la parte inferior del menú lateral utilizando la configuración estándar de menús de Hugo (`menus.main`).
+
+Puedes declarar estos enlaces en `hugo.toml`:
+
+```toml
+[menus]
+  [[menus.main]]
+    pageRef = "/docs"
+    weight = 1
+
+  [[menus.main]]
+    name = "GitHub"
+    url = "https://github.com/zkreations/hudocs"
+    weight = 2
+```
+
+* **Enlaces internos:** utiliza `pageRef` apuntando a cualquier sección o página. Hudocs obtiene automáticamente el título y el enlace localizado para cada idioma a partir del front matter de la página de destino.
+* **Enlaces externos:** utiliza `url` y `name`. Hudocs añade automáticamente `target="_blank"`, `rel="noreferrer noopener"` y muestra el icono `arrow-up-right`.
+* **Iconos personalizados:** añade `[menus.main.params]` con `icon = "nombre"` para sustituir el icono por defecto.
+* **Traducciones para elementos sin página:** define un `identifier` para traducir etiquetas personalizadas o externas mediante el diccionario `i18n`.

@@ -100,3 +100,26 @@ hidden: true
 ```
 
 This parameter can be used for landing pages, utilities, or redirects that should not appear in the navigation.
+
+## Global Menus and External Links
+
+In addition to the automatic documentation tree, Hudocs supports global links rendered at the bottom of the sidebar using Hugo's standard menu configuration (`menus.main`).
+
+You can declare these links in `hugo.toml`:
+
+```toml
+[menus]
+  [[menus.main]]
+    pageRef = "/docs"
+    weight = 1
+
+  [[menus.main]]
+    name = "GitHub"
+    url = "https://github.com/zkreations/hudocs"
+    weight = 2
+```
+
+* **Internal links:** use `pageRef` pointing to any section or page. Hudocs automatically retrieves the title and localized URL for each language directly from the target page's front matter.
+* **External links:** use `url` and `name`. Hudocs applies `target="_blank"`, `rel="noreferrer noopener"`, and displays the `arrow-up-right` icon automatically.
+* **Custom icons:** add `[menus.main.params]` with `icon = "name"` to replace the default icon.
+* **Translations for non-page items:** define an `identifier` to translate external or custom menu labels using the `i18n` dictionary.
