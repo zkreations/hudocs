@@ -82,14 +82,18 @@
   &-right {
     align-items: center;
     display: flex;
+    justify-content: flex-end;
     column-gap: .75rem;
     position: relative;
     padding-inline-start: 1rem;
 
     @include breakpoint(l) {
       flex: 1;
-      padding-inline-start: 3rem;
-      border-inline-start: 1px solid var(--outline);
+
+      &:has(.search-toggle) {
+        padding-inline-start: 3rem;
+        border-inline-start: 1px solid var(--outline);
+      }
     }
     
     @include breakpoint(l, max) {

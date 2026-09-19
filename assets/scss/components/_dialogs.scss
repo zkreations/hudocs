@@ -62,6 +62,10 @@
   &-toggle {
     outline: none;
 
+    @include breakpoint(l) {
+      margin-inline-end: auto;
+    }
+
     svg {
       flex: none;
     }
@@ -123,7 +127,7 @@
   }
 
   &-item {
-    + * {
+    +* {
       margin-block-start: .5rem;
     }
   }

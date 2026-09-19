@@ -105,10 +105,10 @@
 
   &-content {
     padding-block-start: 2rem;
-    padding-inline-end: 1rem;
 
     @include breakpoint(l) {
-      padding-block-start: 3rem;
+      padding-block: 3rem;
+      padding-inline-end: 1rem;
       position: sticky;
     }
   }
