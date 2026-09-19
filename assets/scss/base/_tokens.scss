@@ -30,9 +30,9 @@ $gray-900: #18181b !default;
   --shadow-lg: 0px 5px 10px rgb(0 0 0 / 20%);
 
   --primary: #{$green};
-  --primary-subtle: color-mix(in srgb, var(--primary) 20%, white);
-  --primary-subtle-hover: color-mix(in srgb, var(--primary) 40%, white);
-  --primary-selection: color-mix(in srgb, var(--primary) 20%, transparent);
+  --primary-subtle: color-mix(in srgb, var(--primary) 10%, white);
+  --primary-subtle-hover: color-mix(in srgb, var(--primary) 20%, white);
+  --primary-selection: color-mix(in srgb, var(--primary) 10%, transparent);
 
   --surface: #{$white};
   --surface-container: #{$gray-100};
