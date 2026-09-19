@@ -24,17 +24,6 @@
     </div>
 
     <div class="header-right">
-      {{- with site.Menus.main -}}
-        <nav class="header-nav">
-          {{- range . -}}
-            {{- $resolved := partial "resolve-link" (dict "href" .URL) -}}
-            <a class="header-nav-link{{ if or (eq $.RelPermalink .URL) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ $resolved.url }}"{{ with $resolved.target }} target="{{ . }}"{{ end }}{{ with $resolved.rel }} rel="{{ . }}"{{ end }}>
-              {{- .Name -}}
-            </a>
-          {{- end -}}
-        </nav>
-      {{- end -}}
-
       {{- if and $docsContext.isDoc $docsContext.versionPage -}}
         <button class="search-toggle has-icon" data-outside="search-box">
           {{ partial "svg" (dict "icon" "search") }}

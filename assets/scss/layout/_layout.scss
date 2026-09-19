@@ -107,26 +107,6 @@
   &-item {
     padding-block: .5rem;
   }
-
-  &-nav {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    margin-inline-end: auto;
-
-    &-link {
-      color: var(--on-surface-variant);
-      font-size: .875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color .2s ease;
-
-      &:hover,
-      &.is-active {
-        color: var(--primary);
-      }
-    }
-  }
 }
 
 .toggle {
@@ -207,6 +187,12 @@
   &-menu {
     padding-inline-end: 1.5rem;
     font-weight: 500;
+  }
+
+  &-nav {
+    margin-block-start: 1.5rem;
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid var(--outline);
   }
 
   @include breakpoint(l, max) {
