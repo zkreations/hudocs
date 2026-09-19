@@ -1,6 +1,6 @@
 ---
 title: Search Engine
-weight: 3
+weight: 4
 ---
 
 Hudocs includes a client-side search engine based on [FlexSearch](https://github.com/nextapps-de/flexsearch). It does not require external services, accounts, or API keys, and allows users to search the documentation content from the browser.

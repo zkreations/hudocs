@@ -1,6 +1,6 @@
 ---
 title: Versioning
-weight: 4
+weight: 5
 ---
 
 Hudocs supports multilingual documentation sites through separate directories within `content/docs/`. Each directory represents an isolated version and maintains its own content, navigation structure, and search index.

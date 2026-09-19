@@ -1,9 +1,9 @@
 ---
-title: Navigation and Menus
+title: Documentation Tree
 weight: 1
 ---
 
-Hudocs generates a hierarchical sidebar menu from the folder structure in `content/`. Sections can include nested pages, icons, badges, and an order defined using `weight`.
+Hudocs generates a hierarchical sidebar documentation tree automatically from the folder structure in `content/docs/<version>/`. Sections and pages are discovered and structured without requiring manual menu declarations in `hugo.toml`.
 
 ## Hierarchical Structure
 
@@ -65,7 +65,7 @@ You can assign an icon from the [Meteor Icons](https://meteoricons.com/) catalog
 
 ```markdown
 ---
-title: Navigation and Menus
+title: Documentation Tree
 icon: align-left
 ---
 ```
@@ -90,7 +90,7 @@ badge_text: "New"
 
 ## Hiding Pages from Navigation
 
-To publish a page without showing it in the sidebar menu, use `hidden: true`:
+To publish a page without showing it in the sidebar documentation tree, use `hidden: true` in the front matter:
 
 ```markdown
 ---
@@ -99,27 +99,4 @@ hidden: true
 ---
 ```
 
-This parameter can be used for landing pages, utilities, or redirects that should not appear in the navigation.
-
-## Global Menus and External Links
-
-In addition to the automatic documentation tree, Hudocs supports global links rendered at the bottom of the sidebar using Hugo's standard menu configuration (`menus.main`).
-
-You can declare these links in `hugo.toml`:
-
-```toml
-[menus]
-  [[menus.main]]
-    pageRef = "/docs"
-    weight = 1
-
-  [[menus.main]]
-    name = "GitHub"
-    url = "https://github.com/zkreations/hudocs"
-    weight = 2
-```
-
-* **Internal links:** use `pageRef` pointing to any section or page. Hudocs automatically retrieves the title and localized URL for each language directly from the target page's front matter.
-* **External links:** use `url` and `name`. Hudocs applies `target="_blank"`, `rel="noreferrer noopener"`, and displays the `arrow-up-right` icon automatically.
-* **Custom icons:** add `[menus.main.params]` with `icon = "name"` to replace the default icon.
-* **Translations for non-page items:** define an `identifier` to translate external or custom menu labels using the `i18n` dictionary.
+This parameter hides the page from the automatic documentation hierarchy. Note that `hidden` only applies to content pages in the tree; to configure global sidebar links like GitHub or shortcuts, see the [Global Menus](/docs/latest/guides/menus/) guide.

@@ -1,6 +1,6 @@
 ---
-title: Versionado
-weight: 4
+title: Control de Versiones
+weight: 5
 ---
 
 Hudocs permite gestionar sitios de documentación multilingües con versiones separadas dentro de `content/docs/`. Cada directorio representa una versión aislada y mantiene su propio contenido, estructura de navegación e índice de búsqueda.

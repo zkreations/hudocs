@@ -1,6 +1,6 @@
 ---
 title: Motor de Búsqueda
-weight: 3
+weight: 4
 ---
 
 Hudocs incluye un motor de búsqueda del lado del cliente basado en [FlexSearch](https://github.com/nextapps-de/flexsearch). No requiere servicios externos, cuentas ni claves de API, y permite buscar en el contenido de la documentación desde el navegador.
