@@ -1,5 +1,11 @@
 {{- $docsContext := partial "docs-context" . -}}
-{{- $sectionPage := $docsContext.versionPage | default (.Site.GetPage .Section) -}}
+{{- $sectionPage := false -}}
+{{- if $docsContext.isDoc -}}
+  {{- $sectionPage = $docsContext.versionPage -}}
+{{- else if and .Section (ne .Section "") -}}
+  {{- $sectionPage = .Site.GetPage .Section -}}
+{{- end -}}
+{{- if $sectionPage -}}
 {{- $pages := partial "flat-pages" (dict "Section" $sectionPage) -}}
 {{- $prev := "" -}}
 {{- $next := "" -}}
@@ -46,4 +52,5 @@
     {{ end }}
   </ul>
 </nav>
+{{- end -}}
 {{- end -}}

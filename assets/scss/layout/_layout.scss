@@ -8,6 +8,15 @@
   @include breakpoint(l) {
     grid-template-areas: "aside-tree main-doc";
     grid-template-columns: var(--aside-width) minmax(0, 1fr);
+
+    &:not(:has(.aside-content > *)) {
+      grid-template-areas: "main-doc";
+      grid-template-columns: 100%;
+
+      .aside {
+        display: none;
+      }
+    }
   }
 
   @include breakpoint(l, max) {
@@ -135,6 +144,25 @@
     @include breakpoint(l) {
       grid-template-areas: "doc toc";
       grid-template-columns: minmax(0, 1fr) 20%;
+
+      &:not(:has(.toc-content)) {
+        grid-template-areas: "doc";
+        grid-template-columns: 100%;
+
+        .toc {
+          display: none;
+        }
+      }
+    }
+
+    @include breakpoint(l, max) {
+      &:not(:has(.toc-content)) {
+        grid-template-areas: "doc";
+
+        .toc {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -143,21 +171,41 @@
   &-content {
     font-size: 1.125rem;
     margin-block-start: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+
+  &-group {
+    flex: 1 1 260px;
+    max-width: 320px;
+  }
+
+  &-subtitle {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-block-end: .75rem;
   }
 
   &-list {
     border-radius: .5rem;
     border: 1px solid var(--outline);
-    max-width: 300px;
+    max-width: 320px;
+    width: 100%;
 
     a {
       padding: .75rem 1rem;
-      display: block;
+      display: flex;
     }
 
     >*+* {
       border-block-start: 1px solid var(--outline);
     }
+  }
+
+  &-arrow {
+    margin-inline-start: auto;
   }
 
   &-info {
@@ -193,6 +241,12 @@
     margin-block-start: 1.5rem;
     padding-block-start: 1.5rem;
     border-block-start: 1px solid var(--outline);
+
+    &:first-child {
+      margin-block-start: 0;
+      padding-block-start: 0;
+      border-block-start: none;
+    }
   }
 
   @include breakpoint(l, max) {

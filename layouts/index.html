@@ -12,15 +12,7 @@
         <p class="section-description">{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}</p>
       </div>
       {{- with $docsContext.docsSection -}}
-        <div class="section-content">
-          <ul class="section-list">
-            {{- range $docsContext.versionPages -}}
-              <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
-            {{- else -}}
-              <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
-            {{- end -}}
-          </ul>
-        </div>
+        {{ partial "section-links" $ }}
       {{- end -}}
     {{- end -}}
   </div>

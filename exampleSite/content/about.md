@@ -34,9 +34,7 @@ Standalone pages do not belong to a specific documentation version. Their conten
 
 ### Page template
 
-They are rendered using Hudocs' standalone page template. Unlike documentation pages, they do not include the documentation sidebar or the table of contents generated from the page headings.
-
-This allows them to be used as general site pages without depending on the documentation navigation structure.
+They are rendered using Hudocs' standalone page template. They include the global navigation menu in the sidebar and a table of contents generated from the page headings, while remaining independent of versioned documentation trees.
 
 ### Global navigation
 

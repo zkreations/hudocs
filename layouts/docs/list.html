@@ -7,15 +7,7 @@
           <h1 class="section-title">{{ with .Title }}{{ . }}{{ else }}{{ i18n "versions" }}{{ end }}</h1>
           <p class="section-description">{{ with .Description }}{{ . }}{{ else }}{{ i18n "main_section_text" }}.{{ end }}</p>
         </div>
-        <div class="section-content">
-          <ul class="section-list">
-            {{- range $docsContext.versionPages -}}
-              <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
-            {{- else -}}
-              <li><a href="#no-item">{{ i18n "no_items" }}</a></li>
-            {{- end -}}
-          </ul>
-        </div>
+        {{ partial "section-links" . }}
       </div>
     </main>
   {{- else -}}

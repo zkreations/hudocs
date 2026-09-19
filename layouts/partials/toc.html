@@ -1,4 +1,4 @@
-{{ if strings.Contains .TableOfContents "<li>" }}
+{{ if and (ne .Params.toc false) (strings.Contains .TableOfContents "<li>") }}
 <div class="toc-content scrollable">
   <div class="toc-title has-icon">
     {{ partial "svg" (dict "icon" "align-right" ) }}

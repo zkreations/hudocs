@@ -33,9 +33,7 @@ Las páginas independientes no pertenecen a una versión concreta de la document
 
 ### Plantilla de página
 
-Se renderizan mediante la plantilla de página independiente de Hudocs. A diferencia de las páginas de documentación, no incluyen la barra lateral de navegación de la documentación ni la tabla de contenidos generada para sus secciones.
-
-Esto permite utilizarlas como páginas generales del sitio sin depender de la estructura de navegación de la documentación.
+Se renderizan mediante la plantilla de página independiente de Hudocs. Incluyen el menú de navegación global en la barra lateral y una tabla de contenidos generada a partir de los encabezados de la página, manteniéndose independientes del árbol de versiones de la documentación.
 
 ### Navegación global
 
