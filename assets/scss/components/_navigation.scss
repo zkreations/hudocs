@@ -1,4 +1,4 @@
-.menu {
+.tree {
   &-list {
     display: flex;
     flex-direction: column;
@@ -17,8 +17,8 @@
   &-item {
     position: relative;
 
-    &.is-current>.menu-link,
-    &.is-current>label .menu-link {
+    &.is-current>.tree-link,
+    &.is-current>label .tree-link {
       --link-color: var(--primary);
     }
 
@@ -36,11 +36,11 @@
   &-toggle {
     display: none;
 
-    &:checked+label .menu-arrow {
+    &:checked+label .tree-arrow {
       transform: rotate(180deg);
     }
 
-    &:not(:checked)~.submenu-list {
+    &:not(:checked)~.subtree-list {
       display: none;
     }
   }
@@ -52,7 +52,7 @@
   }
 }
 
-.submenu {
+.subtree {
   &-list {
     color: var(--on-surface-variant);
     font-weight: 400;
@@ -82,6 +82,37 @@
         height: 100%;
         background-color: var(--on-surface);
       }
+    }
+  }
+}
+
+.menu {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &-link {
+    color: var(--link-color, inherit);
+    font-size: 1rem;
+
+    &:hover,
+    &.is-active {
+      color: var(--primary);
+    }
+  }
+
+  &-item {
+    position: relative;
+
+    &.is-current>.menu-link {
+      --link-color: var(--primary);
+    }
+
+    svg {
+      color: var(--on-surface-muted);
+      flex: none;
     }
   }
 }

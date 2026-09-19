@@ -1,0 +1,21 @@
+{{- with site.Menus.main -}}
+  <nav class="aside-nav">
+    <ul class="menu-list">
+      {{- range . -}}
+        {{- $resolved := partial "resolve-link" (dict "href" .URL) -}}
+        <li class="menu-item{{ if or (eq $.RelPermalink .URL) ($.HasMenuCurrent "main" .) }} is-current{{ end }}">
+          <a class="menu-link has-icon{{ if or (eq $.RelPermalink .URL) ($.HasMenuCurrent "main" .) }} is-active{{ end }}" href="{{ $resolved.url }}"{{ with $resolved.target }} target="{{ . }}"{{ end }}{{ with $resolved.rel }} rel="{{ . }}"{{ end }}>
+            {{- with .Params.icon -}}
+              {{ partial "svg" (dict "icon" .) }}
+            {{- else -}}
+              {{- if $resolved.isExternal -}}
+                {{ partial "svg" (dict "icon" "arrow-up-right") }}
+              {{- end -}}
+            {{- end -}}
+            {{- .Name -}}
+          </a>
+        </li>
+      {{- end -}}
+    </ul>
+  </nav>
+{{- end -}}
