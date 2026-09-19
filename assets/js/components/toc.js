@@ -1,19 +1,10 @@
 const TOC = document.querySelector('.toc')
-const TOC_TOGGLE = document.querySelector('.toc-toggle')
 const DOCS = document.querySelector('.article-body')
 const VISIBLE_CLASS = 'is-visible'
 const ACTIVE_CLASS = 'is-active'
 
 function initToc () {
   if (!TOC || !DOCS) return
-
-  if (TOC_TOGGLE) {
-    TOC_TOGGLE.addEventListener('click', (e) => {
-      e.preventDefault()
-      TOC.classList.toggle(ACTIVE_CLASS)
-      TOC_TOGGLE.classList.toggle(ACTIVE_CLASS)
-    })
-  }
 
   const headings = Array.from(DOCS.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'))
   const tocLinks = TOC.querySelectorAll('a')
