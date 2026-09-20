@@ -4,7 +4,7 @@
 {{- $date := .Lastmod -}}
 
 {{- if .GitInfo }}
-  {{- $date := .GitInfo.AuthorDate  -}}
+  {{- $date = .GitInfo.AuthorDate -}}
 {{- end }}
 
 {{- $dateFormat := or site.Params.footer_date_format site.Params.date_format | default "2006-01-02" -}}
