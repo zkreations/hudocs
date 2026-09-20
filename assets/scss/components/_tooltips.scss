@@ -5,7 +5,7 @@
   position: relative;
 }
 
-.tooltip:is(:hover, :focus-visible, [data-tooltip-visible])::before {
+.tooltip:is(:hover, :focus-visible, [data-tooltip-visible]):not([aria-expanded="true"])::before {
   opacity: 1;
 }
 
