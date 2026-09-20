@@ -11,7 +11,7 @@
   right: 0;
   box-shadow: var(--shadow-lg);
   border-radius: .5rem;
-  padding: .5rem;
+  padding: 1rem;
   max-height: 280px;
   overflow-y: auto;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
@@ -34,20 +34,14 @@
   white-space: nowrap;
   display: flex;
   flex-direction: column;
+  gap: .5rem;
 
   &-link {
-    display: block;
     font-weight: 500;
-    padding: .25rem;
-    border-radius: .5rem;
 
     &.is-active {
       color: var(--primary);
       pointer-events: none;
-    }
-
-    &:hover {
-      background-color: var(--surface-container);
     }
   }
 }
