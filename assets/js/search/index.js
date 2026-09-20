@@ -10,7 +10,14 @@ import { createCombobox } from './combobox'
 
   if (!input || !results || !configEl) return
 
-  const { indexUrl, i18n } = JSON.parse(configEl.textContent)
+  let config
+  try {
+    config = JSON.parse(configEl.textContent)
+  } catch {
+    return
+  }
+
+  const { indexUrl, i18n } = config || {}
   if (!indexUrl) return
 
   const loader = createIndexLoader()
