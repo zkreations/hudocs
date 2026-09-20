@@ -3,6 +3,7 @@ const ACTIVE_CLASS = 'is-active'
 function deactivateAll () {
   document.querySelectorAll(`[data-outside].${ACTIVE_CLASS}`).forEach((button) => {
     button.classList.remove(ACTIVE_CLASS)
+    button.setAttribute('aria-expanded', 'false')
     const target = document.getElementById(button.dataset.outside)
     if (target) target.classList.remove(ACTIVE_CLASS)
   })
@@ -27,6 +28,7 @@ function initOutside () {
 
       if (!wasActive) {
         trigger.classList.add(ACTIVE_CLASS)
+        trigger.setAttribute('aria-expanded', 'true')
         target.classList.add(ACTIVE_CLASS)
         const input = target.querySelector('input')
         if (input) input.focus()
