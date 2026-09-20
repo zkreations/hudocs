@@ -16,9 +16,6 @@ other = "Contenido"
 [search]
 other = "Buscar"
 
-[quick_search]
-other = "Busqueda rápida"
-
 [search_in_doc]
 other = "Buscar en documentos"
 
