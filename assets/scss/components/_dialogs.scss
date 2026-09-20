@@ -16,7 +16,6 @@
   overflow-y: auto;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   scrollbar-width: thin;
-  will-change: transform;
 
   &:not(.is-active) {
     pointer-events: none;
