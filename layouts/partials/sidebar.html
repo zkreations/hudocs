@@ -39,7 +39,7 @@
     <label for="tree-{{ md5 .Page }}" class="tree-label has-icon{{ if $isSub }} subtree-label{{ end }}">
   {{ end }}
   
-  <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="tree-link has-icon{{ if $isSub }} subtree-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
+  <a href="{{ .Page.Permalink }}" data-name="{{ partial "title" .Page }}" class="tree-link has-icon{{ if $isSub }} subtree-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
     {{- partial "title" .Page -}}
 

@@ -1,13 +1,21 @@
 import { extractSnippet } from './text'
 
 function getParentData (parentName) {
-  const el = document.querySelector(`[data-name="${parentName}"]`)
+  if (!parentName) return { title: '', iconNode: null }
 
-  if (!el) return { title: parentName, iconNode: null }
+  let el = null
+  try {
+    const escaped = typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
+      ? CSS.escape(parentName)
+      : parentName.replace(/["\\]/g, '\\$&')
+    el = document.querySelector(`[data-name="${escaped}"]`)
+  } catch {
+    el = null
+  }
 
   return {
-    title: el.textContent.trim(),
-    iconNode: el.querySelector(':scope > svg')
+    title: parentName,
+    iconNode: el ? el.querySelector(':scope > svg') : null
   }
 }
 
@@ -16,7 +24,7 @@ export function groupResultsByParent (hits, getPage, parentCache) {
     const page = getPage(id)
     if (!page) return groups
 
-    const { parent } = page
+    const parent = page.parent || ''
 
     if (!groups[parent]) {
       if (!parentCache.has(parent)) {
@@ -97,17 +105,20 @@ function createGroupElement (group, regex, getNextIndex) {
   const div = document.createElement('div')
   div.className = 'search-group'
   div.setAttribute('role', 'group')
-  div.setAttribute('aria-label', group.title)
 
-  const title = document.createElement('div')
-  title.className = 'search-group-header has-icon'
-  if (group.iconNode) {
-    title.appendChild(group.iconNode.cloneNode(true))
+  if (group.title) {
+    div.setAttribute('aria-label', group.title)
+    const title = document.createElement('div')
+    title.className = 'search-group-header has-icon'
+    if (group.iconNode) {
+      title.appendChild(group.iconNode.cloneNode(true))
+    }
+    const h3 = document.createElement('h3')
+    h3.className = 'search-group-title'
+    h3.textContent = group.title
+    title.appendChild(h3)
+    div.appendChild(title)
   }
-  const h3 = document.createElement('h3')
-  h3.className = 'search-group-title'
-  h3.textContent = group.title
-  title.appendChild(h3)
 
   const list = document.createElement('ul')
   list.className = 'search-group-list'
@@ -117,7 +128,6 @@ function createGroupElement (group, regex, getNextIndex) {
     list.appendChild(createPageElement(page, regex, getNextIndex()))
   })
 
-  div.appendChild(title)
   div.appendChild(list)
   return div
 }
