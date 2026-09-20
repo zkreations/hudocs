@@ -5,7 +5,6 @@ $yellow:   #f0b100 !default;
 $white:    #ffffff !default;
 $black:    #09090b !default;
 
-$gray-50:  #fafafa !default;
 $gray-100: #f4f4f5 !default;
 $gray-200: #e4e4e7 !default;
 $gray-300: #d4d4d8 !default;
@@ -20,14 +19,12 @@ $gray-900: #18181b !default;
 
   --container-width: 1500px;
   --header-height: 70px;
-  --scrollbar-size: 10px;
   --aside-width: 246px;
   --timing: cubic-bezier(0.7, 0.006, 0.2, 1);
   --font-primary: 'Inter', sans-serif;
   --font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
-  --shadow-md: 0px 3px 6px rgb(0 0 0 / 10%);
   --shadow-lg: 0px 5px 10px rgb(0 0 0 / 20%);
 
   --primary: #{$green};
@@ -81,7 +78,6 @@ $gray-900: #18181b !default;
   --syntax-constant: var(--syntax-duo-1);
   --syntax-variable: var(--syntax-uno-1);
   --syntax-function: var(--syntax-duo-1);
-  --syntax-builtin: var(--syntax-duo-1);
   --syntax-type: var(--syntax-duo-2);
   --syntax-class: var(--syntax-uno-1);
   --syntax-tag: var(--syntax-uno-1);
