@@ -1,6 +1,7 @@
 const TOC = document.querySelector('.toc')
 const DOCS = document.querySelector('.article-body')
 const VISIBLE_CLASS = 'is-visible'
+const HEADER_OFFSET = 90
 
 function initToc () {
   if (!TOC || !DOCS) return
@@ -14,63 +15,102 @@ function initToc () {
     linkMap.set(heading, TOC.querySelector(`a[href="#${heading.id}"]`))
   })
 
-  const intersecting = new Set()
-  const above = new Set()
+  let headingTops = []
   let currentActiveLink = null
+  let isClickScrolling = false
+  let clickTimeout = null
+  let ticking = false
+
+  function updateHeadingTops () {
+    headingTops = headings.map((h) => ({
+      heading: h,
+      top: h.getBoundingClientRect().top + window.scrollY
+    }))
+  }
+
+  function setActiveHeading (heading) {
+    if (!heading) return
+    const activeLink = linkMap.get(heading)
+    if (activeLink && activeLink !== currentActiveLink) {
+      if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
+      activeLink.classList.add(VISIBLE_CLASS)
+      currentActiveLink = activeLink
+    }
+  }
 
   function updateActive () {
+    if (isClickScrolling) return
+
+    const scrollY = window.scrollY
+    const scrollBottom = window.innerHeight + scrollY
+    const docHeight = document.documentElement.scrollHeight
+
+    if (scrollBottom >= docHeight - 10 && headingTops.length) {
+      setActiveHeading(headingTops[headingTops.length - 1].heading)
+      return
+    }
+
+    const scrollPosition = scrollY + HEADER_OFFSET
     let activeHeading = null
 
-    for (const heading of headings) {
-      if (intersecting.has(heading)) {
-        activeHeading = heading
+    for (let i = headingTops.length - 1; i >= 0; i--) {
+      if (scrollPosition >= headingTops[i].top) {
+        activeHeading = headingTops[i].heading
         break
       }
     }
 
-    if (!activeHeading) {
-      for (let i = headings.length - 1; i >= 0; i--) {
-        if (above.has(headings[i])) {
-          activeHeading = headings[i]
-          break
-        }
-      }
+    if (!activeHeading && headingTops.length) {
+      activeHeading = headingTops[0].heading
     }
 
-    if (!activeHeading && headings.length) {
-      activeHeading = headings[0]
-    }
+    setActiveHeading(activeHeading)
+  }
 
-    if (activeHeading) {
-      const activeLink = linkMap.get(activeHeading)
-      if (activeLink && activeLink !== currentActiveLink) {
-        if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
-        activeLink.classList.add(VISIBLE_CLASS)
-        currentActiveLink = activeLink
-      }
+  function onScroll () {
+    if (isClickScrolling) return
+
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateActive()
+        ticking = false
+      })
+      ticking = true
     }
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        intersecting.add(entry.target)
-        above.delete(entry.target)
-      } else {
-        intersecting.delete(entry.target)
-        if (entry.boundingClientRect.top < 100) {
-          above.add(entry.target)
-        } else {
-          above.delete(entry.target)
-        }
-      }
-    })
-    updateActive()
-  }, {
-    rootMargin: '-70px 0px -75% 0px'
+  TOC.addEventListener('click', (e) => {
+    const link = e.target.closest('a')
+    if (!link) return
+
+    isClickScrolling = true
+    clearTimeout(clickTimeout)
+
+    if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
+    link.classList.add(VISIBLE_CLASS)
+    currentActiveLink = link
+
+    const onScrollEnd = () => {
+      isClickScrolling = false
+      clearTimeout(clickTimeout)
+      window.removeEventListener('scrollend', onScrollEnd)
+    }
+
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', onScrollEnd, { once: true })
+    }
+    clickTimeout = setTimeout(onScrollEnd, 1000)
   })
 
-  headings.forEach((heading) => observer.observe(heading))
+  updateHeadingTops()
+  updateActive()
+
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('resize', () => {
+    updateHeadingTops()
+    updateActive()
+  }, { passive: true })
+  window.addEventListener('load', updateHeadingTops, { once: true })
 }
 
 initToc()
