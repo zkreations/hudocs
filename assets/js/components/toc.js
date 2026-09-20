@@ -1,7 +1,6 @@
 const TOC = document.querySelector('.toc')
 const DOCS = document.querySelector('.article-body')
 const VISIBLE_CLASS = 'is-visible'
-const ACTIVE_CLASS = 'is-active'
 
 function initToc () {
   if (!TOC || !DOCS) return
