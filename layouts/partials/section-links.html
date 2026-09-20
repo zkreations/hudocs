@@ -1,5 +1,4 @@
 {{- $docsContext := partial "docs-context" . -}}
-{{- $extraLinks := partial "standalone-links" . -}}
 <div class="section-content">
   <div class="section-group">
     <h2 class="section-subtitle">{{ i18n "versions" }}</h2>
@@ -18,25 +17,6 @@
       {{- end -}}
     </ul>
   </div>
-  {{- if gt (len $extraLinks) 0 -}}
-    <div class="section-group">
-      <h2 class="section-subtitle">{{ i18n "pages" }}</h2>
-      <ul class="section-list">
-        {{- range $extraLinks -}}
-          <li>
-            <a class="has-icon" href="{{ .url }}"{{ with .target }} target="{{ . }}"{{ end }}{{ with .rel }} rel="{{ . }}"{{ end }}>
-              {{- with .icon -}}
-                {{ partial "svg" (dict "icon" .) }}
-              {{- end -}}
-              <span>{{ .title }}</span>
-              {{- if .isExternal -}}
-                {{ partial "svg" (dict "icon" "arrow-up-right" "class" "section-arrow") }}
-              {{- end -}}
-            </a>
-          </li>
-        {{- end -}}
-      </ul>
-    </div>
-  {{- end -}}
 </div>
+
 
