@@ -1,8 +1,15 @@
 ---
 title: Niveles
-weight: 4
+weight: 5
 icon: align-left
 ---
 
-Estas en el nivel principal. Puedes anidar multiples niveles, No hay un límite real, sin embargo recomiendo proceder con cuidado, de todas formas, cualquier sugerencia para gestionar mejor esta característica, son bienvenidas.
+Esta sección muestra cómo organizar las páginas en distintos niveles de profundidad.
 
+## Nivel principal
+
+Actualmente estás en el nivel principal. Desde aquí, la documentación puede dividirse en secciones y páginas anidadas.
+
+## Profundizar en la estructura
+
+Accede a **Nivel 1** para continuar por la jerarquía. Cada página anidada es una página de documentación normal y puede contener su propio contenido y páginas secundarias.
