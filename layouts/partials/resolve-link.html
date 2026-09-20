@@ -1,7 +1,9 @@
 {{- $href := .href -}}
 {{- $u := urls.Parse $href -}}
-{{- $isExternal := or (in (slice "http" "https") (lower $u.Scheme)) (hasPrefix $href "//") -}}
-{{- $url := cond $isExternal $href ($href | relLangURL) -}}
+{{- $scheme := lower $u.Scheme -}}
+{{- $isExternal := or (in (slice "http" "https") $scheme) (hasPrefix $href "//") -}}
+{{- $isSpecial := or (hasPrefix $href "#") (and $scheme (not (in (slice "http" "https") $scheme))) -}}
+{{- $url := cond $isExternal $href (cond $isSpecial $href ($href | relLangURL)) -}}
 {{- $rel := .rel | default (cond $isExternal "noreferrer noopener" "") -}}
 {{- $target := cond $isExternal "_blank" "" -}}
 {{- return (dict "url" $url "isExternal" $isExternal "rel" $rel "target" $target) -}}

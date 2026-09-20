@@ -1,1 +1,2 @@
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination  "http" }} target="_blank" rel="nofollow noopener"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- $link := partial "resolve-link" (dict "href" .Destination) -}}
+<a href="{{ $link.url | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $link.target }} target="{{ . }}"{{ end }}{{ with $link.rel }} rel="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
