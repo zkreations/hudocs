@@ -1,12 +1,19 @@
 const ACTIVE_CLASS = 'is-active'
+let activeTrigger = null
+let activeTarget = null
 
 function deactivateAll () {
-  document.querySelectorAll(`[data-outside].${ACTIVE_CLASS}`).forEach((button) => {
-    button.classList.remove(ACTIVE_CLASS)
-    button.setAttribute('aria-expanded', 'false')
-    const target = document.getElementById(button.dataset.outside)
-    if (target) target.classList.remove(ACTIVE_CLASS)
-  })
+  if (!activeTrigger && !activeTarget) return
+
+  if (activeTrigger) {
+    activeTrigger.classList.remove(ACTIVE_CLASS)
+    activeTrigger.setAttribute('aria-expanded', 'false')
+    activeTrigger = null
+  }
+  if (activeTarget) {
+    activeTarget.classList.remove(ACTIVE_CLASS)
+    activeTarget = null
+  }
 }
 
 function initOutside () {
@@ -23,32 +30,25 @@ function initOutside () {
       const target = document.getElementById(trigger.dataset.outside)
       if (!target) return
 
-      const wasActive = target.classList.contains(ACTIVE_CLASS)
+      const wasActive = target === activeTarget || target.classList.contains(ACTIVE_CLASS)
       deactivateAll()
 
       if (!wasActive) {
         trigger.classList.add(ACTIVE_CLASS)
         trigger.setAttribute('aria-expanded', 'true')
         target.classList.add(ACTIVE_CLASS)
+        activeTrigger = trigger
+        activeTarget = target
         const input = target.querySelector('input')
         if (input) input.focus()
       }
       return
     }
 
-    const activeButtons = document.querySelectorAll(`[data-outside].${ACTIVE_CLASS}`)
-    if (!activeButtons.length) return
+    if (!activeTrigger && !activeTarget) return
 
-    let clickedInside = false
-    activeButtons.forEach((button) => {
-      const target = document.getElementById(button.dataset.outside)
-      if (target) {
-        const hitArea = target.querySelector('[data-dialog]') || target
-        if (hitArea.contains(e.target) || button.contains(e.target)) {
-          clickedInside = true
-        }
-      }
-    })
+    const hitArea = activeTarget ? (activeTarget.querySelector('[data-dialog]') || activeTarget) : null
+    const clickedInside = (hitArea && hitArea.contains(e.target)) || (activeTrigger && activeTrigger.contains(e.target))
 
     if (!clickedInside) {
       deactivateAll()
