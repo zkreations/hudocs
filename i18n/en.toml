@@ -70,3 +70,10 @@ other = "No summary available"
 
 [new]
 other = "New"
+
+[anchor]
+other = "Anchor"
+
+[toggle_navigation]
+other = "Toggle navigation"
+

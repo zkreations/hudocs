@@ -70,3 +70,10 @@ other = "No hay resumen disponible"
 
 [new]
 other = "Nuevo"
+
+[anchor]
+other = "Anclaje"
+
+[toggle_navigation]
+other = "Alternar navegación"
+

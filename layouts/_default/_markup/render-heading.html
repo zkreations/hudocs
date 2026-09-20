@@ -1,4 +1,4 @@
 <h{{ .Level }} id="{{ .Anchor | safeURL }}">
   {{ .Text | safeHTML }}
-  <a class="article-anchor" aria-label="Anchor" href="#{{ .Anchor | safeURL }}">#</a>
+  <a class="article-anchor" aria-label='{{ i18n "anchor" | default "Anchor" }}' href="#{{ .Anchor | safeURL }}">#</a>
 </h{{ .Level }}>

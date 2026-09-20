@@ -7,7 +7,7 @@
   <div class="header-wrapper">
     <div class="header-left">
       {{- if or (and $docsContext.isDoc $docsContext.versionPage) (and .IsPage site.Menus.main) -}}
-        <button class="header-toggle" data-outside="docs-sidebar" aria-label="toggle navigation">
+        <button class="header-toggle" data-outside="docs-sidebar" aria-label='{{ i18n "toggle_navigation" | default "Toggle navigation" }}'>
           {{ partial "svg" (dict "icon" "bars") }}
         </button>
       {{- end -}}
