@@ -3,11 +3,17 @@
   {{- if and $docsContext.isDocsRoot (not $docsContext.isSingleVersion) -}}
     <main class="main-section">
       <div class="container">
-        <div class="section-info">
-          <h1 class="section-title">{{ with .Title }}{{ . }}{{ else }}{{ i18n "versions" }}{{ end }}</h1>
-          <p class="section-description">{{ with .Description }}{{ . }}{{ else }}{{ i18n "main_section_text" }}.{{ end }}</p>
-        </div>
-        {{ partial "section-links" . }}
+        {{- if .Content -}}
+          <div class="article-body markdown">
+            {{ .Content }}
+          </div>
+        {{- else -}}
+          <div class="section-info">
+            <h1 class="section-title">{{ with .Title }}{{ . }}{{ else }}{{ i18n "versions" }}{{ end }}</h1>
+            <p class="section-description">{{ with .Description }}{{ . }}{{ else }}{{ i18n "main_section_text" }}.{{ end }}</p>
+          </div>
+          {{ partial "section-links" . }}
+        {{- end -}}
       </div>
     </main>
   {{- else -}}
