@@ -1,24 +1,10 @@
-{{ $name := .icon }}
-{{ if $name }}
-  {{ $class := .class }}
-  {{ $size := .size | default "24" }}
-  {{ $color := .color | default "currentColor" }}
-
-  {{ $icons := partialCached "icons-data.html" "meteor-icons" }}
-  {{ with index $icons $name }}
-    <svg
-      class="i i-{{ $name }}{{ with $class }} {{ . }}{{ end }}"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      stroke="{{ $color }}"
-      width="{{ $size }}"
-      height="{{ $size }}"
-      aria-hidden="true"
-    >
-      {{ range .nodes }}
-        {{ partial "icon-node.html" . }}
-      {{ end }}
-    </svg>
-  {{ end }}
-{{ end }}
+{{- $name := .icon -}}
+{{- $class := .class | default "" -}}
+{{- if not (reflect.IsMap .) -}}
+  {{- $name = . -}}
+  {{- $class = "" -}}
+{{- end -}}
+{{- if $name -}}
+  {{- $cacheKey := cond (ne $class "") (printf "%s|%s" $name $class) $name -}}
+  {{- partialCached "svg-render.html" (dict "icon" $name "class" $class) $cacheKey -}}
+{{- end -}}
