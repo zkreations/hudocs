@@ -6,7 +6,13 @@ function addCopyButtons () {
   const i18nAttr = article.getAttribute('data-i18n')
   if (!i18nAttr) return
 
-  const i18n = JSON.parse(i18nAttr)
+  let i18n
+  try {
+    i18n = JSON.parse(i18nAttr)
+  } catch {
+    return
+  }
+
   const COPY_TEXT = i18n.copy
   const COPIED_TEXT = i18n.copied
   const clipboard = navigator.clipboard
@@ -47,7 +53,7 @@ function addCopyButtons () {
       setTimeout(() => {
         button.setAttribute('aria-label', COPY_TEXT)
       }, 2000)
-    })
+    }).catch(() => {})
   })
 }
 
