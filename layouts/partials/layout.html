@@ -1,0 +1,21 @@
+{{- $page := . -}}
+{{- $class := "doc" -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = default . .page -}}
+  {{- $class = default $class .class -}}
+{{- end -}}
+<div class="{{ $class }} layout container">
+  <aside class="aside" id="docs-sidebar">
+    {{ partial "sidebar" $page }}
+  </aside>
+  <main class="main main-index">
+    {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") -}}
+    <article class="article" data-i18n='{{ $i18n | jsonify }}'>
+      {{ partial "article" $page }}
+      {{ partial "footer" $page }}
+    </article>
+    <aside class="toc">
+      {{ partial "toc" $page }}
+    </aside>
+  </main>
+</div>
