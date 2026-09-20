@@ -21,5 +21,7 @@
   {{- $file = printf "json/%s.%s.%s.index.json" $.Language.Lang $docsContext.section $docsContext.version -}}
 {{- end -}}
 {{- $index := resources.Get "json/index.json" | resources.ExecuteAsTemplate $file $docsContext.versionPage | resources.Minify | resources.Fingerprint -}}
-<script id="search-config" type="application/json">{{ dict "indexUrl" $index.RelPermalink "i18n" (dict "noResults" (i18n "no_results") "searchError" (i18n "search_error")) | jsonify | safeJS }}</script>
+{{- $flexSearch := resources.Get "vendor/flexsearch.bundle.min.js" | resources.Minify | resources.Fingerprint -}}
+{{- $searchJS := resources.Get "js/search.js" | js.Build (dict "targetPath" "js/search.js") | resources.Minify | resources.Fingerprint -}}
+<script id="search-config" type="application/json">{{ dict "indexUrl" $index.RelPermalink "flexsearchUrl" $flexSearch.RelPermalink "searchUrl" $searchJS.RelPermalink "i18n" (dict "noResults" (i18n "no_results") "searchError" (i18n "search_error")) | jsonify | safeJS }}</script>
 {{- end -}}

@@ -116,7 +116,11 @@ import { createCombobox } from './combobox'
     }
   }
 
-  input.addEventListener('focus', initSearch, { once: true })
+  if (document.activeElement === input) {
+    initSearch()
+  } else {
+    input.addEventListener('focus', initSearch, { once: true })
+  }
   input.addEventListener('keydown', combobox.handleKeydown)
 
   input.addEventListener('input', () => {
