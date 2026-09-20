@@ -1,4 +1,4 @@
-{{- $docsContext := partial "docs-context" . -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 <div class="aside-tree scrollable">
   <div class="aside-content">
     {{- with $docsContext.versionPage -}}
@@ -20,7 +20,7 @@
           <input class="tree-toggle{{ if $isSub }} subtree-toggle{{ end }}" type="checkbox" id="tree-{{ md5 .Page }}"{{ if or site.Params.docs_expand_tree site.Params.expand_tree (eq $currentNode .Page) (.IsAncestor $currentNode) }} checked=""{{ end }}>
           {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
           {{ template "tree-list" (dict "Section" . "CurrentPage" $.CurrentPage "Level" $nextLevel ) }}
-        {{ else if and .IsPage .Content }}
+        {{ else if and .IsPage .RawContent }}
           {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
         {{ end }}
       </li>
@@ -34,10 +34,10 @@
   {{- if .Page.IsSection -}}
     <label for="tree-{{ md5 .Page }}" class="tree-label has-icon{{ if $isSub }} subtree-label{{ end }}">
   {{ end }}
-  
-  <a href="{{ .Page.Permalink }}" data-name="{{ partial "title" .Page }}" class="tree-link has-icon{{ if $isSub }} subtree-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
+  {{- $title := partial "title" .Page -}}
+  <a href="{{ .Page.Permalink }}" data-name="{{ $title }}" class="tree-link has-icon{{ if $isSub }} subtree-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
-    {{- partial "title" .Page -}}
+    {{- $title -}}
 
     {{- if eq .Page.Params.badge true -}}
       {{- $badgeText := default (or site.Params.docs_badge_text site.Params.badge_text) .Page.Params.badge_text -}}

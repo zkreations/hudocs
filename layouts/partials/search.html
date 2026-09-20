@@ -1,4 +1,4 @@
-{{- $docsContext := partial "docs-context" . -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 {{- if and $docsContext.isDoc $docsContext.versionPage -}}
 <div class="search" id="search-box" role="dialog" aria-modal="true" aria-label='{{- i18n "search" -}}'>
   <div class="search-content scrollable" data-dialog>

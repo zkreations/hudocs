@@ -1,4 +1,4 @@
-{{- $docsContext := partial "docs-context" . -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 <div class="section-content">
   <div class="section-group">
     <h2 class="section-subtitle">{{ i18n "versions" }}</h2>

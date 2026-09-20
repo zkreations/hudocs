@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{- $docsContext := partial "docs-context" . -}}
+  {{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
   {{- if and $docsContext.isDocsRoot (not $docsContext.isSingleVersion) -}}
     <main class="main-section">
       <div class="container">

@@ -1,4 +1,4 @@
-{{- $docsContext := partial "docs-context" . -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 {{- $logo := or site.Params.brand_logo site.Params.main_logo -}}
 {{- $main_icon := or site.Params.brand_icon site.Params.main_icon | default "book-open" -}}
 {{- $title := site.Title | title -}}

@@ -1,4 +1,4 @@
-{{- $docsContext := partial "docs-context" . -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 {{- $sectionPage := false -}}
 {{- if $docsContext.isDoc -}}
   {{- $sectionPage = $docsContext.versionPage -}}
@@ -6,7 +6,7 @@
   {{- $sectionPage = .Site.GetPage .Section -}}
 {{- end -}}
 {{- if $sectionPage -}}
-{{- $pages := partial "flat-pages" (dict "Section" $sectionPage) -}}
+{{- $pages := partialCached "flat-pages" (dict "Section" $sectionPage) $sectionPage.Path -}}
 {{- $prev := "" -}}
 {{- $next := "" -}}
 

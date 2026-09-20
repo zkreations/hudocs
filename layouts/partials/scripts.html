@@ -1,4 +1,4 @@
-{{- $docsContext := partial "docs-context" . -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 {{- $options := dict "targetPath" "js/bundle.js" -}}
 {{- $jsBundle := resources.Get "js/main.js" | js.Build $options | resources.Minify | fingerprint -}}
 <script src="{{ $jsBundle.RelPermalink }}" integrity="{{ $jsBundle.Data.Integrity }}" defer></script>

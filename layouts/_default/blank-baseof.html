@@ -8,7 +8,7 @@
   <head>
     {{ partial "head" . }}
     {{ partial "seo" . }}
-    {{ partial "styles" . }}
+    {{ partialCached "styles" . }}
     {{ partial "scripts" . }}
   </head>
   <body>
