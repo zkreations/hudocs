@@ -311,5 +311,12 @@ pre {
     &::after {
       content: "}";
     }
+
+    > span + span::before {
+      content: " | ";
+      display: inline-block;
+      margin-inline: .125rem;
+      color: var(--outline);
+    }
   }
 }

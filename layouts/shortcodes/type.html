@@ -31,4 +31,4 @@
   {{- end -}}
 {{- end -}}
 
-<code class="type type-{{ $category }}{{ if $optional }} type-optional{{ end }}">{{- $label -}}</code>
+<code class="type type-{{ $category }}{{ if $optional }} type-optional{{ end }}">{{- if $isValues -}}{{- range split $label "|" -}}<span>{{- strings.TrimSpace . -}}</span>{{- end -}}{{- else -}}{{- $label -}}{{- end -}}</code>
