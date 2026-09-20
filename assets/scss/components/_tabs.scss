@@ -68,7 +68,6 @@
     .tab-label {
       margin-block-end: 0;
       border-block-end: 0;
-      background-color: var(--surface-inverse);
 
       @include breakpoint(s) {
         padding-inline: 1.5rem;
