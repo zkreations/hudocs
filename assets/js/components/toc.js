@@ -9,7 +9,14 @@ function initToc () {
   const tocLinks = TOC.querySelectorAll('a')
   if (!headings.length || !tocLinks.length) return
 
+  const linkMap = new Map()
+  headings.forEach((heading) => {
+    linkMap.set(heading, TOC.querySelector(`a[href="#${heading.id}"]`))
+  })
+
   const intersecting = new Set()
+  const above = new Set()
+  let currentActiveLink = null
 
   function updateActive () {
     let activeHeading = null
@@ -23,7 +30,7 @@ function initToc () {
 
     if (!activeHeading) {
       for (let i = headings.length - 1; i >= 0; i--) {
-        if (headings[i].getBoundingClientRect().top <= 100) {
+        if (above.has(headings[i])) {
           activeHeading = headings[i]
           break
         }
@@ -35,10 +42,11 @@ function initToc () {
     }
 
     if (activeHeading) {
-      const activeLink = TOC.querySelector(`a[href="#${activeHeading.id}"]`)
-      if (activeLink && !activeLink.classList.contains(VISIBLE_CLASS)) {
-        tocLinks.forEach((link) => link.classList.remove(VISIBLE_CLASS))
+      const activeLink = linkMap.get(activeHeading)
+      if (activeLink && activeLink !== currentActiveLink) {
+        if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
         activeLink.classList.add(VISIBLE_CLASS)
+        currentActiveLink = activeLink
       }
     }
   }
@@ -47,8 +55,14 @@ function initToc () {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         intersecting.add(entry.target)
+        above.delete(entry.target)
       } else {
         intersecting.delete(entry.target)
+        if (entry.boundingClientRect.top < 100) {
+          above.add(entry.target)
+        } else {
+          above.delete(entry.target)
+        }
       }
     })
     updateActive()
@@ -60,3 +74,4 @@ function initToc () {
 }
 
 initToc()
+

@@ -49,27 +49,11 @@ function initSearchLoader () {
   }
 
   function openSearch () {
-    const searchToggle = document.querySelector('.search-toggle')
-
-    if (searchBox.classList.contains('is-active')) {
-      searchBox.classList.remove('is-active')
-      if (searchToggle) {
-        searchToggle.classList.remove('is-active')
-        searchToggle.setAttribute('aria-expanded', 'false')
-      }
-      return
-    }
-
     loadSearch()
-
+    const searchToggle = document.querySelector('.search-toggle')
     if (searchToggle) {
-      searchToggle.classList.add('is-active')
-      searchToggle.setAttribute('aria-expanded', 'true')
+      searchToggle.click()
     }
-    searchBox.classList.add('is-active')
-
-    const input = searchBox.querySelector('#search-input')
-    if (input) input.focus()
   }
 
   const searchToggle = document.querySelector('.search-toggle')

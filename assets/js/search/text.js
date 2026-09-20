@@ -17,13 +17,16 @@ export function buildSearchRegex (query) {
     }).join('')
   })
 
-  return new RegExp(`(${patterns.join('|')})`, 'giu')
+  const source = `(${patterns.join('|')})`
+  const regex = new RegExp(source, 'giu')
+  regex.testRegex = new RegExp(source, 'iu')
+  return regex
 }
 
 export function extractSnippet (page, regex) {
   if (!regex || !page.content) return page.summary
 
-  const testRegex = new RegExp(regex.source, 'iu')
+  const testRegex = regex.testRegex || new RegExp(regex.source, 'iu')
   if (testRegex.test(page.title.normalize('NFD')) || (page.summary && testRegex.test(page.summary.normalize('NFD')))) {
     return page.summary
   }
