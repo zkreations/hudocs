@@ -20,14 +20,14 @@ function addCopyButtons () {
   const containers = article.querySelectorAll('.highlight')
   if (containers.length === 0) return
 
+  const templateButton = document.createElement('button')
+  templateButton.className = 'code-copy tooltip tooltip-start'
+  templateButton.setAttribute('aria-label', COPY_TEXT)
+  templateButton.innerHTML = '<svg viewBox="0 0 24 24" class="i i-copy"><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path><rect width="13" height="13" x="9" y="9" rx="2"></rect></svg>'
+
   containers.forEach((container) => {
     if (container.querySelector('.code-copy')) return
-
-    const button = document.createElement('button')
-    button.className = 'code-copy tooltip tooltip-start'
-    button.setAttribute('aria-label', COPY_TEXT)
-    button.innerHTML = '<svg viewBox="0 0 24 24" class="i i-copy"><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path><rect width="13" height="13" x="9" y="9" rx="2"></rect></svg>'
-    container.prepend(button)
+    container.prepend(templateButton.cloneNode(true))
   })
 
   article.addEventListener('click', (e) => {
