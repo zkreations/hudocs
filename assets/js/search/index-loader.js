@@ -8,23 +8,15 @@ export function createIndexLoader () {
   const docMap = new Map()
   let isReady = false
   let isLoading = false
-  let abortController = null
 
   async function loadIndex (dataURL, onLoadingChange) {
     if (isReady || isLoading) return
-
-    if (abortController) {
-      abortController.abort()
-    }
-    abortController = new AbortController()
 
     isLoading = true
     if (onLoadingChange) onLoadingChange(true)
 
     try {
-      const response = await fetch(dataURL, {
-        signal: abortController.signal
-      })
+      const response = await fetch(dataURL)
 
       if (!response.ok) {
         throw new Error(`Failed to load search data: ${response.status}`)
