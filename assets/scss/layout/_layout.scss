@@ -133,6 +133,17 @@
     padding-block: 2rem;
   }
 
+  &-blank {
+    padding-block: 2rem;
+
+    &.is-empty {
+      display: grid;
+      place-content: center;
+      height: 100vh;
+      height: 100dvh;
+    }
+  }
+
   &-index {
     display: grid;
     margin-block-start: var(--header-height);
@@ -164,6 +175,19 @@
         }
       }
     }
+  }
+}
+
+.blank {
+  &-icon {
+    color: var(--primary);
+    margin-inline: auto;
+  }
+
+  &-title {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+    font-weight: 500;
   }
 }
 

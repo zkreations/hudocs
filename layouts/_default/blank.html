@@ -1,0 +1,26 @@
+{{ define "main" }}
+<main class="main-blank{{ if not .Content }} is-empty{{ end }}">
+  <div class="container">
+    {{- if .Content -}}
+      <div class="article-body markdown">
+        {{ .Content }}
+      </div>
+    {{- else -}}
+      {{- $logo := or site.Params.brand_logo site.Params.main_logo -}}
+      {{- $brandIcon := or site.Params.brand_icon site.Params.main_icon | default "book-open" -}}
+      {{- $title := site.Title | title -}}
+      <div class="blank-content">
+        {{- if $logo -}}
+          <img class="blank-logo" src="{{ $logo }}" alt="{{ $title }}">
+        {{- else -}}
+          {{- with $brandIcon -}}
+            {{ partial "svg" (dict "icon" . "class" "blank-icon i-lg") }}
+          {{- end -}}
+          <h1 class="blank-title">{{ $title }}</h1>
+        {{- end -}}
+        {{ partial "menu" . }}
+      </div>
+    {{- end -}}
+  </div>
+</main>
+{{ end }}

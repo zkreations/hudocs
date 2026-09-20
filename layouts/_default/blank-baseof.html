@@ -1,0 +1,19 @@
+<!doctype html>
+{{- $codeTheme := default "duotone-dark" (or site.Params.code_theme (and site.Params.code site.Params.code.theme)) -}}
+{{- $codeThemes := slice "duotone-dark" "duotone-dark-sky" "duotone-dark-sea" "duotone-dark-space" "duotone-dark-earth" "duotone-dark-forest" -}}
+{{- if not (in $codeThemes $codeTheme) -}}
+  {{- $codeTheme = "duotone-dark" -}}
+{{- end -}}
+<html lang="{{ .Site.Language.Lang }}" data-code-theme="{{ $codeTheme }}">
+  <head>
+    {{ partial "head" . }}
+    {{ partial "seo" . }}
+    {{ partial "styles" . }}
+    {{ partial "scripts" . }}
+  </head>
+  <body>
+    <div class="template">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </body>
+</html>
