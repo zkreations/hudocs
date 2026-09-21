@@ -1,10 +1,10 @@
-﻿<div class="article-table">
+<div class="article-table">
   <table{{ range $k, $v := .Attributes }} {{ printf "%s=%q" $k $v | safeHTMLAttr }}{{ end }}>
     <thead>
       {{- range .THead }}
         <tr>
           {{- range . }}
-            <th{{ with .Alignment }} style="text-align: {{ . }}"{{ end }}>{{ .Text | safeHTML }}</th>
+            <th scope="col"{{ with .Alignment }} style="text-align: {{ . }}"{{ end }}>{{ .Text | safeHTML }}</th>
           {{- end }}
         </tr>
       {{- end }}
