@@ -15,7 +15,7 @@
   {{- $title := .Get "title" | default (.Get 0) | default (printf "Tab %d" (add .Ordinal 1)) -}}
   <input type="radio" name="{{ $group }}" id="{{ $tabId }}" class="tab-toggle"{{ if eq .Ordinal 0 }} checked="checked"{{ end }}>
   <label for="{{ $tabId }}" id="{{ $tabId }}-label" class="tab-label" role="tab" aria-selected="{{ if eq .Ordinal 0 }}true{{ else }}false{{ end }}" aria-controls="{{ $tabId }}-panel">{{ $title }}</label>
-  <div class="tab-content" id="{{ $tabId }}-panel" role="tabpanel" aria-labelledby="{{ $tabId }}-label">
+  <div class="tab-content" id="{{ $tabId }}-panel" role="tabpanel" tabindex="0" aria-labelledby="{{ $tabId }}-label">
     {{- .Page.RenderString .Inner -}}
   </div>
 {{- end -}}
