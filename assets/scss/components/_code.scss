@@ -21,16 +21,22 @@ pre {
   white-space: normal;
   line-height: 1.5;
 
-  &[filename]::before {
-    content: attr(filename);
-    display: block;
-    padding: .75rem;
-    font-size: .875rem;
-    line-height: 1;
-    background-color: var(--syntax-gutter);
-    border-top-left-radius: var(--highlight-radius);
-    border-top-right-radius: var(--highlight-radius);
-    color: var(--syntax-muted);
+  &[filename] {
+    &::before {
+      content: attr(filename);
+      display: block;
+      padding: .75rem;
+      font-size: .875rem;
+      line-height: 1;
+      background-color: var(--syntax-gutter);
+      border-top-left-radius: var(--highlight-radius);
+      border-top-right-radius: var(--highlight-radius);
+      color: var(--syntax-muted);
+    }
+
+    .lntd:first-child {
+      border-top-left-radius: 0;
+    }
   }
 
   pre {
@@ -69,10 +75,24 @@ pre {
     color: var(--syntax-muted);
   }
 
-  .lntd:first-child {
-    background-color: var(--syntax-gutter);
-    border-top-left-radius: var(--highlight-radius);
-    border-bottom-left-radius: var(--highlight-radius);
+  .lntable {
+    width: 100%;
+  }
+
+  .lntd {
+    padding: 0;
+
+    &:first-child {
+      width: 1%;
+      background-color: var(--syntax-gutter);
+      border-top-left-radius: var(--highlight-radius);
+      border-bottom-left-radius: var(--highlight-radius);
+    }
+
+    &:last-child {
+      width: 100%;
+      max-width: 0;
+    }
   }
 
   .lnt {
