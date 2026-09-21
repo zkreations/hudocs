@@ -5,7 +5,7 @@
       {{ partial "svg" (dict "icon" "align-right" ) }}
       {{ i18n "contents" }}
     </span>
-    <button class="toc-toggle" data-outside="toc-navigation" type="button" aria-label='{{ i18n "contents" }}'>
+    <button class="toc-toggle" data-outside="toc-navigation" type="button" aria-expanded="false" aria-controls="toc-navigation" aria-label='{{ i18n "contents" }}'>
       <span class="toc-current"></span>
       {{ partial "svg" (dict "icon" "chevron-down" ) }}
     </button>
