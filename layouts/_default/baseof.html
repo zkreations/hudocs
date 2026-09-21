@@ -12,6 +12,7 @@
     {{ partialCached "scripts" . }}
   </head>
   <body>
+    <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" | default "Skip to content" }}</a>
     <div class="template">
       <header class="header">
         {{ partial "header" . }}

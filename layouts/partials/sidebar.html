@@ -17,11 +17,21 @@
     {{ range (where .Section.Pages "Params.hidden" "ne" true) }}
       <li class="tree-item{{ if $isSub }} subtree-item{{ end }} level-{{ $level }}-item{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} is-current{{end}}">
         {{ if .IsSection }}
-          <input class="tree-toggle{{ if $isSub }} subtree-toggle{{ end }}" type="checkbox" id="tree-{{ md5 .Page }}"{{ if or site.Params.docs_expand_tree site.Params.expand_tree (eq $currentNode .Page) (.IsAncestor $currentNode) }} checked=""{{ end }}>
-          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
+          {{- $title := partial "title" .Page -}}
+          <input class="tree-toggle{{ if $isSub }} subtree-toggle{{ end }}" type="checkbox" id="tree-{{ md5 .Page }}" aria-label='{{ printf "%s: %s" (i18n "toggle_section" | default "Toggle section") $title }}'{{ if or site.Params.docs_expand_tree site.Params.expand_tree (eq $currentNode .Page) (.IsAncestor $currentNode) }} checked=""{{ end }}>
+          <div class="tree-row tree-label{{ if $isSub }} subtree-label{{ end }}">
+            {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
+            {{ $arrowClass := "tree-arrow" }}
+            {{- if $isSub }}{{ $arrowClass = "tree-arrow subtree-arrow" }}{{ end -}}
+            <label for="tree-{{ md5 .Page }}" class="tree-arrow-trigger" aria-hidden="true">
+              {{ partial "svg" (dict "icon" "chevron-down" "class" $arrowClass ) }}
+            </label>
+          </div>
           {{ template "tree-list" (dict "Section" . "CurrentPage" $.CurrentPage "Level" $nextLevel ) }}
         {{ else if and .IsPage .RawContent }}
-          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
+          <div class="tree-row tree-label{{ if $isSub }} subtree-label{{ end }}">
+            {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
+          </div>
         {{ end }}
       </li>
     {{ end }}
@@ -31,11 +41,8 @@
 {{ define "tree-link" }}
   {{ $level := default 0 .Level }}
   {{ $isSub := gt $level 0 }}
-  {{- if .Page.IsSection -}}
-    <label for="tree-{{ md5 .Page }}" class="tree-label has-icon{{ if $isSub }} subtree-label{{ end }}">
-  {{ end }}
   {{- $title := partial "title" .Page -}}
-  <a href="{{ .Page.Permalink }}" data-name="{{ $title }}" class="tree-link has-icon{{ if $isSub }} subtree-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}">
+  <a href="{{ .Page.Permalink }}" data-name="{{ $title }}" class="tree-link has-icon{{ if $isSub }} subtree-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}"{{ if (eq .CurrentPage .Page) }} aria-current="page"{{ end }}>
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
     {{- $title -}}
 
@@ -46,14 +53,4 @@
       <span class="badge">{{ $badgeText }}</span>
     {{- end -}}
   </a>
-
-  {{- with .Page.IsSection -}}
-    {{ $arrowClass := "tree-arrow" }}
-    {{- if $isSub }}{{ $arrowClass = "tree-arrow subtree-arrow" }}{{ end -}}
-    {{ partial "svg" (dict "icon" "chevron-down" "class" $arrowClass ) }}
-  {{ end }}
-
-  {{- if .Page.IsSection -}}
-    </label>
-  {{ end }}
 {{ end }}

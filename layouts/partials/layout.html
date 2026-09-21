@@ -5,16 +5,16 @@
   {{- $class = default $class .class -}}
 {{- end -}}
 <div class="{{ $class }} layout container">
-  <aside class="aside" id="docs-sidebar">
+  <aside class="aside" id="docs-sidebar" aria-label='{{ i18n "documentation" | default "Documentation" }}'>
     {{ partial "sidebar" $page }}
   </aside>
-  <main class="main main-index">
+  <main class="main main-index" id="main-content" tabindex="-1">
     {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") -}}
     <article class="article" data-i18n='{{ $i18n | jsonify }}'>
       {{ partial "article" $page }}
       {{ partial "footer" $page }}
     </article>
-    <aside class="toc">
+    <aside class="toc" aria-label='{{ i18n "contents" | default "Contents" }}'>
       {{ partial "toc" $page }}
     </aside>
   </main>

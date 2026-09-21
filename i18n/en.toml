@@ -85,3 +85,16 @@ other = "Anchor"
 [toggle_navigation]
 other = "Toggle navigation"
 
+[skip_to_content]
+other = "Skip to content"
+
+[documentation]
+other = "Documentation"
+
+[main_menu]
+other = "Main menu"
+
+[toggle_section]
+other = "Toggle section"
+
+

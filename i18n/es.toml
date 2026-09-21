@@ -85,3 +85,16 @@ other = "Anclaje"
 [toggle_navigation]
 other = "Alternar navegación"
 
+[skip_to_content]
+other = "Saltar al contenido"
+
+[documentation]
+other = "Documentación"
+
+[main_menu]
+other = "Menú principal"
+
+[toggle_section]
+other = "Alternar sección"
+
+
