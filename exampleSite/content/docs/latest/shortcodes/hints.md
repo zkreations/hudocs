@@ -83,7 +83,7 @@ If no `icon` is specified, the hint is displayed without one.
 
 ## Accessibility
 
-The shortcode sets the `role` attribute based on the hint type: `warning`, `danger`, and `error` use `role="alert"`, while all other types use `role="status"`.
+The shortcode renders an `<aside>` element with `role="note"` and calculates an accessible name using `aria-label` based on the hint type (e.g. `aria-label="Warning"`, or `aria-label="Note"` by default).
 
 ## Markdown support
 

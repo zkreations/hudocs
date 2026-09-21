@@ -3,7 +3,7 @@ title: Encabezados y anclas
 weight: 2
 ---
 
-Hudocs genera enlaces de anclaje para los encabezados y una Tabla de Contenidos (TOC) interactiva. El seguimiento de la sección activa utiliza la API nativa `IntersectionObserver`.
+Hudocs genera enlaces de anclaje para los encabezados y una Tabla de Contenidos (TOC) interactiva con seguimiento de la sección activa al desplazarse.
 
 ## Anclas automáticas en encabezados
 
@@ -31,14 +31,14 @@ Puedes controlar los niveles incluidos en la Tabla de Contenidos desde `hugo.tom
   endLevel = 3      # Incluye hasta <h3>
 ```
 
-## Scrollspy con IntersectionObserver
+## Scrollspy
 
-En Hudocs 2.0, el sistema de seguimiento de la sección activa utiliza `IntersectionObserver` en lugar de la implementación anterior basada en eventos `scroll` y `resize`:
+Hudocs realiza el seguimiento de la sección activa a medida que el usuario se desplaza por el documento:
 
-* Se eliminaron los listeners continuos de `scroll` y `resize` utilizados por la implementación anterior.
-* `IntersectionObserver` detecta cuándo los encabezados entran o salen del área de observación.
-* La sección correspondiente se marca como activa en la Tabla de Contenidos.
+* Los eventos de desplazamiento se sincronizan mediante `requestAnimationFrame` para un rendimiento óptimo de renderizado.
+* Las posiciones verticales de los encabezados se calculan considerando el desplazamiento dinámico de la cabecera (`--header-height`).
+* El enlace del encabezado activo se marca con `aria-current="location"` y la clase `.is-visible` en la Tabla de Contenidos.
 
 ## Diseño responsivo
 
-En desarrollo...
+En pantallas pequeñas, la Tabla de Contenidos pasa de una barra lateral fija a un menú desplegable en la parte superior del artículo. El botón de activación muestra el título de la sección activa y se expande para mostrar la lista de navegación completa al hacer clic.

@@ -7,7 +7,7 @@ Hudocs incluye un motor de búsqueda del lado del cliente basado en [FlexSearch]
 
 ## Funcionamiento
 
-1. **Generación del índice:** durante `hugo build`, Hugo genera un archivo JSON con el índice de documentos para cada idioma configurado. Los índices se generan en `/json/index.json` y `/[idioma]/json/index.json`.
+1. **Generación del índice:** durante `hugo build`, Hugo genera un archivo JSON minificado con el índice de búsqueda para cada idioma y versión de documentación configurada bajo `json/<idioma>.<sección>.<versión>.index.json`.
 
 2. **Carga bajo demanda:** el índice se descarga cuando el usuario abre el modal de búsqueda, por lo que no se carga durante la carga inicial del sitio.
 
@@ -17,7 +17,7 @@ Hudocs incluye un motor de búsqueda del lado del cliente basado en [FlexSearch]
 
 Los lectores pueden interactuar con el buscador mediante los siguientes controles:
 
-* **Botón de búsqueda en la cabecera:** abre el modal de búsqueda.
+* **Botón o atajo de búsqueda:** abre el modal de búsqueda haciendo clic en el botón de la cabecera o pulsando <kbd>Ctrl K</kbd> (<kbd>Cmd K</kbd> en macOS).
 * **Navegación por teclado:**
   * <kbd>↑</kbd> o <kbd>↓</kbd> cambia la selección entre los resultados.
   * <kbd>Enter</kbd> abre el artículo seleccionado.
@@ -25,37 +25,39 @@ Los lectores pueden interactuar con el buscador mediante los siguientes controle
 
 ## Estructura del índice de búsqueda
 
-El índice se genera a partir de la plantilla `assets/json/index.json` con la siguiente estructura:
+El índice se genera a partir de la plantilla `assets/json/index.json` como un array compacto de tuplas:
 
 ```json
-{
-  "documents": [
-    {
-      "id": 0,
-      "title": "Instalación",
-      "summary": "Cómo instalar y configurar Hudocs.",
-      "parent": "Primeros Pasos",
-      "url": "/es/docs/latest/getting-started/installation/"
-    }
+[
+  [
+    0,
+    "/es/docs/latest/getting-started/installation/",
+    "Instalación",
+    "Primeros Pasos",
+    "Cómo instalar y configurar Hudocs.",
+    "Contenido del artículo..."
   ]
-}
+]
 ```
 
 ### Metadatos de los resultados
 
-Cada resultado utiliza los siguientes datos del índice:
+Cada elemento de la tupla representa:
 
-* **Sección padre:** categoría a la que pertenece el artículo.
-* **Título del artículo:** título de la página utilizada para la búsqueda y los resultados.
-* **Resumen:** fragmento de contenido utilizado para mostrar contexto y coincidencias.
+* **Índice 0 (`id`):** identificador numérico del documento.
+* **Índice 1 (`url`):** URL relativa del artículo.
+* **Índice 2 (`title`):** título del documento.
+* **Índice 3 (`parent`):** título de la sección padre.
+* **Índice 4 (`summary`):** extracto del contenido utilizado para mostrar coincidencias.
+* **Índice 5 (`content`):** texto limpio del cuerpo utilizado para la indexación de texto completo.
 
 ## Soporte multilingüe
 
-Hudocs genera un índice independiente para cada idioma configurado en Hugo a partir de `.Site.Pages`. Las búsquedas realizadas desde una versión localizada utilizan el índice correspondiente a ese idioma. Por ejemplo:
+Hudocs genera un índice independiente para cada idioma y versión configurada. Las búsquedas realizadas desde una versión localizada utilizan el índice correspondiente a ese idioma y versión. Por ejemplo:
 
 ```text
-/json/index.json
-/es/json/index.json
+/json/en.docs.latest.index.<hash>.json
+/json/es.docs.latest.index.<hash>.json
 ```
 
 Por lo tanto, una búsqueda realizada en español devuelve documentos incluidos en el índice español.

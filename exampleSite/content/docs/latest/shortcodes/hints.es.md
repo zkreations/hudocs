@@ -83,7 +83,7 @@ Si no se especifica `icon`, el aviso se muestra sin ícono.
 
 ## Accesibilidad
 
-El shortcode establece el atributo `role` según el tipo de aviso, en donde `warning`, `danger` y `error` utilizan `role="alert"`, mientras que los demás tipos utilizan `role="status"`.
+El shortcode renderiza un elemento `<aside>` con `role="note"` y calcula un nombre accesible mediante `aria-label` según el tipo de aviso (por ejemplo, `aria-label="Warning"`, o `aria-label="Note"` por defecto).
 
 ## Soporte para Markdown
 

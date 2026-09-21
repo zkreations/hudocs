@@ -25,7 +25,7 @@ enableRobotsTXT = true
 
 ### enableInlineShortcodes
 
-Cuando se establece en `true`, Hugo permite el uso de shortcodes dentro de otros shortcodes. Esta opción es necesaria para que los shortcodes de Hudocs funcionen correctamente.
+Cuando se establece en `true`, Hugo permite declarar shortcodes en línea (inline shortcodes) directamente dentro de los archivos Markdown de contenido.
 
 ```toml
 enableInlineShortcodes = true

@@ -3,7 +3,7 @@ title: Headings and Anchors
 weight: 2
 ---
 
-Hudocs generates anchor links for headings and an interactive Table of Contents (TOC). Active section tracking uses the native `IntersectionObserver` API.
+Hudocs generates anchor links for headings and an interactive Table of Contents (TOC) with active section tracking as you scroll.
 
 ## Automatic Heading Anchors
 
@@ -31,14 +31,14 @@ You can control which heading levels are included in the Table of Contents from 
   endLevel = 3      # Includes up to <h3>
 ```
 
-## Scrollspy with IntersectionObserver
+## Scrollspy
 
-In Hudocs 2.0, active section tracking uses `IntersectionObserver` instead of the previous implementation based on `scroll` and `resize` events:
+Hudocs tracks the active section as the user scrolls through the document:
 
-* Continuous `scroll` and `resize` listeners used by the previous implementation were removed.
-* `IntersectionObserver` detects when headings enter or leave the observation area.
-* The corresponding section is marked as active in the Table of Contents.
+* Scroll events are throttled using `requestAnimationFrame` for optimal rendering performance.
+* Heading vertical positions are calculated relative to the dynamic header offset (`--header-height`).
+* The active heading link is marked with `aria-current="location"` and the `.is-visible` class in the Table of Contents.
 
 ## Responsive Layout
 
-In development...
+On smaller screens, the Table of Contents switches from a fixed sidebar to a collapsible dropdown at the top of the article. The dropdown toggle displays the title of the current section and expands to show the full navigation list when clicked.
