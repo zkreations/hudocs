@@ -7,7 +7,7 @@
   <div class="header-wrapper">
     <div class="header-left">
       {{- if or (and $docsContext.isDoc $docsContext.versionPage) (and .IsPage site.Menus.main) -}}
-        <button class="header-toggle" data-outside="docs-sidebar" aria-label='{{ i18n "toggle_navigation" | default "Toggle navigation" }}'>
+        <button class="header-toggle" data-outside="docs-sidebar" aria-label='{{ i18n "toggle_navigation" | default "Toggle navigation" }}' aria-expanded="false" aria-controls="docs-sidebar">
           {{ partial "svg" (dict "icon" "bars") }}
         </button>
       {{- end -}}
@@ -25,28 +25,28 @@
 
     <div class="header-right">
       {{- if and $docsContext.isDoc $docsContext.versionPage -}}
-        <button class="search-toggle has-icon" data-outside="search-box">
+        <button class="search-toggle has-icon" data-outside="search-box" aria-label='{{ i18n "search" }}' aria-haspopup="dialog" aria-expanded="false" aria-controls="search-box">
           {{ partial "svg" (dict "icon" "search") }}
           <span class="search-info">{{- i18n "search_in_doc" -}} <kbd>Ctrl K</kbd></span>
         </button>
       {{- end -}}
 
       <div class="dropdown-wrapper">
-        <button class="header-item toggle-theme tooltip" data-outside="docs-mode" aria-label='{{ i18n "change_theme" }}'>
+        <button class="header-item toggle-theme tooltip" data-outside="docs-mode" aria-label='{{ i18n "change_theme" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-mode">
           {{ partial "svg" (dict "icon" "sun") }}
           {{ partial "svg" (dict "icon" "moon") }}
         </button>
-        <div class="dropdown" id="docs-mode">
+        <div class="dropdown" id="docs-mode" role="region" aria-label='{{ i18n "change_theme" }}'>
           <div class="list theme-handle">
-            <button class="list-link has-icon" data-theme="system">
+            <button class="list-link has-icon" data-theme="system" type="button" aria-pressed="false">
               {{ partial "svg" (dict "icon" "laptop") }}
               {{ i18n "auto" }}
             </button>
-            <button class="list-link has-icon" data-theme="light">
+            <button class="list-link has-icon" data-theme="light" type="button" aria-pressed="false">
               {{ partial "svg" (dict "icon" "sun") }}
               {{ i18n "light" }}
             </button>
-            <button class="list-link has-icon" data-theme="dark">
+            <button class="list-link has-icon" data-theme="dark" type="button" aria-pressed="false">
               {{ partial "svg" (dict "icon" "moon") }}
               {{ i18n "dark" }}
             </button>
@@ -57,13 +57,13 @@
       {{- if hugo.IsMultilingual -}}
         {{- with .Page.Rotate "language" -}}
           <div class="dropdown-wrapper">
-            <button class="header-item lang-toggle tooltip" data-outside="docs-language" aria-label='{{ i18n "languages" }}'>
+            <button class="header-item lang-toggle tooltip" data-outside="docs-language" aria-label='{{ i18n "languages" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-language">
               {{ partial "svg" (dict "icon" "language") }}
             </button>
-            <div class="dropdown" id="docs-language">
+            <div class="dropdown" id="docs-language" role="region" aria-label='{{ i18n "languages" }}'>
               <div class="list">
                 {{- range . -}}
-                  <a class="list-link {{ if eq .Language $.Page.Language }}is-active{{ end }}" href="{{ .Permalink }}">
+                  <a class="list-link {{ if eq .Language $.Page.Language }}is-active{{ end }}"{{ if eq .Language $.Page.Language }} aria-current="page"{{ end }} href="{{ .Permalink }}">
                     {{ .Language.Label }}
                   </a>
                 {{- end -}}
@@ -75,13 +75,13 @@
 
       {{- if and $docsContext.isDoc (not $docsContext.isDocsRoot) (not $docsContext.isSingleVersion) (gt (len $docsContext.versionPages) 0) -}}
         <div class="dropdown-wrapper">
-          <button class="version-toggle btn btn-primary capitalize" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
+          <button class="version-toggle btn btn-primary capitalize" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-versions" id="current-version">
             {{ with $docsContext.version }}{{ . }}{{ else }}{{ i18n "versions" }}{{ end }}
           </button>
-          <div class="dropdown" id="docs-versions">
+          <div class="dropdown" id="docs-versions" role="region" aria-label='{{ i18n "versions" }}'>
             <div class="list">
               {{- range $docsContext.versionPages -}}
-                <a class="list-link {{ if eq . $docsContext.versionPage }}is-active{{ end }}" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+                <a class="list-link {{ if eq . $docsContext.versionPage }}is-active{{ end }}"{{ if eq . $docsContext.versionPage }} aria-current="page"{{ end }} href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
               {{- end -}}
               {{- with $docsContext.docsSection -}}
                 <a class="list-link" href="{{ .RelPermalink }}">{{ i18n "versions" }}</a>
