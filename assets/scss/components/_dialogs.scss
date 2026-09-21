@@ -126,6 +126,9 @@
       margin-inline-start: 0.625rem;
       padding-inline-start: 1rem;
       border-inline-start: 1px solid var(--outline);
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
     }
   }
 
