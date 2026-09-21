@@ -60,9 +60,6 @@ summaryLength = 20
   # Documentation section. Default: "docs"
   # docs_section = "docs"
 
-  # Active documentation version. Default: "latest"
-  # docs_default_version = "latest"
-
   # Version switcher. Auto-detected if omitted; set to false to disable.
   # docs_versions = ["latest", "1.8", "1.0"]
 

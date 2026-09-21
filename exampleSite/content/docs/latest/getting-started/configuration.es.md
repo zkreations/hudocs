@@ -125,14 +125,6 @@ Nombre de la sección raíz de documentación. El valor por defecto es `"docs"`.
 docs_section = "docs"
 ```
 
-#### docs_default_version
-
-Versión canónica activa de la documentación. El valor por defecto es `"latest"`.
-
-```toml
-docs_default_version = "latest"
-```
-
 #### docs_versions
 
 Lista explícita y orden de las versiones para el selector. Si se omite, Hudocs detecta automáticamente las versiones desde `content/docs/`. Establecer en `false` para modo monoversión.

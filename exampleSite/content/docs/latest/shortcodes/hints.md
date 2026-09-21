@@ -40,7 +40,6 @@ Hudocs does not restrict the values of `type`. The following values have styles 
 | `success` | Confirmations or successful outcomes.          |
 | `warning` | Warnings and potential issues.                 |
 | `danger`  | Risks or destructive actions.                  |
-| `error`   | Errors or situations that require attention.   |
 
 If no `type` is specified, the hint uses the theme's neutral appearance:
 

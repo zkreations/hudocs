@@ -40,7 +40,6 @@ Hudocs no limita los valores de `type`. Los siguientes valores tienen estilos de
 | `success` | Confirmaciones o resultados satisfactorios.   |
 | `warning` | Advertencias y posibles inconvenientes.       |
 | `danger`  | Riesgos o acciones destructivas.              |
-| `error`   | Errores o situaciones que requieren atención. |
 
 Si no se especifica `type`, el aviso utiliza la apariencia neutra del tema:
 

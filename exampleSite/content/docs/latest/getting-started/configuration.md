@@ -125,14 +125,6 @@ Root documentation section name. The default value is `"docs"`.
 docs_section = "docs"
 ```
 
-#### docs_default_version
-
-Canonical active documentation version. The default value is `"latest"`.
-
-```toml
-docs_default_version = "latest"
-```
-
 #### docs_versions
 
 Explicit list and order of versions for the selector. If omitted, Hudocs automatically detects versions from `content/docs/`. Set to `false` for single-version mode.
