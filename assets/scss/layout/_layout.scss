@@ -273,7 +273,7 @@
     background-color: var(--surface);
     padding-inline-start: 1.75rem;
     transform: translate3d(100%, 0, 0);
-    transition-property: transform, box-shadow;
+    transition-property: transform, box-shadow, visibility;
     transition-duration: .3s;
     transition-timing-function: var(--timing);
     min-width: 280px;
@@ -281,6 +281,7 @@
     &:not(.is-active) {
       pointer-events: none;
       transform: translate3d(0, 0, 0);
+      visibility: hidden;
     }
 
     &.is-active {

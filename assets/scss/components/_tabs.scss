@@ -9,7 +9,14 @@
   border-radius: var(--tabs-radius);
   background-color: var(--surface);
 
-  .tab-toggle { display: none; }
+  .tab-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+  }
 
   .tab-label {
     order: 0;

@@ -48,7 +48,6 @@ function addCopyButtons () {
     }
 
     clipboard.writeText(text).then(() => {
-      button.blur()
       button.setAttribute('aria-label', COPIED_TEXT)
       setTimeout(() => {
         button.setAttribute('aria-label', COPY_TEXT)

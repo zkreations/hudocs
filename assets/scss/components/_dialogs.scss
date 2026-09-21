@@ -2,7 +2,7 @@
   background-color: var(--surface);
   transform-origin: top right;
   transform: translate3d(0, 0, 0) scale(1);
-  transition-property: opacity, transform;
+  transition-property: opacity, transform, visibility;
   transition-timing-function: var(--timing);
   transition-duration: .3s;
   position: absolute;
@@ -21,6 +21,7 @@
     pointer-events: none;
     opacity: 0;
     transform: translate3d(0, -1rem, 0) scale(.9);
+    visibility: hidden;
   }
 
   &-wrapper {
@@ -56,10 +57,14 @@
   justify-content: center;
   align-items: flex-start;
   background-color: var(--scrim);
+  transition-property: opacity, visibility;
+  transition-timing-function: var(--timing);
+  transition-duration: .3s;
 
   &:not(.is-active) {
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
   }
 
   &-toggle {

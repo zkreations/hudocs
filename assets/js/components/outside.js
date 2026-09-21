@@ -2,8 +2,10 @@ const ACTIVE_CLASS = 'is-active'
 let activeTrigger = null
 let activeTarget = null
 
-function deactivateAll () {
+function deactivateAll (restoreFocus = false) {
   if (!activeTrigger && !activeTarget) return
+
+  const triggerToFocus = (restoreFocus && activeTrigger) ? activeTrigger : null
 
   if (activeTrigger) {
     activeTrigger.classList.remove(ACTIVE_CLASS)
@@ -14,6 +16,10 @@ function deactivateAll () {
     activeTarget.classList.remove(ACTIVE_CLASS)
     activeTarget = null
   }
+
+  if (triggerToFocus) {
+    triggerToFocus.focus()
+  }
 }
 
 function initOutside () {
@@ -22,7 +28,7 @@ function initOutside () {
     const closeBtn = e.target.closest('[data-close]')
 
     if (closeBtn) {
-      deactivateAll()
+      deactivateAll(true)
       return
     }
 
@@ -57,7 +63,27 @@ function initOutside () {
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      deactivateAll()
+      deactivateAll(true)
+      return
+    }
+
+    if (e.key === 'Tab' && activeTarget && (activeTarget.getAttribute('role') === 'dialog' || activeTarget.querySelector('[data-dialog]'))) {
+      const focusables = Array.from(activeTarget.querySelectorAll('a[href]:not([tabindex="-1"]), button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+      if (!focusables.length) return
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+
+      if (e.shiftKey) {
+        if (document.activeElement === first || !activeTarget.contains(document.activeElement)) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (document.activeElement === last || !activeTarget.contains(document.activeElement)) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
     }
   })
 }
