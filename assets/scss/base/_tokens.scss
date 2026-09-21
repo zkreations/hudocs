@@ -50,6 +50,9 @@ $gray-900: #18181b !default;
   --outline: #{$gray-300};
   --scrim: rgb(123 131 135 / 50%);
 
+  --scrollbar-track: var(--surface-container);
+  --scrollbar-thumb: var(--outline);
+
   --code-scrollbar-track: rgb(0 0 0 / 25%);
   --code-scrollbar-thumb: #485158;
 
