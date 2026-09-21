@@ -45,7 +45,6 @@
 .markdown {
   color: var(--on-surface-variant);
   line-height: 1.75;
-  --space-block: clamp(1.5rem, 2vw, 1.75rem);
   --space-headings: .75rem;
 
   a {
@@ -92,7 +91,7 @@
   h6 {
     margin-block-end: var(--space-headings);
     font-weight: 500;
-    color: var(--color, var(--on-surface));
+    color: var(--heading-color, var(--on-surface));
     display: flex;
     align-items: center;
   }

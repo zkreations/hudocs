@@ -14,9 +14,9 @@ pre {
 
 .highlight {
   --code-padding: clamp(1rem, 2.5vw, 1.5rem);
-  --bg-scrollbar: transparent;
-  --bg-scrollbar-track: var(--code-scrollbar-track);
-  --bg-scrollbar-thumb: var(--code-scrollbar-thumb);
+  --code-scrollbar-track: rgb(0 0 0 / 25%);
+  --code-scrollbar-thumb: #485158;
+  --highlight-radius: .5rem;
   background: var(--syntax-bg);
   position: relative;
   border-radius: var(--highlight-radius);

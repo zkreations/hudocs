@@ -1,7 +1,7 @@
 .annotated-note {
   padding: 1.25rem 1.5rem;
   background-color: var(--surface-container);
-  margin-block: var(--space-block, 1.5rem);
+  margin-block: var(--space-block);
   --space-block: 1rem;
 
   pre {
@@ -21,7 +21,7 @@
 }
 
 .annotated {
-  margin-block: var(--space-block, 1.5rem);
+  margin-block: var(--space-block);
 
   >*:not(.annotated-note) {
     border-bottom-left-radius: 0;

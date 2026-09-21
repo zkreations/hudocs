@@ -1,7 +1,7 @@
 .has-icon {
   display: flex;
   align-items: center;
-  column-gap: var(--btn-gap, .75rem);
+  column-gap: var(--icon-gap, .75rem);
 
   svg {
     flex: none;

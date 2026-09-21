@@ -1,7 +1,7 @@
 .columns {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-block, 1.5rem);
+  gap: var(--space-block);
   align-items: flex-start;
 
   >* {

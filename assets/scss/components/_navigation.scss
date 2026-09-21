@@ -259,9 +259,13 @@
   line-height: 1.5;
 
   &:hover {
-    --outline: var(--primary);
-    --on-surface: var(--primary);
-    --on-surface-muted: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary);
+
+    .pagelink-title,
+    .pagelink-meta {
+      color: var(--primary);
+    }
   }
 
   &-content {
