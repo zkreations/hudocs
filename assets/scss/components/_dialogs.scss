@@ -112,10 +112,6 @@
     padding: var(--search-padding);
     border-block-end: 1px solid var(--outline);
     font-size: 1rem;
-
-    &:focus-within {
-      border-block-end-color: var(--primary);
-    }
   }
 
   &-icon {
