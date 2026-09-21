@@ -303,8 +303,8 @@
 }
 
 .footer {
-  padding-block-start: 2rem;
-  margin-block-start: 2rem;
+  padding-block-start: clamp(1.5rem, 2vw, 2rem);
+  margin-block-start: clamp(1.5rem, 2vw, 2rem);
   border-block-start: 1px solid var(--outline);
 
   &-wrapper {
@@ -312,13 +312,10 @@
     justify-content: space-between;
     align-items: center;
     color: var(--on-surface-variant);
+    gap: .5rem;
 
     @include breakpoint(l, max) {
       flex-direction: column;
-
-      >*+* {
-        margin-block-start: .75rem;
-      }
     }
   }
 }

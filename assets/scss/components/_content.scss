@@ -1,5 +1,5 @@
 .article {
-  padding-block: 2rem;
+  padding-block: clamp(1.5rem, 2vw, 2rem);
   grid-area: doc;
   font-size: 1rem;
 
@@ -14,13 +14,8 @@
     display: flex;
     align-items: center;
     border-block-end: 1px solid var(--outline);
-    padding-block-end: 1.25rem;
-    margin-block-end: 1.25rem;
-
-    @include breakpoint(m) {
-      padding-block-end: 1.75rem;
-      margin-block-end: 1.75rem;
-    }
+    padding-block-end: clamp(1.25rem, 2vw, 1.75rem);
+    margin-block-end: clamp(1.25rem, 2vw, 1.75rem);
   }
 
   &-title {
