@@ -5,7 +5,7 @@
 {{ end }}
 {{ if $node.children }}
   {{ printf "<%s%s>" $node.tag $attrs | safeHTML }}
-  {{ range $node.children }}{{ partial "icon-node.html" . }}{{ end }}
+  {{ range $node.children }}{{ partial "icon-node" . }}{{ end }}
   {{ printf "</%s>" $node.tag | safeHTML }}
 {{ else }}
   {{ printf "<%s%s/>" $node.tag $attrs | safeHTML }}

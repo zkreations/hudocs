@@ -1,10 +1,10 @@
 {{- $name := .icon -}}
 {{- $class := .class -}}
-{{- $icons := partialCached "icons-data.html" "meteor-icons" -}}
+{{- $icons := partialCached "icons-data" "meteor-icons" -}}
 {{- with index $icons $name -}}
   <svg class="i i-{{ $name }}{{ with $class }} {{ . }}{{ end }}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     {{- range .nodes -}}
-      {{- partial "icon-node.html" . -}}
+      {{- partial "icon-node" . -}}
     {{- end -}}
   </svg>
 {{- end -}}

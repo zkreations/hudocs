@@ -6,5 +6,5 @@
 {{- end -}}
 {{- if $name -}}
   {{- $cacheKey := cond (ne $class "") (printf "%s|%s" $name $class) $name -}}
-  {{- partialCached "svg-render.html" (dict "icon" $name "class" $class) $cacheKey -}}
+  {{- partialCached "svg-render" (dict "icon" $name "class" $class) $cacheKey -}}
 {{- end -}}
