@@ -20,7 +20,7 @@
     {{- end -}}
 
     {{- if $comma }},{{ end -}}
-    {{- (slice $i $page.RelPermalink $page.Title $parentSection $summary $content) | jsonify -}}
+    {{- (slice $i $page.RelPermalink (partial "title" $page) $parentSection $summary $content) | jsonify -}}
     {{- $comma = true -}}
   {{- end -}}
 {{- end -}}
