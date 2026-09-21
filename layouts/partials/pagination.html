@@ -32,7 +32,7 @@
         </span>
         <span class="pagelink-content">
           <span class="pagelink-meta">{{ i18n "pagination_previous" }}</span>
-          <span class="pagelink-title">{{ .Title }}</span>
+          <span class="pagelink-title">{{ partial "title" . }}</span>
         </span>
       </a>
     </li>
@@ -42,7 +42,7 @@
       <a class="pagelink has-icon" href="{{ .RelPermalink }}">
         <span class="pagelink-content">
           <span class="pagelink-meta">{{ i18n "pagination_next" }}</span>
-          <span class="pagelink-title">{{ .Title }}</span>
+          <span class="pagelink-title">{{ partial "title" . }}</span>
         </span>
         <span class="pagelink-icon i-md">
           {{- partial "svg" (dict "icon" "arrow-right") -}}
