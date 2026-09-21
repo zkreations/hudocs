@@ -30,14 +30,13 @@ Use named parameters to define the destination, title, description, and icon:
 | `icon`        |    `3`   | {{< type string >}} |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.         |
 | `rel`         |    `4`   | {{< type string >}} |    No    | Custom value for the `rel` attribute.                            |
 
-## Default icons
+## External links and icons
 
-If you provide an icon via `icon`, it replaces the default value. If no `icon` is specified, the shortcode selects an icon based on the link type:
+The `icon` parameter is optional. If not specified, no icon is shown at the beginning.
 
-* `chain` for internal links.
-* `arrow-up-right` for external links.
+For external links, the shortcode automatically displays an indicator on the right side. If a custom `icon` is also defined, both icons are displayed independently:
 
-{{< pagelink href="/docs/latest/markdown" title="Markdown" description="Markdown syntax" >}}
+{{< pagelink href="https://gohugo.io/" title="Hugo Documentation" description="Official guides with a custom icon" icon="hugo" >}}
 
 ## Internal and external links
 

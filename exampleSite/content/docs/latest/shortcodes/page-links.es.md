@@ -30,14 +30,13 @@ Utiliza parámetros nombrados para definir el destino, el título, la descripci�
 | `icon`        |    `3`   | {{< type string >}} |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
 | `rel`         |    `4`   | {{< type string >}} |     No    | Valor personalizado del atributo `rel`.                         |
 
-## Íconos predeterminados
+## Enlaces externos e íconos
 
-Si proporcionas un ícono mediante `icon`, este reemplaza el valor predeterminado. Si no especificas `icon`, el shortcode selecciona un ícono según el tipo de enlace:
+El parámetro `icon` es opcional. Si no se especifica, no se muestra ningún ícono al inicio.
 
-* `chain` para enlaces internos.
-* `arrow-up-right` para enlaces externos.
+Para los enlaces externos, el shortcode muestra automáticamente un indicador en el extremo derecho. Si además se define un `icon` personalizado, ambos íconos se muestran de forma independiente:
 
-{{< pagelink href="/docs/latest/markdown" title="Markdown" description="Sintaxis de Markdown" >}}
+{{< pagelink href="https://gohugo.io/" title="Documentación de Hugo" description="Guías oficiales con ícono personalizado" icon="hugo" >}}
 
 ## Enlaces internos y externos
 

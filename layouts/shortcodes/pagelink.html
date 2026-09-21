@@ -31,18 +31,22 @@
 {{- end -}}
 
 {{- $link := partial "resolve-link" (dict "href" $href "rel" $rel) -}}
-{{- if not $icon -}}
-  {{- $icon = cond $link.isExternal "arrow-up-right" "chain" -}}
-{{- end -}}
 
 <a class="pagelink has-icon" href="{{ $link.url }}"{{ with $link.target }} target="{{ . }}"{{ end }}{{ with $link.rel }} rel="{{ . }}"{{ end }}>
-  <span class="pagelink-icon i-md icon-adjust">
-    {{- partial "svg" (dict "icon" $icon) -}}
-  </span>
+  {{- with $icon -}}
+    <span class="pagelink-icon i-md icon-adjust">
+      {{- partial "svg" (dict "icon" .) -}}
+    </span>
+  {{- end -}}
   <span class="pagelink-content">
     <span class="pagelink-title">{{ $title }}</span>
     {{- with $desc -}}
       <span class="pagelink-meta">{{ . }}</span>
     {{- end -}}
   </span>
+  {{- if $link.isExternal -}}
+    <span class="pagelink-external i-md icon-adjust">
+      {{ partial "svg" (dict "icon" "arrow-up-right" "class" "menu-arrow") }}
+    </span>
+  {{- end -}}
 </a>
