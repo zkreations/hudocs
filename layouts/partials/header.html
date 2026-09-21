@@ -81,7 +81,7 @@
           <div class="dropdown" id="docs-versions">
             <div class="list">
               {{- range $docsContext.versionPages -}}
-                <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+                <a class="list-link {{ if eq . $docsContext.versionPage }}is-active{{ end }}" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
               {{- end -}}
               {{- with $docsContext.docsSection -}}
                 <a class="list-link" href="{{ .RelPermalink }}">{{ i18n "versions" }}</a>
