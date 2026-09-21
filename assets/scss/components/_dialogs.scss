@@ -68,8 +68,6 @@
   }
 
   &-toggle {
-    outline: none;
-
     @include breakpoint(l) {
       margin-inline-end: auto;
     }
@@ -102,6 +100,10 @@
 
   &-input {
     width: 100%;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &-form {
@@ -110,6 +112,10 @@
     padding: var(--search-padding);
     border-block-end: 1px solid var(--outline);
     font-size: 1rem;
+
+    &:focus-within {
+      border-block-end-color: var(--primary);
+    }
   }
 
   &-icon {
@@ -151,7 +157,8 @@
 
     &.is-selected,
     &:focus-visible {
-      background-color: var(--surface-container);
+      background-color: var(--surface-container-hover);
+      color: var(--on-surface);
     }
   }
 

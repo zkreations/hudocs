@@ -9,6 +9,7 @@ $gray-100: #f4f4f5 !default;
 $gray-200: #e4e4e7 !default;
 $gray-300: #d4d4d8 !default;
 $gray-400: #a1a1aa !default;
+$gray-500: #71717a !default;
 $gray-600: #52525b !default;
 $gray-700: #3f3f46 !default;
 $gray-800: #27272a !default;
@@ -45,7 +46,7 @@ $gray-900: #18181b !default;
 
   --on-surface: #{$gray-800};
   --on-surface-variant: #{$gray-600};
-  --on-surface-muted: #{$gray-400};
+  --on-surface-muted: #{$gray-500};
   --on-surface-inverse: #{$white};
 
   --outline: #{$gray-300};
