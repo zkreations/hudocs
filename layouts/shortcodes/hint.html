@@ -5,12 +5,9 @@
 {{- end -}}
 
 {{- $content := .Page.RenderString .Inner -}}
-{{- $role := "note" -}}
-{{- if or (eq $type "warning") (eq $type "danger") (eq $type "error") -}}
-  {{- $role = "alert" -}}
-{{- end -}}
+{{- $label := $type | default "note" | humanize | title -}}
 
-<aside class="alert{{ with $type }} alert-{{ . }}{{ end }}{{ with $icon }} has-icon{{ end }}" role="{{ $role }}">
+<aside class="alert{{ with $type }} alert-{{ . }}{{ end }}{{ with $icon }} has-icon{{ end }}" role="note" aria-label="{{ $label }}">
   {{- with $icon -}}
     <span class="alert-icon i-md icon-adjust">
       {{- partial "svg" (dict "icon" .) -}}
