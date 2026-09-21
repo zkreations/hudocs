@@ -17,7 +17,7 @@ import { createCombobox } from './combobox'
     return
   }
 
-  const { indexUrl, i18n } = config || {}
+  const { indexUrl, i18n = {} } = config || {}
   if (!indexUrl) return
 
   const loader = createIndexLoader()
@@ -54,11 +54,9 @@ import { createCombobox } from './combobox'
         search()
       }
     } catch (error) {
-      if (error.name !== 'AbortError') {
-        console.error('Search init error:', error)
-        combobox.reset()
-        showErrorState(results, i18n.searchError)
-      }
+      console.error('Search init error:', error)
+      combobox.reset()
+      showErrorState(results, i18n.searchError)
     }
   }
 
@@ -92,7 +90,7 @@ import { createCombobox } from './combobox'
     }
 
     try {
-      const hits = await loader.search(query, 100)
+      const hits = await loader.search(query, 50)
 
       if (hits.length === 0) {
         setCache(cacheKey, { hits: [], grouped: null, regex: null })
@@ -108,11 +106,9 @@ import { createCombobox } from './combobox'
       const items = renderResults(results, grouped, regex)
       combobox.setItems(items)
     } catch (error) {
-      if (error.name !== 'AbortError') {
-        console.error('Search error:', error)
-        combobox.reset()
-        showErrorState(results, i18n.searchError)
-      }
+      console.error('Search error:', error)
+      combobox.reset()
+      showErrorState(results, i18n.searchError)
     }
   }
 
@@ -131,7 +127,6 @@ import { createCombobox } from './combobox'
       } else {
         search()
       }
-    }, 200)
+    }, 150)
   })
 })()
-

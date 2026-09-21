@@ -153,6 +153,7 @@
     color: var(--on-surface-variant);
     transition: background-color .3s;
 
+    &:hover,
     &.is-selected,
     &:focus-visible {
       background-color: var(--surface-container-hover);

@@ -1,9 +1,14 @@
 import { normalizeText } from './text'
 
 export function createIndexLoader () {
-  const index = new FlexSearch.Index({
-    tokenize: 'forward',
-    cache: true
+  const index = new FlexSearch.Document({
+    document: {
+      id: 'id',
+      index: [
+        { field: 'title', tokenize: 'forward' },
+        { field: 'content', tokenize: 'forward' }
+      ]
+    }
   })
   const docMap = new Map()
   let isReady = false
@@ -27,7 +32,11 @@ export function createIndexLoader () {
 
       rows.forEach(([id, url, title, parent, summary, content]) => {
         docMap.set(id, { url, title, parent, summary, content })
-        index.add(id, normalizeText(`${title} ${content}`))
+        index.add({
+          id,
+          title: normalizeText(title),
+          content: normalizeText(`${parent} ${summary} ${content}`)
+        })
       })
 
       isReady = true
@@ -37,9 +46,24 @@ export function createIndexLoader () {
     }
   }
 
-  async function search (query, limit = 100) {
+  async function search (query, limit = 50) {
     if (!isReady) return []
-    return index.searchAsync(normalizeText(query), limit)
+
+    const normalized = normalizeText(query)
+    const results = await index.searchAsync(normalized, { limit })
+    const hits = []
+    const seen = new Set()
+
+    results.forEach((fr) => {
+      fr.result.forEach((id) => {
+        if (!seen.has(id)) {
+          seen.add(id)
+          hits.push(id)
+        }
+      })
+    })
+
+    return hits
   }
 
   function getPage (id) {
@@ -54,4 +78,3 @@ export function createIndexLoader () {
     isLoading: () => isLoading
   }
 }
-
