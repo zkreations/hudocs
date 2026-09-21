@@ -10,13 +10,13 @@ The `button` shortcode generates button-styled links to direct users to other do
 Use named parameters to define the destination, label, and button options:
 
 ```markdown
-{{</* button href="latest/getting-started" name="Get started" icon="rocket" type="primary" */>}}
+{{</* button href="/docs/latest/getting-started" name="Get started" icon="rocket" type="primary" */>}}
 {{</* button href="https://github.com/zkreations/hudocs" name="GitHub" icon="github" */>}}
 ```
 
 ### Result
 
-{{< button href="latest/getting-started" name="Get started" icon="rocket" type="primary" >}}
+{{< button href="/docs/latest/getting-started" name="Get started" icon="rocket" type="primary" >}}
 {{< button href="https://github.com/zkreations/hudocs" name="GitHub" icon="github" >}}
 
 ## Parameters

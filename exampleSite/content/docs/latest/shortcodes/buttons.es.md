@@ -10,13 +10,13 @@ El shortcode `button` genera enlaces con apariencia de botón para dirigir a otr
 Utiliza parámetros nombrados para definir el destino, el texto y las opciones del botón:
 
 ```markdown
-{{</* button href="latest/getting-started" name="Comenzar" icon="rocket" type="primary" */>}}
+{{</* button href="/docs/latest/getting-started" name="Comenzar" icon="rocket" type="primary" */>}}
 {{</* button href="https://github.com/zkreations/hudocs" name="GitHub" icon="github" */>}}
 ```
 
 ### Resultado
 
-{{< button href="latest/getting-started" name="Comenzar" icon="rocket" type="primary" >}}
+{{< button href="/docs/latest/getting-started" name="Comenzar" icon="rocket" type="primary" >}}
 {{< button href="https://github.com/zkreations/hudocs" name="GitHub" icon="github" >}}
 
 ## Parámetros

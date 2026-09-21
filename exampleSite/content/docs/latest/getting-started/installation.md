@@ -13,7 +13,7 @@ Before installing Hudocs, make sure you have:
 
 * **Hugo Extended** `0.164.0` or higher.
   * Hudocs uses Sass to compile its stylesheets.
-  * Verify the installed version with `bash`
+  * Verify the installed version with `hugo version`
   * The output must include `extended`.
 * **Git** installed and available in the terminal to clone the repository or manage submodules.
 
@@ -100,4 +100,4 @@ The `exampleSite` directory contains a configuration and content you can use as 
 
 ## Next Steps
 
-See the [Configuration](/en/docs/latest/getting-started/configuration/) guide to set up theme options, branding, and multilingual support.
+See the [Configuration](/docs/latest/getting-started/configuration/) guide to set up theme options, branding, and multilingual support.

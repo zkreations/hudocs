@@ -10,13 +10,13 @@ The `pagelink` shortcode generates a link with a title, description, and icon to
 Use named parameters to define the destination, title, description, and icon:
 
 ```markdown
-{{</* pagelink href="latest/guides" title="Guides" description="Get started with Hudocs" icon="book-open" */>}}
+{{</* pagelink href="/docs/latest/guides" title="Guides" description="Get started with Hudocs" icon="book-open" */>}}
 {{</* pagelink href="https://gohugo.io/" title="Hugo Documentation" description="Official guides" */>}}
 ```
 
 ### Result
 
-{{< pagelink href="latest/guides" title="Guides" description="Get started with Hudocs" icon="book-open" >}}
+{{< pagelink href="/docs/latest/guides" title="Guides" description="Get started with Hudocs" icon="book-open" >}}
 
 {{< pagelink href="https://gohugo.io/" title="Hugo Documentation" description="Official Hugo guides" >}}
 
@@ -37,7 +37,7 @@ If you provide an icon via `icon`, it replaces the default value. If no `icon` i
 * `chain` for internal links.
 * `arrow-up-right` for external links.
 
-{{< pagelink href="latest/markdown" title="Markdown" description="Markdown syntax" >}}
+{{< pagelink href="/docs/latest/markdown" title="Markdown" description="Markdown syntax" >}}
 
 ## Internal and external links
 

@@ -13,7 +13,7 @@ Antes de instalar Hudocs, asegúrate de tener:
 
 * **Hugo Extended** `0.164.0` o superior.
   * Hudocs utiliza Sass para compilar sus hojas de estilos.
-  * Verifica la versión instalada con `bash`
+  * Verifica la versión instalada con `hugo version`
   * La salida debe incluir `extended`.
 * **Git** instalado y disponible en la terminal para clonar el repositorio o gestionar submódulos.
 

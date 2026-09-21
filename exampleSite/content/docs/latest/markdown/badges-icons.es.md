@@ -43,7 +43,7 @@ Para convertir la insignia en un enlace hacia una página, registro de cambios o
 title: Migración desde v1
 badge: true
 badge_text: "Guía"
-badge_url: "/es/docs/latest/getting-started/migration/"
+badge_url: "/es/docs/latest/getting-started/installation/"
 ---
 ```
 

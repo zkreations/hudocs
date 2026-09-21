@@ -43,7 +43,7 @@ To turn the badge into a link to a page, changelog, or announcement, define `bad
 title: Migration from v1
 badge: true
 badge_text: "Guide"
-badge_url: "/en/docs/latest/getting-started/migration/"
+badge_url: "/docs/latest/getting-started/installation/"
 ---
 ```
 
