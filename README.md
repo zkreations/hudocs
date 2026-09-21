@@ -104,4 +104,4 @@ If you find this project useful, consider [starring it on GitHub](https://github
 
 ## License
 
-[MIT](LICENSE)
+**Hudocs** is licensed under the [MIT License](LICENSE)
