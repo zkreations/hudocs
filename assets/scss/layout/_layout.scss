@@ -33,8 +33,8 @@
 
 .container {
   max-width: var(--container-width);
+  padding-inline: var(--container-padding);
   margin-inline: auto;
-  padding-inline: 1.5rem;
 }
 
 .header {

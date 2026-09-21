@@ -125,30 +125,72 @@
   grid-area: toc;
 
   &-title {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
     margin-block-end: 1rem;
     font-size: 1rem;
     font-weight: 500;
-
-    @include breakpoint(l) {
-      padding-inline-start: 1.5rem;
+    
+    @include breakpoint(l, max) {
+      display: none;
     }
   }
 
-  @include breakpoint(l, max) {
-    order: -1;
+  &-current {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--on-surface-variant);
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include breakpoint(l) {
+      display: none;
+    }
+  }
+
+  &-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--container-padding);
+    padding-block: .5rem;
+    column-gap: .75rem;
+    width: 100%;
+
+    @include breakpoint(l) {
+      display: none;
+    }
+
+    &.is-active {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-header {
+    @include breakpoint(l) {
+      padding-inline-start: var(--container-padding);
+    }
   }
 
   &-content {
-    padding-block-start: 2rem;
-
     @include breakpoint(l) {
       padding-block: 3rem;
       padding-inline-end: 1rem;
       position: sticky;
     }
+
+    @include breakpoint(l, max) {
+      width: auto;
+      margin-inline: calc(var(--container-padding) * -1);
+      background-color: var(--surface-container);
+    }
   }
 
-  nav {
+  &-navigation {
     position: relative;
     $selector: 'ul';
 
@@ -160,11 +202,25 @@
       $selector: $selector + ' ul';
     }
 
+    @include breakpoint(l, max) {
+      max-height: calc(100dvh - var(--header-height) - 4rem);
+      overflow-y: auto;
+      border-block-start: 1px solid var(--outline);
+      padding-block: 1rem;
+
+      &:not(.is-active) {
+        display: none;
+      }
+    }
+
     ul {
       display: flex;
       flex-direction: column;
       gap: .5rem;
-      margin-block-start: .5rem;
+
+      ul {
+        margin-block-start: .5rem;
+      }
     }
 
     a {
@@ -176,14 +232,21 @@
         color: var(--primary);
       }
 
-      @include breakpoint(l) {
-        padding-inline-start: calc(1.5rem + var(--level));
+      padding-inline-start: calc(var(--container-padding) + var(--level));
 
+      @include breakpoint(l) {
         &.is-visible {
           box-shadow: inset 2px 0 0 0 var(--on-surface);
         }
       }
     }
+  }
+
+  @include breakpoint(l, max) {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 20;
+    order: -1;
   }
 }
 

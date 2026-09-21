@@ -1,7 +1,6 @@
 const TOC = document.querySelector('.toc')
 const DOCS = document.querySelector('.article-body')
 const VISIBLE_CLASS = 'is-visible'
-const HEADER_OFFSET = 90
 
 function initToc () {
   if (!TOC || !DOCS) return
@@ -9,6 +8,9 @@ function initToc () {
   const headings = Array.from(DOCS.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'))
   const tocLinks = TOC.querySelectorAll('a')
   if (!headings.length || !tocLinks.length) return
+
+  const tocNav = TOC.querySelector('nav')
+  const tocCurrent = TOC.querySelector('.toc-current')
 
   const linkMap = new Map()
   headings.forEach((heading) => {
@@ -20,6 +22,7 @@ function initToc () {
   let isClickScrolling = false
   let clickTimeout = null
   let ticking = false
+  let headerOffset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
 
   function updateHeadingTops () {
     headingTops = headings.map((h) => ({
@@ -35,6 +38,7 @@ function initToc () {
       if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
       activeLink.classList.add(VISIBLE_CLASS)
       currentActiveLink = activeLink
+      if (tocCurrent) tocCurrent.textContent = activeLink.textContent.trim()
     }
   }
 
@@ -50,7 +54,7 @@ function initToc () {
       return
     }
 
-    const scrollPosition = scrollY + HEADER_OFFSET
+    const scrollPosition = scrollY + headerOffset
     let activeHeading = null
 
     for (let i = headingTops.length - 1; i >= 0; i--) {
@@ -89,6 +93,8 @@ function initToc () {
     if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
     link.classList.add(VISIBLE_CLASS)
     currentActiveLink = link
+    if (tocCurrent) tocCurrent.textContent = link.textContent.trim()
+    if (tocNav) tocNav.classList.remove('is-active')
 
     const onScrollEnd = () => {
       isClickScrolling = false
@@ -107,6 +113,7 @@ function initToc () {
 
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', () => {
+    headerOffset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
     updateHeadingTops()
     updateActive()
   }, { passive: true })
@@ -114,4 +121,3 @@ function initToc () {
 }
 
 initToc()
-

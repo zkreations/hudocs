@@ -1,9 +1,17 @@
 {{ if and (ne .Params.toc false) (strings.Contains .TableOfContents "<li>") }}
 <div class="toc-content scrollable">
-  <div class="toc-title has-icon">
-    {{ partial "svg" (dict "icon" "align-right" ) }}
-    {{ i18n "contents" }}
+  <div class="toc-header">
+    <span class="toc-title">
+      {{ partial "svg" (dict "icon" "align-right" ) }}
+      {{ i18n "contents" }}
+    </span>
+    <button class="toc-toggle" data-outside="toc-navigation" type="button" aria-label='{{ i18n "contents" }}'>
+      <span class="toc-current"></span>
+      {{ partial "svg" (dict "icon" "chevron-down" ) }}
+    </button>
   </div>
-  {{ .TableOfContents }}
+  <div class="toc-navigation" id="toc-navigation">
+    {{ .TableOfContents }}
+  </div>
 </div>
 {{ end }}
