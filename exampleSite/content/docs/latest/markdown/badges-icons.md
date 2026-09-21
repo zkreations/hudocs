@@ -85,7 +85,7 @@ The icon is rendered automatically next to the link in the sidebar and in header
 You can use Meteor Icons in custom templates or shortcodes through the `svg` partial:
 
 ```html
-{{ partial "svg" (dict "icon" "sparkles" "class" "text-primary" "size" "20") }}
+{{ partial "svg" (dict "icon" "sparkles" "class" "text-primary") }}
 ```
 
 ### Resource Caching

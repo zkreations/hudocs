@@ -85,7 +85,7 @@ El ícono se renderiza automáticamente junto al enlace en el menú lateral y en
 Puedes utilizar íconos de Meteor Icons en tus plantillas o shortcodes personalizados mediante el partial `svg`:
 
 ```html id="y0k4nv"
-{{ partial "svg" (dict "icon" "sparkles" "class" "text-primary" "size" "20") }}
+{{ partial "svg" (dict "icon" "sparkles" "class" "text-primary") }}
 ```
 
 ### Caché de recursos
