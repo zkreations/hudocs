@@ -35,8 +35,12 @@ function initToc () {
     if (!heading) return
     const activeLink = linkMap.get(heading)
     if (activeLink && activeLink !== currentActiveLink) {
-      if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
+      if (currentActiveLink) {
+        currentActiveLink.classList.remove(VISIBLE_CLASS)
+        currentActiveLink.removeAttribute('aria-current')
+      }
       activeLink.classList.add(VISIBLE_CLASS)
+      activeLink.setAttribute('aria-current', 'location')
       currentActiveLink = activeLink
       if (tocCurrent) tocCurrent.textContent = activeLink.textContent.trim()
     }
@@ -90,8 +94,12 @@ function initToc () {
     isClickScrolling = true
     clearTimeout(clickTimeout)
 
-    if (currentActiveLink) currentActiveLink.classList.remove(VISIBLE_CLASS)
+    if (currentActiveLink) {
+      currentActiveLink.classList.remove(VISIBLE_CLASS)
+      currentActiveLink.removeAttribute('aria-current')
+    }
     link.classList.add(VISIBLE_CLASS)
+    link.setAttribute('aria-current', 'location')
     currentActiveLink = link
     if (tocCurrent) tocCurrent.textContent = link.textContent.trim()
     if (tocToggle) tocToggle.click()
