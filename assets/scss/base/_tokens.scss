@@ -1,19 +1,5 @@
-$green:    #0f766e !default;
-$blue:     #4f46e5 !default;
-$red:      #e11d48 !default;
-$yellow:   #f0b100 !default;
-$white:    #ffffff !default;
-$black:    #09090b !default;
-
-$gray-100: #f4f4f5 !default;
-$gray-200: #e4e4e7 !default;
-$gray-300: #d4d4d8 !default;
-$gray-400: #a1a1aa !default;
-$gray-500: #71717a !default;
-$gray-600: #52525b !default;
-$gray-700: #3f3f46 !default;
-$gray-800: #27272a !default;
-$gray-900: #18181b !default;
+$primary:   #0f766e !default;
+$secondary: #4338ca !default;
 
 :root {
   color-scheme: light;
@@ -30,38 +16,49 @@ $gray-900: #18181b !default;
   --shadow-sm: 0px 1px 2px rgb(0 0 0 / 10%);
   --shadow-lg: 0px 5px 10px rgb(0 0 0 / 20%);
 
-  --primary: #{$green};
-  --on-primary: #{$white};
-  --primary-container: color-mix(in srgb, var(--primary) 10%, white);
-  --on-primary-container: color-mix(in srgb, var(--primary) 70%, black);
-  --primary-container-hover: color-mix(in srgb, var(--primary) 20%, white);
-  --primary-selection: color-mix(in srgb, var(--primary) 10%, transparent);
+  --primary: #{$primary};
+  --on-primary: #ffffff;
+  --primary-container: color-mix(in srgb, var(--primary) 12%, transparent);
+  --on-primary-container: var(--primary);
+  --primary-container-hover: color-mix(in srgb, var(--primary) 22%, transparent);
+  --primary-selection: color-mix(in srgb, var(--primary) 15%, transparent);
 
-  --secondary: #{$blue};
-  --on-secondary: #{$white};
-  --secondary-container: color-mix(in srgb, var(--secondary) 10%, white);
-  --on-secondary-container: color-mix(in srgb, var(--secondary) 70%, black);
+  --secondary: #{$secondary};
+  --on-secondary: #ffffff;
+  --secondary-container: color-mix(in srgb, var(--secondary) 12%, transparent);
+  --on-secondary-container: var(--secondary);
 
-  --surface: #{$white};
-  --surface-container: #{$gray-100};
-  --surface-container-hover: #{$gray-200};
-  --surface-mark: color-mix(in srgb, #{$yellow} 20%, white);
+  --surface: #ffffff;
+  --surface-container: #f4f4f5;
+  --surface-container-hover: #e4e4e7;
+  --surface-mark: color-mix(in srgb, #fbbf24 30%, transparent);
 
-  --surface-inverse: #{$gray-900};
-  --on-surface-inverse: #{$white};
+  --surface-inverse: #18181b;
+  --on-surface-inverse: #ffffff;
 
-  --on-surface: #{$gray-800};
-  --on-surface-variant: #{$gray-600};
-  --on-surface-muted: #{$gray-500};
+  --on-surface: #27272a;
+  --on-surface-variant: #52525b;
+  --on-surface-muted: #71717a;
 
-  --outline: #{$gray-300};
-  --scrim: color-mix(in srgb, #{$black} 50%, transparent);
+  --outline: #d4d4d8;
+  --scrim: rgb(0 0 0 / 50%);
 
   --scrollbar-track: var(--surface-container);
   --scrollbar-thumb: var(--outline);
 
+  --info: #0369a1;
+  --success: #047857;
+  --warning: #b45309;
+  --error: #be123c;
+
+  --type-textual: var(--info);
+  --type-numeric: var(--warning);
+  --type-logical: var(--primary);
+  --type-structural: var(--secondary);
+  --type-custom: #7e22ce;
+
   --syntax-scrollbar-track: rgb(0 0 0 / 25%);
-  --syntax-scrollbar-thumb: #{$gray-600};
+  --syntax-scrollbar-thumb: #52525b;
 
   --syntax-uno-1: hsl(260 99% 96%);
   --syntax-uno-2: hsl(260 88% 84%);
@@ -71,8 +68,8 @@ $gray-900: #18181b !default;
   --syntax-duo-2: hsl(28 44% 48%);
   --syntax-duo-3: hsl(28 22% 38%);
 
-  --syntax-bg: #{$gray-900};
-  --syntax-bg-deep: #{$black};
+  --syntax-bg: #18181b;
+  --syntax-bg-deep: #09090b;
 
   --syntax-fg: var(--syntax-uno-2);
   --syntax-muted: var(--syntax-uno-4);
@@ -95,18 +92,7 @@ $gray-900: #18181b !default;
   --syntax-selection: color-mix(in srgb, var(--syntax-duo-3) 45%, transparent);
   --syntax-selection-border: var(--syntax-duo-1);
   --syntax-link: var(--syntax-duo-1);
-  --syntax-error: color-mix(in srgb, #{$red} 70%, white);
-
-  --type-textual: #0369a1;
-  --type-numeric: #b45309;
-  --type-logical: #{$green};
-  --type-structural: #4338ca;
-  --type-custom: #7e22ce;
-
-  --info: color-mix(in srgb, #{$blue} 60%, black);
-  --success: color-mix(in srgb, #{$green} 60%, black);
-  --warning: color-mix(in srgb, #{$yellow} 60%, black);
-  --error: color-mix(in srgb, #{$red} 60%, black);
+  --syntax-error: var(--error);
 
   &[data-code-theme="duotone-dark-sea"] {
     --syntax-uno-1: hsl(212 99% 92%);
@@ -151,40 +137,36 @@ $gray-900: #18181b !default;
   &.dark {
     color-scheme: dark;
 
-    --primary: color-mix(in srgb, #{$green} 60%, white);
-    --on-primary: #{$black};
+    --primary: #2dd4bf;
+    --on-primary: #09090b;
     --primary-container: color-mix(in srgb, var(--primary) 12%, transparent);
     --on-primary-container: var(--primary);
     --primary-container-hover: color-mix(in srgb, var(--primary) 24%, transparent);
 
-    --secondary: color-mix(in srgb, #{$blue} 60%, white);
-    --on-secondary: #{$black};
+    --secondary: #818cf8;
+    --on-secondary: #09090b;
     --secondary-container: color-mix(in srgb, var(--secondary) 12%, transparent);
     --on-secondary-container: var(--secondary);
 
-    --surface: #{$gray-900};
-    --surface-container: #{$gray-800};
-    --surface-container-hover: #{$gray-700};
-    --surface-mark: color-mix(in srgb, #{$yellow} 30%, transparent);
+    --surface: #18181b;
+    --surface-container: #27272a;
+    --surface-container-hover: #3f3f46;
+    --surface-mark: color-mix(in srgb, #fbbf24 25%, transparent);
 
-    --surface-inverse: #{$gray-100};
-    --on-surface-inverse: #{$gray-900};
+    --surface-inverse: #f4f4f5;
+    --on-surface-inverse: #18181b;
 
-    --on-surface: #{$white};
-    --on-surface-variant: #{$gray-300};
-    --on-surface-muted: #{$gray-400};
+    --on-surface: #ffffff;
+    --on-surface-variant: #d4d4d8;
+    --on-surface-muted: #a1a1aa;
 
-    --outline: #{$gray-700};
+    --outline: #3f3f46;
 
-    --info: color-mix(in srgb, #{$blue} 40%, white);
-    --success: color-mix(in srgb, #{$green} 40%, white);
-    --warning: color-mix(in srgb, #{$yellow} 40%, white);
-    --error: color-mix(in srgb, #{$red} 40%, white);
+    --info: #38bdf8;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #fb7185;
 
-    --type-textual: #38bdf8;
-    --type-numeric: #fbbf24;
-    --type-logical: #2dd4bf;
-    --type-structural: #818cf8;
     --type-custom: #c084fc;
   }
 }

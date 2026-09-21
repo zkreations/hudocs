@@ -5,7 +5,7 @@
   padding: 1.25rem;
 
   &:is([class*="alert-"]) {
-    --alert-bg: color-mix(in srgb, var(--alert-color) 12%, transparent);
+    --alert-bg: color-mix(in srgb, var(--alert-color) 8%, transparent);
   }
 
   a[href]:not([class]) {

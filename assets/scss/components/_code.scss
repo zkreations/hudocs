@@ -217,7 +217,7 @@ pre {
 }
 
 .type {
-  --type-bg: color-mix(in srgb, var(--type-color) 12%, transparent);
+  --type-bg: color-mix(in srgb, var(--type-color) 8%, transparent);
 
   &-textual {
     --type-color: var(--type-textual);
