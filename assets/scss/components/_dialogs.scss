@@ -1,5 +1,6 @@
 .dropdown {
   background-color: var(--surface);
+  border: 1px solid var(--outline);
   transform-origin: top right;
   transform: translate3d(0, 0, 0) scale(1);
   transition-property: opacity, transform, visibility;
@@ -92,6 +93,7 @@
     width: 100%;
     max-width: 900px;
     background-color: var(--surface);
+    border: 1px solid var(--outline);
     border-radius: .5rem;
     box-shadow: var(--shadow-lg);
     display: flex;
