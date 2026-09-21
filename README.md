@@ -12,29 +12,29 @@
 
 ---
 
-**Hudocs** is a modern, lightweight, and blazing-fast documentation theme for [Hugo](https://gohugo.io/). Designed for developers and technical writers, Hudocs delivers the rich features of modern documentation platforms—without Node.js dependencies, complex multi-branch deployment pipelines, or runtime bloat.
+**Hudocs** is a documentation theme for [Hugo](https://gohugo.io/) with no Node.js dependencies, no `node_modules`, and no complex deployment pipelines. It relies entirely on Hugo Extended's native asset pipeline (`css.Sass` and `js.Build`).
 
 ## Why Hudocs?
 
-* **Single-Version & Multi-Version Support:** Adaptable out of the box. Document continuous products (SaaS, web apps) as a single version or maintain multiple historical versions (`1.0`, `1.8`, `latest`) in a single deployment with automated version switching and isolated search indices.
-* **Zero Node.js / Zero-Ops:** Powered exclusively by the native Hugo Extended asset pipeline (`css.Sass` and `js.Build`). No `package.json`, no `node_modules`, and no complex CI/CD orchestration.
-* **Blazing Fast Builds:** Take full advantage of Hugo's compilation speed. Build comprehensive documentation across multiple versions and languages in milliseconds.
-* **Integrated Client-Side Search:** Instant, local search modal powered by [FlexSearch](https://github.com/nextapps-de/flexsearch), generating isolated index files per language and version at build time.
-* **Performance & Security First:** Optimized for [Core Web Vitals](https://pagespeed.web.dev/report?url=https://hudocs.com) with an A+ Security rating on [Mozilla Observatory](https://observatory.mozilla.org/analyze/hudocs.com).
-* **Multilingual Ready (i18n):** Native multi-language support linked automatically through Hugo's i18n conventions.
-* **Technical Writing Toolkit:** Includes dark/light scheme switcher, CSS `@layer` tokens architecture, customizable code blocks, tabs, steps, hints/alerts, and [Meteor Icons](https://meteoricons.com/) integration.
+- **Single-version and multi-version support:** Works for continuously evolving products (SaaS, web apps) and for software with semantic versioning. Multi-version mode generates an isolated navigation tree, search index, and version selector for each release in the same build.
+- **No Node.js required:** No `package.json`, no `node_modules`, no CI/CD orchestration beyond a standard Hugo build.
+- **Fast builds:** Hugo's native pipeline handles compilation across multiple versions and languages without added overhead.
+- **Client-side search:** Local search modal powered by [FlexSearch](https://github.com/nextapps-de/flexsearch), with isolated index files per language and version generated at build time.
+- **Performance and security:** Optimized for [Core Web Vitals](https://pagespeed.web.dev/report?url=https://hudocs.com) with an A+ rating on [Mozilla Observatory](https://observatory.mozilla.org/analyze/hudocs.com).
+- **Multilingual support (i18n):** Multi-language support linked through Hugo's i18n conventions.
+- **Authoring features:** Dark/light scheme switcher, CSS `@layer` token architecture, customizable code blocks, tabs, steps, hints/alerts, and [Meteor Icons](https://meteoricons.com/) integration.
 
 ## Documentation
 
-The complete Hudocs documentation, including installation, configuration, options, shortcodes, translations, and customization, is available at [hudocs.com](https://hudocs.com/docs/latest/getting-started/installation/).
+Full documentation covering installation, configuration, shortcodes, translations, and customization is available at [hudocs.com](https://hudocs.com/docs/latest/getting-started/installation/).
 
 ## Documentation Structure
 
-Hudocs automatically adapts to your workflow based on your directory layout:
+Hudocs adapts automatically based on your directory layout.
 
-### 1. Single-Version Mode (Continuous / SaaS)
+### Single-version mode
 
-Ideal for products that evolve continuously without breaking API changes. Place documentation directly inside `content/docs/`:
+For products that evolve continuously without versioned releases. Place documentation directly inside `content/docs/`:
 
 ```text
 content/
@@ -44,11 +44,11 @@ content/
     └── configuration.md
 ```
 
-Hudocs detects single-version mode automatically, keeping navigation and URLs clean without version dropdowns.
+Navigation and URLs remain clean with no version dropdown.
 
-### 2. Multi-Version Mode (Libraries / SDKs / APIs)
+### Multi-version mode
 
-Ideal for software with semantic versioning where users need reference docs for older releases. Organize versions as subdirectories inside `content/docs/`:
+For software with semantic versioning where users need access to older release docs. Organize versions as subdirectories inside `content/docs/`:
 
 ```text
 content/
@@ -64,14 +64,12 @@ content/
         └── ...
 ```
 
-Hudocs generates an isolated navigation tree, search index, and a version selector dropdown for each release in the same build.
-
 ## Requirements
 
 - Hugo 0.164.0 or higher (Extended version)
-- Git - [Install Git](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 
-## Install
+## Installation
 
 In the root directory of your Hugo project, add Hudocs as a Git submodule:
 
@@ -80,8 +78,6 @@ git submodule add https://github.com/zkreations/hudocs themes/hudocs
 ```
 
 ## Quick Start
-
-To bootstrap your documentation quickly using the included sample site:
 
 ```bash
 # Copy example content
@@ -96,7 +92,7 @@ hugo serve
 
 ## Contributions
 
-Contributions are welcome! Please keep these principles in mind:
+Contributions are welcome. Please keep these principles in mind:
 
 - Keep configuration simple and avoid unnecessary complexity.
 - Favor native HTML and CSS over JavaScript wherever possible.
@@ -108,4 +104,4 @@ If you find this project useful, consider [starring it on GitHub](https://github
 
 ## License
 
-**Hudocs** is licensed under the [MIT License](LICENSE).
+[MIT](LICENSE)
