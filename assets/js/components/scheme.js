@@ -27,7 +27,9 @@ function applyTheme (pref) {
 
   if (themeContainer) {
     themeContainer.querySelectorAll('[data-theme]').forEach((btn) => {
-      btn.classList.toggle(ACTIVE_CLASS, btn.dataset.theme === pref)
+      const isSelected = btn.dataset.theme === pref
+      btn.classList.toggle(ACTIVE_CLASS, isSelected)
+      btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false')
     })
   }
 }
