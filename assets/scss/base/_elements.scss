@@ -60,9 +60,10 @@ input {
 }
 
 kbd {
-  color: var(--on-surface-inverse);
-  background-color: var(--surface-inverse);
+  color: var(--on-surface);
+  background-color: var(--surface);
   font-family: var(--font-monospace);
+  border: 1px solid var(--outline);
   padding: .5em .75em;
   white-space: nowrap;
   border-radius: .25rem;
