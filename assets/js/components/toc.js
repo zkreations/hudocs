@@ -9,7 +9,7 @@ function initToc () {
   const tocLinks = TOC.querySelectorAll('a')
   if (!headings.length || !tocLinks.length) return
 
-  const tocNav = TOC.querySelector('nav')
+  const tocToggle = TOC.querySelector('.toc-toggle')
   const tocCurrent = TOC.querySelector('.toc-current')
 
   const linkMap = new Map()
@@ -94,7 +94,7 @@ function initToc () {
     link.classList.add(VISIBLE_CLASS)
     currentActiveLink = link
     if (tocCurrent) tocCurrent.textContent = link.textContent.trim()
-    if (tocNav) tocNav.classList.remove('is-active')
+    if (tocToggle) tocToggle.click()
 
     const onScrollEnd = () => {
       isClickScrolling = false
