@@ -102,5 +102,6 @@ Hugo automatically links files belonging to the same page. Any multilingual cont
 | `badge_text` | {{< type string >}}  | Badge text.                                        |
 | `badge_url`  | {{< type string >}}  | Badge destination URL.                             |
 | `hidden`     | {{< type boolean >}} | Hides the page from the menu.                      |
+| `toc`        | {{< type boolean >}} | Disables the Table of Contents when set to `false`.|
 | `layout`     | {{< type string >}}  | Defines the layout, e.g. `redirect`.               |
 | `redirect`   | {{< type string >}}  | Destination path for `layout: redirect`.           |

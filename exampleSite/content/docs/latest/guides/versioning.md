@@ -3,7 +3,7 @@ title: Versioning
 weight: 5
 ---
 
-Hudocs supports multilingual documentation sites through separate directories within `content/docs/`. Each directory represents an isolated version and maintains its own content, navigation structure, and search index.
+Hudocs supports multi-version documentation sites through separate directories within `content/docs/`. Each directory represents an isolated version and maintains its own content, navigation structure, and search index.
 
 ## Version Architecture
 
@@ -32,7 +32,7 @@ The version selector in the header displays the identifier of the current versio
 
 ### Automatic Version Detection
 
-If you do not define the `versions` parameter, Hudocs automatically detects versions from the subsections under `content/docs/`:
+If you do not define the `docs_versions` parameter, Hudocs automatically detects versions from the subsections under `content/docs/`:
 
 ```html
 <a href="/docs/latest/">latest</a>

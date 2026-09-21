@@ -102,5 +102,6 @@ Hugo vincula automáticamente los archivos de una misma página.
 | `badge_text` | {{< type string >}}  | Texto de la insignia.                              |
 | `badge_url`  | {{< type string >}}  | URL de destino de la insignia.                     |
 | `hidden`     | {{< type boolean >}} | Oculta la página del menú.                         |
+| `toc`        | {{< type boolean >}} | Desactiva la Tabla de Contenidos si es `false`.    |
 | `layout`     | {{< type string >}}  | Define el layout, ej. `redirect`.                  |
 | `redirect`   | {{< type string >}}  | Ruta de destino para `layout: redirect`.           |

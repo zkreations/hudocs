@@ -41,9 +41,10 @@ Welcome to the Windows installation
 
 ### tabs
 
-| Parameter | Position | Type                | Required | Description                              |
-| :-------- | :------: | :------------------ | :------: | :--------------------------------------- |
-| `class`   |    `0`   | {{< type string >}} |    No    | Additional CSS class for the container.  |
+| Parameter | Position | Type                | Required | Description                                      |
+| :-------- | :------: | :------------------ | :------: | :----------------------------------------------- |
+| `class`   |   `0`    | {{< type string >}} |    No    | Additional CSS class for the container.          |
+| `id`      |    —     | {{< type string >}} |    No    | Custom group identifier for the radio controls.  |
 
 ### tab
 

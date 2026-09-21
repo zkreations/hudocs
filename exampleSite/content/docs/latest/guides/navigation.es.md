@@ -85,7 +85,7 @@ badge_text: "Nuevo"
 ---
 ```
 
-* Si no defines `badge_text`, se utiliza `site.Params.badge_text` o el valor traducido por defecto.
+* Si no defines `badge_text`, se utiliza `site.Params.docs_badge_text` (o `site.Params.badge_text`) o el valor traducido por defecto.
 * La insignia también se muestra junto al título `<h1>` de la página.
 
 ## Ocultar páginas de la navegación

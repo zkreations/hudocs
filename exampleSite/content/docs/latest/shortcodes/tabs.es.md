@@ -41,9 +41,10 @@ Bienvenido a la instalación en Windows
 
 ### tabs
 
-| Parámetro | Posición | Tipo                | Requerido | Descripción                              |
-| :-------- | :------: | :------------------ | :-------: | :--------------------------------------- |
-| `class`   |    `0`   | {{< type string >}} |     No    | Clase CSS adicional para el contenedor.  |
+| Parámetro | Posición | Tipo                | Requerido | Descripción                                              |
+| :-------- | :------: | :------------------ | :-------: | :------------------------------------------------------- |
+| `class`   |   `0`    | {{< type string >}} |    No     | Clase CSS adicional para el contenedor.                  |
+| `id`      |    —     | {{< type string >}} |    No     | Identificador de grupo personalizado para los controles. |
 
 ### tab
 

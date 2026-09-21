@@ -55,12 +55,12 @@ badge_url: "/es/docs/latest/getting-started/installation/"
 * `badge_text`
 
   * Valor definido en la página.
-  * Si no existe, utiliza `site.Params.badge_text`.
+  * Si no existe, utiliza `site.Params.docs_badge_text` (o `site.Params.badge_text`).
   * Si tampoco existe, utiliza el texto traducido `"Nuevo"`.
 * `badge_url`
 
   * Valor definido en la página.
-  * Si no existe, utiliza `site.Params.badge_url`.
+  * Si no existe, utiliza `site.Params.docs_badge_url` (o `site.Params.badge_url`).
   * Si no se define ningún valor, la insignia se muestra sin enlace.
 
 ## Integración con Meteor Icons

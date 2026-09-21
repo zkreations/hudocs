@@ -85,7 +85,7 @@ badge_text: "New"
 ---
 ```
 
-* If `badge_text` is not defined, `site.Params.badge_text` or the default translated value is used.
+* If `badge_text` is not defined, `site.Params.docs_badge_text` (or `site.Params.badge_text`) or the default translated value is used.
 * The badge is also displayed next to the page's `<h1>` title.
 
 ## Hiding Pages from Navigation

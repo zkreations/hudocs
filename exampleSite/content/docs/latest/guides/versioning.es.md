@@ -3,7 +3,7 @@ title: Control de Versiones
 weight: 5
 ---
 
-Hudocs permite gestionar sitios de documentación multilingües con versiones separadas dentro de `content/docs/`. Cada directorio representa una versión aislada y mantiene su propio contenido, estructura de navegación e índice de búsqueda.
+Hudocs permite gestionar sitios de documentación con múltiples versiones a través de directorios separados dentro de `content/docs/`. Cada directorio representa una versión aislada y mantiene su propio contenido, estructura de navegación e índice de búsqueda.
 
 ## Arquitectura de Versiones
 
@@ -32,7 +32,7 @@ El selector de versiones en el encabezado muestra el identificador de la versió
 
 ### Detección Automática de Versiones
 
-Si no defines el parámetro `versions`, Hudocs obtiene automáticamente las versiones a partir de las subsecciones dentro de `content/docs/`:
+Si no defines el parámetro `docs_versions`, Hudocs obtiene automáticamente las versiones a partir de las subsecciones dentro de `content/docs/`:
 
 ```html
 <a href="/docs/latest/">latest</a>
