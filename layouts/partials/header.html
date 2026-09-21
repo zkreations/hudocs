@@ -27,7 +27,7 @@
       {{- if and $docsContext.isDoc $docsContext.versionPage -}}
         <button class="search-toggle has-icon" data-outside="search-box">
           {{ partial "svg" (dict "icon" "search") }}
-          <span>{{- i18n "search_in_doc" -}}</span>
+          <span class="search-info">{{- i18n "search_in_doc" -}} <kbd>Ctrl K</kbd></span>
         </button>
       {{- end -}}
 

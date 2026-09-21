@@ -72,11 +72,15 @@
     svg {
       flex: none;
     }
+  }
 
-    span {
-      @include breakpoint(l, max) {
-        display: none;
-      }
+  &-info {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    @include breakpoint(l, max) {
+      display: none;
     }
   }
 
@@ -99,7 +103,7 @@
     display: flex;
     align-items: center;
     padding: var(--search-padding);
-    border-bottom: 1px solid var(--outline);
+    border-block-end: 1px solid var(--outline);
     font-size: 1rem;
   }
 
@@ -164,5 +168,23 @@
 
   &-error {
     color: var(--error);
+  }
+
+  &-footer {
+    display: none;
+
+    @include breakpoint(l) {
+      display: flex;
+      align-items: center;
+      padding: var(--search-padding);
+      border-block-start: 1px solid var(--outline);
+      gap: 1rem;
+
+      &-item {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+      }
+    }
   }
 }

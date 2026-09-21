@@ -64,11 +64,12 @@ kbd {
   background-color: var(--surface);
   font-family: var(--font-monospace);
   border: 1px solid var(--outline);
-  padding: .5em .75em;
+  padding: .5em;
   white-space: nowrap;
   border-radius: .25rem;
   font-size: .75rem;
   vertical-align: middle;
+  line-height: 1;
 }
 
 mark {

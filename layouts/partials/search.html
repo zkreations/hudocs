@@ -12,6 +12,21 @@
     <div class="search-results">
       <div class="search-list" id="search-results" role="listbox" aria-label='{{- i18n "search" -}}' aria-live="polite"></div>
     </div>
+    <div class="search-footer">
+      <div class="search-footer-item">
+        <kbd>↓</kbd>
+        <kbd>↑</kbd>
+        <span>{{- i18n "search_navigate" -}}</span>
+      </div>
+      <div class="search-footer-item">
+        <kbd>Enter</kbd>
+        <span>{{- i18n "search_select" -}}</span>
+      </div>
+      <div class="search-footer-item">
+        <kbd>Esc</kbd>
+        <span>{{- i18n "search_close" -}}</span>
+      </div>
+    </div>
   </div>
 </div>
 {{- $file := "" -}}

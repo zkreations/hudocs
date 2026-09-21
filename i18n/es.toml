@@ -22,6 +22,14 @@ other = "Buscar en documentos"
 [search_error]
 other = "No se pudo cargar el índice de búsqueda"
 
+[search_navigate]
+other = "Navegar"
+
+[search_select]
+other = "Seleccionar"
+
+[search_close]
+other = "Cerrar"
 
 [edit_on_github]
 other = "Editar en GitHub"
