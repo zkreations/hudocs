@@ -4,6 +4,10 @@
   border-inline-start: 3px solid;
   padding: 1.25rem;
 
+  &:is([class*="alert-"]) {
+    --alert-bg: color-mix(in srgb, var(--alert-color) 12%, transparent);
+  }
+
   a[href]:not([class]) {
     color: inherit;
     text-decoration: underline;
@@ -14,22 +18,18 @@
   }
 
   &-info {
-    --alert-bg: var(--info-container);
     --alert-color: var(--info);
   }
 
   &-success {
-    --alert-bg: var(--success-container);
     --alert-color: var(--success);
   }
 
   &-danger {
-    --alert-bg: var(--error-container);
     --alert-color: var(--error);
   }
 
   &-warning {
-    --alert-bg: var(--warning-container);
     --alert-color: var(--warning);
   }
 
@@ -44,8 +44,8 @@
 }
 
 .badge {
-  color: var(--primary);
-  background-color: var(--primary-subtle);
+  color: var(--on-primary-container);
+  background-color: var(--primary-container);
   font-size: .75rem;
   border-radius: .5em;
   padding: .5em;
@@ -75,11 +75,11 @@
   }
 
   &-primary {
-    --btn-color: var(--primary);
-    --btn-bg: var(--primary-subtle);
+    --btn-color: var(--on-primary-container);
+    --btn-bg: var(--primary-container);
 
     &:hover {
-      --btn-bg: var(--primary-subtle-hover);
+      --btn-bg: var(--primary-container-hover);
     }
   }
 }

@@ -70,7 +70,7 @@
 
   &:has(> .tab-content > .highlight:only-child) {
     border: 0;
-    background-color: var(--surface-inverse-high);
+    background-color: var(--syntax-bg-deep);
 
     .tab-label {
       margin-block-end: 0;
@@ -78,7 +78,7 @@
       padding-inline: clamp(1.25rem, 2vw, 1.5rem);
 
       &:hover {
-        color: var(--on-surface-inverse);
+        color: var(--syntax-fg);
       }
 
       &:first-of-type {
@@ -87,8 +87,8 @@
     }
 
     .tab-toggle:checked + .tab-label {
-      background-color: var(--surface-inverse);
-      color: var(--on-surface-inverse);
+      background-color: var(--syntax-bg);
+      color: var(--syntax-fg);
     }
 
     .tab-content {

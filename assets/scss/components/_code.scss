@@ -14,8 +14,6 @@ pre {
 
 .highlight {
   --code-padding: clamp(1rem, 2.5vw, 1.5rem);
-  --code-scrollbar-track: rgb(0 0 0 / 25%);
-  --code-scrollbar-thumb: #485158;
   --highlight-radius: .5rem;
   background: var(--syntax-bg);
   position: relative;
@@ -41,7 +39,7 @@ pre {
     color: var(--syntax-fg);
     padding: var(--code-padding) 0;
 
-    scrollbar-color: var(--code-scrollbar-thumb) var(--code-scrollbar-track);
+    scrollbar-color: var(--syntax-scrollbar-thumb) var(--syntax-scrollbar-track);
     scrollbar-width: thin;
   }
 
@@ -92,14 +90,15 @@ pre {
   right: -.5rem;
   top: -.5rem;
   border-radius: 50rem;
-  background-color: var(--bg, var(--surface-inverse-low));
-  color: var(--on-surface-inverse);
+  background-color: var(--bg, var(--syntax-gutter));
+  color: var(--syntax-fg);
   padding: 0.5rem;
   transition: background-color .3s;
   --svg-size: 18px;
 
   &:hover {
     --bg: var(--primary);
+    color: var(--on-primary);
   }
 }
 
@@ -218,29 +217,26 @@ pre {
 }
 
 .type {
+  --type-bg: color-mix(in srgb, var(--type-color) 12%, transparent);
+
   &-textual {
     --type-color: var(--type-textual);
-    --type-bg: color-mix(in srgb, var(--type-textual) 12%, transparent);
   }
 
   &-numeric {
     --type-color: var(--type-numeric);
-    --type-bg: color-mix(in srgb, var(--type-numeric) 12%, transparent);
   }
 
   &-logical {
     --type-color: var(--type-logical);
-    --type-bg: color-mix(in srgb, var(--type-logical) 12%, transparent);
   }
 
   &-structural {
     --type-color: var(--type-structural);
-    --type-bg: color-mix(in srgb, var(--type-structural) 12%, transparent);
   }
 
   &-custom {
     --type-color: var(--type-custom);
-    --type-bg: color-mix(in srgb, var(--type-custom) 12%, transparent);
   }
 
   &-optional::after {

@@ -31,29 +31,37 @@ $gray-900: #18181b !default;
   --shadow-lg: 0px 5px 10px rgb(0 0 0 / 20%);
 
   --primary: #{$green};
-  --primary-subtle: color-mix(in srgb, var(--primary) 10%, white);
-  --primary-subtle-hover: color-mix(in srgb, var(--primary) 20%, white);
+  --on-primary: #{$white};
+  --primary-container: color-mix(in srgb, var(--primary) 10%, white);
+  --on-primary-container: color-mix(in srgb, var(--primary) 70%, black);
+  --primary-container-hover: color-mix(in srgb, var(--primary) 20%, white);
   --primary-selection: color-mix(in srgb, var(--primary) 10%, transparent);
+
+  --secondary: #{$blue};
+  --on-secondary: #{$white};
+  --secondary-container: color-mix(in srgb, var(--secondary) 10%, white);
+  --on-secondary-container: color-mix(in srgb, var(--secondary) 70%, black);
 
   --surface: #{$white};
   --surface-container: #{$gray-100};
   --surface-container-hover: #{$gray-200};
   --surface-mark: color-mix(in srgb, #{$yellow} 20%, white);
 
-  --surface-inverse-low: #{$gray-700};
   --surface-inverse: #{$gray-900};
-  --surface-inverse-high: #{$black};
+  --on-surface-inverse: #{$white};
 
   --on-surface: #{$gray-800};
   --on-surface-variant: #{$gray-600};
   --on-surface-muted: #{$gray-500};
-  --on-surface-inverse: #{$white};
 
   --outline: #{$gray-300};
-  --scrim: rgb(123 131 135 / 50%);
+  --scrim: color-mix(in srgb, #{$black} 50%, transparent);
 
   --scrollbar-track: var(--surface-container);
   --scrollbar-thumb: var(--outline);
+
+  --syntax-scrollbar-track: rgb(0 0 0 / 25%);
+  --syntax-scrollbar-thumb: #{$gray-600};
 
   --syntax-uno-1: hsl(260 99% 96%);
   --syntax-uno-2: hsl(260 88% 84%);
@@ -63,8 +71,8 @@ $gray-900: #18181b !default;
   --syntax-duo-2: hsl(28 44% 48%);
   --syntax-duo-3: hsl(28 22% 38%);
 
-  --syntax-bg: var(--surface-inverse);
-  --syntax-bg-deep: var(--surface-inverse-high);
+  --syntax-bg: #{$gray-900};
+  --syntax-bg-deep: #{$black};
 
   --syntax-fg: var(--syntax-uno-2);
   --syntax-muted: var(--syntax-uno-4);
@@ -87,22 +95,18 @@ $gray-900: #18181b !default;
   --syntax-selection: color-mix(in srgb, var(--syntax-duo-3) 45%, transparent);
   --syntax-selection-border: var(--syntax-duo-1);
   --syntax-link: var(--syntax-duo-1);
-  --syntax-error: hsl(0 90% 70%);
+  --syntax-error: color-mix(in srgb, #{$red} 70%, white);
 
   --type-textual: #0369a1;
   --type-numeric: #b45309;
-  --type-logical: #0f766e;
+  --type-logical: #{$green};
   --type-structural: #4338ca;
   --type-custom: #7e22ce;
 
   --info: color-mix(in srgb, #{$blue} 60%, black);
-  --info-container: color-mix(in srgb, #{$blue} 10%, white);
   --success: color-mix(in srgb, #{$green} 60%, black);
-  --success-container: color-mix(in srgb, #{$green} 10%, white);
   --warning: color-mix(in srgb, #{$yellow} 60%, black);
-  --warning-container: color-mix(in srgb, #{$yellow} 10%, white);
   --error: color-mix(in srgb, #{$red} 60%, black);
-  --error-container: color-mix(in srgb, #{$red} 10%, white);
 
   &[data-code-theme="duotone-dark-sea"] {
     --syntax-uno-1: hsl(212 99% 92%);
@@ -148,13 +152,23 @@ $gray-900: #18181b !default;
     color-scheme: dark;
 
     --primary: color-mix(in srgb, #{$green} 60%, white);
-    --primary-subtle: color-mix(in srgb, var(--primary) 10%, transparent);
-    --primary-subtle-hover: color-mix(in srgb, var(--primary) 25%, transparent);
+    --on-primary: #{$black};
+    --primary-container: color-mix(in srgb, var(--primary) 12%, transparent);
+    --on-primary-container: var(--primary);
+    --primary-container-hover: color-mix(in srgb, var(--primary) 24%, transparent);
 
-    --surface: #{$gray-800};
+    --secondary: color-mix(in srgb, #{$blue} 60%, white);
+    --on-secondary: #{$black};
+    --secondary-container: color-mix(in srgb, var(--secondary) 12%, transparent);
+    --on-secondary-container: var(--secondary);
+
+    --surface: #{$gray-900};
     --surface-container: #{$gray-800};
     --surface-container-hover: #{$gray-700};
     --surface-mark: color-mix(in srgb, #{$yellow} 30%, transparent);
+
+    --surface-inverse: #{$gray-100};
+    --on-surface-inverse: #{$gray-900};
 
     --on-surface: #{$white};
     --on-surface-variant: #{$gray-300};
@@ -163,13 +177,9 @@ $gray-900: #18181b !default;
     --outline: #{$gray-700};
 
     --info: color-mix(in srgb, #{$blue} 40%, white);
-    --info-container: color-mix(in srgb, #{$blue} 8%, transparent);
     --success: color-mix(in srgb, #{$green} 40%, white);
-    --success-container: color-mix(in srgb, #{$green} 8%, transparent);
     --warning: color-mix(in srgb, #{$yellow} 40%, white);
-    --warning-container: color-mix(in srgb, #{$yellow} 8%, transparent);
     --error: color-mix(in srgb, #{$red} 40%, white);
-    --error-container: color-mix(in srgb, #{$red} 8%, transparent);
 
     --type-textual: #38bdf8;
     --type-numeric: #fbbf24;
