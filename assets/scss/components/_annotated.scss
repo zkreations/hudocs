@@ -1,0 +1,36 @@
+.annotated-note {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--surface-container);
+  margin-block: var(--space-block, 1.5rem);
+  --space-block: 1rem;
+
+  pre {
+    padding: 1rem;
+    background-color: var(--surface-container);
+    overflow: auto;
+    white-space: pre-wrap;
+  }
+
+  > :first-child {
+    margin-block-start: 0;
+  }
+
+  > :last-child {
+    margin-block-end: 0;
+  }
+}
+
+.annotated {
+  margin-block: var(--space-block, 1.5rem);
+
+  >*:not(.annotated-note) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-block-end: 0;
+  }
+
+  > .annotated-note {
+    margin-block: 0;
+  }
+}
+
