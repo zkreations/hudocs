@@ -46,12 +46,8 @@
   width: 100%;
 
   &-logo {
-    font-size: 1rem;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
     font-weight: 500;
-
-    @include breakpoint(m) {
-      font-size: 1.125rem;
-    }
 
     &-image {
       max-height: 42px;

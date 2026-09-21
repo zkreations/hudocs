@@ -68,10 +68,7 @@
     .tab-label {
       margin-block-end: 0;
       border-block-end: 0;
-
-      @include breakpoint(s) {
-        padding-inline: 1.5rem;
-      }
+      padding-inline: clamp(1.25rem, 2vw, 1.5rem);
 
       &:hover {
         color: var(--on-surface-inverse);

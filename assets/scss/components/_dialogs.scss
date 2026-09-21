@@ -129,12 +129,6 @@
     }
   }
 
-  &-item {
-    +* {
-      margin-block-start: .5rem;
-    }
-  }
-
   &-link {
     padding: .75rem 1rem;
     display: block;

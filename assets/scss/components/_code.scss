@@ -13,6 +13,7 @@ pre {
 }
 
 .highlight {
+  --code-padding: clamp(1rem, 2.5vw, 1.5rem);
   --bg-scrollbar: transparent;
   --bg-scrollbar-track: var(--code-scrollbar-track);
   --bg-scrollbar-thumb: var(--code-scrollbar-thumb);
@@ -38,14 +39,10 @@ pre {
     background-color: transparent !important;
     overflow-x: auto;
     color: var(--syntax-fg);
-    padding: 1rem 0;
+    padding: var(--code-padding) 0;
 
     scrollbar-color: var(--code-scrollbar-thumb) var(--code-scrollbar-track);
     scrollbar-width: thin;
-
-    @include breakpoint(s) {
-      padding: 1.5rem 0;
-    }
   }
 
   code {
@@ -55,21 +52,13 @@ pre {
     width: 100%;
 
     >span:not(.line) {
-      padding: 0 1rem;
-
-      @include breakpoint(s) {
-        padding: 0 1.5rem;
-      }
+      padding: 0 var(--code-padding);
     }
   }
 
   .line {
     display: block;
-    padding: 0 1rem;
-
-    @include breakpoint(s) {
-      padding: 0 1.5rem;
-    }
+    padding: 0 var(--code-padding);
 
     &.hl {
       background-color: var(--syntax-selection);
