@@ -24,7 +24,7 @@ other = "Failed to load search index"
 
 
 [edit_on_github]
-other = "Edit on Github"
+other = "Edit on GitHub"
 
 [edited]
 other = "Edited"
@@ -36,7 +36,7 @@ other = "No results"
 other = "No items"
 
 [no_results_text]
-other = "It seems that we have not documented that or it does not exist. Should we add it? help us document it on Github"
+other = "It seems that we have not documented that or it does not exist. Should we add it? help us document it on GitHub"
 
 [copy]
 other = "Copy"

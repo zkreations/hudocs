@@ -24,7 +24,7 @@ other = "No se pudo cargar el índice de búsqueda"
 
 
 [edit_on_github]
-other = "Editar en Github"
+other = "Editar en GitHub"
 
 [edited]
 other = "Editado"
@@ -36,7 +36,7 @@ other = "Sin resultados"
 other = "Sin elementos"
 
 [no_results_text]
-other = "Parece que no hemos documentado eso o no existe. ¿Deberiamos agregarlo? ayudanos a documentarlo en Github"
+other = "Parece que no hemos documentado eso o no existe. ¿Deberíamos agregarlo? ayúdanos a documentarlo en GitHub"
 
 [copy]
 other = "Copiar"
