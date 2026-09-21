@@ -6,7 +6,7 @@
 
 {{- if .IsNamedParams -}}
   {{- $href = .Get "href" -}}
-  {{- $title = .Get "title" -}}
+  {{- $title = .Get "title" | default (.Get "name") | default (.Get "text") -}}
   {{- $desc = .Get "description" | default (.Get "subtitle") -}}
   {{- $icon = .Get "icon" -}}
   {{- $rel = .Get "rel" -}}
@@ -27,7 +27,7 @@
 {{- end -}}
 
 {{- if not $title -}}
-  {{- errorf "%s: missing 'title' parameter for 'pagelink' shortcode." .Position -}}
+  {{- errorf "%s: missing label parameter ('title', 'name' or 'text') for 'pagelink' shortcode." .Position -}}
 {{- end -}}
 
 {{- $link := partial "resolve-link" (dict "href" $href "rel" $rel) -}}
