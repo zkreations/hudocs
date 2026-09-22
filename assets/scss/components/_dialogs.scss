@@ -108,6 +108,7 @@
     box-shadow: var(--shadow-lg);
     display: flex;
     flex-direction: column;
+    max-width: 680px;
   }
 
   &-input {
@@ -139,7 +140,7 @@
 
   &-group {
     &-header {
-      margin-block-end: 1rem;
+      margin-block-end: .75rem;
       text-transform: capitalize;
       font-size: 1rem;
       font-weight: 500;
@@ -174,7 +175,7 @@
   &-list {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: .75rem;
   }
 
   &-title {
