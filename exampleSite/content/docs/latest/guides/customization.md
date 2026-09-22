@@ -5,7 +5,7 @@ weight: 6
 
 Hudocs organizes its styling using CSS cascade layers (`@layer`) and semantic design tokens defined through CSS custom properties in `_tokens.scss`. You can customize the look and feel of your documentation without modifying the theme's core files.
 
-## The `_custom.scss` File
+## Overriding Styles
 
 To customize styles, create an `assets/scss/_custom.scss` file in your Hugo project:
 
@@ -158,3 +158,4 @@ $primary: #0284c7;
   --primary: #38bdf8;
 }
 ```
+

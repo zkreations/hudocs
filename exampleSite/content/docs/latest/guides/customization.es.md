@@ -5,7 +5,7 @@ weight: 6
 
 Hudocs organiza sus estilos utilizando capas en cascada CSS (`@layer`) y tokens de diseño semánticos definidos mediante propiedades personalizadas de CSS en `_tokens.scss`. Puedes personalizar la apariencia visual de tu documentación sin modificar los archivos originales del tema.
 
-## El archivo `_custom.scss`
+## Sobrescribir  estilos  
 
 Para personalizar los estilos, crea un archivo `assets/scss/_custom.scss` en tu proyecto de Hugo:
 
@@ -158,3 +158,4 @@ $primary: #0284c7;
   --primary: #38bdf8;
 }
 ```
+
