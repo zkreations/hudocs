@@ -74,22 +74,20 @@
     --btn-bg: var(--surface-container-hover);
   }
 
-  &-primary {
-    --btn-color: var(--on-primary-container);
-    --btn-bg: var(--primary-container);
+  &:is([class*="btn-"]) {
+    --btn-bg: color-mix(in srgb, var(--btn-color) 12%, transparent);
 
     &:hover {
-      --btn-bg: var(--primary-container-hover);
+      --btn-bg: color-mix(in srgb, var(--btn-color) 22%, transparent);
     }
   }
 
-  &-secondary {
-    --btn-color: var(--on-secondary-container);
-    --btn-bg: var(--secondary-container);
+  &-primary {
+    --btn-color: var(--primary);
+  }
 
-    &:hover {
-      --btn-bg: var(--secondary-container-hover);
-    }
+  &-secondary {
+    --btn-color: var(--secondary);
   }
 }
 

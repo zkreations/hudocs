@@ -20,14 +20,12 @@ $secondary: #4338ca !default;
   --on-primary: #ffffff;
   --primary-container: color-mix(in srgb, var(--primary) 12%, transparent);
   --on-primary-container: var(--primary);
-  --primary-container-hover: color-mix(in srgb, var(--primary) 22%, transparent);
   --primary-selection: color-mix(in srgb, var(--primary) 15%, transparent);
 
   --secondary: #{$secondary};
   --on-secondary: #ffffff;
   --secondary-container: color-mix(in srgb, var(--secondary) 12%, transparent);
   --on-secondary-container: var(--secondary);
-  --secondary-container-hover: color-mix(in srgb, var(--secondary) 22%, transparent);
 
   --surface: #ffffff;
   --surface-container: #f4f4f5;
@@ -145,14 +143,12 @@ $secondary: #4338ca !default;
     --on-primary: #09090b;
     --primary-container: color-mix(in srgb, var(--primary) 12%, transparent);
     --on-primary-container: var(--primary);
-    --primary-container-hover: color-mix(in srgb, var(--primary) 24%, transparent);
     --primary-selection: color-mix(in srgb, var(--primary) 30%, transparent);
 
     --secondary: #818cf8;
     --on-secondary: #09090b;
     --secondary-container: color-mix(in srgb, var(--secondary) 12%, transparent);
     --on-secondary-container: var(--secondary);
-    --secondary-container-hover: color-mix(in srgb, var(--secondary) 24%, transparent);
 
     --surface: #18181b;
     --surface-container: #222225;
