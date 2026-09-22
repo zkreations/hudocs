@@ -53,6 +53,9 @@ summaryLength = 20
   # Global description used for metadata and the homepage.
   description = "A Hugo theme for documentation sites"
 
+  # If true, the first image in a page will be loaded eagerly. Default: true
+  # imageFirstEager = true 
+
   # Branding
   # Header icon from Meteor Icons. Default: "book-open"
   # brand_icon = "book-open"
