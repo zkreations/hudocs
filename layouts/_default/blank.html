@@ -8,7 +8,7 @@
     {{- else -}}
       {{- $logo := or site.Params.brand_logo site.Params.main_logo -}}
       {{- $brandIcon := or site.Params.brand_icon site.Params.main_icon | default "book-open" -}}
-      {{- $title := site.Title | title -}}
+      {{- $title := site.Title -}}
       <div class="blank-content">
         {{- if $logo -}}
           <img class="blank-logo" src="{{ $logo }}" alt="{{ $title }}">
