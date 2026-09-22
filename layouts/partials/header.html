@@ -75,7 +75,7 @@
 
       {{- if and $docsContext.isDoc (not $docsContext.isDocsRoot) (not $docsContext.isSingleVersion) (gt (len $docsContext.versionPages) 0) -}}
         <div class="dropdown-wrapper">
-          <button class="version-toggle btn btn-primary capitalize" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-versions" id="current-version">
+          <button class="header-item version-toggle capitalize" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-versions" id="current-version">
             {{ with $docsContext.version }}{{ . }}{{ else }}{{ i18n "versions" }}{{ end }}
           </button>
           <div class="dropdown" id="docs-versions" role="region" aria-label='{{ i18n "versions" }}'>
