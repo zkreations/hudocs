@@ -47,6 +47,23 @@
   {{- end -}}
 {{- end -}}
 
+{{- $expandTree := or site.Params.docs_expand_tree site.Params.expand_tree false -}}
+
+{{- $pagination := site.Params.docs_pagination -}}
+{{- if eq $pagination nil -}}
+  {{- $pagination = site.Params.pagination -}}
+{{- end -}}
+{{- $hasPagination := ne $pagination false -}}
+
+{{- $editURL := or site.Params.docs_edit_url site.Params.github_repo_edit "" -}}
+
+{{- $badgeText := or site.Params.docs_badge_text site.Params.badge_text | default (i18n "new") -}}
+{{- $badgeURL := or site.Params.docs_badge_url site.Params.badge_url "" -}}
+
+{{- $chatGPT := ne site.Params.docs_chatgpt false -}}
+{{- $claude := ne site.Params.docs_claude false -}}
+{{- $ai := and $isDoc (ne site.Params.docs_ai false) (or $chatGPT $claude) -}}
+
 {{- return (dict
   "isDoc" $isDoc
   "isDocsRoot" $isDocsRoot
@@ -57,5 +74,13 @@
   "versionPage" $versionPage
   "versions" $versions
   "versionPages" $versionPages
+  "expandTree" $expandTree
+  "pagination" $hasPagination
+  "editURL" $editURL
+  "badgeText" $badgeText
+  "badgeURL" $badgeURL
+  "showAI" $ai
+  "showChatGPT" $chatGPT
+  "showClaude" $claude
 ) -}}
 

@@ -3,11 +3,7 @@
 {{- $next := "" -}}
 
 {{- if $docsContext.isDoc -}}
-  {{- $pagination := site.Params.docs_pagination -}}
-  {{- if eq $pagination nil -}}
-    {{- $pagination = site.Params.pagination -}}
-  {{- end -}}
-  {{- if and (ne $pagination false) $docsContext.versionPage -}}
+  {{- if and $docsContext.pagination $docsContext.versionPage -}}
     {{- $pages := partialCached "flat-pages" (dict "Section" $docsContext.versionPage) $docsContext.versionPage.Path -}}
     {{- range $index, $page := $pages -}}
       {{- if eq $page.RelPermalink $.RelPermalink -}}

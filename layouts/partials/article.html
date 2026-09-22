@@ -1,11 +1,11 @@
+{{- $docsContext := partialCached "docs-context" .Page (or .Page.Path .Page.RelPermalink) -}}
 <header class="article-header">
   <div class="article-header-content">
     <h1 class="article-title has-icon">
       {{- partial "title" .Page -}}
       {{- if eq .Page.Params.badge true -}}
-        {{- $badgeText := default (or site.Params.docs_badge_text site.Params.badge_text) .Page.Params.badge_text -}}
-        {{- $badgeText = default (i18n "new") $badgeText -}}
-        {{- $badgeURL := default (or site.Params.docs_badge_url site.Params.badge_url) .Page.Params.badge_url -}}
+        {{- $badgeText := .Page.Params.badge_text | default $docsContext.badgeText -}}
+        {{- $badgeURL := .Page.Params.badge_url | default $docsContext.badgeURL -}}
 
         {{- if $badgeURL -}}
           <a href="{{ $badgeURL }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ $badgeText }}</a>
@@ -15,17 +15,13 @@
       {{- end -}}
     </h1>
   </div>
-  {{- $docsContext := partialCached "docs-context" .Page (or .Page.Path .Page.RelPermalink) -}}
-  {{- $editURL := or site.Params.docs_edit_url site.Params.github_repo_edit -}}
-  {{- $showEdit := and $docsContext.isDoc $editURL .Page.File -}}
-  {{- $showChatGPT := ne site.Params.docs_chatgpt false -}}
-  {{- $showClaude := ne site.Params.docs_claude false -}}
-  {{- $showAI := and $docsContext.isDoc (ne site.Params.docs_ai false) (or $showChatGPT $showClaude) -}}
+  {{- $showEdit := and $docsContext.isDoc $docsContext.editURL .Page.File -}}
+  {{- $showAI := $docsContext.showAI -}}
   {{- if or $showEdit $showAI -}}
     <div class="article-actions">
       {{- if $showEdit -}}
         {{- with .Page.File }}
-          <a class="article-action tooltip tooltip-start" href="{{ $editURL }}/{{ .Path | replaceRE `\\` "/" }}" aria-label='{{ i18n "edit_on_github" }}' target="_blank" rel="noreferrer noopener">
+          <a class="article-action tooltip tooltip-start" href="{{ $docsContext.editURL }}/{{ .Path | replaceRE `\\` "/" }}" aria-label='{{ i18n "edit_on_github" }}' target="_blank" rel="noreferrer noopener">
             {{ partial "svg" (dict "icon" "pencil") }}
           </a>
         {{- end }}
@@ -37,14 +33,14 @@
           </button>
           <div class="dropdown" id="article-ai-dropdown" role="region" aria-label='{{ i18n "ask_ai" | default "Ask AI" }}'>
             <div class="list">
-              {{- if $showChatGPT -}}
+              {{- if $docsContext.showChatGPT -}}
                 <a class="list-link has-icon" href="https://chatgpt.com/?q={{ printf "Explain this documentation: %s" $.Page.Permalink | urlquery }}" target="_blank" rel="noreferrer noopener">
                   {{ partial "svg" (dict "icon" "openai") }}
                   <span>{{ i18n "open_in_chatgpt" | default "Open in ChatGPT" }}</span>
                   {{ partial "svg" (dict "icon" "arrow-up-right" "class" "menu-arrow") }}
                 </a>
               {{- end -}}
-              {{- if $showClaude -}}
+              {{- if $docsContext.showClaude -}}
                 <a class="list-link has-icon" href="https://claude.ai/new?q={{ printf "Explain this documentation: %s" $.Page.Permalink | urlquery }}" target="_blank" rel="noreferrer noopener">
                   {{ partial "svg" (dict "icon" "claude") }}
                   <span>{{ i18n "open_in_claude" | default "Open in Claude" }}</span>
