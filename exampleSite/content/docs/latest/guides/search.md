@@ -7,7 +7,7 @@ Hudocs includes a client-side search engine based on [FlexSearch](https://github
 
 ## How It Works
 
-1. **Index generation:** during `hugo build`, Hugo generates a minified JSON file containing the search index for each configured language and documentation version under `json/<lang>.<section>.<version>.index.json`.
+1. **Index generation:** during `hugo build`, Hugo generates a minified JSON file containing the search index for each configured language and documentation version under `json/<lang>.<section>.<version>.index.json` (or `json/<lang>.<section>.index.json` in single-version mode).
 
 2. **On-demand loading:** the index is downloaded when the user opens the search modal, so it is not loaded during the site's initial load.
 
@@ -17,7 +17,7 @@ Hudocs includes a client-side search engine based on [FlexSearch](https://github
 
 Readers can interact with the search using the following controls:
 
-* **Search button or shortcut:** opens the search modal by clicking the button in the header or pressing <kbd>Ctrl K</kbd> (<kbd>Cmd K</kbd> on macOS).
+* **Search button or shortcut:** opens the search modal by clicking the button in the header, pressing <kbd>Ctrl K</kbd> (<kbd>Cmd K</kbd> on macOS), or pressing <kbd>/</kbd> when not focused on an input.
 * **Keyboard navigation:**
   * <kbd>↑</kbd> or <kbd>↓</kbd> changes the selected result.
   * <kbd>Enter</kbd> opens the selected page.

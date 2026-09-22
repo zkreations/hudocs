@@ -93,15 +93,18 @@ Hugo vincula automáticamente los archivos de una misma página.
 
 ## Referencia del Front Matter
 
-| Campo        | Tipo                 | Descripción                                        |
-| :----------- | :------------------- | :------------------------------------------------- |
-| `title`      | {{< type string >}}  | Título de la página.                               |
-| `icon`       | {{< type string >}}  | Icono de [Meteor Icons](https://meteoricons.com/). |
-| `weight`     | {{< type int >}}     | Orden en el menú.                                  |
-| `badge`      | {{< type boolean >}} | Muestra la insignia.                               |
-| `badge_text` | {{< type string >}}  | Texto de la insignia.                              |
-| `badge_url`  | {{< type string >}}  | URL de destino de la insignia.                     |
-| `hidden`     | {{< type boolean >}} | Oculta la página del menú.                         |
-| `toc`        | {{< type boolean >}} | Desactiva la Tabla de Contenidos si es `false`.    |
-| `layout`     | {{< type string >}}  | Define el layout, ej. `redirect`.                  |
-| `redirect`   | {{< type string >}}  | Ruta de destino para `layout: redirect`.           |
+| Campo         | Tipo                    | Descripción                                                 |
+| :------------ | :---------------------- | :---------------------------------------------------------- |
+| `title`       | {{< type string >}}     | Título de la página.                                        |
+| `description` | {{< type string >}}     | Descripción de la página para metadatos y resúmenes.        |
+| `icon`        | {{< type string >}}     | Icono de [Meteor Icons](https://meteoricons.com/).          |
+| `date`        | {{< type string >}}     | Fecha de publicación (utilizada principalmente en el blog). |
+| `tags`        | {{< type "string[]" >}} | Lista de etiquetas de la página o publicación.              |
+| `weight`      | {{< type int >}}        | Orden en el menú.                                           |
+| `badge`       | {{< type boolean >}}    | Muestra la insignia.                                        |
+| `badge_text`  | {{< type string >}}     | Texto de la insignia.                                       |
+| `badge_url`   | {{< type string >}}     | URL de destino de la insignia.                              |
+| `hidden`      | {{< type boolean >}}    | Oculta la página del menú.                                  |
+| `toc`         | {{< type boolean >}}    | Desactiva la Tabla de Contenidos si es `false`.             |
+| `layout`      | {{< type string >}}     | Plantilla personalizada (ej. `"redirect"`, `"blank"`).       |
+| `redirect`    | {{< type string >}}     | Ruta de destino para `layout: redirect`.                    |

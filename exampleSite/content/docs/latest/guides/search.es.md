@@ -7,7 +7,7 @@ Hudocs incluye un motor de búsqueda del lado del cliente basado en [FlexSearch]
 
 ## Funcionamiento
 
-1. **Generación del índice:** durante `hugo build`, Hugo genera un archivo JSON minificado con el índice de búsqueda para cada idioma y versión de documentación configurada bajo `json/<idioma>.<sección>.<versión>.index.json`.
+1. **Generación del índice:** durante `hugo build`, Hugo genera un archivo JSON minificado con el índice de búsqueda para cada idioma y versión de documentación configurada bajo `json/<idioma>.<sección>.<versión>.index.json` (o `json/<idioma>.<sección>.index.json` en modo monoversión).
 
 2. **Carga bajo demanda:** el índice se descarga cuando el usuario abre el modal de búsqueda, por lo que no se carga durante la carga inicial del sitio.
 
@@ -17,7 +17,7 @@ Hudocs incluye un motor de búsqueda del lado del cliente basado en [FlexSearch]
 
 Los lectores pueden interactuar con el buscador mediante los siguientes controles:
 
-* **Botón o atajo de búsqueda:** abre el modal de búsqueda haciendo clic en el botón de la cabecera o pulsando <kbd>Ctrl K</kbd> (<kbd>Cmd K</kbd> en macOS).
+* **Botón o atajo de búsqueda:** abre el modal de búsqueda haciendo clic en el botón de la cabecera, pulsando <kbd>Ctrl K</kbd> (<kbd>Cmd K</kbd> en macOS), o pulsando <kbd>/</kbd> cuando no se esté escribiendo en un campo de formulario.
 * **Navegación por teclado:**
   * <kbd>↑</kbd> o <kbd>↓</kbd> cambia la selección entre los resultados.
   * <kbd>Enter</kbd> abre el artículo seleccionado.

@@ -93,15 +93,18 @@ Hugo automatically links files belonging to the same page. Any multilingual cont
 
 ## Front Matter Reference
 
-| Field        | Type                 | Description                                        |
-| :----------- | :------------------- | :------------------------------------------------- |
-| `title`      | {{< type string >}}  | Page title.                                        |
-| `icon`       | {{< type string >}}  | Icon from [Meteor Icons](https://meteoricons.com/). |
-| `weight`     | {{< type int >}}     | Order in the menu.                                 |
-| `badge`      | {{< type boolean >}} | Displays the badge.                                |
-| `badge_text` | {{< type string >}}  | Badge text.                                        |
-| `badge_url`  | {{< type string >}}  | Badge destination URL.                             |
-| `hidden`     | {{< type boolean >}} | Hides the page from the menu.                      |
-| `toc`        | {{< type boolean >}} | Disables the Table of Contents when set to `false`.|
-| `layout`     | {{< type string >}}  | Defines the layout, e.g. `redirect`.               |
-| `redirect`   | {{< type string >}}  | Destination path for `layout: redirect`.           |
+| Field         | Type                    | Description                                         |
+| :------------ | :---------------------- | :-------------------------------------------------- |
+| `title`       | {{< type string >}}     | Page title.                                         |
+| `description` | {{< type string >}}     | Page description for metadata and post summaries.   |
+| `icon`        | {{< type string >}}     | Icon from [Meteor Icons](https://meteoricons.com/).  |
+| `date`        | {{< type string >}}     | Publication date (primarily used for posts).        |
+| `tags`        | {{< type "string[]" >}} | List of tags associated with the page or post.      |
+| `weight`      | {{< type int >}}        | Order in the menu.                                  |
+| `badge`       | {{< type boolean >}}    | Displays the badge.                                 |
+| `badge_text`  | {{< type string >}}     | Badge text.                                         |
+| `badge_url`   | {{< type string >}}     | Badge destination URL.                              |
+| `hidden`      | {{< type boolean >}}    | Hides the page from the menu.                       |
+| `toc`         | {{< type boolean >}}    | Disables the Table of Contents when set to `false`. |
+| `layout`      | {{< type string >}}     | Custom layout (e.g. `"redirect"`, `"blank"`).       |
+| `redirect`    | {{< type string >}}     | Destination path for `layout: redirect`.            |

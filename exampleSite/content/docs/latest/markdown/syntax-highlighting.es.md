@@ -3,7 +3,7 @@ title: Resaltado de sintaxis
 weight: 4
 ---
 
-HuDocs utiliza los bloques de código cercados de Hugo para mostrar ejemplos de código. Además del resaltado de sintaxis, estos bloques permiten modificar su presentación mediante diferentes opciones.
+Hudocs utiliza los bloques de código cercados de Hugo para mostrar ejemplos de código. Además del resaltado de sintaxis, estos bloques permiten modificar su presentación mediante diferentes opciones.
 
 Esta página muestra algunas de las opciones más útiles. Para consultar todas las opciones disponibles, revisa la [documentación oficial de Hugo](https://gohugo.io/content-management/syntax-highlighting/).
 
@@ -24,7 +24,7 @@ Puedes mostrar números junto a las líneas del código.
 ```html {linenos=true}
 <!-- Comments -->
 <main class="hero">
-  <h1>Welcome to HuDocs</h1>
+  <h1>Welcome to Hudocs</h1>
   <p>Build beautiful documentation with Hugo.</p>
 </main>
 ```
@@ -91,6 +91,13 @@ markup:
     lineNos: true
     lineNumbersInTable: true
 ```
+
+## Copiar al portapapeles
+
+Hudocs inyecta automáticamente un botón de copiado en todos los bloques de código con resaltado de sintaxis.
+
+* El botón ofrece confirmación visual localizada (`¡Copiado!` o `¡Error al copiar!`) mediante mensajes emergentes (tooltips).
+* Al copiar desde bloques con números de línea activos, los prefijos de número (`.ln`) se retiran automáticamente, asegurando que solo se copie código limpio al portapapeles.
 
 ## Tema de código
 
