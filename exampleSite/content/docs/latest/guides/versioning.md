@@ -52,7 +52,7 @@ docs_versions = ["latest", "1.8", "1.0"]
 
 To publish a new version while keeping previous versions available:
 
-{{% steps %}}
+{{< steps >}}
 1. ### Archive the previous version
 
    Duplicate `latest/` and rename it with the identifier of the version being released:
@@ -75,7 +75,7 @@ To publish a new version while keeping previous versions available:
    redirect: "/getting-started/installation"
    ---
    ```
-{{% /steps %}}
+{{< /steps >}}
 
 ## Documentation Landing Page
 
