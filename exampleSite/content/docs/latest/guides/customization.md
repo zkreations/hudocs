@@ -54,9 +54,9 @@ These variables control the page layout, spacing, and component dimensions:
 ### Typography
 
 | Token               | Default                                                                                | Description                    |
-| :------------------ | :------------------------------------------------------------------------------------- | :----------------------------- |
-| `--font-primary`    | `'Inter', sans-serif`                                                                  | Main typeface for UI and text. |
-| `--font-monospace`  | `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace` | Font stack for code blocks.    |
+| :------------------ | :------------------------- | :----------------------------- |
+| `--font-primary`    | `'Inter', sans-serif`      | Main typeface for UI and text. |
+| `--font-monospace`  | `SFMono-Regular, Menlo...` | Font stack for code blocks.    |
 
 ### Brand Colors
 

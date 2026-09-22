@@ -54,9 +54,9 @@ Estas variables controlan la cuadrícula de la página, los espaciados y las dim
 ### Tipografía
 
 | Token               | Por defecto                                                                            | Descripción                               |
-| :------------------ | :------------------------------------------------------------------------------------- | :---------------------------------------- |
-| `--font-primary`    | `'Inter', sans-serif`                                                                  | Familia tipográfica para interfaz y texto.|
-| `--font-monospace`  | `SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace` | Pila tipográfica monoespaciada de código. |
+| :------------------ | :------------------------- | :---------------------------------------- |
+| `--font-primary`    | `'Inter', sans-serif`      | Familia tipográfica para interfaz y texto.|
+| `--font-monospace`  | `SFMono-Regular, Menlo...` | Pila tipográfica monoespaciada de código. |
 
 ### Colores de Marca
 
