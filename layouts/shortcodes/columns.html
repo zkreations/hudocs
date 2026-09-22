@@ -1,7 +1,5 @@
 {{- $class := .Get "class" | default (.Get 0) -}}
-{{- $inner := replaceRE `(?m)^\s*---\s*$` "§SPLIT§" .Inner -}}
-{{- $inner = replaceRE `(?m)^\s*<!--\s*split\s*-->\s*$` "§SPLIT§" $inner -}}
-{{- $parts := split $inner "§SPLIT§" -}}
+{{- $parts := partial "split-content" .Inner -}}
 <div class="columns{{ with $class }} {{ . }}{{ end }}">
   {{- range $parts -}}
     {{- $content := . | strings.TrimSpace -}}
