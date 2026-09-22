@@ -23,7 +23,7 @@
 {{- end -}}
 
 {{- if or $prev $next -}}
-<nav class="pagination" aria-label='{{ i18n "pagination_label" }}'>
+<nav class="pagination" aria-label='{{ i18n "pagination_label" | default "Pagination" }}'>
   <ul class="pagination-list">
     {{ with $prev }}
     <li class="pagination-item pagination-prev">
@@ -32,7 +32,7 @@
           {{- partial "svg" (dict "icon" "arrow-left") -}}
         </span>
         <span class="pagelink-content">
-          <span class="pagelink-meta">{{ i18n "pagination_previous" }}</span>
+          <span class="pagelink-meta">{{ i18n "pagination_previous" | default "Previous" }}</span>
           <span class="pagelink-title">{{ partial "title" . }}</span>
         </span>
       </a>
@@ -42,7 +42,7 @@
     <li class="pagination-item pagination-next">
       <a class="pagelink has-icon" href="{{ .RelPermalink }}">
         <span class="pagelink-content">
-          <span class="pagelink-meta">{{ i18n "pagination_next" }}</span>
+          <span class="pagelink-meta">{{ i18n "pagination_next" | default "Next" }}</span>
           <span class="pagelink-title">{{ partial "title" . }}</span>
         </span>
         <span class="pagelink-icon i-md">
