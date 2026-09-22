@@ -23,8 +23,10 @@ function initToc () {
   let clickTimeout = null
   let ticking = false
   let headerOffset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0
+  let docHeight = 0
 
   function updateHeadingTops () {
+    docHeight = document.documentElement.scrollHeight
     headingTops = headings.map((h) => ({
       heading: h,
       top: h.getBoundingClientRect().top + window.scrollY
@@ -51,7 +53,6 @@ function initToc () {
 
     const scrollY = window.scrollY
     const scrollBottom = window.innerHeight + scrollY
-    const docHeight = document.documentElement.scrollHeight
 
     if (scrollBottom >= docHeight - 10 && headingTops.length) {
       setActiveHeading(headingTops[headingTops.length - 1].heading)
