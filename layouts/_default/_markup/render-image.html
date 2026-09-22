@@ -1,5 +1,5 @@
 {{- $u := urls.Parse .Destination -}}
-{{- $firstEager := site.Params.imageFirstEager | default true -}}
+{{- $firstEager := or site.Params.image_first_eager site.Params.imageFirstEager | default true -}}
 {{- $isPriority := or (and $firstEager (eq .Ordinal 0)) (in (slice "priority" "eager") $u.Fragment) -}}
 {{- $src := .Destination -}}
 {{- if $u.Fragment -}}
@@ -12,7 +12,7 @@
   {{- $image = resources.Get $src -}}
 {{- end -}}
 {{- if not $image -}}
-  {{- warnf "render-image: Image not found: %s (página: %s)" $src .Page.RelPermalink -}}
+  {{- warnf "%s: image not found: %s (page: %s)" .Position $src .Page.RelPermalink -}}
 {{- end -}}
 {{- with $image -}}
   {{- $width = .Width -}}
