@@ -1,2 +1,2 @@
-{{- $link := partial "resolve-link" (dict "href" .Destination) -}}
+{{- $link := partialCached "resolve-link" (dict "href" .Destination) .Destination .Page.Language.Lang -}}
 <a href="{{ $link.url | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $link.target }} target="{{ . }}"{{ end }}{{ with $link.rel }} rel="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
