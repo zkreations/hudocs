@@ -1,16 +1,20 @@
 {{- $comma := false -}}
 {{- $root := . -}}
+{{- $pages := partialCached "flat-pages" (dict "Section" $root) $root.Path -}}
 [
-{{- range $i, $page := where .RegularPagesRecursive "Params.hidden" "ne" true -}}
-  {{- $isRedirect := or (isset .Params "redirect") (eq .Params.layout "redirect") -}}
-  {{- if and (not $isRedirect) .File (or .Title (truncate 120 .Plain)) -}}
+{{- range $i, $page := $pages -}}
+  {{- if and $page.File (or $page.Title (truncate 120 $page.Plain)) -}}
     {{- $content := .Content | replaceRE "(?s)<pre[^>]*>.*?</pre>" "" | plainify | replaceRE "\\s{2,}" " " | strings.TrimSpace -}}
     {{- $summary := truncate 100 $content | default (i18n "no_summary") -}}
 
     {{- $parentSection := "" -}}
-    {{- range $page.Ancestors -}}
-      {{- if eq .Parent $root -}}
-        {{- $parentSection = partial "title" . -}}
+    {{- if and $page.IsSection (eq $page.Parent $root) -}}
+      {{- $parentSection = partial "title" $page -}}
+    {{- else -}}
+      {{- range $page.Ancestors -}}
+        {{- if eq .Parent $root -}}
+          {{- $parentSection = partial "title" . -}}
+        {{- end -}}
       {{- end -}}
     {{- end -}}
 

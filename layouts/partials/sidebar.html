@@ -28,7 +28,7 @@
             </label>
           </div>
           {{ template "tree-list" (dict "Section" . "CurrentPage" $.CurrentPage "Level" $nextLevel ) }}
-        {{ else if and .IsPage .RawContent }}
+        {{ else if and .IsPage .RawContent (not (or (isset .Params "redirect") (eq .Params.layout "redirect"))) }}
           <div class="tree-row tree-label{{ if $isSub }} subtree-label{{ end }}">
             {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level ) }}
           </div>
