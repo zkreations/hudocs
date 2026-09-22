@@ -37,7 +37,7 @@ git submodule update --remote --merge
 
 Hugo Modules lets you manage Hudocs as a Go dependency.
 
-{{% steps %}}
+{{< steps >}}
 1. ### Initialize the module
 
    Initialize your site's module, replacing the path with your repository's:
@@ -61,7 +61,7 @@ Hugo Modules lets you manage Hudocs as a Go dependency.
    ```bash
    hugo mod get github.com/zkreations/hudocs
    ```
-{{% /steps %}}
+{{< /steps >}}
 
 ### Direct Clone
 
@@ -75,7 +75,9 @@ git clone https://github.com/zkreations/hudocs themes/hudocs
 
 The `exampleSite` directory contains a configuration and content you can use as a starting point.
 
-{{% steps %}}
+When using Git Submodules or Direct Clone, copy the example files directly from the `themes/` directory:
+
+{{< steps >}}
 1. ### Copy the example files
 
    Copy the example configuration and content to the root of your project:
@@ -84,6 +86,8 @@ The `exampleSite` directory contains a configuration and content you can use as 
    cp themes/hudocs/exampleSite/hugo.toml .
    cp -R themes/hudocs/exampleSite/content .
    ```
+
+   If you installed via Hugo Modules, you can download or copy these files directly from the [GitHub repository](https://github.com/zkreations/hudocs/tree/main/exampleSite).
 
 2. ### Start the server
 
@@ -96,7 +100,7 @@ The `exampleSite` directory contains a configuration and content you can use as 
 3. ### Open the site
 
    Open `http://localhost:1313/` in your browser.
-{{% /steps %}}
+{{< /steps >}}
 
 ## Next Steps
 
