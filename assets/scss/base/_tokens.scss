@@ -27,6 +27,7 @@ $secondary: #4338ca !default;
   --on-secondary: #ffffff;
   --secondary-container: color-mix(in srgb, var(--secondary) 12%, transparent);
   --on-secondary-container: var(--secondary);
+  --secondary-container-hover: color-mix(in srgb, var(--secondary) 22%, transparent);
 
   --surface: #ffffff;
   --surface-container: #f4f4f5;
@@ -151,6 +152,7 @@ $secondary: #4338ca !default;
     --on-secondary: #09090b;
     --secondary-container: color-mix(in srgb, var(--secondary) 12%, transparent);
     --on-secondary-container: var(--secondary);
+    --secondary-container-hover: color-mix(in srgb, var(--secondary) 24%, transparent);
 
     --surface: #18181b;
     --surface-container: #222225;

@@ -26,7 +26,7 @@ Utiliza parámetros nombrados para definir el destino, el texto y las opciones d
 | `href`    |    `0`   | {{< type string >}} |     Sí    | URL de destino, interna o externa.                              |
 | `name`    |    `1`   | {{< type string >}} |     Sí    | Texto visible. También admite `title` y `text` como alias.      |
 | `icon`    |    `2`   | {{< type string >}} |     No    | Nombre de un ícono de [Meteor Icons](https://meteoricons.com/). |
-| `type`    |    `3`   | {{< type string >}} |     No    | Variante visual, como `primary`.                                |
+| `type`    |    `3`   | {{< type string >}} |     No    | Variante visual, como `primary` o `secondary`.                  |
 | `rel`     |    `4`   | {{< type string >}} |     No    | Valor personalizado del atributo `rel`.                         |
 
 ## Sintaxis posicional
@@ -58,6 +58,16 @@ El valor `primary` genera la clase `btn-primary`:
 ```
 
 {{< button href="#demo" name="Instalación rápida" type="primary" >}}
+
+### Botón secundario
+
+El valor `secondary` genera la clase `btn-secondary`:
+
+```markdown
+{{</* button href="#demo" name="Explorar funciones" type="secondary" */>}}
+```
+
+{{< button href="#demo" name="Explorar funciones" type="secondary" >}}
 
 ## Validación
 

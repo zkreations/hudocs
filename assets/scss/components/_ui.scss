@@ -82,6 +82,15 @@
       --btn-bg: var(--primary-container-hover);
     }
   }
+
+  &-secondary {
+    --btn-color: var(--on-secondary-container);
+    --btn-bg: var(--secondary-container);
+
+    &:hover {
+      --btn-bg: var(--secondary-container-hover);
+    }
+  }
 }
 
 // MeteorIcons

@@ -26,7 +26,7 @@ Use named parameters to define the destination, label, and button options:
 | `href`    |    `0`   | {{< type string >}} |   Yes    | Destination URL, internal or external.                             |
 | `name`    |    `1`   | {{< type string >}} |   Yes    | Visible label. Also accepts `title` and `text` as aliases.         |
 | `icon`    |    `2`   | {{< type string >}} |    No    | Name of a [Meteor Icons](https://meteoricons.com/) icon.           |
-| `type`    |    `3`   | {{< type string >}} |    No    | Visual variant, such as `primary`.                                 |
+| `type`    |    `3`   | {{< type string >}} |    No    | Visual variant, such as `primary` or `secondary`.                 |
 | `rel`     |    `4`   | {{< type string >}} |    No    | Custom value for the `rel` attribute.                              |
 
 ## Positional syntax
@@ -58,6 +58,16 @@ The `primary` value generates the `btn-primary` class:
 ```
 
 {{< button href="#demo" name="Quick install" type="primary" >}}
+
+### Secondary button
+
+The `secondary` value generates the `btn-secondary` class:
+
+```markdown
+{{</* button href="#demo" name="Explore features" type="secondary" */>}}
+```
+
+{{< button href="#demo" name="Explore features" type="secondary" >}}
 
 ## Validation
 
