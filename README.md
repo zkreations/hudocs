@@ -22,7 +22,9 @@
 - **Client-side search:** Local search modal powered by [FlexSearch](https://github.com/nextapps-de/flexsearch), with isolated index files per language and version generated at build time.
 - **Performance and security:** Optimized for [Core Web Vitals](https://pagespeed.web.dev/report?url=https://hudocs.com) with an A+ rating on [Mozilla Observatory](https://observatory.mozilla.org/analyze/hudocs.com).
 - **Multilingual support (i18n):** Multi-language support linked through Hugo's i18n conventions.
-- **Authoring features:** Dark/light scheme switcher, CSS `@layer` token architecture, customizable code blocks, tabs, steps, hints/alerts, and [Meteor Icons](https://meteoricons.com/) integration.
+- **Authoring features:** Dark/light scheme switcher, customizable code blocks with six built-in Duotone themes, tabs, steps, hints/alerts, annotated code snippets, data type badges, and [Meteor Icons](https://meteoricons.com/) integration.
+- **Blog support:** Optional posts section with pagination, post cards, date formatting, and RSS feed.
+- **AI assistant:** Configurable dropdown in article headers with direct actions for ChatGPT and Claude, prefilled with page context.
 
 ## Documentation
 
@@ -64,9 +66,22 @@ content/
         └── ...
 ```
 
+## Shortcodes
+
+| Shortcode | Description |
+| :--- | :--- |
+| `{{< steps >}}` | Renders ordered lists as numbered step-by-step guides |
+| `{{< tabs >}}` / `{{< tab >}}` | Tabbed content with automatic merging of consecutive syntax tabs |
+| `{{< annotated >}}` | Pairs code, tabs, or tables with explanatory notes |
+| `{{< types >}}` | Formats data types, expressions, and parameter structures with badge styles |
+| `{{< hint >}}` | Hint or alert block (`info`, `warning`, `danger`, `success`) |
+| `{{< button >}}` | Button with primary/secondary variants and language-aware link resolution |
+| `{{< pagelink >}}` | Styled link card with title and description |
+| `{{< columns >}}` | Multi-column layout |
+
 ## Requirements
 
-- Hugo 0.164.0 or higher (Extended version)
+- Hugo Extended 0.164.0 or higher
 - [Git](https://git-scm.com/downloads)
 
 ## Installation
