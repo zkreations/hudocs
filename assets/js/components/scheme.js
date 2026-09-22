@@ -11,6 +11,16 @@ function getMode (pref) {
   return mediaQuery.matches ? 'dark' : 'light'
 }
 
+function syncUI (pref) {
+  if (themeContainer) {
+    themeContainer.querySelectorAll('[data-theme]').forEach((btn) => {
+      const isSelected = btn.dataset.theme === pref
+      btn.classList.toggle(ACTIVE_CLASS, isSelected)
+      btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false')
+    })
+  }
+}
+
 function applyTheme (pref) {
   const mode = getMode(pref)
 
@@ -25,13 +35,7 @@ function applyTheme (pref) {
     })
   })
 
-  if (themeContainer) {
-    themeContainer.querySelectorAll('[data-theme]').forEach((btn) => {
-      const isSelected = btn.dataset.theme === pref
-      btn.classList.toggle(ACTIVE_CLASS, isSelected)
-      btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false')
-    })
-  }
+  syncUI(pref)
 }
 
 function getStorageItem (key, fallback) {
@@ -51,7 +55,13 @@ function setStorageItem (key, value) {
 function initTheme () {
   let preference = getStorageItem(STORAGE_KEY, 'system')
 
-  applyTheme(preference)
+  const mode = getMode(preference)
+  if (!document.documentElement.classList.contains(mode)) {
+    applyTheme(preference)
+  } else {
+    if (metaColorScheme) metaColorScheme.content = mode
+    syncUI(preference)
+  }
 
   if (themeContainer) {
     themeContainer.addEventListener('click', (e) => {
