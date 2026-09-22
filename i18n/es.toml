@@ -103,4 +103,13 @@ other = "Blog"
 [no_posts]
 other = "No se encontraron publicaciones"
 
+[ask_ai]
+other = "Consultar con IA"
+
+[open_in_chatgpt]
+other = "Abrir en ChatGPT"
+
+[open_in_claude]
+other = "Abrir en Claude"
+
 

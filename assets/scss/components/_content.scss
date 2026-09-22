@@ -23,9 +23,26 @@
     font-weight: 500;
   }
 
-  &-edit {
+  &-actions {
     margin-inline-start: auto;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
     flex: none;
+  }
+
+  &-action,
+  &-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-surface-variant);
+    transition: color .2s;
+
+    &:hover,
+    &.is-active {
+      color: var(--primary);
+    }
   }
 
   &-anchor {

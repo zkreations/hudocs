@@ -7,6 +7,7 @@
   transition-timing-function: var(--timing);
   transition-duration: .3s;
   position: absolute;
+  z-index: 20;
   opacity: 1;
   top: 100%;
   right: 0;
@@ -39,11 +40,20 @@
   gap: .5rem;
 
   &-link {
-    font-weight: 500;
+    color: var(--link-color, inherit);
 
+    &:hover,
     &.is-active {
       color: var(--primary);
+    }
+
+    &.is-active {
       pointer-events: none;
+    }
+
+    svg {
+      color: var(--on-surface-muted);
+      flex: none;
     }
   }
 }

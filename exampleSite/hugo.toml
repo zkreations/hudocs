@@ -76,6 +76,11 @@ summaryLength = 20
   # Repository URL for the "Edit this page" button.
   docs_edit_url = "https://github.com/zkreations/hudocs/tree/main/exampleSite/content"
 
+  # AI Assistant Actions. Default: true
+  # docs_ai = false
+  # docs_chatgpt = false
+  # docs_claude = false
+
   # Default badge text. Default: "New" (i18n)
   # docs_badge_text = "Beta"
 
