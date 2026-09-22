@@ -36,7 +36,7 @@ El parámetro `icon` es opcional. Si no se especifica, no se muestra ningún íc
 
 Para los enlaces externos, el shortcode muestra automáticamente un indicador en el extremo derecho. Si además se define un `icon` personalizado, ambos íconos se muestran de forma independiente:
 
-{{< pagelink href="https://gohugo.io/" title="Documentación de Hugo" description="Guías oficiales con ícono personalizado" icon="hugo" >}}
+{{< pagelink href="https://github.com/zkreations/hudocs" title="Hudocs GitHub" description="Ver el código fuente" icon="github" >}}
 
 ## Enlaces internos y externos
 

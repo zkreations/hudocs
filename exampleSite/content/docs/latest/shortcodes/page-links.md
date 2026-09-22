@@ -36,7 +36,7 @@ The `icon` parameter is optional. If not specified, no icon is shown at the begi
 
 For external links, the shortcode automatically displays an indicator on the right side. If a custom `icon` is also defined, both icons are displayed independently:
 
-{{< pagelink href="https://gohugo.io/" title="Hugo Documentation" description="Official guides with a custom icon" icon="hugo" >}}
+{{< pagelink href="https://github.com/zkreations/hudocs" title="Hudocs GitHub" description="View the source code" icon="github" >}}
 
 ## Internal and external links
 
