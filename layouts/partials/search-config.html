@@ -1,0 +1,14 @@
+{{- $docsContext := .docsContext -}}
+{{- $page := .page -}}
+{{- $lang := $page.Language.Lang -}}
+{{- $file := "" -}}
+{{- if $docsContext.isSingleVersion -}}
+  {{- $file = printf "json/%s.%s.index.json" $lang $docsContext.section -}}
+{{- else -}}
+  {{- $file = printf "json/%s.%s.%s.index.json" $lang $docsContext.section $docsContext.version -}}
+{{- end -}}
+{{- $index := resources.Get "json/index.json" | resources.ExecuteAsTemplate $file $docsContext.versionPage | resources.Minify | resources.Fingerprint -}}
+{{- $flexSearch := resources.Get "vendor/flexsearch.bundle.min.js" | resources.Minify | resources.Fingerprint -}}
+{{- $searchJS := resources.Get "js/search.js" | js.Build (dict "targetPath" "js/search.js") | resources.Minify | resources.Fingerprint -}}
+<script id="search-config" type="application/json">{{ dict "indexUrl" $index.RelPermalink "flexsearchUrl" $flexSearch.RelPermalink "searchUrl" $searchJS.RelPermalink "i18n" (dict "noResults" (i18n "no_results") "searchError" (i18n "search_error")) | jsonify | safeJS }}</script>
+
