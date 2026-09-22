@@ -1,4 +1,4 @@
-{{ if and (ne .Params.toc false) (strings.Contains .TableOfContents "<li>") }}
+{{- if and (ne .Params.toc false) (strings.Contains .TableOfContents "<li>") -}}
 <div class="toc-content scrollable">
   <div class="toc-header">
     <span class="toc-title">
@@ -14,4 +14,4 @@
     {{ .TableOfContents }}
   </div>
 </div>
-{{ end }}
+{{- end -}}

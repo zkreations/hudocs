@@ -1,8 +1,14 @@
 {{- $page := . -}}
 {{- $class := "doc" -}}
+{{- $view := "article" -}}
+{{- $showTOC := true -}}
 {{- if reflect.IsMap . -}}
   {{- $page = default . .page -}}
   {{- $class = default $class .class -}}
+  {{- $view = default $view .view -}}
+  {{- if isset . "toc" -}}
+    {{- $showTOC = .toc -}}
+  {{- end -}}
 {{- end -}}
 {{- $docsContext := partialCached "docs-context" $page (or $page.Path $page.RelPermalink) -}}
 <div class="{{ $class }} layout container">
@@ -12,11 +18,16 @@
   <main class="main main-index" id="main-content" tabindex="-1">
     {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") "error" (i18n "copy_error" | default "Failed to copy!") -}}
     <article class="article" data-i18n='{{ $i18n | jsonify }}'>
-      {{ partial "article" $page }}
+      {{ partial $view $page }}
       {{ partial "footer" $page }}
     </article>
-    <aside class="toc" aria-label='{{ i18n "contents" | default "Contents" }}'>
-      {{ partial "toc" $page }}
-    </aside>
+    {{- if $showTOC -}}
+      {{- $toc := partial "toc" $page | strings.TrimSpace -}}
+      {{- if $toc -}}
+        <aside class="toc" aria-label='{{ i18n "contents" | default "Contents" }}'>
+          {{ $toc | safeHTML }}
+        </aside>
+      {{- end -}}
+    {{- end -}}
   </main>
 </div>
