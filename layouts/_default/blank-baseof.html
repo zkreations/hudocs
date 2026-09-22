@@ -4,7 +4,7 @@
 {{- if not (in $codeThemes $codeTheme) -}}
   {{- $codeTheme = "duotone-dark" -}}
 {{- end -}}
-<html lang="{{ .Site.Language.Lang }}" data-code-theme="{{ $codeTheme }}">
+<html lang="{{ .Language.Lang }}" data-code-theme="{{ $codeTheme }}">
   <head>
     {{ partial "head" . }}
     {{ partial "seo" . }}
@@ -12,6 +12,7 @@
     {{ partialCached "scripts" . }}
   </head>
   <body>
+    <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" | default "Skip to content" }}</a>
     <div class="template">
       {{ block "main" . }}{{ end }}
     </div>
