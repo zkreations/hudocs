@@ -1,24 +1,28 @@
 {{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
-{{- $sectionPage := false -}}
-{{- if $docsContext.isDoc -}}
-  {{- $sectionPage = $docsContext.versionPage -}}
-{{- else if and .Section (ne .Section "") -}}
-  {{- $sectionPage = .Site.GetPage .Section -}}
-{{- end -}}
-{{- if $sectionPage -}}
-{{- $pages := partialCached "flat-pages" (dict "Section" $sectionPage) $sectionPage.Path -}}
 {{- $prev := "" -}}
 {{- $next := "" -}}
 
-{{- range $index, $page := $pages -}}
-  {{- if eq $page.RelPermalink $.RelPermalink -}}
-    {{- if gt $index 0 -}}
-      {{- $prev = index $pages (sub $index 1) -}}
-    {{- end -}}
-    {{- if lt $index (sub (len $pages) 1) -}}
-      {{- $next = index $pages (add $index 1) -}}
+{{- if $docsContext.isDoc -}}
+  {{- $pagination := site.Params.docs_pagination -}}
+  {{- if eq $pagination nil -}}
+    {{- $pagination = site.Params.pagination -}}
+  {{- end -}}
+  {{- if and (ne $pagination false) $docsContext.versionPage -}}
+    {{- $pages := partialCached "flat-pages" (dict "Section" $docsContext.versionPage) $docsContext.versionPage.Path -}}
+    {{- range $index, $page := $pages -}}
+      {{- if eq $page.RelPermalink $.RelPermalink -}}
+        {{- if gt $index 0 -}}
+          {{- $prev = index $pages (sub $index 1) -}}
+        {{- end -}}
+        {{- if lt $index (sub (len $pages) 1) -}}
+          {{- $next = index $pages (add $index 1) -}}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
+{{- else if eq .Type "posts" -}}
+  {{- $prev = .PrevInSection -}}
+  {{- $next = .NextInSection -}}
 {{- end -}}
 
 {{- if or $prev $next -}}
@@ -52,5 +56,4 @@
     {{ end }}
   </ul>
 </nav>
-{{- end -}}
 {{- end -}}
