@@ -97,4 +97,10 @@ other = "Menú principal"
 [toggle_section]
 other = "Alternar sección"
 
+[posts]
+other = "Blog"
+
+[no_posts]
+other = "No se encontraron publicaciones"
+
 

@@ -40,6 +40,11 @@
   &-table {
     overflow-x: auto;
   }
+
+  &-meta {
+    font-size: .875rem;
+    color: var(--on-surface-muted);
+  }
 }
 
 .markdown {

@@ -4,8 +4,9 @@
   {{- $page = default . .page -}}
   {{- $class = default $class .class -}}
 {{- end -}}
+{{- $docsContext := partialCached "docs-context" $page (or $page.Path $page.RelPermalink) -}}
 <div class="{{ $class }} layout container">
-  <aside class="aside" id="docs-sidebar" aria-label='{{ i18n "documentation" | default "Documentation" }}'>
+  <aside class="aside" id="docs-sidebar" aria-label='{{ if $docsContext.isDoc }}{{ i18n "documentation" | default "Documentation" }}{{ else }}{{ i18n "main_menu" | default "Main menu" }}{{ end }}'>
     {{ partial "sidebar" $page }}
   </aside>
   <main class="main main-index" id="main-content" tabindex="-1">

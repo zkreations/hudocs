@@ -1,18 +1,27 @@
 <header class="article-header">
-  <h1 class="article-title has-icon">
-    {{- partial "title" .Page -}}
-    {{- if eq .Page.Params.badge true -}}
-      {{- $badgeText := default (or site.Params.docs_badge_text site.Params.badge_text) .Page.Params.badge_text -}}
-      {{- $badgeText = default (i18n "new") $badgeText -}}
-      {{- $badgeURL := default (or site.Params.docs_badge_url site.Params.badge_url) .Page.Params.badge_url -}}
+  <div class="article-header-content">
+    <h1 class="article-title has-icon">
+      {{- partial "title" .Page -}}
+      {{- if eq .Page.Params.badge true -}}
+        {{- $badgeText := default (or site.Params.docs_badge_text site.Params.badge_text) .Page.Params.badge_text -}}
+        {{- $badgeText = default (i18n "new") $badgeText -}}
+        {{- $badgeURL := default (or site.Params.docs_badge_url site.Params.badge_url) .Page.Params.badge_url -}}
 
-      {{- if $badgeURL -}}
-        <a href="{{ $badgeURL }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ $badgeText }}</a>
-      {{- else -}}
-        <span class="badge badge-big">{{ $badgeText }}</span>
+        {{- if $badgeURL -}}
+          <a href="{{ $badgeURL }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ $badgeText }}</a>
+        {{- else -}}
+          <span class="badge badge-big">{{ $badgeText }}</span>
+        {{- end -}}
       {{- end -}}
+    </h1>
+    {{- $docsContext := partialCached "docs-context" .Page (or .Page.Path .Page.RelPermalink) -}}
+    {{- if and (not $docsContext.isDoc) .Page.Date -}}
+      {{- $dateFormat := or site.Params.footer_date_format site.Params.date_format | default "2006-01-02" -}}
+      <div class="article-meta">
+        <time datetime="{{ .Page.Date.Format "2006-01-02" }}">{{ .Page.Date.Format $dateFormat }}</time>
+      </div>
     {{- end -}}
-  </h1>
+  </div>
   {{- $editURL := or site.Params.docs_edit_url site.Params.github_repo_edit -}}
   {{- if $editURL -}}
     {{- with .Page.File }}

@@ -7,7 +7,7 @@ baseURL = 'https://hudocs.com/'
 enableRobotsTXT = true
 enableInlineShortcodes = true
 enableGitInfo = true
-disableKinds = ["taxonomy", "term", "RSS"]
+disableKinds = ["taxonomy", "term"]
 summaryLength = 20
 
 [languages]
@@ -21,17 +21,21 @@ summaryLength = 20
 
 [menus]
   [[menus.main]]
-    pageRef = "/docs"
+    pageRef = "/posts"
     weight = 1
 
   [[menus.main]]
-    pageRef = "/about"
+    pageRef = "/docs"
     weight = 2
+
+  [[menus.main]]
+    pageRef = "/about"
+    weight = 3
 
   [[menus.main]]
     name = "GitHub"
     url = "https://github.com/zkreations/hudocs"
-    weight = 3
+    weight = 4
     [menus.main.params]
       icon = "github"
 
@@ -83,6 +87,10 @@ summaryLength = 20
   # Available: duotone-dark, duotone-dark-sky, duotone-dark-sea,
   #            duotone-dark-space, duotone-dark-earth, duotone-dark-forest
   # code_theme = "duotone-dark"
+
+  # Posts
+  # Number of posts per page. Default: 10
+  # posts_paginate = 10
 
   # Footer
   # Last modified date format. Default: "2006-01-02"

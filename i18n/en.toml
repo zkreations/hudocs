@@ -97,4 +97,10 @@ other = "Main menu"
 [toggle_section]
 other = "Toggle section"
 
+[posts]
+other = "Blog"
+
+[no_posts]
+other = "No posts found"
+
 
