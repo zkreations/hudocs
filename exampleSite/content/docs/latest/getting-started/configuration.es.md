@@ -97,6 +97,24 @@ Define los niveles de encabezado que se incluyen en la tabla de contenidos. Con 
 
 Las opciones específicas de Hudocs se configuran dentro de `[params]`. Las opciones se organizan por su alcance funcional:
 
+### Sitio
+
+#### description
+
+Descripción global utilizada para metadatos SEO, tarjetas Open Graph, Twitter cards y la página principal.
+
+```toml
+description = "A Hugo theme for documentation sites"
+```
+
+#### image_first_eager
+
+Cuando se establece en `true`, la primera imagen de la página se carga de forma anticipada con `loading="eager"` y `fetchpriority="high"`. El valor predeterminado es `true`.
+
+```toml
+image_first_eager = true
+```
+
 ### Identidad de Marca (Branding)
 
 #### brand_icon
@@ -159,7 +177,7 @@ docs_edit_url = "https://github.com/tu-usuario/repositorio/tree/main/content"
 
 #### docs_badge_text
 
-Texto predeterminado que se muestra en las insignias de documentación habilitadas en las páginas. El valor predeterminado es `"Nuevo"`.
+Texto predeterminado que se muestra en las insignias de documentación habilitadas en las páginas. Si se omite, toma por defecto la traducción correspondiente de `"new"` (`i18n "new"`).
 
 ```toml
 docs_badge_text = "Nuevo"
@@ -173,6 +191,30 @@ URL de destino para las insignias de documentación configuradas globalmente.
 docs_badge_url = "https://ejemplo.com"
 ```
 
+#### docs_ai
+
+Controla el botón de acción con Asistente de IA en el encabezado de los artículos de documentación. Si se establece en `false`, el menú desplegable de IA se oculta. El valor predeterminado es `true`.
+
+```toml
+docs_ai = true
+```
+
+#### docs_chatgpt
+
+Controla la acción "Abrir en ChatGPT" dentro del menú desplegable del Asistente de IA. El valor predeterminado es `true`.
+
+```toml
+docs_chatgpt = true
+```
+
+#### docs_claude
+
+Controla la acción "Abrir en Claude" dentro del menú desplegable del Asistente de IA. El valor predeterminado es `true`.
+
+```toml
+docs_claude = true
+```
+
 ### Bloques de Código
 
 #### code_theme
@@ -181,6 +223,24 @@ Configura el tema de color para los bloques de código con resaltado de sintaxis
 
 ```toml
 code_theme = "duotone-dark"
+```
+
+### Publicaciones (Blog)
+
+#### posts_paginate
+
+Define la cantidad de publicaciones mostradas por página en el listado de blog. El valor predeterminado es `10`.
+
+```toml
+posts_paginate = 10
+```
+
+#### posts_date_format
+
+Define el formato utilizado para las fechas de publicación en las tarjetas de artículos. El formato sigue las reglas de fecha de Go. El valor predeterminado es `2006-01-02`.
+
+```toml
+posts_date_format = "January 2, 2006"
 ```
 
 ### Pie de Página (Footer)

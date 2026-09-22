@@ -97,6 +97,24 @@ Defines the heading levels included in the table of contents. With this configur
 
 Hudocs-specific options are configured inside `[params]`. Options are organized by functional scope:
 
+### Site
+
+#### description
+
+Global description used for metadata, Open Graph tags, Twitter cards, and the homepage.
+
+```toml
+description = "A Hugo theme for documentation sites"
+```
+
+#### image_first_eager
+
+When set to `true`, the first image in a page is loaded eagerly with `loading="eager"` and `fetchpriority="high"`. The default value is `true`.
+
+```toml
+image_first_eager = true
+```
+
 ### Branding
 
 #### brand_icon
@@ -159,7 +177,7 @@ docs_edit_url = "https://github.com/your-username/repository/tree/main/content"
 
 #### docs_badge_text
 
-Default text displayed on documentation badges enabled across pages. The default value is `"New"`.
+Default text displayed on documentation badges enabled across pages. If omitted, it defaults to the localized translation of `"new"` (`i18n "new"`).
 
 ```toml
 docs_badge_text = "New"
@@ -173,6 +191,30 @@ Destination URL for globally configured documentation badges.
 docs_badge_url = "https://example.com"
 ```
 
+#### docs_ai
+
+Controls the AI Assistant action button in the header of documentation articles. When set to `false`, the AI dropdown is hidden. The default value is `true`.
+
+```toml
+docs_ai = true
+```
+
+#### docs_chatgpt
+
+Controls the "Open in ChatGPT" action inside the AI Assistant dropdown. The default value is `true`.
+
+```toml
+docs_chatgpt = true
+```
+
+#### docs_claude
+
+Controls the "Open in Claude" action inside the AI Assistant dropdown. The default value is `true`.
+
+```toml
+docs_claude = true
+```
+
 ### Code Blocks
 
 #### code_theme
@@ -181,6 +223,24 @@ Configures the color theme for syntax-highlighted code blocks. The available the
 
 ```toml
 code_theme = "duotone-dark"
+```
+
+### Posts
+
+#### posts_paginate
+
+Defines the number of articles displayed per page on posts list pages. The default value is `10`.
+
+```toml
+posts_paginate = 10
+```
+
+#### posts_date_format
+
+Defines the date format used for publication dates in post cards. The format follows Go's date rules. The default value is `2006-01-02`.
+
+```toml
+posts_date_format = "January 2, 2006"
 ```
 
 ### Footer
