@@ -1,18 +1,21 @@
-![cover](https://raw.githubusercontent.com/zkreations/hudocs/main/images/cover.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/zkreations/hudocs/refs/heads/main/images/logo.png" width="75" alt="Hudocs" />
+  <h1 align="center">Hudocs</h1>
+</p>
+
+<p align="center">Documentation theme for Hugo. No Node.js dependencies and no complex deployment pipelines. Built entirely with Hugo Extended's native asset pipeline.</p>
 
 <p align="center">
-  <a href="https://github.com/zkreations/hudocs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-teal" alt="License"></a>
-  <a href="https://github.com/zkreations/hudocs/releases"><img src="https://img.shields.io/github/v/release/zkreations/hudocs" alt="Last Release"></a>
-  <a href="https://app.netlify.com/projects/hudocs/deploys"><img src="https://api.netlify.com/api/v1/badges/4f5686e0-d6f8-4ff8-ba4e-901d19644dfe/deploy-status" alt="Netlify Status"></a>
+  <a href="https://github.com/zkreations/hudocs/blob/main/LICENSE"><img src="https://img.shields.io/github/license/zkreations/hudocs?style=for-the-badge&labelColor=030712&color=14b8a6" alt="license"></a>
+  <a href="https://github.com/zkreations/hudocs/releases"><img src="https://img.shields.io/github/v/release/zkreations/hudocs?style=for-the-badge&labelColor=030712&color=0ea5e9" alt="release"></a>
+  <a href="https://app.netlify.com/projects/hudocs/deploys"><img src="https://img.shields.io/netlify/4f5686e0-d6f8-4ff8-ba4e-901d19644dfe?style=for-the-badge&labelColor=030712&color=6366f1" alt="netlify"></a>
 </p>
 
 <p align="center">
   <a href="https://hudocs.com/"><strong>View a live demo →</strong></a>
 </p>
 
----
-
-**Hudocs** is a documentation theme for [Hugo](https://gohugo.io/) with no Node.js dependencies, no `node_modules`, and no complex deployment pipelines. It relies entirely on Hugo Extended's native asset pipeline (`css.Sass` and `js.Build`).
+![cover](https://raw.githubusercontent.com/zkreations/hudocs/main/images/cover.png)
 
 ## Why Hudocs?
 
