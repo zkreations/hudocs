@@ -332,6 +332,10 @@
     transition: color .3s;
     font-size: .875rem;
   }
+
+  &-external {
+    margin-inline-start: auto;
+  }
 }
 
 .pagination {
