@@ -52,6 +52,9 @@ other = "Copy"
 [copied]
 other = "Copied!"
 
+[copy_error]
+other = "Failed to copy!"
+
 [close]
 other = "Close"
 

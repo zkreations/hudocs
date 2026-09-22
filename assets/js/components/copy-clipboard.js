@@ -15,6 +15,7 @@ function addCopyButtons () {
 
   const COPY_TEXT = i18n.copy
   const COPIED_TEXT = i18n.copied
+  const ERROR_TEXT = i18n.error || 'Error'
   const clipboard = navigator.clipboard
 
   const containers = article.querySelectorAll('.highlight')
@@ -47,12 +48,18 @@ function addCopyButtons () {
       text = clone.textContent
     }
 
+    clearTimeout(button._copyTimeout)
     clipboard.writeText(text).then(() => {
       button.setAttribute('aria-label', COPIED_TEXT)
-      setTimeout(() => {
+      button._copyTimeout = setTimeout(() => {
         button.setAttribute('aria-label', COPY_TEXT)
       }, 2000)
-    }).catch(() => {})
+    }).catch(() => {
+      button.setAttribute('aria-label', ERROR_TEXT)
+      button._copyTimeout = setTimeout(() => {
+        button.setAttribute('aria-label', COPY_TEXT)
+      }, 2000)
+    })
   })
 }
 

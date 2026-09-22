@@ -4,7 +4,7 @@
     {{ partial "sidebar" . }}
   </aside>
   <main class="main main-index" id="main-content" tabindex="-1">
-    {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") -}}
+    {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") "error" (i18n "copy_error" | default "Failed to copy!") -}}
     <article class="article" data-i18n='{{ $i18n | jsonify }}'>
       <header class="article-header">
         <div class="article-header-content">
