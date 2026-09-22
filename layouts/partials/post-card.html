@@ -1,5 +1,5 @@
 {{- $page := . -}}
-{{- $dateFormat := or site.Params.footer_date_format site.Params.date_format | default "2006-01-02" -}}
+{{- $dateFormat := or site.Params.posts_date_format | default "2006-01-02" -}}
 {{- if reflect.IsMap . -}}
   {{- $page = default . .page -}}
   {{- $dateFormat = default $dateFormat .dateFormat -}}

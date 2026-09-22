@@ -54,7 +54,7 @@ summaryLength = 20
   description = "A Hugo theme for documentation sites"
 
   # If true, the first image in a page will be loaded eagerly. Default: true
-  # image_first_eager = true 
+  # image_first_eager = true
 
   # Branding
   # Header icon from Meteor Icons. Default: "book-open"
@@ -99,6 +99,9 @@ summaryLength = 20
   # Posts
   # Number of posts per page. Default: 10
   # posts_paginate = 10
+
+  # Post date format. Default: "2006-01-02"
+  posts_date_format = "January 2, 2006"
 
   # Footer
   # Last modified date format. Default: "2006-01-02"
