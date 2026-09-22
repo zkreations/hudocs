@@ -14,16 +14,10 @@
         {{- end -}}
       {{- end -}}
     </h1>
-    {{- $docsContext := partialCached "docs-context" .Page (or .Page.Path .Page.RelPermalink) -}}
-    {{- if and (not $docsContext.isDoc) .Page.Date -}}
-      {{- $dateFormat := or site.Params.footer_date_format site.Params.date_format | default "2006-01-02" -}}
-      <div class="article-meta">
-        <time datetime="{{ .Page.Date.Format "2006-01-02" }}">{{ .Page.Date.Format $dateFormat }}</time>
-      </div>
-    {{- end -}}
   </div>
+  {{- $docsContext := partialCached "docs-context" .Page (or .Page.Path .Page.RelPermalink) -}}
   {{- $editURL := or site.Params.docs_edit_url site.Params.github_repo_edit -}}
-  {{- if $editURL -}}
+  {{- if and $docsContext.isDoc $editURL -}}
     {{- with .Page.File }}
       <a class="article-edit tooltip tooltip-start" href="{{ $editURL }}/{{ .Path | replaceRE `\\` "/" }}" aria-label="{{ i18n "edit_on_github" }}">
         {{ partial "svg" (dict "icon" "pencil") }}
@@ -34,10 +28,4 @@
 <div class="article-body markdown">
   {{- .Content -}}
 </div>
-{{- $pagination := site.Params.docs_pagination -}}
-{{- if eq $pagination nil -}}
-  {{- $pagination = site.Params.pagination -}}
-{{- end -}}
-{{- if ne $pagination false -}}
-  {{- partial "pagination" . -}}
-{{- end -}}
+{{- partial "pagination" . -}}
