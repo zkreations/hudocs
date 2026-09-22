@@ -7,16 +7,11 @@
     {{- $content := .Content | replaceRE "(?s)<pre[^>]*>.*?</pre>" "" | plainify | replaceRE "\\s{2,}" " " | strings.TrimSpace -}}
     {{- $summary := truncate 100 $content | default (i18n "no_summary") -}}
 
-    {{- $parent := $page -}}
-    {{- range seq 10 -}}
-      {{- if and $parent.Parent (ne $parent.Parent $root) (not $parent.Parent.IsHome) -}}
-        {{- $parent = $parent.Parent -}}
-      {{- end -}}
-    {{- end -}}
-
     {{- $parentSection := "" -}}
-    {{- if ne $parent $page -}}
-      {{- $parentSection = partial "title" $parent -}}
+    {{- range $page.Ancestors -}}
+      {{- if eq .Parent $root -}}
+        {{- $parentSection = partial "title" . -}}
+      {{- end -}}
     {{- end -}}
 
     {{- if $comma }},{{ end -}}
