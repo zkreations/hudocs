@@ -18,15 +18,18 @@ export function buildSearchRegex (query) {
   })
 
   const source = `(${patterns.join('|')})`
-  const regex = new RegExp(source, 'giu')
-  regex.testRegex = new RegExp(source, 'iu')
-  return regex
+  return {
+    matchRegex: new RegExp(source, 'giu'),
+    testRegex: new RegExp(source, 'iu')
+  }
 }
 
-export function extractSnippet (page, regex) {
-  if (!regex || !page.content) return page.summary
+export function extractSnippet (page, searchRegex) {
+  if (!searchRegex || !page.content) return page.summary
 
-  const testRegex = regex.testRegex || new RegExp(regex.source, 'iu')
+  const testRegex = searchRegex.testRegex || (searchRegex instanceof RegExp ? searchRegex : null)
+  if (!testRegex) return page.summary
+
   if (testRegex.test(page.title.normalize('NFD')) || (page.summary && testRegex.test(page.summary.normalize('NFD')))) {
     return page.summary
   }

@@ -41,29 +41,30 @@ export function groupResultsByParent (hits, getPage, parentCache) {
 export function renderHighlighted (container, text, regex) {
   container.textContent = ''
   if (!text) return
-  if (!regex) {
+  const matchRegex = regex && regex.matchRegex ? regex.matchRegex : regex
+  if (!matchRegex) {
     container.textContent = text
     return
   }
 
   const normalizedText = text.normalize('NFD')
-  regex.lastIndex = 0
+  matchRegex.lastIndex = 0
   let lastIndex = 0
   let match
 
-  while ((match = regex.exec(normalizedText)) !== null) {
+  while ((match = matchRegex.exec(normalizedText)) !== null) {
     if (match.index > lastIndex) {
       container.appendChild(document.createTextNode(normalizedText.slice(lastIndex, match.index).normalize('NFC')))
     }
     if (match[0].length === 0) {
-      regex.lastIndex++
+      matchRegex.lastIndex++
       continue
     }
     const mark = document.createElement('mark')
     mark.textContent = match[0].normalize('NFC')
     container.appendChild(mark)
-    lastIndex = regex.lastIndex
-    if (!regex.global) break
+    lastIndex = matchRegex.lastIndex
+    if (!matchRegex.global) break
   }
 
   if (lastIndex < normalizedText.length) {
