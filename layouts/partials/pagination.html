@@ -13,6 +13,7 @@
         {{- if lt $index (sub (len $pages) 1) -}}
           {{- $next = index $pages (add $index 1) -}}
         {{- end -}}
+        {{- break -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
