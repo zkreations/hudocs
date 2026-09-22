@@ -1,20 +1,18 @@
-const article = document.querySelector('article')
+const article = document.querySelector('article') || document.querySelector('main') || document.body
 
 function addCopyButtons () {
   if (!article || !navigator || !navigator.clipboard) return
 
   const i18nAttr = article.getAttribute('data-i18n')
-  if (!i18nAttr) return
-
-  let i18n
-  try {
-    i18n = JSON.parse(i18nAttr)
-  } catch {
-    return
+  let i18n = {}
+  if (i18nAttr) {
+    try {
+      i18n = JSON.parse(i18nAttr)
+    } catch {}
   }
 
-  const COPY_TEXT = i18n.copy
-  const COPIED_TEXT = i18n.copied
+  const COPY_TEXT = i18n.copy || 'Copy'
+  const COPIED_TEXT = i18n.copied || 'Copied!'
   const ERROR_TEXT = i18n.error || 'Error'
   const clipboard = navigator.clipboard
 
