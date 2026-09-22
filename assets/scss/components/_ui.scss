@@ -1,7 +1,66 @@
+.alert {
+  background-color: var(--alert-bg, var(--surface-container));
+  color: var(--alert-color, var(--on-surface));
+  border-inline-start: 3px solid;
+  padding: 1.25rem;
+
+  &:is([class*="alert-"]) {
+    --alert-bg: color-mix(in srgb, var(--alert-color) 8%, transparent);
+  }
+
+  a[href]:not([class]) {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  strong:not([class]) {
+    color: inherit;
+  }
+
+  &-info {
+    --alert-color: var(--info);
+  }
+
+  &-success {
+    --alert-color: var(--success);
+  }
+
+  &-danger {
+    --alert-color: var(--error);
+  }
+
+  &-warning {
+    --alert-color: var(--warning);
+  }
+
+  &-content {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    > *:last-child {
+      margin-block-end: 0;
+    }
+  }
+}
+
+.badge {
+  color: var(--on-primary-container);
+  background-color: var(--primary-container);
+  font-size: .75rem;
+  border-radius: .5em;
+  padding: .5em;
+  vertical-align: middle;
+  line-height: 1;
+
+  &-big {
+    font-size: 1rem;
+  }
+}
+
 .btn {
-  color: var(--btn-color,var(--color-text));
+  color: var(--btn-color, var(--on-surface-variant));
   padding: .5rem .75rem;
-  background-color: var(--btn-bg, var(--bg-primary));
+  background-color: var(--btn-bg, var(--surface-container));
   font-weight: 500;
   border-radius: .5rem;
   transition-property: color, background-color, box-shadow;
@@ -10,48 +69,52 @@
   justify-content: center;
   align-items: center;
   column-gap: .5rem;
-  &:not(:where(div,p)):hover {
-    --btn-bg: var(--bg-secondary);
+
+  &:hover {
+    --btn-bg: var(--surface-container-hover);
   }
-  &-primary {
-    --btn-color: var(--primary);
-    --btn-bg: var(--btn-primary);
+
+  &:is([class*="btn-"]) {
+    --btn-bg: color-mix(in srgb, var(--btn-color) 12%, transparent);
+
     &:hover {
-      --btn-bg: var(--btn-primary-hover);
+      --btn-bg: color-mix(in srgb, var(--btn-color) 22%, transparent);
     }
   }
+
+  &-primary {
+    --btn-color: var(--primary);
+  }
+
+  &-secondary {
+    --btn-color: var(--secondary);
+  }
 }
 
-.link {
-  color: var(--primary);
-}
+// MeteorIcons
+// Source: https://github.com/zkreations/meteor
+.i {
+  stroke-width: 2;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  width: var(--svg-size, 20px);
+  height: var(--svg-size, 20px);
 
-.alert {
-  background-color: var(--alert-bg, var(--bg-primary));
-  color: var(--alert-color, var(--color-title));
-  border-left: 3px solid;
-  padding: 1.25rem;
-  a[href]:not([class]) {
-    color: inherit;
-    text-decoration: underline;
+  &-sm {
+    --svg-size: 18px;
   }
-  strong:not([class]) {
-    color: inherit;
+
+  &-md {
+    --svg-size: 24px;
   }
-  &-info {
-    --alert-bg: var(--info-bg);
-    --alert-color: var(--info);
+
+  &-lg {
+    --svg-size: 32px;
   }
-  &-success {
-    --alert-bg: var(--success-bg);
-    --alert-color: var(--success);
-  }
-  &-danger {
-    --alert-bg: var(--danger-bg);
-    --alert-color: var(--danger);
-  }
-  &-warning {
-    --alert-bg: var(--warning-bg);
-    --alert-color: var(--warning);
+
+  &-xl {
+    --svg-size: 48px;
   }
 }

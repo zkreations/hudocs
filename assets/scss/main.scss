@@ -1,28 +1,37 @@
-@import "tools/functions";
-@import "tools/mixins";
+@import "base/media";
 
-@import "settings/variables";
-@import "settings/root";
+@layer reset, base, layout, components, utilities;
 
-@import "generic/fonts";
-@import "generic/normalize";
-@import "object/common";
+@layer reset {
+  @import "base/reset";
+}
 
-@import "components/tooltips";
-@import "components/layout";
-@import "components/svg";
-@import "components/ui";
-@import "components/menu";
-@import "components/toc";
-@import "components/dropdown";
-@import "components/pagelink";
-@import "components/pagination";
-@import "components/columns";
-@import "components/article";
-@import "components/markdown";
-@import "components/code";
-@import "components/search";
-@import "components/error";
+@layer base {
+  @import "base/tokens";
+  @import "base/elements";
+}
 
-@import "utils";
+@layer layout {
+  @import "layout/layout";
+}
+
+@layer components {
+  @import "components/tooltips";
+  @import "components/content";
+  @import "components/code";
+  @import "components/navigation";
+  @import "components/dialogs";
+  @import "components/ui";
+  @import "components/steps";
+  @import "components/tabs";
+  @import "components/columns";
+  @import "components/annotated";
+  @import "components/posts";
+}
+
+@layer utilities {
+  @import "utilities/utilities";
+}
+
+// Custom overrides (unlayered styles naturally override layered styles)
 @import "custom";

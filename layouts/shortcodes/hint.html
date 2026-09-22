@@ -1,5 +1,21 @@
-{{- $type := .Get 0 -}}
+{{- $type := .Get "type" | default (.Get 0) -}}
+{{- $icon := .Get "icon" | default (.Get 1) -}}
+{{- with $icon -}}
+  {{- $icon = trim . " " -}}
+{{- end -}}
 
-<blockquote  class="alert{{ with $type }} alert-{{ . }}{{ end }} p-1.25">
-  {{ .Inner | markdownify }}
-</blockquote>
+{{- $content := .Page.RenderString .Inner -}}
+{{- $label := $type | default "note" | humanize | title -}}
+
+<aside class="alert{{ with $type }} alert-{{ . }}{{ end }}{{ with $icon }} has-icon{{ end }}" role="note" aria-label="{{ $label }}">
+  {{- with $icon -}}
+    <span class="alert-icon i-md icon-adjust">
+      {{- partial "svg" (dict "icon" .) -}}
+    </span>
+    <div class="alert-content">
+      {{- $content -}}
+    </div>
+  {{- else -}}
+    {{- $content -}}
+  {{- end -}}
+</aside>

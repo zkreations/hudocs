@@ -12,76 +12,111 @@
 
 ---
 
-I made this project to easily document my own projects, but I thought it would be great to share it, so you will save the time it took me to learn everything that finally resulted in this documentation. I hope you do a lot of work!
+**Hudocs** is a documentation theme for [Hugo](https://gohugo.io/) with no Node.js dependencies, no `node_modules`, and no complex deployment pipelines. It relies entirely on Hugo Extended's native asset pipeline (`css.Sass` and `js.Build`).
 
-## Features
+## Why Hudocs?
 
-- Optimized compatible with [Core Web Vitals](https://pagespeed.web.dev/report?url=https://hudocs.com)
-- A+ Security Level on [Mozilla Observatory](https://observatory.mozilla.org/analyze/hudocs.com)
-- Zero initial configuration
-- Support for multiple languages
-- Advanced automated searcher
-- Light and dark theme
-- Shortcodes for alerts, notes, tables, etc.
-- Advanced code blocks
-- High customization
+- **Single-version and multi-version support:** Works for continuously evolving products (SaaS, web apps) and for software with semantic versioning. Multi-version mode generates an isolated navigation tree, search index, and version selector for each release in the same build.
+- **No Node.js required:** No `package.json`, no `node_modules`, no CI/CD orchestration beyond a standard Hugo build.
+- **Fast builds:** Hugo's native pipeline handles compilation across multiple versions and languages without added overhead.
+- **Client-side search:** Local search modal powered by [FlexSearch](https://github.com/nextapps-de/flexsearch), with isolated index files per language and version generated at build time.
+- **Performance and security:** Optimized for [Core Web Vitals](https://pagespeed.web.dev/report?url=https://hudocs.com) with an A+ rating on [Mozilla Observatory](https://observatory.mozilla.org/analyze/hudocs.com).
+- **Multilingual support (i18n):** Multi-language support linked through Hugo's i18n conventions.
+- **Authoring features:** Dark/light scheme switcher, customizable code blocks with six built-in Duotone themes, tabs, steps, hints/alerts, annotated code snippets, data type badges, and [Meteor Icons](https://meteoricons.com/) integration.
+- **Blog support:** Optional posts section with pagination, post cards, date formatting, and RSS feed.
+- **AI assistant:** Configurable dropdown in article headers with direct actions for ChatGPT and Claude, prefilled with page context.
 
 ## Documentation
 
-The complete Hudocs documentation, including installation, configuration, options, shortcodes, translations, and customization, is available at [hudocs.com](https://hudocs.com/latest/starting/).
+Full documentation covering installation, configuration, shortcodes, translations, and customization is available at [hudocs.com](https://hudocs.com/docs/latest/getting-started/installation/).
+
+## Documentation Structure
+
+Hudocs adapts automatically based on your directory layout.
+
+### Single-version mode
+
+For products that evolve continuously without versioned releases. Place documentation directly inside `content/docs/`:
+
+```text
+content/
+└── docs/
+    ├── _index.md
+    ├── getting-started.md
+    └── configuration.md
+```
+
+Navigation and URLs remain clean with no version dropdown.
+
+### Multi-version mode
+
+For software with semantic versioning where users need access to older release docs. Organize versions as subdirectories inside `content/docs/`:
+
+```text
+content/
+└── docs/
+    ├── latest/
+    │   ├── _index.md
+    │   └── ...
+    ├── 1.8/
+    │   ├── _index.md
+    │   └── ...
+    └── 1.0/
+        ├── _index.md
+        └── ...
+```
+
+## Shortcodes
+
+| Shortcode | Description |
+| :--- | :--- |
+| `{{< steps >}}` | Renders ordered lists as numbered step-by-step guides |
+| `{{< tabs >}}` / `{{< tab >}}` | Tabbed content with automatic merging of consecutive syntax tabs |
+| `{{< annotated >}}` | Pairs code, tabs, or tables with explanatory notes |
+| `{{< types >}}` | Formats data types, expressions, and parameter structures with badge styles |
+| `{{< hint >}}` | Hint or alert block (`info`, `warning`, `danger`, `success`) |
+| `{{< button >}}` | Button with primary/secondary variants and language-aware link resolution |
+| `{{< pagelink >}}` | Styled link card with title and description |
+| `{{< columns >}}` | Multi-column layout |
 
 ## Requirements
 
-- Hugo 0.164.0 or higher (extended version)
-- Git - [Install Git](https://git-scm.com/downloads)
-- Desire to document
+- Hugo Extended 0.164.0 or higher
+- [Git](https://git-scm.com/downloads)
 
-## Install
+## Installation
 
-Go to the root of your Hugo project and run the following command:
+In the root directory of your Hugo project, add Hudocs as a Git submodule:
 
 ```bash
 git submodule add https://github.com/zkreations/hudocs themes/hudocs
 ```
 
-## Recommended structure
-
-I made this documentation thinking that you could generate multiple versions of the same project, that's why the recommended structure should first contain a version number, for example:
+## Quick Start
 
 ```bash
-content
-└── 1.0
-    └── index.md
-```
-
-If you want to start quickly, use the example I have left in the **exampleSite** folder, which is the same one you are reading right now. Run the following command:
-
-```bash
+# Copy example content
 cp -R themes/hudocs/exampleSite/content .
-```
 
-## Configure
+# Copy example configuration
+cp themes/hudocs/exampleSite/hugo.toml .
 
-The theme contains some useful options that can help you further customize your documents. Copy the **exampleSite/hugo.toml** file and replace the information with your data. Finally start the local server by running:
-
-```bash
+# Start the local development server
 hugo serve
 ```
 
 ## Contributions
 
-Contributions are welcome, I will take time to review any request as long as you keep the following in mind when making them:
+Contributions are welcome. Please keep these principles in mind:
 
-- Do not add more options that can increase complexity.
-- Avoid JavaScript as much as possible if you can do it with CSS.
-- Do not interfere with users' custom options.
+- Keep configuration simple and avoid unnecessary complexity.
+- Favor native HTML and CSS over JavaScript wherever possible.
+- Respect user-level customization hooks and tokens.
 
-## Final note
+## Support
 
-If you like this project, consider rating me with a [star on github](https://github.com/zkreations/hudocs/stargazers), it costs nothing and means a lot to me. You can also [buy me a coffee](https://ko-fi.com/zkreations) so I can continue creating things like this.
-
-Start documenting!
+If you find this project useful, consider [starring it on GitHub](https://github.com/zkreations/hudocs/stargazers) or [buying me a coffee](https://ko-fi.com/zkreations) to support ongoing maintenance.
 
 ## License
 
-**Hudocs** is licensed under the MIT License
+**Hudocs** is licensed under the [MIT License](LICENSE)

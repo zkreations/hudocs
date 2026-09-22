@@ -1,27 +1,26 @@
-{{- $.Scratch.Add "index" slice -}}
-{{- $langPrefix := "^/[a-z]{2}/" -}}
-{{- $regex := "^(/[^/]+/)([^/]+)/.*$" -}}
+{{- $comma := false -}}
+{{- $root := . -}}
+{{- $pages := partialCached "flat-pages" (dict "Section" $root) $root.Path -}}
+[
+{{- range $i, $page := $pages -}}
+  {{- if and $page.File (or $page.Title (truncate 120 $page.Plain)) -}}
+    {{- $content := .Content | replaceRE "(?s)<pre[^>]*>.*?</pre>" "" | plainify | replaceRE "\\s{2,}" " " | strings.TrimSpace -}}
+    {{- $summary := truncate 100 $content | default (i18n "no_summary") -}}
 
-{{- range $index, $page := .Site.Pages -}}
-  {{- if .File -}}
-
-    {{- $cleanPath := replaceRE $langPrefix "/" $page.RelPermalink -}}
-    {{- $parentSection := replaceRE $regex "$2" $cleanPath -}}
-    {{- $summary := truncate 120 $page.Plain | default (i18n "no_summary") -}}
-
-    {{- if or $page.Title (truncate 120 $page.Plain) -}}
-      {{- $.Scratch.Add "index" (dict
-        "id" $index
-        "url" $page.RelPermalink
-        "summary" $summary
-        "title" $page.Title
-        "parent" $parentSection
-      ) -}}
+    {{- $parentSection := "" -}}
+    {{- if and $page.IsSection (eq $page.Parent $root) -}}
+      {{- $parentSection = partial "title" $page -}}
+    {{- else -}}
+      {{- range $page.Ancestors -}}
+        {{- if eq .Parent $root -}}
+          {{- $parentSection = partial "title" . -}}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
 
+    {{- if $comma }},{{ end -}}
+    {{- (slice $i $page.RelPermalink (partial "title" $page) $parentSection $summary $content) | jsonify -}}
+    {{- $comma = true -}}
   {{- end -}}
 {{- end -}}
-
-{
-  "documents": {{ .Scratch.Get "index" | jsonify }}
-}
+]

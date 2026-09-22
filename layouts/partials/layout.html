@@ -1,0 +1,34 @@
+{{- $page := . -}}
+{{- $class := "doc" -}}
+{{- $view := "article" -}}
+{{- $showTOC := true -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = default . .page -}}
+  {{- $class = default $class .class -}}
+  {{- $view = default $view .view -}}
+  {{- if isset . "toc" -}}
+    {{- $showTOC = .toc -}}
+  {{- end -}}
+{{- end -}}
+{{- $docsContext := partialCached "docs-context" $page (or $page.Path $page.RelPermalink) -}}
+<div class="{{ $class }} layout container">
+  <aside class="aside" id="docs-sidebar" aria-label='{{ if $docsContext.isDoc }}{{ i18n "documentation" | default "Documentation" }}{{ else }}{{ i18n "main_menu" | default "Main menu" }}{{ end }}'>
+    {{ partial "sidebar" $page }}
+  </aside>
+  {{- $toc := "" -}}
+  {{- if $showTOC -}}
+    {{- $toc = partial "toc" $page | strings.TrimSpace -}}
+  {{- end -}}
+  <main class="main main-index{{ if $toc }} has-toc{{ end }}" id="main-content" tabindex="-1">
+    {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") "error" (i18n "copy_error" | default "Failed to copy!") -}}
+    <article class="article" data-i18n='{{ $i18n | jsonify }}'>
+      {{ partial $view $page }}
+      {{ partial "footer" $page }}
+    </article>
+    {{- with $toc -}}
+      <aside class="toc" aria-label='{{ i18n "contents" | default "Contents" }}'>
+        {{ . | safeHTML }}
+      </aside>
+    {{- end -}}
+  </main>
+</div>

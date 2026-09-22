@@ -1,0 +1,22 @@
+{{- $u := urls.Parse .Destination -}}
+{{- $firstEager := or site.Params.image_first_eager site.Params.imageFirstEager | default true -}}
+{{- $isPriority := or (and $firstEager (eq .Ordinal 0)) (in (slice "priority" "eager") $u.Fragment) -}}
+{{- $src := .Destination -}}
+{{- if $u.Fragment -}}
+  {{- $src = $u.Path -}}
+{{- end -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+{{- $image := .Page.Resources.GetMatch $src -}}
+{{- if not $image -}}
+  {{- $image = resources.Get $src -}}
+{{- end -}}
+{{- if not $image -}}
+  {{- warnf "%s: image not found: %s (page: %s)" .Position $src .Page.RelPermalink -}}
+{{- end -}}
+{{- with $image -}}
+  {{- $width = .Width -}}
+  {{- $height = .Height -}}
+  {{- $src = .RelPermalink -}}
+{{- end -}}
+<img src="{{ $src | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }}{{ if $isPriority }} loading="eager" fetchpriority="high"{{ else }} loading="lazy"{{ end }} decoding="async">

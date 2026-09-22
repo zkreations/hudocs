@@ -1,29 +1,60 @@
-<header class="article-header flex items-center">
-  <h1 class="article-title">
-    {{- partial "title" .Page -}}
-    {{- if eq .Page.Params.badge true -}}
-      {{- $badgeText := default site.Params.badge_text .Page.Params.badge_text -}}
-      {{- $badgeText = default (i18n "new") $badgeText -}}
-      {{- $badgeURL := default site.Params.badge_url .Page.Params.badge_url -}}
+{{- $docsContext := partialCached "docs-context" .Page (or .Page.Path .Page.RelPermalink) -}}
+<header class="article-header">
+  <div class="article-header-content">
+    <h1 class="article-title has-icon">
+      {{- partial "title" .Page -}}
+      {{- if eq .Page.Params.badge true -}}
+        {{- $badgeText := .Page.Params.badge_text | default $docsContext.badgeText -}}
+        {{- $badgeURL := .Page.Params.badge_url | default $docsContext.badgeURL -}}
 
-      {{- if $badgeURL -}}
-        <a href="{{ $badgeURL }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ $badgeText }}</a>
-      {{- else -}}
-        <span class="badge badge-big">{{ $badgeText }}</span>
+        {{- if $badgeURL -}}
+          <a href="{{ $badgeURL }}" class="badge badge-big" target="_blank" rel="noreferrer noopener">{{ $badgeText }}</a>
+        {{- else -}}
+          <span class="badge badge-big">{{ $badgeText }}</span>
+        {{- end -}}
       {{- end -}}
-    {{- end -}}
-  </h1>
-  {{- if site.Params.github_repo_edit -}}
-    {{- with .Page.File }}
-      <a class="article-edit flex-none i-md" href="{{ site.Params.github_repo_edit }}/{{ .Path | replaceRE `\\` "/" }}" data-tts="down-right" aria-label="{{ i18n "edit_on_github" }}">
-        {{ partial "svg" (dict "icon" "pencil") }}
-      </a>
-    {{- end }}
+    </h1>
+  </div>
+  {{- $showEdit := and $docsContext.isDoc $docsContext.editURL .Page.File -}}
+  {{- $showAI := $docsContext.showAI -}}
+  {{- if or $showEdit $showAI -}}
+    <div class="article-actions">
+      {{- if $showEdit -}}
+        {{- with .Page.File }}
+          <a class="article-action tooltip tooltip-start" href="{{ $docsContext.editURL }}/{{ .Path | replaceRE `\\` "/" }}" aria-label='{{ i18n "edit_on_github" }}' target="_blank" rel="noreferrer noopener">
+            {{ partial "svg" (dict "icon" "pencil") }}
+          </a>
+        {{- end }}
+      {{- end -}}
+      {{- if $showAI -}}
+        <div class="dropdown-wrapper">
+          <button class="article-action tooltip tooltip-start" data-outside="article-ai-dropdown" aria-label='{{ i18n "ask_ai" | default "Ask AI" }}' aria-haspopup="true" aria-expanded="false" aria-controls="article-ai-dropdown">
+            {{ partial "svg" (dict "icon" "sparkles") }}
+          </button>
+          <div class="dropdown" id="article-ai-dropdown" role="region" aria-label='{{ i18n "ask_ai" | default "Ask AI" }}'>
+            <div class="list">
+              {{- if $docsContext.showChatGPT -}}
+                <a class="list-link has-icon" href="https://chatgpt.com/?q={{ printf "Explain this documentation: %s" $.Page.Permalink | urlquery }}" target="_blank" rel="noreferrer noopener">
+                  {{ partial "svg" (dict "icon" "openai") }}
+                  <span>{{ i18n "open_in_chatgpt" | default "Open in ChatGPT" }}</span>
+                  {{ partial "svg" (dict "icon" "arrow-up-right" "class" "menu-arrow") }}
+                </a>
+              {{- end -}}
+              {{- if $docsContext.showClaude -}}
+                <a class="list-link has-icon" href="https://claude.ai/new?q={{ printf "Explain this documentation: %s" $.Page.Permalink | urlquery }}" target="_blank" rel="noreferrer noopener">
+                  {{ partial "svg" (dict "icon" "claude") }}
+                  <span>{{ i18n "open_in_claude" | default "Open in Claude" }}</span>
+                  {{ partial "svg" (dict "icon" "arrow-up-right" "class" "menu-arrow") }}
+                </a>
+              {{- end -}}
+            </div>
+          </div>
+        </div>
+      {{- end -}}
+    </div>
   {{- end -}}
 </header>
 <div class="article-body markdown">
   {{- .Content -}}
 </div>
-{{- if site.Params.pagination | default true -}}
-  {{- partial "pagination" . -}}
-{{- end -}}
+{{- partial "pagination" . -}}

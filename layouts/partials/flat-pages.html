@@ -2,8 +2,9 @@
 
 {{- range (where .Section.Pages "Params.hidden" "ne" true) -}}
   {{- $isRedirect := or (isset .Params "redirect") (eq .Params.layout "redirect") -}}
+  {{- $hasContent := or .RawContent .Content -}}
 
-  {{- if not $isRedirect -}}
+  {{- if and (not $isRedirect) $hasContent -}}
     {{- $pages = $pages | append . -}}
   {{- end -}}
 

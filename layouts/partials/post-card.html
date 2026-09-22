@@ -1,0 +1,26 @@
+{{- $page := . -}}
+{{- $dateFormat := or site.Params.posts_date_format | default "2006-01-02" -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = default . .page -}}
+  {{- $dateFormat = default $dateFormat .dateFormat -}}
+{{- end -}}
+<a class="post-card pagelink" href="{{ $page.RelPermalink }}">
+  <div class="post-card-header">
+    <span class="post-card-title">{{ partial "title" $page }}</span>
+    {{- with $page.Date -}}
+      <time class="post-card-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format $dateFormat }}</time>
+    {{- end -}}
+  </div>
+  {{- $summary := or $page.Params.description $page.Summary -}}
+  {{- with $summary -}}
+    <p class="post-card-summary">{{ . | plainify | htmlUnescape }}</p>
+  {{- end -}}
+  {{- with $page.Params.tags -}}
+    <div class="post-card-tags">
+      {{- range . -}}
+        <span class="badge">{{ . }}</span>
+      {{- end -}}
+    </div>
+  {{- end -}}
+</a>
+

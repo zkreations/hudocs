@@ -1,0 +1,12 @@
+{{- $class := .Get "class" | default (.Get 0) -}}
+{{- $parts := partial "split-content" .Inner -}}
+<div class="annotated{{ with $class }} {{ . }}{{ end }}">
+  {{- if ge (len $parts) 2 -}}
+    {{- $.Page.RenderString (index $parts 0 | strings.TrimSpace) -}}
+    <div class="annotated-note">
+      {{- $.Page.RenderString (index $parts 1 | strings.TrimSpace) -}}
+    </div>
+  {{- else -}}
+    {{- $.Page.RenderString .Inner -}}
+  {{- end -}}
+</div>

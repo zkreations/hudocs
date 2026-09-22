@@ -1,1 +1,21 @@
-{{ define "nothing" }}{{ end }}
+{{ define "main" }}
+  <main class="main-section" id="main-content" tabindex="-1">
+    <div class="container">
+      <div class="section-info">
+        <h1 class="section-title">{{ partial "title" . }}</h1>
+        {{ with .Description }}
+          <p class="section-description">{{ . }}</p>
+        {{ end }}
+      </div>
+      <div class="section-content">
+        <ul class="section-list">
+          {{ range .Pages }}
+            <li><a href="{{ .RelPermalink }}">{{ partial "title" . }}</a></li>
+          {{ else }}
+            <li><a href="#no-item">{{ i18n "no_items" }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </main>
+{{ end }}

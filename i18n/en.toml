@@ -1,5 +1,8 @@
-[system]
-other = "System"
+[change_theme]
+other = "Change theme"
+
+[auto]
+other = "Auto"
 
 [light]
 other = "Light"
@@ -13,14 +16,23 @@ other = "Contents"
 [search]
 other = "Search"
 
-[quick_search]
-other = "Quick search"
-
 [search_in_doc]
 other = "Search in doc"
 
+[search_error]
+other = "Failed to load search index"
+
+[search_navigate]
+other = "Navigate"
+
+[search_select]
+other = "Select"
+
+[search_close]
+other = "Close"
+
 [edit_on_github]
-other = "Edit on Github"
+other = "Edit on GitHub"
 
 [edited]
 other = "Edited"
@@ -32,13 +44,16 @@ other = "No results"
 other = "No items"
 
 [no_results_text]
-other = "It seems that we have not documented that or it does not exist. Should we add it? help us document it on Github"
+other = "It seems that we have not documented that or it does not exist. Should we add it? help us document it on GitHub"
 
 [copy]
 other = "Copy"
 
 [copied]
 other = "Copied!"
+
+[copy_error]
+other = "Failed to copy!"
 
 [close]
 other = "Close"
@@ -49,17 +64,8 @@ other = "Versions"
 [languages]
 other = "Languages"
 
-[table_of_contents_toogle]
-other = "Table of contents toogle"
-
 [main_section_text]
 other = "A list of all hosted documents for all available versions"
-
-[to_close]
-other = "to close"
-
-[current_version]
-other = "Current version"
 
 [pagination_label]
 other = "Pagination"
@@ -75,3 +81,38 @@ other = "No summary available"
 
 [new]
 other = "New"
+
+[anchor]
+other = "Anchor"
+
+[toggle_navigation]
+other = "Toggle navigation"
+
+[skip_to_content]
+other = "Skip to content"
+
+[documentation]
+other = "Documentation"
+
+[main_menu]
+other = "Main menu"
+
+[toggle_section]
+other = "Toggle section"
+
+[posts]
+other = "Blog"
+
+[no_posts]
+other = "No posts found"
+
+[ask_ai]
+other = "Ask AI"
+
+[open_in_chatgpt]
+other = "Open in ChatGPT"
+
+[open_in_claude]
+other = "Open in Claude"
+
+

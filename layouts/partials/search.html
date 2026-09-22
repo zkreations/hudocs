@@ -1,23 +1,35 @@
-<div class="search" id="search-box">
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
+{{- if and $docsContext.isDoc $docsContext.versionPage -}}
+<div class="search" id="search-box" role="dialog" aria-modal="true" aria-label='{{- i18n "search" -}}'>
   <div class="search-content scrollable" data-dialog>
-    <div class="search-form flex items-center ">
-      <label class="search-icon">{{ partial "svg" (dict "icon" "search") }}</label>
-      <input class="search-input" id="search-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder='{{- i18n "search_in_doc" -}}' maxlength="64"/>
+    <div class="search-form">
+      <label class="search-icon" for="search-input">{{ partial "svg" (dict "icon" "search") }}</label>
+      <input class="search-input" id="search-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder='{{- i18n "search_in_doc" -}}' maxlength="64" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="listbox" aria-controls="search-results"/>
       <button data-close="" aria-label='{{ i18n "close" }}' class="search-close">
         {{ partial "svg" (dict "icon" "xmark") }}
       </button>
     </div>
-    <div class="search-results">
-      <div class="search-list" id="search-results"></div>
+    <div class="search-results scrollable">
+      <div class="search-list" id="search-results" role="listbox" aria-label='{{- i18n "search" -}}' aria-live="polite"></div>
     </div>
-    <div class="search-footer flex items-center justify-between">
-      <span class="search-keyboard">
-        <kbd>ESC</kbd>
-        {{ i18n "to_close" }}
-      </span>
-      {{- with .Section -}}
-        <span class="search-keyboard">{{ i18n "current_version" }} <code>{{ . }}</code></span>
-      {{- end -}}
+    <div class="search-footer">
+      <div class="search-footer-item">
+        <kbd>↓</kbd>
+        <kbd>↑</kbd>
+        <span>{{- i18n "search_navigate" -}}</span>
+      </div>
+      <div class="search-footer-item">
+        <kbd>Enter</kbd>
+        <span>{{- i18n "search_select" -}}</span>
+      </div>
+      <div class="search-footer-item">
+        <kbd>Esc</kbd>
+        <span>{{- i18n "search_close" -}}</span>
+      </div>
     </div>
   </div>
 </div>
+{{- $cacheKey := printf "%s-%s-%s" $.Language.Lang $docsContext.section $docsContext.version -}}
+{{- partialCached "search-config" (dict "docsContext" $docsContext "page" $) $cacheKey -}}
+{{- end -}}
+

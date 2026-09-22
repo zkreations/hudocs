@@ -1,40 +1,49 @@
-{{- $pages := partial "flat-pages" (dict "Section" (.Site.GetPage .Section)) -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 {{- $prev := "" -}}
 {{- $next := "" -}}
 
-{{- range $index, $page := $pages -}}
-  {{- if eq $page.RelPermalink $.RelPermalink -}}
-    {{- if gt $index 0 -}}
-      {{- $prev = index $pages (sub $index 1) -}}
-    {{- end -}}
-    {{- if lt $index (sub (len $pages) 1) -}}
-      {{- $next = index $pages (add $index 1) -}}
+{{- if $docsContext.isDoc -}}
+  {{- if and $docsContext.pagination $docsContext.versionPage -}}
+    {{- $pages := partialCached "flat-pages" (dict "Section" $docsContext.versionPage) $docsContext.versionPage.Path -}}
+    {{- range $index, $page := $pages -}}
+      {{- if eq $page.RelPermalink $.RelPermalink -}}
+        {{- if gt $index 0 -}}
+          {{- $prev = index $pages (sub $index 1) -}}
+        {{- end -}}
+        {{- if lt $index (sub (len $pages) 1) -}}
+          {{- $next = index $pages (add $index 1) -}}
+        {{- end -}}
+        {{- break -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
+{{- else if eq .Type "posts" -}}
+  {{- $prev = .PrevInSection -}}
+  {{- $next = .NextInSection -}}
 {{- end -}}
 
 {{- if or $prev $next -}}
-<nav class="pagination" aria-label='{{ i18n "pagination_label" }}'>
-  <ul class="pagination-list grid">
+<nav class="pagination" aria-label='{{ i18n "pagination_label" | default "Pagination" }}'>
+  <ul class="pagination-list">
     {{ with $prev }}
     <li class="pagination-item pagination-prev">
-      <a class="pagelink items-center" href="{{ .RelPermalink }}">
+      <a class="pagelink has-icon" href="{{ .RelPermalink }}">
         <span class="pagelink-icon i-md">
           {{- partial "svg" (dict "icon" "arrow-left") -}}
         </span>
         <span class="pagelink-content">
-          <span class="pagelink-meta fs-7">{{ i18n "pagination_previous" }}</span>
-          <span class="pagelink-title fw-500">{{ .Title }}</span>
+          <span class="pagelink-meta">{{ i18n "pagination_previous" | default "Previous" }}</span>
+          <span class="pagelink-title">{{ partial "title" . }}</span>
         </span>
       </a>
     </li>
     {{ end }}
     {{ with $next }}
     <li class="pagination-item pagination-next">
-      <a class="pagelink items-center" href="{{ .RelPermalink }}">
+      <a class="pagelink has-icon" href="{{ .RelPermalink }}">
         <span class="pagelink-content">
-          <span class="pagelink-meta fs-7">{{ i18n "pagination_next" }}</span>
-          <span class="pagelink-title fw-500">{{ .Title }}</span>
+          <span class="pagelink-meta">{{ i18n "pagination_next" | default "Next" }}</span>
+          <span class="pagelink-title">{{ partial "title" . }}</span>
         </span>
         <span class="pagelink-icon i-md">
           {{- partial "svg" (dict "icon" "arrow-right") -}}

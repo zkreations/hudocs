@@ -1,0 +1,61 @@
+.has-icon {
+  display: flex;
+  align-items: center;
+  column-gap: var(--icon-gap, .75rem);
+
+  svg {
+    flex: none;
+  }
+}
+
+.icon-adjust {
+  position: relative;
+  top: 2px;
+  flex: none;
+  align-self: flex-start;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &-multiline {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.scrollable {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: thin;
+
+  @include breakpoint(l) {
+    top: var(--header-height);
+    max-height: calc((100vh - var(--header-height)));
+    bottom: 0;
+    overflow-y: auto;
+  }
+}
+
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

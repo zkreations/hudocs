@@ -1,33 +1,23 @@
 <!doctype html>
-<html lang="{{ .Site.Language.Lang }}">
+{{- $codeTheme := default "duotone-dark" (or site.Params.code_theme (and site.Params.code site.Params.code.theme)) -}}
+{{- $codeThemes := slice "duotone-dark" "duotone-dark-sky" "duotone-dark-sea" "duotone-dark-space" "duotone-dark-earth" "duotone-dark-forest" -}}
+{{- if not (in $codeThemes $codeTheme) -}}
+  {{- $codeTheme = "duotone-dark" -}}
+{{- end -}}
+<html lang="{{ .Language.Lang }}" data-code-theme="{{ $codeTheme }}">
   <head>
     {{ partial "head" . }}
     {{ partial "seo" . }}
-    {{ partial "styles" . }}
-    {{ partial "scripts" . }}
+    {{ partialCached "styles" . }}
+    {{ partialCached "scripts" . }}
   </head>
-  <body class="fs-7 fw-400">
-    <div class="template flex column">
+  <body>
+    <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" | default "Skip to content" }}</a>
+    <div class="template">
       <header class="header">
         {{ partial "header" . }}
       </header>
-      {{ block  "main" . }}
-      <div class="doc container" id="doc">
-        <aside class="aside" id="docs-sidebar">
-          {{ partial "sidebar" . }}
-        </aside>
-        <main class="main main-index">
-          {{- $i18n := dict "copy" (i18n "copy") "copied" (i18n "copied") -}}
-          <article class="article fs-6" data-i18n='{{ $i18n | jsonify }}'>
-            {{ partial "article" . }}
-            {{ partial "footer" . }}
-          </article>
-          <aside class="toc">
-            {{ partial "toc" . }}
-          </aside>
-        </main>
-      </div>
-      {{ end }}
+      {{ block "main" . }}{{ end }}
     </div>
     {{ partial "search" . }}
   </body>

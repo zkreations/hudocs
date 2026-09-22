@@ -1,5 +1,8 @@
-[system]
-other = "Sistema"
+[change_theme]
+other = "Cambiar tema"
+
+[auto]
+other = "Auto"
 
 [light]
 other = "Claro"
@@ -13,14 +16,23 @@ other = "Contenido"
 [search]
 other = "Buscar"
 
-[quick_search]
-other = "Busqueda rápida"
-
 [search_in_doc]
 other = "Buscar en documentos"
 
+[search_error]
+other = "No se pudo cargar el índice de búsqueda"
+
+[search_navigate]
+other = "Navegar"
+
+[search_select]
+other = "Seleccionar"
+
+[search_close]
+other = "Cerrar"
+
 [edit_on_github]
-other = "Editar en Github"
+other = "Editar en GitHub"
 
 [edited]
 other = "Editado"
@@ -32,13 +44,16 @@ other = "Sin resultados"
 other = "Sin elementos"
 
 [no_results_text]
-other = "Parece que no hemos documentado eso o no existe. ¿Deberiamos agregarlo? ayudanos a documentarlo en Github"
+other = "Parece que no hemos documentado eso o no existe. ¿Deberíamos agregarlo? ayúdanos a documentarlo en GitHub"
 
 [copy]
 other = "Copiar"
 
 [copied]
 other = "Copiado!"
+
+[copy_error]
+other = "¡Error al copiar!"
 
 [close]
 other = "Cerrar"
@@ -49,17 +64,8 @@ other = "Versiones"
 [languages]
 other = "Idiomas"
 
-[table_of_contents_toogle]
-other = "Mostrar/Ocultar tabla de contenidos"
-
 [main_section_text]
 other = "Una lista de todos los documentos alojados para todas las versiones disponibles"
-
-[to_close]
-other = "para cerrar"
-
-[current_version]
-other = "Versión actual"
 
 [pagination_label]
 other = "Paginación"
@@ -75,3 +81,38 @@ other = "No hay resumen disponible"
 
 [new]
 other = "Nuevo"
+
+[anchor]
+other = "Anclaje"
+
+[toggle_navigation]
+other = "Alternar navegación"
+
+[skip_to_content]
+other = "Saltar al contenido"
+
+[documentation]
+other = "Documentación"
+
+[main_menu]
+other = "Menú principal"
+
+[toggle_section]
+other = "Alternar sección"
+
+[posts]
+other = "Blog"
+
+[no_posts]
+other = "No se encontraron publicaciones"
+
+[ask_ai]
+other = "Consultar con IA"
+
+[open_in_chatgpt]
+other = "Abrir en ChatGPT"
+
+[open_in_claude]
+other = "Abrir en Claude"
+
+

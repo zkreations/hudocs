@@ -1,0 +1,8 @@
+{{- $raw := . -}}
+{{- if reflect.IsMap . -}}
+  {{- $raw = .content -}}
+{{- end -}}
+{{- $inner := replaceRE `(?m)^\s*---\s*$` "§SPLIT§" $raw -}}
+{{- $inner = replaceRE `(?m)^\s*<!--\s*split\s*-->\s*$` "§SPLIT§" $inner -}}
+{{- return (split $inner "§SPLIT§") -}}
+

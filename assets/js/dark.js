@@ -1,11 +1,11 @@
-// Get the saved theme from localStorage or default to 'light'
-const storedTheme = localStorage.getItem('theme')
+let storedTheme = null
+try {
+  storedTheme = localStorage.getItem('theme')
+} catch {}
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
-// Determine the active theme
-const theme = storedTheme === 'system'
+const theme = (!storedTheme || storedTheme === 'system')
   ? (prefersDark ? 'dark' : 'light')
-  : (storedTheme || 'light')
+  : storedTheme
 
-// Apply the theme class to the root element
 document.documentElement.classList.add(theme)

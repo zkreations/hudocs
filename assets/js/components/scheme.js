@@ -1,117 +1,82 @@
-const THEME_HANDLE = document.querySelectorAll('.theme-handle > *')
+const STORAGE_KEY = 'theme'
 const ACTIVE_CLASS = 'is-active'
-const NO_TRANSITIONS_CLASS = 'no-transitions'
-const LIGHT_MODE = 'light'
-const DARK_MODE = 'dark'
-const SYSTEM_MODE = 'system'
+const NO_TRANSITIONS = 'no-transitions'
 
-let userPreference = null
-let systemColorSchemeMediaQuery = null
+const themeContainer = document.querySelector('.theme-handle')
+const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+const metaColorScheme = document.querySelector('meta[name="color-scheme"]')
 
-// Saves the user preference in localStorage.
-// @param {string} pref - The user preference.
-// @returns {void}
-function saveUserPreference (pref) {
-  localStorage.setItem('theme', pref)
+function getMode (pref) {
+  if (pref === 'light' || pref === 'dark') return pref
+  return mediaQuery.matches ? 'dark' : 'light'
 }
 
-// Determines the applied mode.
-// @param {string} pref - The user preference.
-// @returns {string} The applied theme mode.
-function getAppliedMode (pref) {
-  if (pref === LIGHT_MODE) return LIGHT_MODE
-  if (pref === DARK_MODE) return DARK_MODE
-
-  return window.matchMedia('(prefers-color-scheme: light)').matches
-    ? LIGHT_MODE
-    : DARK_MODE
-}
-
-// Sets the applied mode by updating the document's class and meta tag.
-// @param {string} mode - The theme mode to apply.
-// @returns {void}
-function setAppliedMode (mode) {
-  document.documentElement.className = mode
-  document.querySelector('meta[name="color-scheme"]').content = mode
-}
-
-// Changes the theme while temporarily disabling transitions.
-// @param {string} mode - The theme mode to apply.
-// @returns {void}
-function changeTheme (mode) {
-  document.body.classList.add(NO_TRANSITIONS_CLASS)
-  setAppliedMode(mode)
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      document.body.classList.remove(NO_TRANSITIONS_CLASS)
+function syncUI (pref) {
+  if (themeContainer) {
+    themeContainer.querySelectorAll('[data-theme]').forEach((btn) => {
+      const isSelected = btn.dataset.theme === pref
+      btn.classList.toggle(ACTIVE_CLASS, isSelected)
+      btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false')
     })
-  })
-}
-
-// Handles the click event on theme toggle buttons.
-// Updates the user preference and applies the new theme.
-// @param {HTMLElement} handle - The clicked theme toggle button.
-// @returns {void}
-function handleThemeToggleClick (handle) {
-  const newUserPref = handle.dataset.theme
-  const newMode = getAppliedMode(newUserPref)
-
-  userPreference = newUserPref
-  saveUserPreference(newUserPref)
-  changeTheme(newMode)
-
-  THEME_HANDLE.forEach(el => {
-    el.classList.toggle(ACTIVE_CLASS, el.dataset.theme === userPreference)
-  })
-}
-
-// Handles the system color scheme change event.
-// @param {MediaQueryListEvent} event - The color scheme change event.
-// @returns {void}
-function handleSystemColorSchemeChange (event) {
-  if (userPreference === SYSTEM_MODE) {
-    changeTheme(event.matches ? DARK_MODE : LIGHT_MODE)
   }
 }
 
-// Checks if the theme can be initialized.
-// @returns {boolean} Whether the theme can be initialized.
-function canInitTheme () {
-  return (
-    THEME_HANDLE.length > 0 &&
-    'matchMedia' in window &&
-    typeof window.matchMedia === 'function'
-  )
+function applyTheme (pref) {
+  const mode = getMode(pref)
+
+  document.body.classList.add(NO_TRANSITIONS)
+  document.documentElement.classList.remove('light', 'dark')
+  document.documentElement.classList.add(mode)
+  if (metaColorScheme) metaColorScheme.content = mode
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.remove(NO_TRANSITIONS)
+    })
+  })
+
+  syncUI(pref)
 }
 
-// Initializes the theme functionality.
-// @returns {void}
+function getStorageItem (key, fallback) {
+  try {
+    return localStorage.getItem(key) || fallback
+  } catch {
+    return fallback
+  }
+}
+
+function setStorageItem (key, value) {
+  try {
+    localStorage.setItem(key, value)
+  } catch {}
+}
+
 function initTheme () {
-  if (!canInitTheme()) return
+  let preference = getStorageItem(STORAGE_KEY, 'system')
 
-  userPreference = localStorage.getItem('theme') || SYSTEM_MODE
+  const mode = getMode(preference)
+  if (!document.documentElement.classList.contains(mode)) {
+    applyTheme(preference)
+  } else {
+    if (metaColorScheme) metaColorScheme.content = mode
+    syncUI(preference)
+  }
 
-  systemColorSchemeMediaQuery = window.matchMedia(
-    '(prefers-color-scheme: dark)'
-  )
-
-  systemColorSchemeMediaQuery.addEventListener(
-    'change',
-    handleSystemColorSchemeChange
-  )
-
-  setAppliedMode(getAppliedMode(userPreference))
-
-  THEME_HANDLE.forEach(handle => {
-    handle.addEventListener('click', () => {
-      handleThemeToggleClick(handle)
+  if (themeContainer) {
+    themeContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-theme]')
+      if (!btn) return
+      preference = btn.dataset.theme
+      setStorageItem(STORAGE_KEY, preference)
+      applyTheme(preference)
     })
+  }
 
-    handle.classList.toggle(
-      ACTIVE_CLASS,
-      handle.dataset.theme === userPreference
-    )
+  mediaQuery.addEventListener('change', () => {
+    if (preference === 'system') {
+      applyTheme('system')
+    }
   })
 }
 

@@ -1,7 +1,12 @@
-<div class="columns{{ with .Get 0 }} {{ . }}{{ end }}">
-  {{ range split .Inner "<---->" }}
-    <div class="column">
-      {{ . | markdownify }}
-    </div>
-  {{ end }}
+{{- $class := .Get "class" | default (.Get 0) -}}
+{{- $parts := partial "split-content" .Inner -}}
+<div class="columns{{ with $class }} {{ . }}{{ end }}">
+  {{- range $parts -}}
+    {{- $content := . | strings.TrimSpace -}}
+    {{- if $content -}}
+      <div class="column">
+        {{- $.Page.RenderString $content -}}
+      </div>
+    {{- end -}}
+  {{- end -}}
 </div>

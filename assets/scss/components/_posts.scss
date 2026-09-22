@@ -1,0 +1,52 @@
+.post {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-block-start: clamp(1.25rem, 2vw, 1.75rem);
+  }
+
+  &-card {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+
+    &:hover {
+      .post-card-title {
+        color: var(--primary);
+      }
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    &-title {
+      font-size: clamp(1rem, 1.25vw, 1.125rem);
+      font-weight: 500;
+    }
+
+    &-date {
+      color: var(--on-surface-muted);
+      font-size: .875rem;
+      white-space: nowrap;
+    }
+
+
+    &-tags {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-block-start: .25rem;
+    }
+  }
+
+  &-empty {
+    color: var(--on-surface-muted);
+    font-style: italic;
+  }
+}

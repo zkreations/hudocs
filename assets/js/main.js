@@ -1,4 +1,5 @@
-import './components/copyClipboard'
+import './components/copy-clipboard'
 import './components/outside'
 import './components/scheme'
+import './components/search-loader'
 import './components/toc'

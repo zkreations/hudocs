@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/Inter-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Inter-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/Inter-MediumItalic.woff2") format("woff2");
+}
+
+html,
+body {
+  scroll-padding-top: var(--header-height);
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--surface);
+  color: var(--on-surface);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100%;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+::selection {
+  background-color: var(--primary-selection);
+}
+
+a {
+  transition: color .3s;
+}
+
+input {
+  background-color: transparent;
+}
+
+kbd {
+  color: var(--on-surface);
+  background-color: var(--surface);
+  font-family: var(--font-monospace);
+  border: 1px solid var(--outline);
+  padding: .5em;
+  white-space: nowrap;
+  border-radius: .25rem;
+  font-size: .75rem;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+mark {
+  background-color: var(--surface-mark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}

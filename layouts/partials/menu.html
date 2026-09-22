@@ -1,0 +1,23 @@
+{{- with site.Menus.main -}}
+  <nav class="aside-nav" aria-label='{{ i18n "main_menu" | default "Main menu" }}'>
+    <ul class="menu-list">
+      {{- range . -}}
+        {{- $resolved := partial "resolve-link" (dict "href" .URL) -}}
+        {{- $title := or (and .Page (partial "title" .Page)) (and .Identifier (i18n .Identifier)) .Name -}}
+        {{- $isCurrent := or (eq $.RelPermalink .URL) ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) -}}
+        <li class="menu-item{{ if $isCurrent }} is-current{{ end }}">
+          <a class="menu-link has-icon{{ if $isCurrent }} is-active{{ end }}"{{ if $isCurrent }} aria-current="page"{{ end }} href="{{ $resolved.url }}"{{ with $resolved.target }} target="{{ . }}"{{ end }}{{ with $resolved.rel }} rel="{{ . }}"{{ end }}>
+            {{- $icon := or .Params.icon (and .Page .Page.Params.icon) -}}
+            {{- with $icon -}}
+              {{ partial "svg" (dict "icon" .) }}
+            {{- end -}}
+            <span>{{- $title -}}</span>
+            {{- if $resolved.isExternal -}}
+              {{ partial "svg" (dict "icon" "arrow-up-right" "class" "menu-arrow") }}
+            {{- end -}}
+          </a>
+        </li>
+      {{- end -}}
+    </ul>
+  </nav>
+{{- end -}}

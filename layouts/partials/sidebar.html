@@ -1,26 +1,37 @@
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
 <div class="aside-tree scrollable">
-  <div class="aside-menu fw-500">
-    {{- with .Site.GetPage .Section -}}
-      {{ template "tree-list" (dict "Section" . "CurrentPage" $) }}
+  <div class="aside-content">
+    {{- with $docsContext.versionPage -}}
+      {{ template "tree-list" (dict "Section" . "CurrentPage" $ "Level" 0 "DocsContext" $docsContext) }}
     {{ end }}
+    {{ partial "menu" . }}
   </div>
 </div>
 
 {{ define "tree-list" }}
   {{ $currentNode := .CurrentPage }}
-  <ul class="menu-list">
+  {{ $level := default 0 .Level }}
+  {{ $isSub := gt $level 0 }}
+  {{ $nextLevel := add $level 1 }}
+  <ul class="tree-list{{ if $isSub }} subtree-list{{ end }} level-{{ $level }}">
     {{ range (where .Section.Pages "Params.hidden" "ne" true) }}
-      <li class="menu-item{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} is-parent{{end}}">
+      <li class="tree-item{{ if $isSub }} subtree-item{{ end }} level-{{ $level }}-item{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} is-current{{end}}">
         {{ if .IsSection }}
-        
-          {{- if .Page.IsSection -}}
-            <input class="menu-toggle" type="checkbox" id="menu-{{ md5 .Page }}"{{if or (eq $currentNode .Page) (.IsAncestor $currentNode )}} checked=""{{ end }}>
-          {{ end }}
-
-          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage ) }}
-          {{ template "tree-list" (dict "Section" . "CurrentPage" $.CurrentPage ) }}
-        {{ else if and .IsPage .Content }}
-          {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage ) }}
+          {{- $title := partial "title" .Page -}}
+          <input class="tree-toggle{{ if $isSub }} subtree-toggle{{ end }}" type="checkbox" id="tree-{{ md5 .Page }}" aria-label='{{ printf "%s: %s" (i18n "toggle_section" | default "Toggle section") $title }}'{{ if or (and $.DocsContext $.DocsContext.expandTree) (eq $currentNode .Page) (.IsAncestor $currentNode) }} checked=""{{ end }}>
+          <div class="tree-row tree-label{{ if $isSub }} subtree-label{{ end }}">
+            {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level "DocsContext" $.DocsContext) }}
+            {{ $arrowClass := "tree-arrow" }}
+            {{- if $isSub }}{{ $arrowClass = "tree-arrow subtree-arrow" }}{{ end -}}
+            <label for="tree-{{ md5 .Page }}" class="tree-arrow-trigger" aria-hidden="true">
+              {{ partial "svg" (dict "icon" "chevron-down" "class" $arrowClass ) }}
+            </label>
+          </div>
+          {{ template "tree-list" (dict "Section" . "CurrentPage" $.CurrentPage "Level" $nextLevel "DocsContext" $.DocsContext) }}
+        {{ else if and .IsPage .RawContent (not (or (isset .Params "redirect") (eq .Params.layout "redirect"))) }}
+          <div class="tree-row tree-label{{ if $isSub }} subtree-label{{ end }}">
+            {{ template "tree-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $level "DocsContext" $.DocsContext) }}
+          </div>
         {{ end }}
       </li>
     {{ end }}
@@ -28,27 +39,16 @@
 {{ end }}
 
 {{ define "tree-link" }}
-  {{- if .Page.IsSection -}}
-    <label for="menu-{{ md5 .Page }}" class="menu-label">
-  {{ end }}
-  
-  <a href="{{ .Page.Permalink }}" data-name="{{ .Page.File.ContentBaseName }}" class="menu-link fs-6{{ if (eq .CurrentPage .Page) }} is-active{{ end }}{{ with .Page.Params.icon }} has-icon{{ end }}">
+  {{ $level := default 0 .Level }}
+  {{ $isSub := gt $level 0 }}
+  {{- $title := partial "title" .Page -}}
+  <a href="{{ .Page.Permalink }}" data-name="{{ $title }}" class="tree-link has-icon{{ if $isSub }} subtree-link{{ end }} level-{{ $level }}-link{{ if (eq .CurrentPage .Page) }} is-active{{ end }}"{{ if (eq .CurrentPage .Page) }} aria-current="page"{{ end }}>
     {{ partial "svg" (dict "icon" .Page.Params.icon ) }}
-    {{- partial "title" .Page -}}
+    {{- $title -}}
 
     {{- if eq .Page.Params.badge true -}}
-      {{- $badgeText := default site.Params.badge_text .Page.Params.badge_text -}}
-      {{- $badgeText = default (i18n "new") $badgeText -}}
-
+      {{- $badgeText := .Page.Params.badge_text | default (and .DocsContext .DocsContext.badgeText) | default (i18n "new") -}}
       <span class="badge">{{ $badgeText }}</span>
     {{- end -}}
   </a>
-
-  {{- with .Page.IsSection -}}
-    {{ partial "svg" (dict "icon" "chevron-down" "class" "menu-arrow" ) }}
-  {{ end }}
-
-  {{- if .Page.IsSection -}}
-    </label>
-  {{ end }}
 {{ end }}

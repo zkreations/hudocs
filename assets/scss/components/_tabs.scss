@@ -1,0 +1,104 @@
+.tabs {
+  --tabs-radius: 0.5rem;
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-block: 1.5rem;
+  border: 1px solid var(--outline);
+  border-radius: var(--tabs-radius);
+  background-color: var(--surface);
+
+  .tab-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+  }
+
+  .tab-label {
+    order: 0;
+    z-index: 1;
+    margin-block-end: -1px;
+    border-block-end: 2px solid transparent;
+    padding: 0.625rem 1.25rem;
+    color: var(--on-surface-variant);
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+
+    &:hover {
+      color: var(--on-surface);
+    }
+  }
+
+  .tab-toggle:checked + .tab-label {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .tab-toggle:focus-visible + .tab-label {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+  }
+
+  .tab-content {
+    order: 9999;
+    display: none;
+    width: 100%;
+    padding: 1.5rem;
+    border-block-start: 1px solid var(--outline);
+
+    > :first-child {
+      margin-block-start: 0;
+    }
+
+    > :last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  .tab-toggle:checked + .tab-label + .tab-content {
+    display: block;
+  }
+
+  &:has(> .tab-content > .highlight:only-child) {
+    border: 0;
+    background-color: var(--syntax-bg-deep);
+
+    .tab-label {
+      margin-block-end: 0;
+      border-block-end: 0;
+      padding-inline: clamp(1.25rem, 2vw, 1.5rem);
+
+      &:hover {
+        color: var(--syntax-fg);
+      }
+
+      &:first-of-type {
+        border-top-left-radius: var(--tabs-radius);
+      }
+    }
+
+    .tab-toggle:checked + .tab-label {
+      background-color: var(--syntax-bg);
+      color: var(--syntax-fg);
+    }
+
+    .tab-content {
+      padding: 0;
+      border-block-start: 0;
+
+      .highlight {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+}

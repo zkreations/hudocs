@@ -1,0 +1,349 @@
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  background-color: var(--surface-inverse);
+  color: var(--on-surface-inverse);
+  font-weight: 500;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-200%);
+  transition: transform 0.2s;
+
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+.tree {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &-link {
+    color: var(--link-color, inherit);
+    font-size: 1rem;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  &-item {
+    position: relative;
+
+    &.is-current>.tree-link,
+    &.is-current>.tree-label .tree-link,
+    &.is-current>label .tree-link {
+      --link-color: var(--primary);
+    }
+
+    svg {
+      color: var(--on-surface-muted);
+      flex: none;
+    }
+  }
+
+  &-arrow {
+    transition: transform .3s;
+
+    &-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline-start: auto;
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+
+      &:hover {
+        color: var(--primary);
+
+        svg {
+          color: var(--primary);
+        }
+      }
+    }
+  }
+
+  &-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+
+    &:checked~.tree-label .tree-arrow,
+    &:checked+label .tree-arrow {
+      transform: rotate(180deg);
+    }
+
+    &:not(:checked)~.subtree-list {
+      display: none;
+    }
+
+    &:focus-visible~.tree-label .tree-arrow-trigger {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
+
+  &-label {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.subtree {
+  &-list {
+    color: var(--on-surface-variant);
+    font-weight: 400;
+    box-shadow: 2px 0 0 0 var(--outline) inset;
+    margin-inline-start: 0.625rem;
+    margin-block-start: .75rem;
+    gap: .5rem;
+  }
+
+  &-item {
+    padding-inline-start: 1.5rem;
+  }
+
+  &-link {
+    font-size: .875rem;
+
+    &.is-active {
+      --link-color: var(--on-surface);
+      font-weight: 500;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        background-color: var(--on-surface);
+      }
+    }
+  }
+}
+
+.menu {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &-link {
+    color: var(--link-color, inherit);
+    font-size: 1rem;
+
+    &:hover,
+    &.is-active {
+      color: var(--primary);
+    }
+  }
+
+  &-item {
+    position: relative;
+
+    &.is-current>.menu-link {
+      --link-color: var(--primary);
+    }
+
+    svg {
+      color: var(--on-surface-muted);
+      flex: none;
+    }
+  }
+
+  &-arrow {
+    margin-inline-start: auto;
+  }
+}
+
+.toc {
+  grid-area: toc;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-block-end: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    
+    @include breakpoint(l, max) {
+      display: none;
+    }
+  }
+
+  &-current {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--on-surface-variant);
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include breakpoint(l) {
+      display: none;
+    }
+  }
+
+  &-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--container-padding);
+    padding-block: .5rem;
+    column-gap: .75rem;
+    width: 100%;
+
+    @include breakpoint(l) {
+      display: none;
+    }
+
+    &.is-active {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-header {
+    @include breakpoint(l) {
+      padding-inline-start: var(--container-padding);
+    }
+  }
+
+  &-content {
+    @include breakpoint(l) {
+      padding-block: 3rem;
+      padding-inline-end: 1rem;
+      position: sticky;
+    }
+
+    @include breakpoint(l, max) {
+      width: auto;
+      margin-inline: calc(var(--container-padding) * -1);
+      background-color: var(--surface-container);
+    }
+  }
+
+  &-navigation {
+    position: relative;
+    $selector: 'ul';
+
+    @for $i from 0 through 4 {
+      #{$selector} {
+        --level: #{$i}rem;
+      }
+
+      $selector: $selector + ' ul';
+    }
+
+    @include breakpoint(l, max) {
+      max-height: calc(100dvh - var(--header-height) - 4rem);
+      overflow-y: auto;
+      border-block-start: 1px solid var(--outline);
+      padding-block: 1rem;
+
+      &:not(.is-active) {
+        display: none;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+
+      ul {
+        margin-block-start: .5rem;
+      }
+    }
+
+    a {
+      display: block;
+      color: var(--on-surface-variant);
+
+      &:hover,
+      &.is-visible {
+        color: var(--primary);
+      }
+
+      padding-inline-start: calc(var(--container-padding) + var(--level));
+
+      @include breakpoint(l) {
+        &.is-visible {
+          box-shadow: inset 2px 0 0 0 var(--on-surface);
+        }
+      }
+    }
+  }
+
+  @include breakpoint(l, max) {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 20;
+    order: -1;
+  }
+}
+
+.pagelink {
+  padding: 1rem;
+  border-radius: .5rem;
+  border: 1px solid var(--outline);
+  transition: border-color .3s, color .3s;
+  box-shadow: var(--shadow-sm);
+  line-height: 1.5;
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+
+    .pagelink-title,
+    .pagelink-meta {
+      color: var(--primary);
+    }
+  }
+
+  &-content {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &-title {
+    color: var(--on-surface);
+    display: block;
+    transition: color .3s;
+    font-weight: 500;
+  }
+
+  &-meta {
+    color: var(--on-surface-muted);
+    transition: color .3s;
+    font-size: .875rem;
+  }
+
+  &-external {
+    margin-inline-start: auto;
+  }
+}
+
+.pagination {
+  margin-block-start: 2rem;
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 10rem)"}, 1fr));
+    gap: 1rem;
+  }
+}

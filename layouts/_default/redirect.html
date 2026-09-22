@@ -1,7 +1,7 @@
 {{ $redirect := (strings.TrimPrefix "/" .Page.Params.redirect) }}
 {{ $redirectUrl := ref . $redirect }}
 <!doctype html>
-<html lang="{{ .Site.Language.Lang }}">
+<html lang="{{ .Language.Lang }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

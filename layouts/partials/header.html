@@ -1,105 +1,95 @@
-{{- $logo := site.Params.main_logo -}}
-{{- $main_icon := site.Params.main_icon | default "book-open" -}}
-{{- $title := site.Title | title -}}
+{{- $docsContext := partialCached "docs-context" . (or .Path .RelPermalink) -}}
+{{- $logo := or site.Params.brand_logo site.Params.main_logo -}}
+{{- $main_icon := or site.Params.brand_icon site.Params.main_icon | default "book-open" -}}
+{{- $title := site.Title -}}
 
 <div class="container">
-  <div class="header-wrapper flex items-center relative">
-    <div class="header-left flex items-center">
-      {{- with .Section -}}
-        <button class="header-toggle" data-outside="docs-sidebar" aria-label="toggle navigation">
+  <div class="header-wrapper">
+    <div class="header-left">
+      {{- if or (and $docsContext.isDoc $docsContext.versionPage) site.Menus.main -}}
+        <button class="header-toggle" data-outside="docs-sidebar" aria-label='{{ i18n "toggle_navigation" | default "Toggle navigation" }}' aria-expanded="false" aria-controls="docs-sidebar">
           {{ partial "svg" (dict "icon" "bars") }}
         </button>
       {{- end -}}
-      <div class="header-logo flex items-center fw-500">
-        <a class="has-icon i-md" href='{{ "/" | relLangURL }}'>
-          {{- if $logo -}}
-            <img class="header-logo-image" src="{{- $logo -}}" alt="{{- $title -}}">
-          {{- else -}}
-            {{- with $main_icon -}}
-              {{ partial "svg" (dict "icon" . "class" "flex-none header-logo-icon" ) }}
-            {{- end -}}
-            {{- $title -}}
+      <a class="header-logo has-icon i-md" href='{{ "/" | relLangURL }}'>
+        {{- if $logo -}}
+          <img class="header-logo-image" src="{{- $logo -}}" alt="{{- $title -}}">
+        {{- else -}}
+          {{- with $main_icon -}}
+            {{ partial "svg" (dict "icon" . "class" "header-logo-icon" ) }}
           {{- end -}}
-        </a>
-      </div>
+          {{- $title -}}
+        {{- end -}}
+      </a>
     </div>
-
-    {{- with .Section -}}
-      <div class="header-middle">
-        <button class="search-toggle has-icon" data-outside="search-box" aria-label='{{ i18n "search" }}'>
-          {{ partial "svg" (dict "icon" "search" "class" "flex-none") }}
-          <span>{{- i18n "search_in_doc" -}}</span>
-        </button>
-      </div>
-    {{- end -}}
 
     <div class="header-right">
-      <button class="toggle-theme" data-outside="docs-mode" aria-label='{{ i18n "system" }}'>
-        {{ partial "svg" (dict "icon" "sun") }}
-        {{ partial "svg" (dict "icon" "moon") }}
-      </button>
+      {{- if and $docsContext.isDoc $docsContext.versionPage -}}
+        <button class="search-toggle has-icon" data-outside="search-box" aria-label='{{ i18n "search" }}' aria-haspopup="dialog" aria-expanded="false" aria-controls="search-box">
+          {{ partial "svg" (dict "icon" "search") }}
+          <span class="search-info">{{- i18n "search_in_doc" -}} <kbd>Ctrl K</kbd></span>
+        </button>
+      {{- end -}}
+
+      <div class="dropdown-wrapper">
+        <button class="header-item toggle-theme tooltip" data-outside="docs-mode" aria-label='{{ i18n "change_theme" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-mode">
+          {{ partial "svg" (dict "icon" "sun") }}
+          {{ partial "svg" (dict "icon" "moon") }}
+        </button>
+        <div class="dropdown" id="docs-mode" role="region" aria-label='{{ i18n "change_theme" }}'>
+          <div class="list theme-handle">
+            <button class="list-link has-icon" data-theme="system" type="button" aria-pressed="false">
+              {{ partial "svg" (dict "icon" "laptop") }}
+              {{ i18n "auto" }}
+            </button>
+            <button class="list-link has-icon" data-theme="light" type="button" aria-pressed="false">
+              {{ partial "svg" (dict "icon" "sun") }}
+              {{ i18n "light" }}
+            </button>
+            <button class="list-link has-icon" data-theme="dark" type="button" aria-pressed="false">
+              {{ partial "svg" (dict "icon" "moon") }}
+              {{ i18n "dark" }}
+            </button>
+          </div>
+        </div>
+      </div>
 
       {{- if hugo.IsMultilingual -}}
-        <button class="lang-toggle" data-outside="docs-language" aria-label='{{ i18n "languages" }}'>
-          {{ partial "svg" (dict "icon" "language") }}
-        </button>
+        {{- with .Page.Rotate "language" -}}
+          <div class="dropdown-wrapper">
+            <button class="header-item lang-toggle tooltip" data-outside="docs-language" aria-label='{{ i18n "languages" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-language">
+              {{ partial "svg" (dict "icon" "language") }}
+            </button>
+            <div class="dropdown" id="docs-language" role="region" aria-label='{{ i18n "languages" }}'>
+              <div class="list">
+                {{- range . -}}
+                  <a class="list-link {{ if eq .Language $.Page.Language }}is-active{{ end }}"{{ if eq .Language $.Page.Language }} aria-current="page"{{ end }} href="{{ .Permalink }}">
+                    {{ .Language.Label }}
+                  </a>
+                {{- end -}}
+              </div>
+            </div>
+          </div>
+        {{- end -}}
       {{- end -}}
 
-      {{- with .Section -}}
-        <a class="toc-toggle" href="#doc" aria-label='{{ i18n "table_of_contents_toogle" }}'>
-          {{ partial "svg" (dict "icon" "bars-sort") }}
-        </a>
-        <button class="toggle-version" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' id="current-version">
-          {{ . }}
-        </button>
-      {{- end -}}
-    </div>
-
-    <div class="dropdown" id="docs-mode">
-      <div class="list fw-500 theme-handle">
-        <button class="list-link has-icon" data-theme="system">
-          {{ partial "svg" (dict "icon" "desktop") }}
-          {{ i18n "system" }}
-        </button>
-        <button class="list-link has-icon" data-theme="light">
-          {{ partial "svg" (dict "icon" "sun") }}
-          {{ i18n "light" }}
-        </button>
-        <button class="list-link has-icon" data-theme="dark">
-          {{ partial "svg" (dict "icon" "moon") }}
-          {{ i18n "dark" }}
-        </button>
-      </div>
-    </div>
-
-    <div class="dropdown" id="docs-versions">
-      <div class="list fw-500">
-        {{ if site.Params.versions }}
-          {{ range site.Params.versions }}
-            <a class="list-link" href="{{ . | relLangURL }}">{{ . }}</a>
-          {{ end }}
-        {{ else }}
-          {{ with site.Sections }}
-            {{ range . | collections.Reverse }}
-              <a class="list-link" href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
-            {{ end }}
-          {{ end }}
-        {{ end }}
-        <a class="list-link" href='{{ "/" | relLangURL }}'>{{ i18n "versions" }}</a>
-      </div>
-    </div>
-    {{- if hugo.IsMultilingual -}}
-      {{- with .Page.Rotate "language" -}}
-        <div class="dropdown" id="docs-language">
-          <div class="list fw-500">
-            {{- range . -}}
-              <a class="list-link {{ if eq .Language $.Page.Language }}is-active events-none{{ end }}" href="{{ .Permalink }}">
-                {{ .Language.Label }}
-              </a>
-            {{- end -}}
+      {{- if and $docsContext.isDoc (not $docsContext.isDocsRoot) (not $docsContext.isSingleVersion) (gt (len $docsContext.versionPages) 0) -}}
+        <div class="dropdown-wrapper">
+          <button class="header-item version-toggle capitalize" data-outside="docs-versions" aria-label='{{ i18n "versions" }}' aria-haspopup="true" aria-expanded="false" aria-controls="docs-versions" id="current-version">
+            {{ with $docsContext.version }}{{ . }}{{ else }}{{ i18n "versions" }}{{ end }}
+          </button>
+          <div class="dropdown" id="docs-versions" role="region" aria-label='{{ i18n "versions" }}'>
+            <div class="list">
+              {{- range $docsContext.versionPages -}}
+                <a class="list-link {{ if eq . $docsContext.versionPage }}is-active{{ end }}"{{ if eq . $docsContext.versionPage }} aria-current="page"{{ end }} href="{{ .RelPermalink }}">{{ partial "title" . }}</a>
+              {{- end -}}
+              {{- with $docsContext.docsSection -}}
+                <a class="list-link" href="{{ .RelPermalink }}">{{ i18n "versions" }}</a>
+              {{- end -}}
+            </div>
           </div>
         </div>
       {{- end -}}
-    {{- end -}}
+    </div>
   </div>
 </div>

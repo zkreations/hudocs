@@ -1,9 +1,40 @@
+{{- $href := "" -}}
+{{- $name := "" -}}
+{{- $icon := "" -}}
+{{- $type := "" -}}
+{{- $rel := "" -}}
 
-{{- $href := .Get "href" | default "#url" -}}
-{{- $name := .Get "name" | default "undefined" -}}
-{{- $icon := .Get "icon" -}}
+{{- if .IsNamedParams -}}
+  {{- $href = .Get "href" -}}
+  {{- $name = .Get "name" | default (.Get "title") | default (.Get "text") -}}
+  {{- $icon = .Get "icon" -}}
+  {{- $type = .Get "type" -}}
+  {{- $rel = .Get "rel" -}}
+{{- else -}}
+  {{- $href = .Get 0 -}}
+  {{- $name = .Get 1 -}}
+  {{- $icon = .Get 2 -}}
+  {{- $type = .Get 3 -}}
+  {{- $rel = .Get 4 -}}
+{{- end -}}
 
-<a class="btn{{ with .Get "type" }} btn-{{ . }}{{ end }}" href="{{ $href | relLangURL }}"{{ if hasPrefix  $href  "http" }} target="_blank" rel="noreferrer nofollow noopener"{{ end }}>
-  {{ partial "svg" (dict "icon" $icon) }}
-  {{ $name }}
+{{- with $icon -}}
+  {{- $icon = trim . " " -}}
+{{- end -}}
+
+{{- if not $href -}}
+  {{- errorf "%s: missing 'href' parameter for 'button' shortcode." .Position -}}
+{{- end -}}
+
+{{- if not $name -}}
+  {{- errorf "%s: missing label parameter ('name', 'title' or 'text') for 'button' shortcode." .Position -}}
+{{- end -}}
+
+{{- $link := partial "resolve-link" (dict "href" $href "rel" $rel) -}}
+
+<a class="btn{{ with $type }} btn-{{ . }}{{ end }}" href="{{ $link.url }}"{{ with $link.target }} target="{{ . }}"{{ end }}{{ with $link.rel }} rel="{{ . }}"{{ end }}>
+  {{- with $icon -}}
+    {{- partial "svg" (dict "icon" .) -}}
+  {{- end -}}
+  {{- $name -}}
 </a>

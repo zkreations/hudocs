@@ -2,12 +2,11 @@
 <meta charset="UTF-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport">
 
-<title>{{ partial "title" . }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}</title>
-<meta name="description" content="{{ .Page.Params.description | default site.Params.description }}"/>
+<title>{{ partial "title" . }}{{ if not .IsHome }} | {{ site.Title }}{{ end }}</title>
 <link rel="icon" href='{{ "favicon.svg" | relURL }}' type="image/svg+xml"/>
 
 {{- range .Translations }}
-<link rel="alternate" hreflang="{{ default .Site.Language.Locale .Language.Lang }}" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="{{ default site.Language.Locale .Language.Lang }}" href="{{ .Permalink }}">
 {{- end -}}
 
 {{- $script := resources.Get "js/dark.js" | resources.Minify -}}

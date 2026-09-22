@@ -1,0 +1,5 @@
+{{- $class := .Get "class" | default (.Get 0) -}}
+<div class="steps{{ with $class }} {{ . }}{{ end }}">
+  {{- .Page.RenderString .Inner -}}
+</div>
+

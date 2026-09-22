@@ -1,55 +1,52 @@
-code, pre {
+code,
+pre {
   font-family: var(--font-monospace);
 }
 
-:not(pre) > code {
-  padding: .25em;
+:not(pre)>code {
+  padding: .2em .4em;
   white-space: nowrap;
-  background-color: var(--bg-tenue);
-  border-radius: .25rem;
+  background-color: var(--surface-container);
+  border-radius: .4em;
   font-weight: 400;
+  font-size: .875rem;
 }
 
 .highlight {
-
-  --bg-scrollbar: transparent;
-  --bg-scrollbar-track: rgb(0 0 0 / 25%);
-  --bg-scrollbar-thumb: #485158;
-
-  background: var(--bg-inverse);
+  --code-padding: clamp(1rem, 2.5vw, 1.5rem);
+  --highlight-radius: .5rem;
+  background: var(--syntax-bg);
   position: relative;
-  border-radius: .5rem;
+  border-radius: var(--highlight-radius);
   white-space: normal;
   line-height: 1.5;
 
+  &[filename] {
+    &::before {
+      content: attr(filename);
+      display: block;
+      padding: .75rem;
+      font-size: .875rem;
+      line-height: 1;
+      background-color: var(--syntax-gutter);
+      border-top-left-radius: var(--highlight-radius);
+      border-top-right-radius: var(--highlight-radius);
+      color: var(--syntax-muted);
+    }
+
+    .lntd:first-child {
+      border-top-left-radius: 0;
+    }
+  }
+
   pre {
-    // Fix for styles enabled
     background-color: transparent !important;
     overflow-x: auto;
-    color: #fff;
-    padding: 1rem 0;
+    color: var(--syntax-fg);
+    padding: var(--code-padding) 0;
 
-    // Firefox
-    scrollbar-color: var(--bg-scrollbar-thumb) var(--bg-scrollbar-track);
+    scrollbar-color: var(--syntax-scrollbar-thumb) var(--syntax-scrollbar-track);
     scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-      background-color: var(--bg-scrollbar);
-      &-track {
-        background-color: var(--bg-scrollbar-track);
-        border-radius: 5px
-      }
-      &-thumb {
-        background-color: var(--bg-scrollbar-thumb);
-        border-radius: 10px;
-      }
-    }
-
-    @include breakpoint(s){
-      padding: 1.5rem 0;
-    }
   }
 
   code {
@@ -58,177 +55,238 @@ code, pre {
     font-size: .875rem;
     width: 100%;
 
-    // Fix for styles enabled
-    > span:not(.line) {
-      padding: 0 1rem;
-
-      @include breakpoint(s){
-        padding: 0 1.5rem;
-      }
+    >span:not(.line) {
+      padding: 0 var(--code-padding);
     }
   }
 
   .line {
     display: block;
-    padding: 0 1rem;
+    padding: 0 var(--code-padding);
 
-    @include breakpoint(s){
-      padding: 0 1.5rem;
-    }
     &.hl {
-      background-color: var(--highlight-selection);
-      box-shadow: 3px 0 0 var(--highlight-selection-border) inset;
-    }
-  }
-}
-
-.code {
-  > .highlight {
-    &:not(:first-child) {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-    &:not(:last-child) {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-  &-example {
-    padding: 1.25rem 1.5rem;
-    border: 1px solid var(--color-border-inset);
-    border-bottom: 0 none;
-    border-radius: 0.5rem 0.5rem 0 0;
-    + .codetabs {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
-  &-explained {
-    padding: 1.25rem 1.5rem;
-    background-color: var(--bg-inset);
-    --space-block: 1rem;
-    pre {
-      padding: 1rem;
-      background-color: var(--bg-tenue);
-      overflow: auto;
-      white-space: pre-wrap;
-    }
-  }
-  &-copy {
-    position: absolute;
-    right: -.5rem;
-    top: -.5rem;
-    border-radius: 50rem;
-    background-color: var(--bg,var(--bg-darken));
-    color: #fff;
-    padding: 0.5rem;
-    transition: background-color .3s;
-    --tts-arrow-side: 12px;
-    --svg-size: 18px;
-    &:hover {
-      --bg: var(--primary);
-    }
-  }
-}
-
-
-.codetabs {
-
-  &:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
-  &:not(:last-child) .highlight {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: var(--highlight-bg);
-  border-radius: .5rem;
-
-  input {
-    &:not(:checked) + * + * {
-      display: none;
-    }
-    &[type=radio] {
-      display: contents;
-    }
-
-    &:checked + label {
-      background-color: var(--bg-inverse);
-      color: #fff;
+      background-color: var(--syntax-selection);
+      box-shadow: 3px 0 0 var(--syntax-selection-border) inset;
     }
   }
 
-  label {
-    cursor: pointer;
-    padding: .75rem 1rem;
-    @include breakpoint(s){
-      padding: .75rem 1.5rem;
-    }
-    font-size: .875rem;
-    &:first-of-type {
-      border-top-left-radius: .5rem;
-    }
+  .ln {
+    padding-inline-end: 1.5rem;
+    color: var(--syntax-muted);
   }
 
-  .highlight {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    position: static;
-    order: 9999;
+  .lntable {
     width: 100%;
   }
+
+  .lntd {
+    padding: 0;
+
+    &:first-child {
+      width: 1%;
+      background-color: var(--syntax-gutter);
+      border-top-left-radius: var(--highlight-radius);
+      border-bottom-left-radius: var(--highlight-radius);
+    }
+
+    &:last-child {
+      width: 100%;
+      max-width: 0;
+    }
+  }
+
+  .lnt {
+    color: var(--syntax-muted);
+  }
+
+  .lnlinks {
+    color: var(--syntax-link);
+  }
 }
 
-// Colors
+
+.code-copy {
+  position: absolute;
+  right: -.5rem;
+  top: -.5rem;
+  border-radius: 50rem;
+  background-color: var(--bg, var(--syntax-gutter));
+  color: var(--syntax-fg);
+  padding: 0.5rem;
+  transition: background-color .3s;
+  --svg-size: 18px;
+
+  &:hover {
+    --bg: var(--primary);
+    color: var(--on-primary);
+  }
+}
+
 .chroma {
-  .nt, .nn {
-    color: #ffd8a8;
+  color: var(--syntax-fg);
+
+  .nt {
+    color: var(--syntax-tag);
   }
-  .na, .nc {
-    color: #ffa94d;
+
+  .na {
+    color: var(--syntax-attribute);
   }
-  .p, .o {
-    color: #888;
+
+  .nc,
+  .nn {
+    color: var(--syntax-class);
   }
-  .c, .cm, .c1, .cp {
-    color: #5c6370;
+
+  .p,
+  .w {
+    color: var(--syntax-punctuation);
+  }
+
+  .o,
+  .ow {
+    color: var(--syntax-operator);
+  }
+
+  .c,
+  .cm,
+  .c1,
+  .cp,
+  .cpf {
+    color: var(--syntax-comment);
     font-style: italic;
   }
-  .kd, .kr, .nd {
-    color: #dab1eb;
+
+  .kd,
+  .k,
+  .kc,
+  .kn,
+  .kp,
+  .kr,
+  .kw {
+    color: var(--syntax-keyword);
   }
-  .kd +.nx, .nv, .n {
-    color: #ffb1b1;
+
+  .kt {
+    color: var(--syntax-type);
   }
-  .kr +.nx {
-    color: #a3ffed;
+
+  .n,
+  .nv,
+  .nx {
+    color: var(--syntax-variable);
   }
-  .s2 {
-    color: #c7e19e;
+
+  .l,
+  .ld,
+  .lg,
+  .li,
+  .ln,
+  .ls,
+  .no {
+    color: var(--syntax-constant);
   }
-  .mi, .kt, .mh {
-    color: #a3f2ff;
+
+  .s,
+  .sa,
+  .sb,
+  .sc,
+  .sd,
+  .se,
+  .sh,
+  .si,
+  .s1,
+  .s2,
+  .ss,
+  .sx {
+    color: var(--syntax-string);
   }
-  .nb, .nf {
-    color: #b1c9ff;
+
+  .sr {
+    color: var(--syntax-regex);
+  }
+
+  .m,
+  .mb,
+  .mf,
+  .mh,
+  .mi,
+  .il,
+  .mo {
+    color: var(--syntax-number);
+  }
+
+  .nb,
+  .nf {
+    color: var(--syntax-function);
+  }
+
+  .nd {
+    color: var(--syntax-decorator);
+  }
+
+  .ne,
+  .err {
+    color: var(--syntax-error);
   }
 }
 
-.brackets {
-  font-family: var(--font-monospace);
-  &::before, &::after {
-    color: var(--color-border);
+.type:not(.type-values) {
+  background-color: var(--type-bg, var(--surface-container));
+  color: var(--type-color, var(--on-surface));
+}
+
+.type {
+  --type-bg: color-mix(in srgb, var(--type-color) 8%, transparent);
+
+  &-textual {
+    --type-color: var(--type-textual);
   }
-  &::before {
-    content: "{";
+
+  &-numeric {
+    --type-color: var(--type-numeric);
   }
-  &::after {
-    content: "}";
+
+  &-logical {
+    --type-color: var(--type-logical);
+  }
+
+  &-structural {
+    --type-color: var(--type-structural);
+  }
+
+  &-custom {
+    --type-color: var(--type-custom);
+  }
+
+  &-optional::after {
+    content: "?";
+    font-weight: 500;
+    opacity: .75;
+  }
+
+  &-values {
+    padding: 0;
+    background-color: transparent;
+
+    &::after,
+    &::before {
+      color: var(--outline);
+    }
+
+    &::before {
+      content: "{";
+    }
+
+    &::after {
+      content: "}";
+    }
+
+    > span + span::before {
+      content: " | ";
+      display: inline-block;
+      margin-inline: .125rem;
+      color: var(--outline);
+    }
   }
 }
