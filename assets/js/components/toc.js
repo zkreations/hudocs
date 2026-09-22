@@ -101,8 +101,9 @@ function initToc () {
     link.classList.add(VISIBLE_CLASS)
     link.setAttribute('aria-current', 'location')
     currentActiveLink = link
-    if (tocCurrent) tocCurrent.textContent = link.textContent.trim()
-    if (tocToggle) tocToggle.click()
+    if (tocToggle && tocToggle.classList.contains('is-active')) {
+      tocToggle.click()
+    }
 
     const onScrollEnd = () => {
       isClickScrolling = false
