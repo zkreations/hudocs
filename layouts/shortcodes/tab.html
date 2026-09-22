@@ -1,16 +1,7 @@
 {{- if not (and .Parent (eq .Parent.Name "tabs")) -}}
   {{- errorf "%s: The 'tab' shortcode must be called inside 'tabs'." .Position -}}
 {{- else -}}
-  {{- if eq .Ordinal 0 -}}
-    {{- $groupCount := .Page.Store.Get "hudocs_tabs_group" | default 0 -}}
-    {{- $groupCount = add $groupCount 1 -}}
-    {{- .Page.Store.Set "hudocs_tabs_group" $groupCount -}}
-  {{- end -}}
-  {{- $groupId := .Page.Store.Get "hudocs_tabs_group" -}}
-  {{- if not $groupId -}}
-    {{- errorf "%s: Could not retrieve group ID for 'tab' shortcode." .Position -}}
-  {{- end -}}
-  {{- $group := .Parent.Get "id" | default (printf "tabs-%d" $groupId) -}}
+  {{- $group := .Parent.Get "id" | default (printf "tabs-%s" (substr (md5 (string .Parent.Position)) 0 6)) -}}
   {{- $tabId := printf "%s-%d" $group .Ordinal -}}
   {{- $title := .Get "title" | default (.Get 0) | default (printf "Tab %d" (add .Ordinal 1)) -}}
   <input type="radio" name="{{ $group }}" id="{{ $tabId }}" class="tab-toggle"{{ if eq .Ordinal 0 }} checked="checked"{{ end }}>
