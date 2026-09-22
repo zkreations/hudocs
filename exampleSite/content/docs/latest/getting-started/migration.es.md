@@ -1,9 +1,9 @@
 ---
-title: Migración desde v1.8
+title: Migración
 weight: 4
 ---
 
-Esta guía resume los cambios incompatibles y modificaciones necesarias al actualizar un sitio de documentación desde Hudocs 1.8 a 2.0.
+Esta guía resume los cambios incompatibles y modificaciones necesarias al actualizar un sitio de documentación a Hudocs 2.0.
 
 ## Estructura del Directorio de Contenido
 
@@ -36,7 +36,7 @@ Mueve los directorios de versiones dentro de `content/docs/`. Esto mantiene la r
 
 ## Shortcodes Eliminados
 
-### Shortcode `table`
+### Shortcode Table
 
 En Hudocs 1.8, para que una tabla fuese adaptable a pantallas móviles era obligatorio envolverla con el shortcode `table`:
 
@@ -50,7 +50,7 @@ En Hudocs 1.8, para que una tabla fuese adaptable a pantallas móviles era oblig
 
 En Hudocs 2.0, el shortcode `table` fue **eliminado**. Retira las etiquetas de apertura y cierre de `table`. Hudocs utiliza el hook nativo `render-table.html` de Hugo para envolver automáticamente cualquier tabla Markdown estándar en un contenedor con desplazamiento horizontal adaptable.
 
-### Shortcode `code`
+### Shortcode Code
 
 En Hudocs 1.8, la presentación de código avanzado dependía del shortcode `code`:
 
@@ -68,7 +68,7 @@ En Hudocs 2.0, el shortcode `code` fue **eliminado**:
 * **Código con explicaciones:** Utiliza el nuevo shortcode `annotated`.
 * **Pestañas de código:** Utiliza los shortcodes generales `tabs` y `tab`.
 
-## Cambio de Delimitadores (`<---->` por `---`)
+## Cambio de Delimitadores
 
 En Hudocs 1.8, los shortcodes `columns` y `code` utilizaban el separador `<---->` para dividir bloques internos:
 
@@ -110,7 +110,7 @@ Actualiza tu archivo `hugo.toml` para utilizar los nuevos identificadores canón
 
 ## Cambios en la Sintaxis de Shortcodes
 
-### Shortcode `tab`
+### Shortcode Tab
 
 En Hudocs 1.8, `tab` funcionaba asociado al shortcode `code` y recibía argumentos posicionales de lenguaje y archivo.
 
@@ -126,7 +126,7 @@ console.log("Hola");
 {{</* /tabs */>}}
 ````
 
-### Parámetros de `pagelink`
+### Parámetros de Page Link
 
 En Hudocs 1.8, `pagelink` utilizaba `name` para indicar la procedencia. En Hudocs 2.0, utiliza `title` para el título principal y `description` (o `subtitle`) para el texto secundario:
 

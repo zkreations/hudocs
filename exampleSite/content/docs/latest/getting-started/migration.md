@@ -1,9 +1,9 @@
 ---
-title: Migration from v1.8
+title: Migration
 weight: 4
 ---
 
-This guide outlines breaking changes and modifications when upgrading a documentation site from Hudocs 1.8 to 2.0.
+This guide outlines breaking changes and modifications when upgrading a documentation site to Hudocs 2.0.
 
 ## Content Directory Structure
 
@@ -36,7 +36,7 @@ Move your documentation version directories inside `content/docs/`. This keeps `
 
 ## Removed Shortcodes
 
-### `table` Shortcode
+### Table Shortcode
 
 In Hudocs 1.8, responsive tables required wrapping standard Markdown tables inside a `table` shortcode:
 
@@ -50,7 +50,7 @@ In Hudocs 1.8, responsive tables required wrapping standard Markdown tables insi
 
 In Hudocs 2.0, the `table` shortcode has been **removed**. Delete the opening and closing `table` shortcode tags. Hudocs now uses Hugo's native `render-table.html` hook to automatically wrap all standard Markdown tables in a responsive container with horizontal scrolling.
 
-### `code` Shortcode
+### Code Shortcode
 
 In Hudocs 1.8, custom code presentation was managed through the `code` shortcode:
 
@@ -68,7 +68,7 @@ In Hudocs 2.0, the `code` shortcode has been **removed**:
 * **Code with explanations:** Use the new `annotated` shortcode.
 * **Code tabs:** Use the general `tabs` and `tab` shortcodes.
 
-## Changed Separators (`<---->` to `---`)
+## Changed Separators
 
 In Hudocs 1.8, the `columns` and `code` shortcodes used `<---->` as an internal delimiter:
 
@@ -110,7 +110,7 @@ Update your `hugo.toml` file to use the new parameter names.
 
 ## Shortcode Syntax Changes
 
-### `tab` Shortcode
+### Tab Shortcode
 
 In Hudocs 1.8, `tab` was tied to the `code` shortcode and accepted positional arguments for language and file name.
 
@@ -126,7 +126,7 @@ console.log("Hello");
 {{</* /tabs */>}}
 ````
 
-### `pagelink` Parameters
+### Page Link Parameters
 
 In Hudocs 1.8, `pagelink` used `name` to indicate origin or secondary text. In Hudocs 2.0, use `title` for the primary title and `description` (or `subtitle`) for descriptive text:
 
