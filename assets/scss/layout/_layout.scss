@@ -152,7 +152,7 @@
       grid-template-areas: "doc toc";
       grid-template-columns: minmax(0, 1fr) 20%;
 
-      &:not(:has(.toc-content)) {
+      &:not(.has-toc) {
         grid-template-areas: "doc";
         grid-template-columns: 100%;
 
@@ -163,7 +163,7 @@
     }
 
     @include breakpoint(l, max) {
-      &:not(:has(.toc-content)) {
+      &:not(.has-toc) {
         grid-template-areas: "doc";
 
         .toc {
