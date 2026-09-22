@@ -1,4 +1,7 @@
-const storedTheme = localStorage.getItem('theme')
+let storedTheme = null
+try {
+  storedTheme = localStorage.getItem('theme')
+} catch {}
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 const theme = (!storedTheme || storedTheme === 'system')

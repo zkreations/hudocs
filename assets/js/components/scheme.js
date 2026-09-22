@@ -34,8 +34,22 @@ function applyTheme (pref) {
   }
 }
 
+function getStorageItem (key, fallback) {
+  try {
+    return localStorage.getItem(key) || fallback
+  } catch {
+    return fallback
+  }
+}
+
+function setStorageItem (key, value) {
+  try {
+    localStorage.setItem(key, value)
+  } catch {}
+}
+
 function initTheme () {
-  let preference = localStorage.getItem(STORAGE_KEY) || 'system'
+  let preference = getStorageItem(STORAGE_KEY, 'system')
 
   applyTheme(preference)
 
@@ -44,7 +58,7 @@ function initTheme () {
       const btn = e.target.closest('[data-theme]')
       if (!btn) return
       preference = btn.dataset.theme
-      localStorage.setItem(STORAGE_KEY, preference)
+      setStorageItem(STORAGE_KEY, preference)
       applyTheme(preference)
     })
   }
