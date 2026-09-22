@@ -115,4 +115,7 @@ other = "Open in ChatGPT"
 [open_in_claude]
 other = "Open in Claude"
 
+[ask_ai_prompt]
+other = "Read the following link and answer my questions: %s"
+
 

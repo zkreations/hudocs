@@ -33,15 +33,16 @@
           </button>
           <div class="dropdown" id="article-ai-dropdown" role="region" aria-label='{{ i18n "ask_ai" | default "Ask AI" }}'>
             <div class="list">
+              {{- $aiPrompt := printf (i18n "ask_ai_prompt" | default "Read the following link and answer my questions: %s") $.Page.Permalink -}}
               {{- if $docsContext.showChatGPT -}}
-                <a class="list-link has-icon" href="https://chatgpt.com/?q={{ printf "Explain this documentation: %s" $.Page.Permalink | urlquery }}" target="_blank" rel="noreferrer noopener">
+                <a class="list-link has-icon" href="https://chatgpt.com/?q={{ $aiPrompt | urlquery }}" target="_blank" rel="noreferrer noopener">
                   {{ partial "svg" (dict "icon" "openai") }}
                   <span>{{ i18n "open_in_chatgpt" | default "Open in ChatGPT" }}</span>
                   {{ partial "svg" (dict "icon" "arrow-up-right" "class" "menu-arrow") }}
                 </a>
               {{- end -}}
               {{- if $docsContext.showClaude -}}
-                <a class="list-link has-icon" href="https://claude.ai/new?q={{ printf "Explain this documentation: %s" $.Page.Permalink | urlquery }}" target="_blank" rel="noreferrer noopener">
+                <a class="list-link has-icon" href="https://claude.ai/new?q={{ $aiPrompt | urlquery }}" target="_blank" rel="noreferrer noopener">
                   {{ partial "svg" (dict "icon" "claude") }}
                   <span>{{ i18n "open_in_claude" | default "Open in Claude" }}</span>
                   {{ partial "svg" (dict "icon" "arrow-up-right" "class" "menu-arrow") }}
