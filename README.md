@@ -6,9 +6,9 @@
 <p align="center">Documentation theme for Hugo. No Node.js dependencies and no complex deployment pipelines. Built entirely with Hugo Extended's native asset pipeline.</p>
 
 <p align="center">
-  <a href="https://github.com/zkreations/hudocs/blob/main/LICENSE"><img src="https://img.shields.io/github/license/zkreations/hudocs?style=for-the-badge&labelColor=030712&color=14b8a6" alt="license"></a>
-  <a href="https://github.com/zkreations/hudocs/releases"><img src="https://img.shields.io/github/v/release/zkreations/hudocs?style=for-the-badge&labelColor=030712&color=0ea5e9" alt="release"></a>
-  <a href="https://app.netlify.com/projects/hudocs/deploys"><img src="https://img.shields.io/netlify/4f5686e0-d6f8-4ff8-ba4e-901d19644dfe?style=for-the-badge&labelColor=030712&color=6366f1" alt="netlify"></a>
+  <a href="https://github.com/zkreations/hudocs/blob/main/LICENSE"><img src="https://img.shields.io/github/license/zkreations/hudocs?style=for-the-badge&labelColor=030712&color=0d9488" alt="license"></a>
+  <a href="https://github.com/zkreations/hudocs/releases"><img src="https://img.shields.io/github/v/release/zkreations/hudocs?style=for-the-badge&labelColor=030712&color=0d9488" alt="release"></a>
+  <a href="https://app.netlify.com/projects/hudocs/deploys"><img src="https://img.shields.io/netlify/4f5686e0-d6f8-4ff8-ba4e-901d19644dfe?style=for-the-badge&labelColor=030712&color=0d9488&logo=netlify&logoColor=white" alt="netlify"></a>
 </p>
 
 <p align="center">
