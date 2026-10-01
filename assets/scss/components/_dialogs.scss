@@ -15,6 +15,7 @@
   border-radius: .5rem;
   padding: 1rem;
   max-height: 280px;
+  min-width: max-content;
   overflow-y: auto;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   scrollbar-width: thin;
