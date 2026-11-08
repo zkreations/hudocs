@@ -1,0 +1,81 @@
+{{- define "llms-item" -}}
+  {{- $p := . -}}
+  {{- $isRedirect := or (isset $p.Params "redirect") (eq $p.Params.layout "redirect") -}}
+  {{- if and (ne $p.Params.hidden true) (not $isRedirect) -}}
+    {{- $title := partial "title" $p -}}
+    {{- $desc := or $p.Description ($p.Summary | plainify | htmlUnescape | replaceRE `[#\r\n]+` " " | strings.TrimSpace | truncate 160) -}}
+    {{- printf "- [%s](%s)" $title $p.Permalink -}}
+    {{- with $desc -}}
+      {{- printf ": %s" (replaceRE `\s+` " " .) -}}
+    {{- end }}
+{{ end -}}
+{{- end -}}
+
+{{- define "llms-section" -}}
+  {{- $section := .Section -}}
+  {{- $depth := .Depth -}}
+  {{- $pages := where $section.RegularPages "Params.hidden" "ne" true -}}
+  {{- $subSections := where $section.Sections "Params.hidden" "ne" true -}}
+  {{- if or (gt (len $pages) 0) (gt (len $subSections) 0) -}}
+    {{- if gt $depth 1 -}}
+      {{- $hashes := strings.Repeat (math.Min (add $depth 0) 6) "#" -}}
+      {{- $title := partial "title" $section -}}
+      {{- printf "\n%s %s\n\n" $hashes $title -}}
+    {{- end -}}
+    {{- range $pages -}}
+      {{- template "llms-item" . -}}
+    {{- end -}}
+    {{- range $subSections -}}
+      {{- template "llms-section" (dict "Section" . "Depth" (add $depth 1)) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+# {{ site.Title }}
+{{ with site.Params.description }}> {{ . }}{{ end }}
+
+{{- $docsContext := partialCached "docs-context" . -}}
+{{- $activeDocs := false -}}
+{{- if and $docsContext.versionPages (gt (len $docsContext.versionPages) 0) -}}
+  {{- $activeDocs = index $docsContext.versionPages 0 -}}
+{{- else if $docsContext.docsSection -}}
+  {{- $activeDocs = $docsContext.docsSection -}}
+{{- end -}}
+
+{{- if $activeDocs -}}
+  {{- $activePages := where $activeDocs.RegularPages "Params.hidden" "ne" true -}}
+  {{- if gt (len $activePages) 0 -}}
+## {{ partial "title" $activeDocs }}
+
+{{ range $activePages -}}
+  {{- template "llms-item" . -}}
+{{- end -}}
+  {{- end -}}
+  {{- range (where $activeDocs.Sections "Params.hidden" "ne" true) -}}
+    {{- template "llms-section" (dict "Section" . "Depth" 2) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $otherVersions := slice -}}
+{{- if and $docsContext.versionPages (gt (len $docsContext.versionPages) 1) -}}
+  {{- $otherVersions = after 1 $docsContext.versionPages -}}
+{{- end -}}
+{{- $postsSection := site.GetPage "posts" -}}
+{{- $hasPosts := and $postsSection (gt (len $postsSection.RegularPages) 0) -}}
+
+{{- if or (gt (len $otherVersions) 0) $hasPosts -}}
+
+## Optional
+
+- [{{ "llms-full.txt" }}]({{ "llms-full.txt" | absLangURL }}): {{ i18n "llms_full_description" }}
+{{- range $otherVersions }}
+  {{- $vTitle := partial "title" . -}}
+  {{- if not $vTitle }}{{ $vTitle = path.Base .Path }}{{ end }}
+- [{{ printf "%s (%s)" (partial "title" $docsContext.docsSection) $vTitle }}]({{ .Permalink }}): {{ i18n "llms_previous_version" }}
+{{- end }}
+{{- with $postsSection }}
+  {{- $pTitle := partial "title" . }}
+- [{{ $pTitle }}]({{ .Permalink }}): {{ with .Description }}{{ . }}{{ else }}{{ i18n "llms_posts_description" }}{{ end }}
+{{- end }}
+{{- end }}
+

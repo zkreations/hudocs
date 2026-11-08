@@ -10,6 +10,9 @@ enableGitInfo = true
 disableKinds = ["taxonomy", "term"]
 summaryLength = 20
 
+[outputs]
+  home = ["HTML", "RSS", "llms", "llmsfull"]
+
 [languages]
   [languages.en]
     label = "English"

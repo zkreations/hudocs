@@ -118,4 +118,11 @@ other = "Abrir en Claude"
 [ask_ai_prompt]
 other = "Lee el siguiente enlace y responde a mis preguntas: %s"
 
+[llms_full_description]
+other = "Documentación completa consolidada en un solo archivo"
 
+[llms_previous_version]
+other = "Documentación de versión previa"
+
+[llms_posts_description]
+other = "Artículos y publicaciones del blog"

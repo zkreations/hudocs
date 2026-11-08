@@ -1,0 +1,24 @@
+# {{ site.Title }}
+{{ with site.Params.description }}> {{ . }}{{ end }}
+
+{{- $docsContext := partialCached "docs-context" . -}}
+{{- $activeDocs := false -}}
+{{- if and $docsContext.versionPages (gt (len $docsContext.versionPages) 0) -}}
+  {{- $activeDocs = index $docsContext.versionPages 0 -}}
+{{- else if $docsContext.docsSection -}}
+  {{- $activeDocs = $docsContext.docsSection -}}
+{{- end -}}
+
+{{- if $activeDocs -}}
+  {{- $pages := partial "flat-pages" (dict "Section" $activeDocs) -}}
+  {{- range $pages }}
+
+---
+
+## {{ partial "title" . }}
+URL: {{ .Permalink }}
+{{ with .Description }}Description: {{ . }}
+{{ end }}
+{{ .RawContent | strings.TrimSpace }}
+  {{- end -}}
+{{- end }}
