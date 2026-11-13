@@ -40,7 +40,7 @@ Hugo Modules lets you manage Hudocs as a Go dependency without manually tracking
    Add Hudocs to `hugo.toml`:
 
    ```toml
-   theme = "github.com/zkreations/hudocs"
+   theme = "github.com/zkreations/hudocs/v2"
    ```
 
 3. ### Download the module
@@ -48,7 +48,7 @@ Hugo Modules lets you manage Hudocs as a Go dependency without manually tracking
    Download Hudocs and its dependencies:
 
    ```bash
-   hugo mod get github.com/zkreations/hudocs
+   hugo mod get github.com/zkreations/hudocs/v2
    ```
 {{< /steps >}}
 
@@ -89,7 +89,7 @@ Update Hudocs depending on your installation method:
 To update to the latest version of the module:
 
 ```bash
-hugo mod get -u github.com/zkreations/hudocs
+hugo mod get -u github.com/zkreations/hudocs/v2
 ```
 
 ### Git Submodule

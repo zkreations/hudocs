@@ -102,11 +102,11 @@ Hugo Modules allows you to manage Hudocs as a versioned dependency without manua
    ```
 2. Add Hudocs to your `hugo.toml`:
    ```toml
-   theme = "github.com/zkreations/hudocs"
+   theme = "github.com/zkreations/hudocs/v2"
    ```
 3. Download the module:
    ```bash
-   hugo mod get github.com/zkreations/hudocs
+   hugo mod get github.com/zkreations/hudocs/v2
    ```
 
 ### 2. Git Submodule
@@ -144,7 +144,7 @@ Update Hudocs according to your installation method:
 ### Hugo Modules
 Update to the latest version:
 ```bash
-hugo mod get -u github.com/zkreations/hudocs
+hugo mod get -u github.com/zkreations/hudocs/v2
 ```
 
 ### Git Submodule
