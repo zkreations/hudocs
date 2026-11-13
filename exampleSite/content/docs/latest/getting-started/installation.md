@@ -16,26 +16,15 @@ Before installing Hudocs, make sure you have:
   * Verify the installed version with `hugo version`
   * The output must include `extended`.
 * **Git** installed and available in the terminal to clone the repository or manage submodules.
+* **Go** installed and available in the terminal (only required if installing via Hugo Modules).
 
 ## Installation
 
-### Git Submodule
+You can install Hudocs using any of the following three methods. **Hugo Modules** is the recommended method for modern Hugo development.
 
-A submodule lets you keep the Hudocs code separate from your site repository and update it whenever needed.
+### Hugo Modules (Recommended)
 
-```bash
-git submodule add https://github.com/zkreations/hudocs themes/hudocs
-```
-
-To update the submodule:
-
-```bash
-git submodule update --remote --merge
-```
-
-### Hugo Modules
-
-Hugo Modules lets you manage Hudocs as a Go dependency.
+Hugo Modules lets you manage Hudocs as a Go dependency without manually tracking theme files or submodules.
 
 {{< steps >}}
 1. ### Initialize the module
@@ -63,12 +52,60 @@ Hugo Modules lets you manage Hudocs as a Go dependency.
    ```
 {{< /steps >}}
 
+### Git Submodule
+
+A submodule lets you keep the Hudocs code separate from your site repository and pin it to a specific commit:
+
+```bash
+git submodule add https://github.com/zkreations/hudocs themes/hudocs
+```
+
+Then add the theme to `hugo.toml`:
+
+```toml
+theme = "hudocs"
+```
+
 ### Direct Clone
 
 You can clone Hudocs directly into `themes/` if you need to modify its source code:
 
 ```bash
 git clone https://github.com/zkreations/hudocs themes/hudocs
+```
+
+Then add the theme to `hugo.toml`:
+
+```toml
+theme = "hudocs"
+```
+
+## Updating
+
+Update Hudocs depending on your installation method:
+
+### Hugo Modules
+
+To update to the latest version of the module:
+
+```bash
+hugo mod get -u github.com/zkreations/hudocs
+```
+
+### Git Submodule
+
+To update the submodule to the latest remote commit:
+
+```bash
+git submodule update --remote --merge
+```
+
+### Direct Clone
+
+To pull the latest changes into the theme directory:
+
+```bash
+git -C themes/hudocs pull
 ```
 
 ## Example Site

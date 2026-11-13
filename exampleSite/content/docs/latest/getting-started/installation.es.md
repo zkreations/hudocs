@@ -16,26 +16,15 @@ Antes de instalar Hudocs, asegúrate de tener:
   * Verifica la versión instalada con `hugo version`
   * La salida debe incluir `extended`.
 * **Git** instalado y disponible en la terminal para clonar el repositorio o gestionar submódulos.
+* **Go** instalado y disponible en la terminal (requerido solo si instalas mediante Hugo Modules).
 
 ## Instalación
 
-### Submódulo Git
+Puedes instalar Hudocs mediante cualquiera de los siguientes tres métodos. **Hugo Modules** es el método recomendado para el desarrollo moderno con Hugo.
 
-Un submódulo permite mantener el código de Hudocs separado del repositorio del sitio y actualizarlo cuando sea necesario.
+### Hugo Modules (Recomendado)
 
-```bash
-git submodule add https://github.com/zkreations/hudocs themes/hudocs
-```
-
-Para actualizar el submódulo:
-
-```bash
-git submodule update --remote --merge
-```
-
-### Hugo Modules
-
-Hugo Modules permite gestionar Hudocs como una dependencia de Go.
+Hugo Modules permite gestionar Hudocs como una dependencia de Go sin necesidad de rastrear archivos o submódulos manualmente.
 
 {{< steps >}}
 1. ### Inicializa el módulo
@@ -63,12 +52,60 @@ Hugo Modules permite gestionar Hudocs como una dependencia de Go.
    ```
 {{< /steps >}}
 
+### Submódulo Git
+
+Un submódulo permite mantener el código de Hudocs separado del repositorio del sitio y anclarlo a un commit específico:
+
+```bash
+git submodule add https://github.com/zkreations/hudocs themes/hudocs
+```
+
+Luego añade el tema a `hugo.toml`:
+
+```toml
+theme = "hudocs"
+```
+
 ### Clon directo
 
 Puedes clonar Hudocs directamente en `themes/` si necesitas modificar su código fuente:
 
 ```bash
 git clone https://github.com/zkreations/hudocs themes/hudocs
+```
+
+Luego añade el tema a `hugo.toml`:
+
+```toml
+theme = "hudocs"
+```
+
+## Actualización
+
+Actualiza Hudocs según el método de instalación que hayas utilizado:
+
+### Hugo Modules
+
+Para actualizar a la última versión del módulo:
+
+```bash
+hugo mod get -u github.com/zkreations/hudocs
+```
+
+### Submódulo Git
+
+Para actualizar el submódulo al último commit remoto:
+
+```bash
+git submodule update --remote --merge
+```
+
+### Clon directo
+
+Para descargar los últimos cambios dentro del directorio del tema:
+
+```bash
+git -C themes/hudocs pull
 ```
 
 ## Sitio de ejemplo

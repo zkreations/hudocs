@@ -86,26 +86,96 @@ content/
 
 - Hugo Extended 0.164.0 or higher
 - [Git](https://git-scm.com/downloads)
+- [Go](https://go.dev/) (required only for Hugo Modules)
 
 ## Installation
 
-In the root directory of your Hugo project, add Hudocs as a Git submodule:
+You can install Hudocs using any of the following three methods. **Hugo Modules** is the recommended method for modern Hugo projects.
+
+### 1. Hugo Modules (Recommended)
+
+Hugo Modules allows you to manage Hudocs as a versioned dependency without manually tracking files or submodules. Requires [Go](https://go.dev/) installed.
+
+1. Initialize Hugo modules in your site (if not already done):
+   ```bash
+   hugo mod init github.com/your-username/my-docs
+   ```
+2. Add Hudocs to your `hugo.toml`:
+   ```toml
+   theme = "github.com/zkreations/hudocs"
+   ```
+3. Download the module:
+   ```bash
+   hugo mod get github.com/zkreations/hudocs
+   ```
+
+### 2. Git Submodule
+
+If you prefer not to install Go and want to pin the theme to a specific Git commit:
 
 ```bash
 git submodule add https://github.com/zkreations/hudocs themes/hudocs
 ```
 
-## Quick Start
+Then add the theme to your `hugo.toml`:
+
+```toml
+theme = "hudocs"
+```
+
+### 3. Direct Clone
+
+Clone the repository directly into your `themes/` directory if you plan to modify the theme source code directly:
 
 ```bash
-# Copy example content
+git clone https://github.com/zkreations/hudocs themes/hudocs
+```
+
+Then add the theme to your `hugo.toml`:
+
+```toml
+theme = "hudocs"
+```
+
+## Updating
+
+Update Hudocs according to your installation method:
+
+### Hugo Modules
+Update to the latest version:
+```bash
+hugo mod get -u github.com/zkreations/hudocs
+```
+
+### Git Submodule
+Pull the latest changes from the remote submodule:
+```bash
+git submodule update --remote --merge
+```
+
+### Direct Clone
+Pull latest changes from inside the theme directory:
+```bash
+git -C themes/hudocs pull
+```
+
+## Quick Start
+
+If you installed via Git Submodule or Direct Clone, bootstrap your site with the `exampleSite` files:
+
+```bash
+# Copy example configuration and content
+cp themes/hudocs/exampleSite/hugo.toml .
 cp -R themes/hudocs/exampleSite/content .
 
-# Copy example configuration
-cp themes/hudocs/exampleSite/hugo.toml .
-
 # Start the local development server
-hugo serve
+hugo server
+```
+
+If you installed via Hugo Modules, copy or download the [`exampleSite`](https://github.com/zkreations/hudocs/tree/main/exampleSite) files from GitHub, then run:
+
+```bash
+hugo server
 ```
 
 ## Contributions
