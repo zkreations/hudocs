@@ -1,3 +1,7 @@
 {{- $options := dict "targetPath" "js/bundle.js" -}}
-{{- $jsBundle := resources.Get "js/main.js" | js.Build $options | resources.Minify | fingerprint -}}
+{{- $js := resources.Get "js/main.js" | js.Build $options -}}
+{{- if hugo.IsProduction -}}
+  {{- $js = $js | resources.Minify -}}
+{{- end -}}
+{{- $jsBundle := $js | fingerprint -}}
 <script src="{{ $jsBundle.RelPermalink }}" integrity="{{ $jsBundle.Data.Integrity }}" defer></script>
